@@ -64,11 +64,15 @@ class MY_Cart extends CI_Cart {
 	 **/
 	function destroy_data($specify=false)
 	{
-		$this->_ci->unset_userdata('customer_info');
-		$this->_ci->unset_userdata('shipto_info');
-		$this->_ci->unset_userdata('shipping_info');
-		$this->_ci->unset_userdata('payment_info');
-		$this->_ci->unset_userdata('checkout_step');
+		if($specify == false){
+			$this->_ci->session->unset_userdata('customer_info');
+			$this->_ci->session->unset_userdata('shipto_info');
+			$this->_ci->session->unset_userdata('shipping_info');
+			$this->_ci->session->unset_userdata('payment_info');
+			$this->_ci->session->unset_userdata('checkout_step');
+		}else{
+			$this->_ci->session->unset_userdata($specify);
+		}
 		return true;
 		
 	}
