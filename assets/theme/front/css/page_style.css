@@ -1,0 +1,92 @@
+/* style page */
+
+
+/* View Detail Product	
+----------------------------------------------------------------------------------------------------*/
+.viewProduct .detailProd { width:420px;}
+.viewProduct .mediaProd { width:300px;}
+.viewProduct .mediaProd .otherImg { margin-top:10px;	}
+
+/* Browse Product
+----------------------------------------------------------------------------------------------------*/
+.browseProduct .productSnap { width:240px; float:left;}
+.browseProduct .productSnap  .productImg img { width:230px;}
+
+/* VIEW CART 
+----------------------------------------------------------------------------------------------------*/
+.cartView_v .table-Ui table tr.dark td { background: #f2f2f2; border-bottom:1px #D8D8D8 solid; color: #6C6C6C; text-transform: uppercase}
+.cartView_v .table-Ui td { vertical-align: middle;}
+.cartView_v .table-Ui table thead tr td { background: #f2f2f2; border-bottom:1px #D8D8D8 solid; color: #6C6C6C; text-transform: uppercase}
+.cartView_v .table-Ui table tbody tr td { border-bottom:1px solid #DCDCDC; padding:5px 5px;}
+.cartView_v .table-Ui table tbody { border:none;}
+.cartView_v .table-Ui table tbody tr:nth-child(2n) { background:none;}
+.cartView_v .table-Ui table{ margin-bottom:10px;}
+.cartView_v .table-Ui tr td.qty .update_form  { border:1px solid #B2B2B2; padding:3px; width:100px;}
+.cartView_v .table-Ui tr td.qty .update_form .update_button { padding:2px 5px; font-size:10px; margin:0px; display:inline-block;	}
+.cartView_v .table-Ui tr td.qty input { border:none; padding:0px;}
+.cartView_v .table-Ui tr td:last { margin-right:10px;}
+
+/* Cehckout BUYER INFO
+----------------------------------------------------------------------------------------------------*/
+.buyerinfo .form_buyerinfo {}
+.buyerinfo .form_buyerinfo .customer_info { width:400px;}
+.buyerinfo .form_buyerinfo .form-Ui h4 { margin-bottom:0px;}
+.buyerinfo .form_buyerinfo .login_mod { margin-bottom:20px;}
+.buyerinfo .form_buyerinfo .form-Ui .form-Info{ margin-bottom:10px;}
+
+/* Payment Method */
+
+.payment_method .payment_img {
+	width:122px;
+	height: 37px;
+	background-image: url(../img/payment_option.png);
+	cursor: pointer;
+	
+}
+
+.payment_method .paypal .payment_img{
+	background-position: left 37px;
+} 
+.payment_method .paypal .payment_img:hover,
+.checked .paypal .payment_img {
+	background-position: left top;
+} 
+.payment_method .bca .payment_img{
+	background-position: center bottom;
+} 
+.payment_method .bca .payment_img:hover,
+.checked .bca .payment_img{
+	background-position: center top;
+} 
+.payment_method .mandiri .payment_img{
+	background-position: right bottom;
+} 
+.payment_method .mandiri .payment_img:hover,
+.checked .mandiri .payment_img{
+	background-position: right top;
+} 
+.button_payment {
+	padding: 20px 0px ;
+}
+.checked .button_payment{
+	border: 1px solid #64d0fe;
+	padding: 19px 0px;
+	background: #d4effe;
+}
+/* Summary */
+.data_rowSet {
+	border-bottom: 1px solid ;
+	border-color: #e2e6ea;
+	padding: 3px 0px;
+}
+.data_rowSet .label{
+	width:35%;
+	float: left;
+}
+.data_rowSet .data {
+	width: 63%;
+	float: right;
+}
+
+
+

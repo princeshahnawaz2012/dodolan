@@ -1,0 +1,10 @@
+/* style page */
+
+
+/* Store Add Product
+----------------------------------------------------------------------------------------------------*/
+#attrib_prod { position:relative;}
+#addProdTab .fieldSet { margin-bottom:10px;}
+#addProdTab .fieldSet .grid_200 { margin-right:20px;}
+#addProdTab .clone-Add { margin-bottom:-60px; position:absolute; right:0px; top:15px; cursor:pointer; z-index:99}
+#addProdTab .clone-Min { height:15px; bottom:0px;}

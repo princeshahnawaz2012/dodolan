@@ -1,0 +1,363 @@
+/*
+	960 Grid System ~ Core CSS.
+	Learn more ~ http://960.gs/
+
+	Licensed under GPL and MIT.
+*/
+
+body {
+	min-width: 960px;
+}
+
+/* Main Layering
+----------------------------------------------------------------------------------------------------*/
+.mainGrid {
+	margin-left: auto;
+	margin-right: auto;
+	width: 960px;
+}
+
+/* Box Global
+----------------------------------------------------------------------------------------------------*/
+
+.box { 
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+/* Exception Grid Margin
+----------------------------------------------------------------------------------------------------*/
+.alpha {
+	margin-left: 0;
+}
+.omega {
+	margin-right: 0;
+}
+/* `Grid >> 24 Columns
+----------------------------------------------------------------------------------------------------*/
+
+.grid_30 {
+	width: 30px;
+}
+.grid_40 {
+	width: 40px;
+}
+.grid_50 {
+	width: 50px;
+}
+.grid_60 {
+	width: 60px;
+}
+.grid_70 {
+	width: 70px;
+}
+.grid_80 {
+	width: 80px;
+}
+.grid_90 {
+	width: 90px;
+}
+.grid_100 {
+	width: 100px;
+}
+.grid_110 {
+	width: 110px;
+}
+.grid_120 {
+	width: 120px;
+}
+.grid_130 {
+	width: 130px;
+}
+.grid_140 {
+	width: 140px;
+}
+.grid_150 {
+	width: 150px;
+}
+.grid_160 {
+	width: 160px;
+}
+.grid_170 {
+	width: 170px;
+}
+.grid_180 {
+	width: 180px;
+}
+.grid_190 {
+	width: 190px;
+}
+.grid_200 {
+	width: 200px;
+}
+.grid_210 {
+	width: 210px;
+}
+.grid_220 {
+	width: 220px;
+}
+.grid_230 {
+	width: 230px;
+}
+.grid_240 {
+	width: 240px;
+}
+.grid_250 {
+	width: 250px;
+}
+.grid_260 {
+	width: 260px;
+}
+.grid_270 {
+	width: 270px;
+}
+.grid_280 {
+	width: 280px;
+}
+.grid_290 {
+	width: 290px;
+}
+.grid_300 {
+	width: 300px;
+}
+.grid_310 {
+	width: 310px;
+}
+.grid_320 {
+	width: 320px;
+}
+.grid_330 {
+	width: 330px;
+}
+.grid_340 {
+	width: 340px;
+}
+.grid_350 {
+	width: 350px;
+}
+.grid_360 {
+	width: 360px;
+}
+.grid_370 {
+	width: 370px;
+}
+.grid_380 {
+	width: 380px;
+}
+.grid_390 {
+	width: 390px;
+}
+.grid_400 {
+	width: 400px;
+}
+.grid_410 {
+	width: 410px;
+}
+.grid_420 {
+	width: 420px;
+}
+.grid_430 {
+	width: 430px;
+}
+.grid_440 {
+	width: 440px;
+}
+.grid_450 {
+	width: 450px;
+}
+.grid_460 {
+	width: 460px;
+}
+.grid_470 {
+	width: 470px;
+}
+.grid_480 {
+	width: 480px;
+}
+.grid_490 {
+	width: 490px;
+}
+.grid_500 {
+	width: 500px;
+}
+.grid_510 {
+	width: 510px;
+}
+.grid_520 {
+	width: 520px;
+}
+.grid_530 {
+	width: 530px;
+}
+.grid_540 {
+	width: 500px;
+}
+.grid_550 {
+	width: 550px;
+}
+.grid_560 {
+	width: 560px;
+}
+.grid_570 {
+	width: 570px;
+}
+.grid_580 {
+	width: 580px;
+}
+.grid_590 {
+	width: 590px;
+}
+.grid_600 {
+	width: 600px;
+}
+.grid_610 {
+	width: 610px;
+}
+.grid_620 {
+	width: 620px;
+}
+.grid_630 {
+	width: 630px;
+}
+.grid_640 {
+	width: 640px;
+}
+.grid_650 {
+	width: 650px;
+}
+.grid_660 {
+	width: 660px;
+}
+.grid_670 {
+	width: 670px;
+}
+.grid_680 {
+	width: 680px;
+}
+.grid_690 {
+	width: 690px;
+}
+.grid_700 {
+	width: 700px;
+}
+.grid_710 {
+	width: 710px;
+}
+.grid_720 {
+	width: 720px;
+}
+.grid_730 {
+	width: 730px;
+}
+.grid_740 {
+	width: 740px;
+}
+.grid_750 {
+	width: 750px;
+}
+.grid_760 {
+	width: 760px;
+}
+.grid_770 {
+	width: 770px;
+}
+.grid_780 {
+	width: 780px;
+}
+.grid_790 {
+	width: 790px;
+}
+.grid_800 {
+	width: 800px;
+}
+.grid_810 {
+	width: 810px;
+}
+.grid_820 {
+	width: 820px;
+}
+.grid_830 {
+	width: 830px;
+}
+.grid_840 {
+	width: 840px;
+}
+.grid_850 {
+	width: 850px;
+}
+.grid_860 {
+	width: 860px;
+}
+.grid_870 {
+	width: 870px;
+}
+.grid_880 {
+	width: 880px;
+}
+.grid_890 {
+	width: 890px;
+}
+.grid_900 {
+	width: 900px;
+}
+.grid_910 {
+	width: 910px;
+}
+.grid_920 {
+	width: 920px;
+}
+.grid_930 {
+	width: 930px;
+}
+.grid_940 {
+	width: 940px;
+}
+.grid_950 {
+	width: 950px;
+}
+/** quick solution **/
+.mr5{ margin-right:5px;}
+.mr10{ margin-right:10px;}
+.mr15{ margin-right:15px;}
+.mr20{ margin-right:20px;}
+.ml5{ margin-left:5px;}
+.ml10{ margin-left:10px;}
+.ml15{ margin-left:15px;}
+.ml20{ margin-left:20px;}
+
+/** Positioning **/
+.left { float:left;}
+.right { float:right;}
+.ctr { margin-left:auto; margin-right:auto;}
+.relative { position:relative;}
+.absolute { position:absolute;}
+.clear {
+	clear: both;
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+.clearfix:before,
+.clearfix:after {
+	content: '\0020';
+	display: block;
+	overflow: hidden;
+	visibility: hidden;
+	width: 0;
+	height: 0;
+}
+
+.clearfix:after {
+	clear: both;
+}
+
+/*
+	The following zoom:1 rule is specifically for IE6 + IE7.
+	Move to separate stylesheet if invalid CSS is a problem.
+*/
+
+.clearfix {
+	zoom: 1;
+}

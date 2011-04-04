@@ -1,0 +1,40 @@
+/**
+Author : Zidni Mubarock
+Url    : http://barockprojects.com
+Email  : zidmubarock@gmail.com
+file name : main_style.css
+
+
+Color Code
++++ = #7b7979;
+++  = #c1c1c1;
++   = #b2b2b2;
+ungu = EB6BF2;
+
+**/
+
+/* Main Layering
+----------------------------------------------------------------------------------------------------*/
+.header { height:80px; border-bottom:1px solid #c1c1c1;}
+.mainWrap { min-height:300px;}
+.footerWrap { border-top:1px solid #c1c1c1; margin-bottom:30px; font-size:11px; padding-top:5px; margin-top:10px;}
+
+/* Inside Main Layering
+-----------------------*/
+.header .logoText { color: #EB6BF2; bottom:0px; margin-bottom:0px; font-size:36px; letter-spacing:-3px; opacity:0.5; }
+.header .logoText:hover { opacity:1;}
+.header .topMenu { bottom:0px; right:0px;}
+.header .topMenu ul { margin:0; padding:0px;}
+.header .topMenu ul li { float:left; list-style: none;}
+.header .topMenu ul li a { display:block; padding:5px 15px 15px 15px; -moz-border-radius-topleft:3px; -moz-border-radius-topright:3px;border-radius-topleft:3px; border-radius-topright:3px;}
+.header .topMenu ul li ul { position:absolute; margin-left:-15px; display: none; list-style:none;}
+.header .topMenu ul li:hover ul { display:inherit;}
+.header .topMenu ul li a:hover { background:#e4e4e4; text-shadow:0 1px 0 #fff; color:#666666;}
+.pageTitle{ font-size:24px; margin:0px; text-transform:capitalize;}
+
+/* Widget
+----------------------------------------------------------------------------------------------------*/
+.backUserWid{ padding:5px; background:#EDEDED;-moz-border-radius-bottomleft:3px;-moz-border-radius-bottomright:3px;}
+.backUserWid .u_image { margin-right:10px;}
+.backUserWid .u_image img { border:1px solid #FFFFFF; height:25px;}
+.backUserWid span{ text-shadow:0 1px 0 #fff;}

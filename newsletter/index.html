@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Oline Workrobe - Cooming soon</title>
+<link href="http://localhost/dodolan/assets/theme/back/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="http://localhost/dodolan/assets/theme/back/css/ui-style.css" rel="stylesheet" type="text/css" />
+<link href="http://localhost/dodolan/assets/theme/back/css/text.css" rel="stylesheet" type="text/css" />
+<link href="http://localhost/dodolan/assets/theme/back/css/grid.css" rel="stylesheet" type="text/css" />
+<link href="http://localhost/dodolan/assets/theme/back/css/page_style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="http://localhost/dodolan/assets/theme/back/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="http://localhost/dodolan/assets/theme/back/js/dodolan_js_lib.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var nH = $(document).height();
+	
+	
+});
+
+	$(document).ready(function(){
+		$('.newsletter-Form form').submit(function(){
+		$('.newsletter-Form .msg').empty();
+			var data = $(this).serialize();
+			$.ajax({
+				 type: "POST",
+				 dataType : "json",	
+				 url: "http://localhost/dodolan/newsletter/addMember",
+				 data: data ,
+				 success: function(data){					     
+						   	if(data.status == 'success'){
+					  			$('.newsletter-Form .fieldSet').fadeOut(500).delay(4500).fadeIn(500);
+								$('.newsletter-Form .msg').append(data.msg).delay(500).fadeIn(500).delay(3500).fadeOut(500);
+								
+						   	}else if(data.status == 'failed'){
+						   		$('.newsletter-Form .fieldSet').fadeOut(500).delay(4500).fadeIn(500);
+								$('.newsletter-Form .msg').append(data.msg).delay(500).fadeIn(500).delay(3500).fadeOut(500);
+
+								
+						   	}
+					   }
+
+			});
+			return false;
+			
+		});
+	});
+
+
+</script>
+<style>
+.mainWrap {}
+.blackBox { min-height:300px; background:#131412; margin-bottom:1px;}
+
+.mainArea .content { height:135px; color:#131412;}
+.content .mainHeading { font-size:24px; font-family:Georgia, "Times New Roman", Times, serif; font-weight:normal; line-height:24px; margin-bottom:0px;
+}
+.content p { margin-bottom:10px;}
+.content .newslett-button-Ui { padding-top:3px; padding-bottom:3px; padding-right:5px; border:1px solid #b8b9b7; margin-right:-2px; margin-top:7px;}
+.content .socioLink .socioIcon { float:left; margin-right:5px;}
+.content .socioLink { margin-top:7px;}
+.footerouter { width:100%; position:fixed; bottom:5px;}
+.footer { border-top:1px solid #131412; padding-top:5px; bottom:10px;color:#131412; font-size:11px; }
+.content .boddyNews { height:29px;}
+.content .msg { display:none; font-size:11px;}
+</style>
+
+</head>
+
+<body>
+
+<div class="grid_950 ctr mainWrap relative">
+	<div class="space">
+		<div class="blackBox grid_470 left">
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class="mainArea">
+		<div class="logo grid_470 left">
+		<img src="../assets/gen_img/logo_ow_470px.jpg" src="" width="470" alt="Oline Workrobe"/>
+		</div>
+		<div class="content grid_440 right">
+		<h1 class="mainHeading">We are Currently on Heavy Development</h1>
+		<p>you can stay in touch with us by subcribe to our newsletter <br/>
+or follow us on twitter and facebook page</p>
+<div class="newsletter-Form grid_350">
+<form method="post" >
+<div class="boddyNews">
+<div class="msg"></div>
+<div class="fieldSet">
+<div class="grid_170 left">
+<input type="text" name="name" value="name" class="grid_170 text-input"/>
+</div>
+<div class="grid_170 right">
+<input type="text" name="email" value="email" class="grid_170 text-input"/>
+</div>
+<div class="clear"></div>
+</div>
+</div>
+<div class="left socioLink">
+<a href="#"><div class="socioIcon facebook"></div></a>
+<a href="#"><div class="socioIcon twitter"></div></a>
+<div class="clear"></div>
+</div>
+<div class="right">
+<input type="submit" name="submit" class="newslett-button-Ui" value="submit" />
+</div>
+<div class="clear"></div>
+</form>
+</div>
+		
+		</div>
+		<div class="clear"></div>
+	</div>
+	
+</div>
+<!--div class="footerouter">
+<div class="footer grid_950 ctr">
+	<p>olineworkrobe.com &copy; 2011 Alright Reserved, Develop by BarockProjects</p>
+	</div>
+</div-->
+</body>
+</html>
