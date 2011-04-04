@@ -169,8 +169,8 @@ class Checkout extends Controller {
 										
 						// Everything DONE !!
 						// So Go to the next step "SHIPPING METHOD"
-						$this->session->userdata['checkout_step']['custumer_info'] = true;
-						$this->session->sess_write();
+						//$this->session->userdata['checkout_step']['custumer_info'] = true;
+						//$this->session->sess_write();
 						redirect('store/checkout/shipping_method');
 						
 					}else{
@@ -199,19 +199,17 @@ class Checkout extends Controller {
 	
 	}
 	function shipping_method(){
-	if(isset($this->session->userdata['checkout_step']['custumer_info']) == true){
-		
-		
-		
+	// only can accessed if already have customer_info data or shito_info data
+	if($this->cart->customer_info || $this->cart->shipto_info){
 		$this->load->library('jne');
-		if($this->session->userdata('ship_to_info')){
-		$buyer_info = $this->session->userdata('ship_to_info');
+		if($this->cart->shipto_info){
+			$buyer_info = $this->cart->shipto_info;
 		}else{
-		$buyer_info = $this->session->userdata('customer_info');
+			$buyer_info = $this->cart->shipto_info;
 		}
 		$weight = modules::run('store/store_cart/getAllWeight');
 		$rates = false;
-		$ship_info = $this->session->userdata('shipping_info');
+		//$ship_info = $this->session->userdata('shipping_info');
 		/*
 		if($ship_info){
 			if($buyer_info['country_id'] != $ship_info['country'] || $buyer_info['city'] != $ship_info['city'])
@@ -225,7 +223,7 @@ class Checkout extends Controller {
 		if($buyer_info['country_id'] == 100 && $buyer_info['city_code'] != null){
 			if(!$this->session->userdata('shipping_info')){
 			$ship_info = array('shipping_info' => array('carrier' => 'JNE',),);
-			$this->session->set_userdata($ship_info);
+			$this->cart->write_data($ship_info);
 			}
 			$rate = $this->jne->getRate($buyer_info['city_code'], $weight);
 			if($rate){
@@ -393,16 +391,6 @@ class Checkout extends Controller {
 			$this->cart->destroy();
 			$send = modules::run('store/order/send_order_data', $order_id);
 		}
-		/*
-		foreach($param as $key=>$value){
-			echo $key .'='.$value.'<br/>';
-			if(is_array($value)){
-				foreach($value as $k=>$v){
-					echo $k .'='.$v.'<br/>';
-				}
-			}
-		}
-		*/
 	
 	}
 	
