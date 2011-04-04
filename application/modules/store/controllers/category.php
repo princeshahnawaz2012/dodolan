@@ -35,7 +35,13 @@ class category extends Controller {
 	
 	
 	
-	// category list menu
+	/**
+	 * Catlistmenu
+	 *
+	 * @param int $id 
+	 * @return void
+	 * @author Zidni Mubarock
+	 */
 	function catlistmenu($id=0){
 	$root = $id;
 	if($root == 0){
