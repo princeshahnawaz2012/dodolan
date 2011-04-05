@@ -29,6 +29,14 @@ class Recaptcha
 		}
 	}
 	function show_it(){
+		echo "<script type= 'text/javascript'>
+		var RecaptchaOptions = {
+		theme: 'custom',
+		lang: 'en',
+		custom_theme_widget: 'recaptcha_widget'
+		};
+
+		</script>";
 		echo $this->recaptcha_get_html($this->publickey, $this->error);
 	}
 	
