@@ -38,7 +38,15 @@ class shipping extends Controller {
 		}else{
 			$rate = $this->jne->choosenRate($buyer_info['city_code'], $weight, $id_fee);
 			if($rate){
-				return $rate;
+				$data = array('shipping_info' => array(
+					'fee' => $rate['rate'],
+					'carrier' => 'jne',
+					'rate_id' => $id_fee,
+					'country' => $buyer_info['country_id'],
+					'city'    => $buyer_info['city'],
+				))
+				$this->cart->write_data($data);
+				return true;
 			}else{
 				return false;
 			}
