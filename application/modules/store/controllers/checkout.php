@@ -434,7 +434,7 @@ class Checkout extends Controller {
 			if($this->cart->payment_info['method'] != 'paypal'){
 				redirect('store/checkout/success');
 			}else{
-				
+				$send = modules::run('store/order/send_order_data', $order_id);
 				redirect('store/payprocessing');
 			}
 		
