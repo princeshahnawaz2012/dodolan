@@ -12,7 +12,7 @@ custom_theme_widget: 'recaptcha_widget'
 <span class="recaptcha_only_if_image">Enter the words above:</span>
 <span class="recaptcha_only_if_audio">Enter the numbers you hear:</span>
 <input id="recaptcha_response_field" name="recaptcha_response_field" type="text">
-<small><a href="javascript:void(0);">Get another CAPTCHA</a></small>
+<strong style="font-size: 10px;"><a  id="recaptcha_reload_btn" href="javascript:Recaptcha.reload ();">Get another CAPTCHA</a></strong>
 
 <!--div class="recaptcha_only_if_image"><a href="javascript:Recaptcha.switch_type('audio')">Get an audio CAPTCHA</a></div><br />
 <div class="recaptcha_only_if_audio"><a href="javascript:Recaptcha.switch_type('image')">Get an image CAPTCHA</a></div><br /><br />
