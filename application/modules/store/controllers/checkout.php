@@ -272,20 +272,11 @@ class Checkout extends Controller {
 			if(!$this->session->userdata('shipping_info') || $this->input->post('id_ship_rate')){
 			$id_rate = $this->input->post('id_ship_rate');
 			$shipping_rate = modules::run('store/shipping/jne', $id_rate);
-			if($shipping_rate){
-				$this->session->userdata['shipping_info']['fee'] = $shipping_rate['rate'];
-				$this->session->userdata['shipping_info']['type'] = $this->jne->service($shipping_rate['type']);
-				$this->session->userdata['shipping_info']['rate_id'] = $id_rate;
-				$this->session->userdata['shipping_info']['country'] = $buyer_info['country_id'];
-				$this->session->userdata['shipping_info']['city'] = $buyer_info['city'];
-				$this->session->sess_write();
-	
-				//$this->session->userdata['checkout_step']['shipping_info'] = true;
-				//$this->session->sess_write();
-				redirect('store/checkout/payment');
-			}else{
-				return false;
-			}
+				if($shipping_rate){
+					redirect('store/checkout/payment');
+				}else{
+					return false;
+				}
 			}elseif(!$this->session->userdata('shipping_info') && !$this->input->post('id_ship_rate')){
 				return false;
 			}elseif($this->session->userdata('shipping_info') && !$this->input->post('id_ship_rate')){
