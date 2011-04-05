@@ -197,18 +197,17 @@
 	</div>
 	<div class="customer_note mt20">
 		<form action="" method="post">
-			<div class="grid_300 left">
+			<div class="grid_300 left mr20">
 			Give me a few line of note,if you want it :)
-			<textarea name="customer_note" class="grid_300" cols="40"></textarea>
+			<textarea name="customer_note" class="grid_300" rows="8"></textarea>
 			</div>
-			<div class="grid_300 left captcha">
+			<div class="grid_300 right captcha">
 				<?
 					$this->recaptcha->show_it();
 				?>
-			</div>
-			<div class="clear"></div>
-			<div class="right">
-				<input type="submit" name="process" class="button" value="Process">
+				<br class="clear"/>
+					<input type="submit" name="process" class="button right" value="Process">
+				<br class="clear"/>
 			</div>
 			<br class="clear"/>
 		</form>

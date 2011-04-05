@@ -64,7 +64,13 @@
 	cursor: pointer;
 	
 }
+.payment_information .item {
+	display: none;
+	font-size: 85%;
+}
+.payment_method .method_items {
 
+}
 .payment_method .paypal .payment_img{
 	background-position: left 37px;
 } 
@@ -93,6 +99,8 @@
 	border: 1px solid #64d0fe;
 	padding: 19px 0px;
 	background: #d4effe;
+	border-radius: 3px;
+
 }
 /* Summary */
 .data_rowSet {
