@@ -225,11 +225,11 @@ class Checkout extends Controller {
 		}
 		// if already have shipping_info fee, but customer_info city, country id change
 		// and unmacth with city,country on shipping info, so delete it, and create new one;
-		if(
-		$buyer_info['city'] != isset($this->cart->shipping_info['city']) && 
-		$buyer_info['country_id'] != isset($this->cart->shipping_info['country'])
-		){
-			$this->cart->destroy_data('shipping_info');
+		if($this->cart->shipping_info){
+			if($this->cart->shipping_info['city'] != $buyer_info['city'] || $this->cart->shipping_info['country'] != $buyer_info['country_id']){
+				$this->cart->destroy_data('shipping_info');
+			}
+			
 		}
 		
 		
