@@ -46,7 +46,7 @@ $(document).ready(function(){
 </script>
 <?}?>
 <div class="buyerinfo" id="buyerinfo" >
- <h4 class="noBold">Customer Information</h4>
+<h3 class="left">Customer Info</h3><div class="right"><?=modules::run('store/checkout/checkoutmenu')?></div> 
 <?=$cart;?>
   
     <div class="form_buyerinfo">
