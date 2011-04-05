@@ -1,5 +1,6 @@
 <div class="summary">
-	<h3>Summary</h3>
+	<h3 class="left">Confirm</h3><div class="right"><?=modules::run('store/checkout/checkoutmenu')?></div> 
+	<br class="clear"/>
 	<div class="cartView_v">
 	<div class="table-Ui">
 		<table>
@@ -194,7 +195,6 @@
 		</div>
 		
 	</div>
-	<?=json_encode($this->cart->payment_info)?>
 	<div class="customer_note mt20">
 		<form action="" method="post">
 			<div class="grid_300 left">
