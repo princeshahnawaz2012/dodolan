@@ -13,6 +13,9 @@ class Tester extends Controller {
 	function Tester() {
 		parent::Controller();
 	}
+	function index(){
+		echo 'just tester';
+	}
 	
 	function testUpload() {
 		$this->load->helper('form');
@@ -59,7 +62,7 @@ class Tester extends Controller {
 		
 	}
 	function test4(){
-		$this->cart->destroy_data();
+		$this->cart->destroy_data('shipping_info');
 		redirect('store/checkout');
 	}
 	function test5(){
@@ -71,4 +74,4 @@ class Tester extends Controller {
 	}
 
 
-}?>
+}
