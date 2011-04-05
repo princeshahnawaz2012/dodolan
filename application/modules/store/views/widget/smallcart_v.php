@@ -103,7 +103,7 @@
 	
 	</td>
 	
-	<td class="text_right shipping_fee"><?=$this->addon_store->show_price($this->session->userdata['shipping_info']['fee']);?> </td>
+	<td class="text_right shipping_fee"><?=$this->addon_store->show_price($this->cart->shipping_info['fee']);?> </td>
 </tr> 
 <?}?>
 <tr class="dark">
