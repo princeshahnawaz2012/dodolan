@@ -194,4 +194,23 @@
 		</div>
 		
 	</div>
+	<?=json_encode($this->cart->payment_info)?>
+	<div class="customer_note mt20">
+		<form action="" method="post">
+			<div class="grid_300 left">
+			Give me a few line of note,if you want it :)
+			<textarea name="customer_note" class="grid_300" cols="40"></textarea>
+			</div>
+			<div class="grid_300 left captcha">
+				chacpta goes to here. NEXT
+			</div>
+			<div class="clear"></div>
+			<div class="right">
+				<input type="submit" name="process" class="button" value="Process">
+			</div>
+			<br class="clear"/>
+		</form>
+	
+	</div>
+		
 </div>

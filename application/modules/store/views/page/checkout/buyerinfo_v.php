@@ -20,7 +20,7 @@ $(document).ready(function(){
 	});
 </script>
 
-<?if(!$this->session->userdata('login_data') && !$this->session->userdata('buyer_info')){?>
+<?if(!$this->session->userdata('login_data') && !$this->cart->customer_info){?>
 <script type="text/javascript">
 	$(document).ready(function(){
 		
@@ -222,7 +222,7 @@ $(document).ready(function(){
 			<div class="clear"></div>
 		</div>
 		<div class="inputSet">
-			<? if($this->session->userdata('ship_to_info') || $this->input->post('different_address')){
+			<? if($this->cart->shipto_info || $this->input->post('different_address')){
 				$different = 'checked';
 			}else{
 				$different ='';
@@ -236,7 +236,7 @@ $(document).ready(function(){
 			</div>
 			<div class="clear"></div>
 		</div>
-		<?if(!$this->session->userdata('login_data') && !$this->session->userdata('buyer_info')){?>
+		<?if(!$this->session->userdata('login_data') && !$this->cart->customer_info){?>
          <div class="inputSet">
 			<div class="label">
             	<span>Become Member</span>
@@ -254,7 +254,7 @@ $(document).ready(function(){
 		
     </div>
         <div class="addOn_info right grid_300">
-<? if(!$this->session->userdata('login_data') && !$this->session->userdata('buyer_info')){?>
+<? if(!$this->session->userdata('login_data') && !$this->cart->customer_info){?>
 
 <script>
 $(document).ready(function(){

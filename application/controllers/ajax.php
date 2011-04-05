@@ -54,6 +54,18 @@ class Ajax extends Controller {
 		$this->mailer->body = $data;
 		$this->mailer->send();
 	}
+	function test3(){
+		$send = modules::run('store/order/send_order_data', $this->session->userdata('order_id'));
+		
+	}
+	function test4(){
+		$this->cart->destroy_data();
+		$this->cart->destroy();
+		redirect('store/checkout');
+	}
+	function test5(){
+		$this->session->unset_userdata('order_id');
+	}
 
 
 }?>

@@ -1,14 +1,6 @@
 <div class="shipping_method">
 	<?=$cart;?>
 	 <h4 class="noBold">Shipping Method</h4>
-	 <? 	
-	if(!$this->session->userdata('ship_to_info')){
-		$buyer_info = $this->session->userdata('customer_info'); 
-	}else{	
-		$buyer_info = $this->session->userdata('ship_to_info'); 
-	}
-	
-	 ?>
 	<? if($shipping_rates){?>
 	 <form method="post" action="">
 	<div class="table-Ui">	 	
@@ -23,7 +15,6 @@
   </tr>
  </thead>
  <tbody>
-
  <?foreach($shipping_rates as $rate){?>			
  <tr>
     <td>

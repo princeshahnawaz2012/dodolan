@@ -1,7 +1,12 @@
 <?php 
-
 if (! defined('BASEPATH')) exit('No direct script access');
-
+/**
+ * Category controller, under store controller
+ * path : applicatio/modules/store/controller/category.php
+ *
+ * @package default
+ * @author Zidni Mubarock
+ */
 class category extends Controller {
 
 	//php 5 constructor

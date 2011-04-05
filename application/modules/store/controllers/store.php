@@ -76,8 +76,8 @@ class Store extends Controller {
 	function getCountry($id){
 	return	$this->store_m->get_country($id);
 	}
-	function payProcessing(){
-		$id = $this->uri->segment(3);
+	function payprocessing(){
+		$id = $this->session->userdata('order_id');
 		$data['form'] = modules::run('paypal/generate_form', $id);
 		$data['loadSide'] = false;
 		$data['mainLayer'] = 'store/page/checkout/payProcessing_v';
