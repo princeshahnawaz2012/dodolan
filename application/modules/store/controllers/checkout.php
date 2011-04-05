@@ -386,6 +386,9 @@ class Checkout extends Controller {
 			'ship_carrier_service' => $this->cart->shipping_info['type'],
 			'ship_fee' => $this->cart->shipping_info['fee'],
 			'customer_note' => $this->input->post('customer_note'),
+			'status' => 'pending',
+			'uniq_id' => md5(uniqid(mt_rand(), true)),
+			
 		);
 		if($this->session->userdata('login_data')){
 			$order_data['user_id'] = $this->session->userdata['login_data']['user_id'];
