@@ -16,7 +16,11 @@
 <script src="<?=base_url();?>assets/js_general/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<?=base_url();?>assets/theme/front/js/dodolan_js_lib.js"></script>
 <script type="text/javascript" src="<?=base_url();?>assets/theme/front/js/cloud-zoom.1.0.2.js"></script>
-
+<script type="text/javascript" charset="utf-8">
+(function( $ ) {
+		$.widget( "select")
+	})
+</script>
 </head>
 
 <body <?if(isset($jsBodyAction)){echo $jsBodyAction;}?> >

@@ -62,6 +62,7 @@ class Checkout extends Controller {
 				'countries' => $q->result(),
 				'buyer_data' => $this->cart->customer_info,
 				'ship_data'  => $this->cart->shipto_info,
+				'loadSide' => false,
 				//'loadSide' => false
 				);
 			$this->theme->render($data);
@@ -467,8 +468,15 @@ class Checkout extends Controller {
 			redirect('store/checkout/summary');
 		}
 	}
+	/**
+	 * checkout menu, show on checkout page only
+	 *
+	 * @return void
+	 * @author Zidni Mubarock
+	 */
 	function checkoutmenu(){
-		$this->load->view('store/widget/checkout/chcekout_menu');
+		$this->load->view('store/widget/checkout/checkout_menu');
+		
 	}
 	
 	

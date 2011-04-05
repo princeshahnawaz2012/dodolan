@@ -1,3 +1,5 @@
+/* @override http://localhost/dodolan/assets/theme/front/css/page_style.css */
+
 /* style page */
 
 
@@ -25,6 +27,25 @@
 .cartView_v .table-Ui tr td.qty .update_form .update_button { padding:2px 5px; font-size:10px; margin:0px; display:inline-block;	}
 .cartView_v .table-Ui tr td.qty input { border:none; padding:0px;}
 .cartView_v .table-Ui tr td:last { margin-right:10px;}
+
+/* Checkout Menu step */
+
+.checkout_menu {
+	float: right;
+}
+.checkout_menu .checkout_step {
+
+	float: left;
+	margin-left: 20px;
+	padding:0 20px;
+	height: 30px;
+	background: #efefef;
+	border: 1px solid #e1e1e1;
+}
+.checkout_menu .checkout_step span {
+	display: block;
+	line-height: 30px;
+}
 
 /* Cehckout BUYER INFO
 ----------------------------------------------------------------------------------------------------*/
@@ -87,6 +108,7 @@
 	width: 63%;
 	float: right;
 }
+
 
 
 
