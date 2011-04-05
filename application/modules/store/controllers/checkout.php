@@ -11,24 +11,20 @@ class Checkout extends Controller {
 		parent::Controller();
 		$this->load->library('cart');
 		$this->load->library('jne');
-		$this->step = $this->session->userdata('checkout_step');
-		if($this->cart->total_items() == 0){
-			redirect('store/cart/viewcart');
-		}
+	$this->step = $this->session->userdata('checkout_step');
+	if($this->cart->total_items() == 0){
+		redirect('store/cart/viewcart');
+	}
 	}
 	
 	//php 4 constructor
 	
 	function Checkout() {
 		parent::Controller();
-		
-		
 	}
 	
 	function index() {
-	
 		redirect('store/checkout/buyerinfo');
-		
 	}
 
 	// Buyer Info Function
@@ -80,7 +76,8 @@ class Checkout extends Controller {
 				}
 				if($this->form_validation->run() == FALSE){
 					$this->messages->add( validation_errors('', ''), 'warning');
-					redirect('store/checkout/buyerinfo');
+					//redirect('store/checkout/buyerinfo');
+					return false;
 				}else{
 					$this->exe_buyerinfo();
 				}
@@ -95,8 +92,6 @@ class Checkout extends Controller {
 		
 	}
 	function exe_buyerinfo(){
-
-		
 		$data = array(
 			'first_name' => $this->input->post('first_name'),
 			'last_name'  => $this->input->post('last_name'),
@@ -166,13 +161,9 @@ class Checkout extends Controller {
 				$this->session->set_userdata($ins_data);
 				
 					if($this->input->post('different_address') != 1 || !$this->input->post('different_address') || $this->input->post('different_address') == null ){
-										
 						// Everything DONE !!
 						// So Go to the next step "SHIPPING METHOD"
-						//$this->session->userdata['checkout_step']['custumer_info'] = true;
-						//$this->session->sess_write();
 						redirect('store/checkout/shipping_method');
-						
 					}else{
 						// if the custumer choose to ship the order to different address
 						// so put ship form inputed data to "ship_to_info" session
@@ -205,20 +196,10 @@ class Checkout extends Controller {
 		if($this->cart->shipto_info){
 			$buyer_info = $this->cart->shipto_info;
 		}else{
-			$buyer_info = $this->cart->shipto_info;
+			$buyer_info = $this->cart->customer_info;
 		}
 		$weight = modules::run('store/store_cart/getAllWeight');
 		$rates = false;
-		//$ship_info = $this->session->userdata('shipping_info');
-		/*
-		if($ship_info){
-			if($buyer_info['country_id'] != $ship_info['country'] || $buyer_info['city'] != $ship_info['city'])
-			{
-			$this->session->unset_userdata('shipping_info');
-			}
-		}
-		*/
-		
 		// if order send to indonesia; jne will apply
 		if($buyer_info['country_id'] == 100 && $buyer_info['city_code'] != null){
 			if(!$this->session->userdata('shipping_info')){
@@ -233,6 +214,7 @@ class Checkout extends Controller {
 			}
 		}
 		// do else here 
+		$data['buyer_info'] = $buyer_info;
 		$data['shipping_rates'] = $rates;
 		$data['cart'] = modules::run('store/store_widget/smallcart');
 		$data['mainLayer'] = 'store/page/checkout/shipping_method_v';
@@ -246,11 +228,10 @@ class Checkout extends Controller {
 	}
 	}
 	function exe_shipping_method(){
-		
-			if($this->session->userdata('ship_to_info')){
-				$buyer_info = $this->session->userdata('ship_to_info');
+			if($this->cart->shipto_info){
+				$buyer_info = $this->cart->shipto_info;
 			}else{
-				$buyer_info = $this->session->userdata('customer_info');
+				$buyer_info = $this->cart->customer_info;
 			}
 			if(!$this->session->userdata('shipping_info') || $this->input->post('id_ship_rate')){
 			$weight = modules::run('store/store_cart/getAllWeight');
@@ -264,12 +245,12 @@ class Checkout extends Controller {
 				$this->session->userdata['shipping_info']['city'] = $buyer_info['city'];
 				$this->session->sess_write();
 	
-				$this->session->userdata['checkout_step']['shipping_info'] = true;
-				$this->session->sess_write();
+				//$this->session->userdata['checkout_step']['shipping_info'] = true;
+				//$this->session->sess_write();
 				redirect('store/checkout/payment');
-				}else{
+			}else{
 				return false;
-				}
+			}
 			}elseif(!$this->session->userdata('shipping_info') && !$this->input->post('id_ship_rate')){
 				return false;
 			}elseif($this->session->userdata('shipping_info') && !$this->input->post('id_ship_rate')){
@@ -277,10 +258,7 @@ class Checkout extends Controller {
 			}
 	}
 	function payment(){
-	if(isset($this->session->userdata['checkout_step']['shipping_info']) == true){
-		$cart_total = $this->cart->total();
-		$shipping_cost = $this->session->userdata('shipping_cost');
-		$final_total = $cart_total+$shipping_cost;
+	if($this->cart->shipping_info){
 		$data= array(
 			'mainLayer' => 'store/page/checkout/payment_v',
 			'pT'        => 'Checkout - Payment Method',
@@ -297,14 +275,14 @@ class Checkout extends Controller {
 	}
 	function exe_payment(){
 		$method = $this->input->post('payment_method');
-		if($method || !$this->session->userdata('payment_info') ){
+		if($method || !$this->cart->payment_info ){
 			$data = array(
 				'method' => $method,
 				 );
 			$ins = array('payment_info' => $data);
-			$this->session->set_userdata($ins);
-			$this->session->userdata['checkout_step']['payment_info'] = true;
-			$this->session->sess_write();
+			$this->cart->write_data($ins);
+			//$this->session->userdata['checkout_step']['payment_info'] = true;
+			//$this->session->sess_write();
 			redirect('store/checkout/summary');
 		
 		}elseif(!$method && $this->session->userdata('payment_info')){
@@ -314,21 +292,23 @@ class Checkout extends Controller {
 		}
 	}
 	function summary(){
-		if(isset($this->session->userdata['checkout_step']['payment_info']) == true){
+		if($this->cart->payment_info){
 			$rendered = array(	
 				'mainLayer' => 'store/page/checkout/summary_v',
 				'pT'        => 'Checkout - Order Summary',
-				'loadSide' => true,
 				'cart'      => modules::run('store/store_widget/smallcart'),
 				);
 			$this->theme->render($rendered);
+			if($this->input->post('process')){
+			  $this->process();
+			}
 		}else{
 			redirect('store/checkout/payment');
 		}
 		
 	}
 	function process(){
-		if(!$this->session->userdata('payment_info')){
+		if(!$this->cart->payment_info){
 			redirect('store/checkout/summary');
 		}
 		if($this->session->userdata('currency')){
@@ -336,31 +316,36 @@ class Checkout extends Controller {
 		}else{
 			$currency = $this->config->item('currency');
 		}
+		if(!$this->session->userdata('order_id')){
 		$order_id = modules::run('store/order/create_order');
+		}else{
+		$order_id= $this->session->userdata('order_id');
+		}
 		$order_data = array(
 			'c_date' => date('Y-m-d H:i:s'),
-			'payment_method' => $this->session->userdata['payment_info']['method'],
-			'total_amount' => $this->cart->total()+$this->session->userdata['shipping_info']['fee'],
+			'payment_method' => $this->cart->payment_info['method'],
+			'total_amount' => $this->cart->total()+$this->cart->shipping_info['fee'],
 			'sub_amount' => $this->cart->total(),
-			'currency' => $currency,
-			'ship_carrier' => $this->session->userdata['shipping_info']['carrier'],
-			'ship_carrier_service' => $this->session->userdata['shipping_info']['type'],
-			'ship_fee' => $this->session->userdata['shipping_info']['fee'],
+			'currency' => $this->cart->currency(),
+			'ship_carrier' => $this->cart->shipping_info['carrier'],
+			'ship_carrier_service' => $this->cart->shipping_info['type'],
+			'ship_fee' => $this->cart->shipping_info['fee'],
+			'customer_note' => $this->input->post('customer_note'),
 		);
 		if($this->session->userdata('login_data')){
 			$order_data['user_id'] = $this->session->userdata['login_data']['user_id'];
 		}
 		
 		// serialize for order_personal_data
-		$personal_data = $this->session->userdata('customer_info');
+		$personal_data = $this->cart->customer_info;
 		$personal_data['order_id'] = $order_id ;
 		// serialize for order_shipto_data
-		if(!$this->session->userdata('ship_to_info')){
-			$shipto_data = $this->session->userdata('customer_info');
+		if(!$this->cart->shipto_info){
+			$shipto_data = $this->cart->customer_info;
 			$shipto_data['order_id'] = $order_id;
 			unset($shipto_data['email']);
 		}else{
-			$shipto_data = $this->session->userdata('ship_to_info');
+			$shipto_data = $this->cart->shipto_info;
 			$shipto_data['order_id'] = $order_id;	
 		}
 		// serialize product_sold_data
@@ -375,7 +360,6 @@ class Checkout extends Controller {
 			$product_sold_data[$index]['order_id'] = $order_id;
 			$product_sold_data[$index]['name'] = $item['name'];
 			$product_sold_data[$index]['price'] = $item['price'];
-			
 			$index++;
 		}
 		$param = array(
@@ -384,14 +368,42 @@ class Checkout extends Controller {
 			'shipto_data' => $shipto_data,
 			'product_sold_data' => $product_sold_data
 		);
+		if(!$this->session->userdata('order_id')){
 		$insert_order = modules::run('store/order/create_order', $param, $order_id);
+		}else{
+		$insert_order = true;	
+		}
 		if($insert_order){
-			$unset = array('customer_info', 'ship_to_info', 'checkout_step', 'shipping_info', 'payment_info');
-			$this->session->unset_userdata($unset);
-			$this->cart->destroy();
-			$send = modules::run('store/order/send_order_data', $order_id);
+			$data = array('order_id' => $order_id);
+			$this->cart->write_data($data);
+			if($this->cart->payment_info['method'] != 'paypal'){
+				redirect('store/checkout/success');
+			}else{
+				
+				redirect('store/payprocessing');
+			}
+		
+			
 		}
 	
+	}
+	function success(){
+		if($this->session->userdata('order_id')){
+			$order_id = $this->session->userdata('order_id');
+			$send = modules::run('store/order/send_order_data', $order_id);
+			if($send){
+				$data['status_email'] = 'send';
+			}else{
+				$data['status_email'] = 'not send';
+			}
+			$data['mainLayer'] = 'store/page/checkout/success_v';
+			$data['pT'] = 'Thank You';
+			$this->theme->render($data);
+			$this->cart->destroy_data();
+			$this->cart->destroy();
+		}else{
+			redirect('store/checkout/summary');
+		}
 	}
 	
 	
