@@ -467,6 +467,9 @@ class Checkout extends Controller {
 			redirect('store/checkout/summary');
 		}
 	}
+	function checkoutmenu(){
+		$this->load->view('store/widget/checkout/chcekout_menu');
+	}
 	
 	
 }	
