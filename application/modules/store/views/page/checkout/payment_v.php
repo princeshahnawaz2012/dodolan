@@ -1,7 +1,8 @@
 <div class="payment_method">
+<h3 class="left">Paymnet</h3><div class="right"><?=modules::run('store/checkout/checkoutmenu')?></div> 
 	<?=$cart;?>
 	<div class="checkout-step">
-		<h4 class="noBold" style="margin-bottom:0px">Payment Method</h4>
+	
 		<small>Please Choose One Payment Method you Desire</small>
 		<br/></br>
 		<script>
