@@ -202,7 +202,9 @@
 			<textarea name="customer_note" class="grid_300" cols="40"></textarea>
 			</div>
 			<div class="grid_300 left captcha">
-				chacpta goes to here. NEXT
+				<?
+					$this->recaptcha->show_it();
+				?>
 			</div>
 			<div class="clear"></div>
 			<div class="right">

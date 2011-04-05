@@ -340,6 +340,7 @@ class Checkout extends Controller {
 	 * @author Zidni Mubarock
 	 */
 	function summary(){
+		$this->load->library('recaptcha');
 		if($this->cart->payment_info){
 			$rendered = array(	
 				'mainLayer' => 'store/page/checkout/summary_v',
@@ -347,7 +348,7 @@ class Checkout extends Controller {
 				'cart'      => modules::run('store/store_widget/smallcart'),
 				);
 			$this->theme->render($rendered);
-			if($this->input->post('process')){
+			if($this->input->post('process') && $this->recaptcha->validate()){
 			  $this->process();
 			}
 		}else{
