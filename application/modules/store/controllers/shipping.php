@@ -44,7 +44,7 @@ class shipping extends Controller {
 					'rate_id' => $id_fee,
 					'country' => $buyer_info['country_id'],
 					'city'    => $buyer_info['city'],
-					'type'    => $this->jne->serveice($rate['type']),
+					'type'    => $this->jne->service($rate['type']),
 				));
 				$this->cart->write_data($data);
 				return true;
