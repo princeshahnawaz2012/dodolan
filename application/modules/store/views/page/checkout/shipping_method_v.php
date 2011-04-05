@@ -1,6 +1,7 @@
 <div class="shipping_method">
+<h3 class="left">Shipping</h3><div class="right"><?=modules::run('store/checkout/checkoutmenu')?></div> 
 	<?=$cart;?>
-	 <h4 class="noBold">Shipping Method</h4>
+	 
 	<? if($shipping_rates){?>
 	 <form method="post" action="">
 	<div class="table-Ui">	 	
