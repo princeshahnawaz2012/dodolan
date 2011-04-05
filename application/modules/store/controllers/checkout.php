@@ -62,7 +62,6 @@ class Checkout extends Controller {
 				'countries' => $q->result(),
 				'buyer_data' => $this->cart->customer_info,
 				'ship_data'  => $this->cart->shipto_info,
-				'loadSide' => false,
 				//'loadSide' => false
 				);
 			$this->theme->render($data);
