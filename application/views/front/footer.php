@@ -1,5 +1,7 @@
 <small>Debug</small>
 	<div class="horline"></div>
+	<?=$this->bug->show();?>
+	
 	<?
 	$time_start = microtime(true);
 $time_end = microtime(true);

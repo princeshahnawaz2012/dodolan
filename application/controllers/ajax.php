@@ -66,6 +66,10 @@ class Ajax extends Controller {
 	function test5(){
 		$this->session->unset_userdata('order_id');
 	}
+	function test6(){
+		$data = array('shipping_info' => array('carrier' => 'jne'));
+		$this->cart->write_data($data);
+	}
 
 
 }?>

@@ -95,20 +95,17 @@
 	<td colspan="4" align="right">Subtotal :</td>
 	<td class="text_right totalcartvalue"> <?=$this->addon_store->show_price($this->cart->total());?></td>
 </tr>
-<?if(isset($shipping_info['fee'])){
-	if($buyer_info['country_id'] == $shipping_info['country'] && $buyer_info['city'] == $shipping_info['city']){
-	
-	?> 
+<?if(isset($this->cart->shipping_info['fee'])){?>
 <tr>
 <td colspan="4" >
 	<strong>Shpping Fee and Package:</strong><br/>
-	<small><?=$this->session->userdata['shipping_info']['carrier']?> - <?=$this->jne->service($this->session->userdata['shipping_info']['type'])?> | <?=$this->session->userdata['shipping_info']['city']?> </small>
+	<small><?=$this->cart->shipping_info['carrier']?> - <?=$this->jne->service($this->cart->shipping_info['type'])?> | <?=$this->cart->shipping_info['city']?> </small>
 	
 	</td>
 	
 	<td class="text_right shipping_fee"><?=$this->addon_store->show_price($this->session->userdata['shipping_info']['fee']);?> </td>
 </tr> 
-<?}}?>
+<?}?>
 <tr class="dark">
 	<td colspan="4" align="right">Total</td>
 	<td class="text_right final_total">

@@ -2,7 +2,12 @@
 
 
 if (! defined('BASEPATH')) exit('No direct script access');
-
+/**
+ * Checkout Class Controller, 
+ *
+ * @package store
+ * @author Zidni Mubarock
+ */
 class Checkout extends Controller {
 
 	//php 5 constructor
@@ -27,7 +32,12 @@ class Checkout extends Controller {
 		redirect('store/checkout/buyerinfo');
 	}
 
-	// Buyer Info Function
+	/**
+	 * Buyer info Page
+	 *
+	 * @return Void : Page
+	 * @author Zidni Mubarock
+	 */		
 	function buyerinfo(){
 	
 		if($this->cart->total_items() != 0){
@@ -91,6 +101,12 @@ class Checkout extends Controller {
 		
 		
 	}
+	/**
+	 * Exe_buyerinfo; an execution function for buyerinfo page
+	 *
+	 * @return void
+	 * @author Zidni Mubarock
+	 */
 	function exe_buyerinfo(){
 		$data = array(
 			'first_name' => $this->input->post('first_name'),
@@ -189,29 +205,43 @@ class Checkout extends Controller {
 	}
 	
 	}
-	function shipping_method(){
+	
+	/**
+	 * shipping_method ;
+	 *
+	 * @return void : page shipping_method	
+	 * @author Zidni Mubarock
+	 */
+	function shipping_method(){	
 	// only can accessed if already have customer_info data or shito_info data
+	$this->bug->send(json_encode($this->cart->shipping_info));
+	$this->bug->send(json_encode($this->cart->shipto_info));
 	if($this->cart->customer_info || $this->cart->shipto_info){
-		$this->load->library('jne');
 		if($this->cart->shipto_info){
 			$buyer_info = $this->cart->shipto_info;
 		}else{
 			$buyer_info = $this->cart->customer_info;
 		}
-		$weight = modules::run('store/store_cart/getAllWeight');
+		// if already have shipping_info fee, but customer_info city, country id change
+		// and unmacth with city,country on shipping info, so delete it, and create new one;
+		if(
+		$buyer_info['city'] != isset($this->cart->shipping_info['city']) && 
+		$buyer_info['country_id'] != isset($this->cart->shipping_info['country'])
+		){
+			$this->cart->destroy_data('shipping_info');
+		}
+		
+		
 		$rates = false;
 		// if order send to indonesia; jne will apply
 		if($buyer_info['country_id'] == 100 && $buyer_info['city_code'] != null){
-			if(!$this->session->userdata('shipping_info')){
-			$ship_info = array('shipping_info' => array('carrier' => 'JNE',),);
-			$this->cart->write_data($ship_info);
-			}
-			$rate = $this->jne->getRate($buyer_info['city_code'], $weight);
-			if($rate){
-				$rates = $rate['data'];
-			}else{
-				$rates = false;
-			}
+			$rates = modules::run('store/shipping/jne');
+				/*// not really need
+				if(!$this->session->userdata('shipping_info')){
+					$ship_info = array('shipping_info' => array('carrier' => 'JNE',),);
+					$this->cart->write_data($ship_info);
+					} 
+				*/
 		}
 		// do else here 
 		$data['buyer_info'] = $buyer_info;
@@ -227,6 +257,12 @@ class Checkout extends Controller {
 		redirect('store/checkout/buyerinfo');
 	}
 	}
+	/**
+	 * exe_shipping_method
+	 *
+	 * @return void
+	 * @author Zidni Mubarock
+	 */
 	function exe_shipping_method(){
 			if($this->cart->shipto_info){
 				$buyer_info = $this->cart->shipto_info;
@@ -234,9 +270,8 @@ class Checkout extends Controller {
 				$buyer_info = $this->cart->customer_info;
 			}
 			if(!$this->session->userdata('shipping_info') || $this->input->post('id_ship_rate')){
-			$weight = modules::run('store/store_cart/getAllWeight');
 			$id_rate = $this->input->post('id_ship_rate');
-			$shipping_rate = $this->jne->choosenRate($buyer_info['city_code'], $weight, $id_rate);
+			$shipping_rate = modules::run('store/shipping/jne', $id_rate);
 			if($shipping_rate){
 				$this->session->userdata['shipping_info']['fee'] = $shipping_rate['rate'];
 				$this->session->userdata['shipping_info']['type'] = $this->jne->service($shipping_rate['type']);
@@ -257,7 +292,15 @@ class Checkout extends Controller {
 				redirect('store/checkout/payment');
 			}
 	}
+	/**
+	 * payment page
+	 *
+	 * @return void : page
+	 * @author Zidni Mubarock
+	 */	
 	function payment(){
+	$this->bug->send(json_encode($this->cart->shipping_info));
+	$this->bug->send(json_encode($this->cart->shipto_info));
 	if($this->cart->shipping_info){
 		$data= array(
 			'mainLayer' => 'store/page/checkout/payment_v',
@@ -273,6 +316,12 @@ class Checkout extends Controller {
 		redirect('store/checkout/shipping_method');
 	}
 	}
+	/**
+	 * execution for payment page
+	 *
+	 * @return void
+	 * @author Zidni Mubarock
+	 */
 	function exe_payment(){
 		$method = $this->input->post('payment_method');
 		if($method || !$this->cart->payment_info ){
@@ -291,6 +340,13 @@ class Checkout extends Controller {
 			return false;
 		}
 	}
+	
+	/**
+	 * summary page;
+	 * only can accessed when all steep of checkout passed
+	 * @return void
+	 * @author Zidni Mubarock
+	 */
 	function summary(){
 		if($this->cart->payment_info){
 			$rendered = array(	
@@ -307,6 +363,13 @@ class Checkout extends Controller {
 		}
 		
 	}
+	
+	/**
+	 * process
+	 * processor order into database and payment process
+	 * @return void
+	 * @author Zidni Mubarock
+	 */
 	function process(){
 		if(!$this->cart->payment_info){
 			redirect('store/checkout/summary');
@@ -387,6 +450,12 @@ class Checkout extends Controller {
 		}
 	
 	}
+	/**
+	 * success page
+	 * will delet all extra data and cart, because order already successfully placed,
+	 * @return void
+	 * @author Zidni Mubarock
+	 */
 	function success(){
 		if($this->session->userdata('order_id')){
 			$order_id = $this->session->userdata('order_id');
@@ -398,9 +467,11 @@ class Checkout extends Controller {
 			}
 			$data['mainLayer'] = 'store/page/checkout/success_v';
 			$data['pT'] = 'Thank You';
-			$this->theme->render($data);
+			$this->session->unset_userdata('order_id');
 			$this->cart->destroy_data();
 			$this->cart->destroy();
+			$this->theme->render($data);
+		
 		}else{
 			redirect('store/checkout/summary');
 		}
