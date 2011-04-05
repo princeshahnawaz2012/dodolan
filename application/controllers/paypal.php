@@ -149,6 +149,7 @@ class Paypal extends Controller {
 		$data_order = $order['data']['order'];
 		$form ='';
 		$form  .= '
+		<form name="checkout_confirmation" id="payment" action="'.$this->paypal_lib->paypal_url.'" method="post">
 		<form method="post" id="payment" action="'.$this->paypal_lib->paypal_url.'">
 		<input type="hidden" name="notify_url" value="'.site_url('paypal/cancel').'">
 		<input type="hidden" name="return" value="'.site_url('paypal/success').'">
