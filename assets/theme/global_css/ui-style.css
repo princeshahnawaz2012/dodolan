@@ -25,11 +25,15 @@
 body { color: #7b7979;}
 a { color:#666666;}
 a:hover { color:#999999;}
+	.text_center { text-align:center;}
+.text_right { text-align:right;}
+
 
 /* Form
 ----------------------------------------------------------------------------------------------------*/
 /* Form Reset */
-input[type=text], input[type=password], textarea, select { border:#b2b2b2 1px solid; color: #7b7979; padding:5px; -moz-border-radius:3px; border-radius:3px;}
+input[type=text], input[type=password], textarea { border:#b2b2b2 1px solid; color: #7b7979; padding:3px; -moz-border-radius:2px; border-radius:2px;}
+select { border:#b2b2b2 1px solid; color: #7b7979; padding:2px; -moz-border-radius:2px; border-radius:2px;}
 .form-Ui input[type=text], .form-Ui input[type=password], .form-Ui textarea { width:100%;}
 /* form-Ui set **/
 .form-Ui .formName { margin-bottom:0px; border-bottom:1px solid #b2b2b2; margin-bottom:10px;}
@@ -69,15 +73,17 @@ input[type=text], input[type=password], textarea, select { border:#b2b2b2 1px so
 
 /* Message UI
 ----------------------------------------------------------------------------------------------------*/
-.msg-Ui {}
-.msg-Ui .msg-item {padding:5px 5px 5px 50px;margin-bottom:10px;position:relative;min-height:20px;-moz-border-radius:3px; border-radius:3px;}
+.msg-Ui { position:fixed; width:960px;}
+.msg-Ui .msg-item {padding:5px 5px 5px 50px;margin:0 auto 10px auto;position:relative;min-height:20px;-moz-border-radius:3px; border-radius:3px; max-width:400px; }
 .msg-Ui .msg-item p { margin-bottom:0px;}
 .msg-Ui .msg-item .close { position:absolute; display:block; width:16px; height:16px;right:-5px; top:-5px; background:url(../img/icon/stop32_16px.png) center center no-repeat; cursor:pointer; opacity:0.5;}
 .msg-Ui .msg-item .close:hover{ opacity:1;}
 .msg-Ui .information { background:#c7e3ff url(../img/infomation_msg_bg.png) 10px center no-repeat; border:#c8d5e3 2px solid;}
 .msg-Ui .success { background:#d0ffc7 url(../img/success_msg_bg.png) 10px center no-repeat; border:#cfebca 2px solid;}
-.msg-Ui .warning { background:#feffc7 url(../img/warning_msg_bg.png) 10px center no-repeat;; border:#f1f0c9 2px solid;}
-
+.msg-Ui .warning { background:#feffc7 url(../img/warning_msg_bg.png) 10px center no-repeat;; border:#f1f0c9 2px solid; }
+/*Hack For jQuery-ui Dialog*/
+.msg-Ui .ui-dialog-titlebar { padding-left:50px !important; background-position: 10px center; background-repeat: no-repeat;}
+.ui-dialog .warning { background-image: url(../img/warning_msg_bg.png);}
 /** Socio icon 
 ----------------------------------------------------------------------------------------------------*/
 .socioIcon { width:26px; height:26px;}
@@ -86,4 +92,22 @@ input[type=text], input[type=password], textarea, select { border:#b2b2b2 1px so
 .facebook:hover { background-position:bottom right;}
 .twitter:hover { background-position:bottom left;}
 
-/*
+/** Data Row Set Tablless
+------------------------------------------------------------------------------------------------------*/
+.data_rowSet {
+	border-bottom: 1px solid ;
+	border-color: #e2e6ea;
+	padding: 3px 0px;
+}
+.data_rowSet .label{
+	width:35%;
+	float: left;
+}
+.data_rowSet .data {
+	width: 63%;
+	float: right;
+}
+
+/*  MISC
+----------------------------------------------------------------------------------------------------*/
+.noBold { font-weight:normal !important}

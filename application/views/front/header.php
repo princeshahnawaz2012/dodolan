@@ -3,11 +3,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title><?=$this->config->item('site_name')?> <?if(isset($pT)){echo ' | '.$pT;}?></title>
-<link href="<?=base_url();?>assets/theme/front/css/reset.css" rel="stylesheet" type="text/css" />
+<link href="<?=base_url();?>assets/theme/global_css/reset.css" rel="stylesheet" type="text/css" />
+<link href="<?=base_url();?>assets/theme/global_css/ui-style.css" rel="stylesheet" type="text/css" />
+<link href="<?=base_url();?>assets/theme/global_css/text.css" rel="stylesheet" type="text/css" />
+<link href="<?=base_url();?>assets/theme/global_css/grid.css" rel="stylesheet" type="text/css" />
+
+
 <link href="<?=$this->asset->theme('css', 'front', 'front-style.css')?>" rel="stylesheet" type="text/css" />
-<link href="<?=$this->asset->theme('css', 'front', 'ui-style.css')?>" rel="stylesheet" type="text/css" />
-<link href="<?=base_url();?>assets/theme/front/css/text.css" rel="stylesheet" type="text/css" />
-<link href="<?=base_url();?>assets/theme/front/css/grid.css" rel="stylesheet" type="text/css" />
 <link href="<?=base_url();?>assets/theme/front/css/page_style.css" rel="stylesheet" type="text/css" />
 <link href="<?=base_url();?>assets/theme/front/css/cloud_zoom.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>/assets/theme/jquery-ui/jquery-ui_theme/Aristo/jquery-ui-1.8.7.custom.css" media="screen"  />	

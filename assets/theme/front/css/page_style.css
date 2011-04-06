@@ -103,19 +103,7 @@
 
 }
 /* Summary */
-.data_rowSet {
-	border-bottom: 1px solid ;
-	border-color: #e2e6ea;
-	padding: 3px 0px;
-}
-.data_rowSet .label{
-	width:35%;
-	float: left;
-}
-.data_rowSet .data {
-	width: 63%;
-	float: right;
-}
+
 
 
 
