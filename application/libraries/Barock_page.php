@@ -55,7 +55,7 @@ class Barock_page
 		$paginate .= '<ul>';
 		// Previous
 		if ($page > 1){
-		$paginate.= '<li><a href="'.$targetpage.'/page/'.$prev.'">previous</a></li>';
+		$paginate.= '<li><a href="'.$targetpage.'/page/'.$prev.'">prev</a></li>';
 		}else{
 		$paginate.= '<li><span class="disabled">previous</span></li>';
 		}
@@ -125,7 +125,7 @@ class Barock_page
 			$paginate.= '<li><span class="disabled">next</span></li>';
 			}
 			
-		$paginate.= '</ul>';	
+		$paginate.= '</ul><br class="clear"/>';	
 		return	$paginate;
 		}
  	
