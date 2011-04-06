@@ -18,7 +18,7 @@ class Backend extends Controller {
 		$u = modules::run('user/profiledata', $this->session->userdata['login_data']['user_id']);
 		$data['pt'] = 'Dodolan';
 		$data['mainLayer'] = 'backend/sample_view_admin';
-		$data['u_name'] = $u->f_name.' '.$u->l_name;
+		$data['u_name'] = $u->first_name.' '.$u->last_name;
 		$this->theme->render($data, 'back');
 	}
 	function store_back(){
