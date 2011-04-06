@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Dodolan Backend - <?=$pt?></title>
+<title>Dodolan Backend - 	<? if(isset($pT)){ echo $pT ;}?></title>
 <link href="<?=base_url();?>assets/theme/back/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="<?=$this->asset->theme('css', 'back', 'ui-style.css')?>" rel="stylesheet" type="text/css" />
 <link href="<?=$this->asset->theme('css', 'back', 'admin-style.css')?>" rel="stylesheet" type="text/css" />
