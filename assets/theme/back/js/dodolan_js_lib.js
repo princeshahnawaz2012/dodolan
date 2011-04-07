@@ -7,6 +7,21 @@
 
 
 
+
+// Date Picker
+// -------------------------------------------------------------------------------------/
+$(document).ready(function(){
+	$(".hasdate").datepicker({				
+					dateFormat:"yy-mm-dd",
+					changeMonth:true,
+					changeYear:true,
+					yearRange: 'c-90:c+0'
+
+					});
+
+	
+  });
+
 //Tab UI
 //---------------------------------------------------------------------------------------/
 $(document).ready(function() {

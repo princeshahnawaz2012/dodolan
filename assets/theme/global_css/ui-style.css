@@ -65,12 +65,37 @@ select { border:#b2b2b2 1px solid; color: #7b7979; padding:2px; -moz-border-radi
 .table-Ui table tbody .act { display:inline-table; margin-right:5px;}
 .table-Ui table tbody td.action { text-align: center;}
 .table-Ui .horline { height:2px !important; background:#c1c1c1;}
-.table-Ui .pagination { font-size:11px; margin-top:5px;}
-.table-Ui .pagination ul { margin:0; padding:0;}
-.table-Ui .pagination ul li { list-style: none; float:left; margin:0px; margin-right:5px;}
-.table-Ui .pagination ul li a { display:block; padding:2px 5px; border:1px solid #E4E4E4;}
-.table-Ui .pagination ul li a:hover { border:1px solid #7b7979; color:#7b7979;}
-
+.table-Ui table tr.dark td {
+    background: none repeat scroll 0 0 #F2F2F2;
+    border-bottom: 1px solid #D8D8D8;
+    color: #6C6C6C;
+    text-transform: uppercase;
+}
+.table-Ui table tr td.vTop {
+	vertical-align: top;
+}
+.table-Ui td {
+    vertical-align: middle;
+}
+.table-Ui table thead tr td {
+    background: none repeat scroll 0 0 #F2F2F2;
+    border-bottom: 1px solid #D8D8D8;
+    color: #6C6C6C;
+    text-transform: uppercase;
+}
+.table-Ui table tbody tr td {
+    border-bottom: 1px solid #DCDCDC;
+    padding: 5px;
+}
+.table-Ui table tbody {
+    border: medium none;
+}
+.table-Ui table tbody tr:nth-child(2n) {
+    background: none repeat scroll 0 0 transparent;
+}
+.table-Ui table {
+    margin-bottom: 10px;
+}
 /* Message UI
 ----------------------------------------------------------------------------------------------------*/
 .msg-Ui { position:fixed; width:960px;}
@@ -92,6 +117,13 @@ select { border:#b2b2b2 1px solid; color: #7b7979; padding:2px; -moz-border-radi
 .facebook:hover { background-position:bottom right;}
 .twitter:hover { background-position:bottom left;}
 
+/** Pagination
+------------------------------------------------------------------------------------------------------*/
+.pagination ul { margin: 0px; padding: 0px; list-style:none;}
+.pagination ul li { float: left; margin-left:0px; margin-right:4px;}
+.pagination a , .pagination span{ display: block; padding: 3px 8px; border: 1px solid #ccc; border-radius:3px;}
+.pagination a:hover,.pagination span:hover, .pagination .current{ background-color: #cdcdcd; color: #fff;}
+
 /** Data Row Set Tablless
 ------------------------------------------------------------------------------------------------------*/
 .data_rowSet {
@@ -111,3 +143,15 @@ select { border:#b2b2b2 1px solid; color: #7b7979; padding:2px; -moz-border-radi
 /*  MISC
 ----------------------------------------------------------------------------------------------------*/
 .noBold { font-weight:normal !important}
+.font70 {
+	font-size: 70%;
+}
+.font80 {
+	font-size: 80%;
+}
+.font90 {
+	font-size: 90%;
+}
+.font100 {
+	font-size: 100%;
+}

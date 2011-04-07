@@ -315,6 +315,35 @@ body {
 .grid_950 {
 	width: 950px;
 }
+
+.w_20{
+	width:18%;
+}
+.w_30{
+	width:28%;
+}
+.w_40{
+	width:38%;
+}
+.w_50{
+	width:48%;
+}
+.w_60{
+	width:58%;
+}
+.w_70{
+	width:68%;
+}
+.w_80{
+	width:78%;
+}
+.w_90{
+	width:88%;
+}
+.w_100{
+	width:98%;
+}
+
 /** quick solution **/
 .mr5{ margin-right:5px;}
 .mr10{ margin-right:10px;}
