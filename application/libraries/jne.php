@@ -14,20 +14,37 @@ class Jne
 		function getDestination($q, $limit) {
 		$query = 'q='.$q.'&limit=5';
 		$url = $this->url_getcity.''.$query;
-		$handle = file($url);
-	    $alldata = implode(";", $handle );
-	    $list = explode(';', $alldata);
+		/*
+		$handle = @fopen('yourfile...', "r");
+		if ($handle) {
+		   while (!feof($handle)) {
+		       $lines[] = fgets($handle, 4096);
+		   }
+		   fclose($handle);
+		}
+		*/
+	    $getSource = @fopen($url, 'r');
+	    		
+		//$handle = file($url);
+		if($getSource){
+		while(!feof($getSource)){
+       		$lines[] = fgets($getSource, 4096);
+		}
+        fclose($getSource);
+	    $list = $lines;
 	    $index = 0;
 	 	foreach($list as $item){
 	 		$itemdata = explode('|', $item);
+			if(isset($itemdata[0])&&isset($itemdata[1])){
 	 		$codecity = preg_replace('/\r\n|\r/', "", $itemdata[1]);
 	 		$data[$index]['value'] =   ucwords(strtolower($itemdata[0]));
 	 		$data[$index]['city_code'] = $codecity;
+			}
 	 		$index++;
 	 	}
-	 	if($handle){
 	 		if(count($data) >= 1 && $data[0]['city_code'] == ' null '){
 	 			$data_nope = array('value' => 'nope', 'city_code' => 'null');
+			
 	 			return json_encode($data_nope);
 	 			
  			}else{
