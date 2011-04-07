@@ -56,8 +56,6 @@ class Barock_page
 		// Previous
 		if ($page > 1){
 		$paginate.= '<li><a href="'.$targetpage.'/page/'.$prev.'">prev</a></li>';
-		}else{
-		$paginate.= '<li><span class="disabled">previous</span></li>';
 		}
 		// Pages	
 		if ($lastpage < 7 + ($stages * 2))	// Not enough pages to breaking it up
@@ -121,9 +119,7 @@ class Barock_page
 		// Next
 		if ($page < $counter - 1){ 
 			$paginate.= '<li><a href="'.$targetpage.'/page/'.$next.'">next</a></li>';
-		}else{
-			$paginate.= '<li><span class="disabled">next</span></li>';
-			}
+		}
 			
 		$paginate.= '</ul><br class="clear"/>';	
 		return	$paginate;
