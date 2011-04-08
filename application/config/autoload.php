@@ -51,7 +51,7 @@ $autoload['libraries'] = array('theme', 'asset', 'database', 'session', 'message
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url');
+$autoload['helper'] = array('url', 'breadcrumb');
 
 
 /*

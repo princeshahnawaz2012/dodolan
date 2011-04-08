@@ -62,7 +62,9 @@ class Tester extends Controller {
 		
 	}
 	function test4(){
-		$this->cart->destroy_data('shipping_info');
+		$this->cart->destroy_data();
+		$this->session->unset_userdata('order_id');
+		
 		redirect('store/checkout');
 	}
 	function test5(){
@@ -71,6 +73,35 @@ class Tester extends Controller {
 	function test6(){
 		$data = array('shipping_info' => array('carrier' => 'jne'));
 		$this->cart->write_data($data);
+	}
+	function test7(){
+		$q = 'b';
+		$query = 'q='.$q.'&limit=5';
+		$url = 'http://www.jne.co.id/tariff.php?'.$query;
+		/*
+		$handle = @fopen('yourfile...', "r");
+		if ($handle) {
+		   while (!feof($handle)) {
+		       $lines[] = fgets($handle, 4096);
+		   }
+		   fclose($handle);
+		}
+		*/
+	    $getSource = @fopen($url, 'r');
+	    		
+		//$handle = file($url);
+		if($getSource){
+			while(!feof($getSource)){
+       			$line[] = fgets($getSource, 4096);
+			}
+        fclose($getSource);
+		}
+		foreach($line as $key=>$val){
+				echo '<h3>'.$key.'</h3>';
+				$single_data = explode('|', $val);
+				echo $single_data[0].' = ';
+				echo $single_data[1].'<hr/>';
+		}
 	}
 
 
