@@ -1,9 +1,8 @@
 <?
 $items = $data['prodsold_data'];
-$order_data =  $data['order'];
+$order_data =  $data['order_data'];
 $personal_data = $data['personal_data'];
 $shipto_data = $data['shipto_data'];
-
 ?>
 
 <div class="font80">

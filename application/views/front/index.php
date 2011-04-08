@@ -15,6 +15,7 @@
 	</div>
 	
 	<div class="grid_960 ctr">
+			<div class="breadcrumb left font70"><?php echo set_breadcrumb(); ?></div>
     	<div class="right">
          <?=modules::run('store/store_widget/currency');?>
         </div>
@@ -33,6 +34,7 @@
 			}?>
 	
 	<div class="mainComp <?=$mainComp?> right">
+
 	<? if(isset($directLayer)){ echo $directLayer ;}?>
 	<? if(isset($mainLayer)){ echo $this->load->view($mainLayer) ;}?>
 	</div>

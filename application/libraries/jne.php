@@ -14,18 +14,9 @@ class Jne
 		function getDestination($q, $limit) {
 		$query = 'q='.$q.'&limit=5';
 		$url = $this->url_getcity.''.$query;
-		/*
-		$handle = @fopen('yourfile...', "r");
-		if ($handle) {
-		   while (!feof($handle)) {
-		       $lines[] = fgets($handle, 4096);
-		   }
-		   fclose($handle);
-		}
-		*/
+
 	    $getSource = @fopen($url, 'r');
-	    		
-		//$handle = file($url);
+
 		if($getSource){
 		while(!feof($getSource)){
        		$lines[] = fgets($getSource, 4096);

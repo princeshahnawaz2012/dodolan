@@ -143,6 +143,7 @@ select { border:#b2b2b2 1px solid; color: #7b7979; padding:2px; -moz-border-radi
 /*  MISC
 ----------------------------------------------------------------------------------------------------*/
 .noBold { font-weight:normal !important}
+.noBorder {border:none !important;}
 .font70 {
 	font-size: 70%;
 }

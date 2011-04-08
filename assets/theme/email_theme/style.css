@@ -284,6 +284,35 @@ body {
 }
 
 /*quickhand */
+
+.w_20{
+	width:18%;
+}
+.w_30{
+	width:28%;
+}
+.w_40{
+	width:38%;
+}
+.w_50{
+	width:48%;
+}
+.w_60{
+	width:58%;
+}
+.w_70{
+	width:68%;
+}
+.w_80{
+	width:78%;
+}
+.w_90{
+	width:88%;
+}
+.w_100{
+	width:98%;
+}
+
 /** quick solution **/
 .mr5{ margin-right:5px;}
 .mr10{ margin-right:10px;}
@@ -293,6 +322,17 @@ body {
 .ml10{ margin-left:10px;}
 .ml15{ margin-left:15px;}
 .ml20{ margin-left:20px;}
+
+.mt5 {margin-top:5px;}
+.mt10 {margin-top:10px;}
+.mt15 {margin-top:15px;}
+.mt20 {margin-top:20px;}
+.mb5 {margin-bottom:5px;}
+.mb10 {margin-bottom:10px;}
+.mb15 {margin-bottom:15px;}
+.mb20 {margin-bottom:20px;}
+
+/** Positioning **/
 
 /** Positioning **/
 .hide { display:none;}
@@ -415,7 +455,7 @@ fieldset {
 
 /* @end */
 /* @group Speciaal for email */
-
+.horline {float:none; clear:both; height:1px; width:100%; background:#F2F2F2;}
 a {
 	color: #282828;
 }

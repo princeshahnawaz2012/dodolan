@@ -25,4 +25,4 @@
 </script>
 </head>
 
-<body <?if(isset($jsBodyAction)){echo $jsBodyAction;}?> >
+<body <?if(isset($jsBodyAction)){echo $jsBodyAction;}?> class="<?=$this->router->class.'_'.$this->router->method;?>" >

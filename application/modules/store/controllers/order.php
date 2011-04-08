@@ -28,10 +28,7 @@ if(!$data){
 			return $insert;
 		}
 	}
-	function showorder($id=false){
-		if($id == false){
-		$id = $this->uri->segment(4);
-		}
+	function showorder($id){
 		$order = $this->getorder($id);
 		if($order){
 		$this->theme->render($order);
@@ -63,7 +60,7 @@ if(!$data){
 		//$id = $this->uri->segment(4);
 		$data = $this->getorder($id);
 		$data['template'] = $data['mainLayer'];
-		$order = $data['data']['order'];
+		$order = $data['data']['order_data'];
 		$personal_data = $data['data']['personal_data'];
 		$this->load->library('mailer');
 		$this->mailer->to = $personal_data->email;
@@ -76,5 +73,57 @@ if(!$data){
 		$id = $this->uri->segment(4);
 		modules::run('store/order/send_order_data', $id);
 	}
+	function count_qty_order($id){
+		$data = $this->order_m->get_prodsold_data($id);
+		$qty = array();
+		$i = 0;
+		foreach($data as $item){
+			$qty[$i] = $item->qty; 
+		}
+		return array_sum($qty);
+		
+	}
+	function status_list(){
+		return array('pending', 'confirm', 'process', 'cancel','shipped', 'refund');
+	}
+	function update_status(){
+		$new_status =  $this->input->post('new_status');
+		$id = $this->input->post('order_id');
+		$q = $this->order_m->update_status_order($id, $new_status);
+		$notify = $this->input->post('notify_user');
+		if($q){
+			if($notify == 1){
+				$this->notify($id);
+			}
+			if($this->uri->segment(4)=='ajax'){
+				$return_data = array('msg'=> 'success', 'new_status' => $q['status'], 'time' => $this->misc->custom_time($q['m_date']), 'id' => $id);
+				echo json_encode($return_data);
+			}else{
+				return true;
+			}
+			
+				
+			
+		}else{
+			if($this->uri->segment(4)=='ajax'){
+				$return_data = array('msg' => 'failed');
+				echo json_encode($return_data);
+			}else{
+				return false;
+			}
+		}
+	}
+	function notify($id){
+			$order = $this->order_m->getall_orderdata($id);
+			$person = $order['personal_data'];
+			$data  = $order['order_data'];
+			$body = array('person'=> $person, 'data' => $data, 'template' => 'store/misc/order/mail_order_notify_v');
+			
+			$this->load->library('mailer');
+			$this->mailer->to = $person->email;
+			$this->mailer->subject = 'Update Order Status Notification,  order no- '.$data->id;
+			$this->mailer->body = $body;
+			$this->mailer->send();
+	}
 
-}?>
+}

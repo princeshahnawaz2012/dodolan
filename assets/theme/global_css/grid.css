@@ -363,6 +363,10 @@ body {
 .mb15 {margin-bottom:15px;}
 .mb20 {margin-bottom:20px;}
 
+.padd5{ padding: 5px;}
+.padd10{ padding: 10px;}
+.padd15{ padding: 15px;}
+.padd20{ padding: 20px;}
 /** Positioning **/
 .hide { display:none;}
 .left { float:left;}

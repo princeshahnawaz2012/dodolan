@@ -68,8 +68,8 @@ class B_order extends Controller {
 		$this->theme->render($data, 'back');
 		
 	}
-	function getorder_byid($id, $return = false){
-		$order = $this->order_m->getall_orderdata($id, $return);
+	function getorder_byid($id){
+		$order = $this->order_m->getall_orderdata($id);
 		if($order){
 			return $order;
 		}else{

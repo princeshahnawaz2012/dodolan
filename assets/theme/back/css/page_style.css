@@ -8,3 +8,10 @@
 #addProdTab .fieldSet .grid_200 { margin-right:20px;}
 #addProdTab .clone-Add { margin-bottom:-60px; position:absolute; right:0px; top:15px; cursor:pointer; z-index:99}
 #addProdTab .clone-Min { height:15px; bottom:0px;}
+
+#b_order_browse .list_order .trigger { cursor: pointer; right:3px ;top:3px;  background:#fff;}
+#b_order_browse .list_order .update_form {background:#fff;; z-index:3; margin-top:-3px; border:1px solid #a1a1a1; border-radius:3px;}
+#b_order_browse .list_order .update_form ul { padding:0px; margin:0px;}
+#b_order_browse .list_order .update_form .inner {padding:0px 3px;}
+#b_order_browse .list_order .update_form ul li { margin:0px 2px; list-style:none; text-transform: capitalize; padding:3px; cursor:pointer;}
+#b_order_browse .list_order .update_form ul li.active {background-color: #12b8b6; margin:0px -3px; color:#fff; padding:3px 5px;}

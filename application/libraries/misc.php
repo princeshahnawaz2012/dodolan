@@ -6,10 +6,14 @@ class Misc {
 			$this->_ci =& get_instance();
 	}
 	
-	function custom_time($date)
+	function custom_time($date, $nodate=false)
 	{
-		if(empty($date)) {
+		if(empty($date) || $date == null) {
+			if($nodate==false){
 		        return "No date provided";
+			}else{
+				return $nodate;
+			}
 		    }
 
 		    $periods         = array("second", "minute", "hour", "day", "week", "month", "year", "decade");
