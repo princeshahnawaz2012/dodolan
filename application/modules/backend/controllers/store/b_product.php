@@ -22,7 +22,7 @@ class B_product extends Controller {
 	}
 	function addprod(){
 		$data = array(
-			'mainLayer' => 'backend/page/store/addprod_v',
+			'mainLayer' => 'backend/page/store/product/addprod_v',
 			'pt'        => 'Input Product',
 			'ht'		=> 'Input Product',
 			);
@@ -42,7 +42,7 @@ class B_product extends Controller {
 		$data['prod'] = $prod['prod'];
 		$data['attrb'] = $prod['attrb'];
 		$data['media'] = $prod['media'];
-		$data['mainLayer'] = 'backend/page/store/editprod_v';
+		$data['mainLayer'] = 'backend/page/store/product/editprod_v';
 		$data['pt'] = 'edit product';
 		$data['ht'] = 'edit product - '.$prod['prod']->name;
 		$this->theme->render($data, 'back');
@@ -91,7 +91,7 @@ class B_product extends Controller {
 			);
 		$this->barock_page->initialize($confpage);
 		$data = array(
-			'mainLayer' => 'backend/page/store/listprod_v',
+			'mainLayer' => 'backend/page/store/product/listprod_v',
 			'pt'        => 'List Product',
 			'ht'        => 'List Product',
 			'prods'     => $prods['prods'],
@@ -124,7 +124,7 @@ class B_product extends Controller {
 		$pram = array('id'=> $media->prod_id, 'select' => 'name, sku');
 		$prod =  $this->product_m->getProdById($pram);
 		$data = array(
-			'mainLayer' => 'backend/page/store/editmedia_v',
+			'mainLayer' => 'backend/page/store/product/editmedia_v',
 			'pt'        => 'Update Media',
 			'ht'        => 'Update Media - '.$media->name. '<small> product : '.$prod['prod']->name.' | sku :'.$prod['prod']->sku.'</small>',
 			'media'		=> $media,
