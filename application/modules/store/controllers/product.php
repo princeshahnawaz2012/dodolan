@@ -136,7 +136,7 @@ class Product extends Controller {
 		
 		$param = $this->uri->uri_to_assoc(4);
 		if(!isset($param['limit'])){
-			$param['limit'] = 10;
+			$param['limit'] = 1;
 		}
 		if(!isset($param['cat'])){
 			$param['cat'] = false;
@@ -152,7 +152,7 @@ class Product extends Controller {
 		}
 		
 		if($param['page']){
-			$start = ($param['page'] - 1)* $limit;
+			$start = ($param['page'] - 1)* $param['limit'];
 		}else{
 			$start = 0;
 		}
@@ -161,7 +161,7 @@ class Product extends Controller {
 		$conf = array(
 			'cat_id'   => $param['cat'],
 			'publish'  => $param['pub'],
-			'limit'    => $limit,
+			'limit'    => $param['limit'],
 			'start'    => $start,
 			'search'   =>  $param['q']
 			);
@@ -180,7 +180,7 @@ class Product extends Controller {
 		$this->barock_page->initialize($confpage);
 		$data = array(
 			'mainLayer' => 'page/browse_view_v',
-			'pt'        => 'Browse',
+			'pT'        => 'Browse - '.$prods['num_rec'],
 			'ht'        => 'Browse',
 			'prods'     => $prods['prods'],
 			'param'     => $param

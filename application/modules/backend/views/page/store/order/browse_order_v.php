@@ -34,6 +34,7 @@
 						if(data.msg!='failed'){
 							$('#orderid_'+data.id+' .modified_date').empty().append(data.time);
 							$('#orderid_'+data.id+' .status').empty().append(data.new_status);
+							form.hide();
 						}
 						
 					}
@@ -45,7 +46,9 @@
 		});
 		
 	</script>
-<div  class="table-Ui list_order grid_600 mt10 left">
+<?if($orders){?>
+<div class="grid_600 mt10 left">
+<div  class="table-Ui list_order">
 <table border="0" cellspacing="5" cellpadding="5">
 	<thead>
 	<tr class="dark">
@@ -55,7 +58,7 @@
 	
 	</thead>
 	<tbody>
-<?if($orders){ foreach($orders as $order){?>
+<? foreach($orders as $order){?>
 <?$data = modules::run('backend/store/b_order/getorder_byid', $order->id, 'object');
 $data_personal = $data['personal_data'];
 $data_order = $data['order_data'];
@@ -130,12 +133,19 @@ $data_shipto = $data['shipto_data'];
 			</td>
 		</tr>
 	
-<?}}?>
+<?}?>
 
 	</tbody>
 	
 </table>
+
 </div>
+<br class="clear"/>
+<div class="pagination"><?=$this->barock_page->make_link()?></div>
+</div>
+<?}else{
+	echo 'There arnt, order to show';
+}?>
 <div class="order_search_tool right grid_250 mt5">
 	<form action="<?=current_url();?>" method="post">
 		<h3 class="mb5">Search Order</h3>
@@ -201,6 +211,4 @@ $data_shipto = $data['shipto_data'];
 	</form>
 </div>
 <br class="clear">
-<div class="pagination">
-<?=$this->barock_page->make_link();?>
-</div>
+

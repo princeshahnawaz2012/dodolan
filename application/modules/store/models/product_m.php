@@ -157,7 +157,7 @@ class Product_m extends Model {
 		if(!isset($conf['search'])){
 			$conf['search'] = false;
 		}
-		
+		$this->db->start_cache();
 		$this->db->select('a.id p_id, b.id cat_id');
 		//get the limit and offset record
 		$this->db->like('a.publish', $conf['publish']);//}
@@ -170,20 +170,10 @@ class Product_m extends Model {
 		}
 		$this->db->join('store_category b', 'b.id=a.cat_id');
 		$this->db->order_by('a.id', 'desc');
+		$this->db->stop_cache();
 		$q  = $this->db->get('store_product a',$conf['limit'], $conf['start']);
-		
-		//get all record
-		$this->db->like('a.publish', $conf['publish']);//}
-		if($conf['cat_id']){
-		$this->db->where('a.cat_id', $conf['cat_id']);
-		}
-		if($conf['search']){
-		$this->db->like('a.name', $conf['search']);	
-		$this->db->or_like('a.sku', $conf['search']);	
-		}
-		$this->db->join('store_category b', 'b.id=a.cat_id');
-		$this->db->order_by('a.id', 'asc');
 		$q2  = $this->db->get('store_product a');
+		$this->db->flush_cache();
 		if($q->num_rows() > 0){
 			$data['prods']   = $q->result();
 			$data['num_rec'] = $q2->num_rows();
