@@ -369,11 +369,14 @@ body {
 .padd20{ padding: 20px;}
 /** Positioning **/
 .hide { display:none;}
+.block {display: block;}
 .left { float:left;}
 .right { float:right;}
 .ctr { margin-left:auto; margin-right:auto;}
 .relative { position:relative;}
 .absolute { position:absolute;}
+.fixed {position: fixed;}
+.static{ position: static;}
 .clear {
 	clear: both;
 	display: block;

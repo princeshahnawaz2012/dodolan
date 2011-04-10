@@ -145,7 +145,7 @@ class Product extends Controller {
 			$param['page'] = 0;
 		}
 		if(!isset($param['pub'])){
-			$param['pub'] = false;
+			$param['pub'] = 'y';
 		}
 		if(!isset($param['q'])){
 			$param['q'] = false;

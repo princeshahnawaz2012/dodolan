@@ -113,6 +113,32 @@ if(!$data){
 			}
 		}
 	}
+	function getorder_item($id){
+		if($this->uri->segment(4) == 'ajax'){
+			$id = $this->input->post('order_id');
+		}else{
+			$id = $id;
+		}
+		
+		$items = $this->order_m->get_prodsold_data($id);
+		if($items){
+			if($this->uri->segment(4) == 'ajax'){
+				$render['items'] = $items;
+				$data['content'] = $this->load->view('store/page/order/ajax_getorder_items_v', $render, true);
+				$data['msg'] = 'success';
+				echo json_encode($data);
+			}else{
+			return $items	;
+			}
+		}else{
+			if($this->uri->segment(4) == 'ajax'){
+				$data['msg'] = 'failed';
+				echo json_encode($data);
+			}else{
+				return false;
+			}
+		}
+	}
 	function notify($id){
 			$order = $this->order_m->getall_orderdata($id);
 			$person = $order['personal_data'];

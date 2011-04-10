@@ -9,7 +9,7 @@ $time = $time_end - $time_start;
 echo "Displaying the render time: $time seconds\n";
 	?>
 	</div>
-	<div class="ajaxdialog hide msg-Ui">
+	<div id="front_ajaxdialog" class="ajaxdialog hide msg-Ui">
 		
 	</div>
 </body>

@@ -41,15 +41,39 @@
 				});
 				
 			});
+			
+			$('.order .show_item').click(function(){
+				$('.items_order:visible').hide('slide');
+				var orderid = $(this).attr('orderid');
+				var data ={order_id:orderid}
+				$.ajax({
+					type :"POST",
+					dataType : "json",
+					url : "<?=site_url('store/order/getorder_item/ajax');?>",
+					data: data,
+					success:function(data){
+						if(data.msg!='failed'){
+							$('.items_order .inner').empty();
+							$('.items_order .inner').append(data.content);
+							$('.items_order').show('slide');
+						}
+						
+					}
+				}) 
+			});
 	
 	
 		});
 		
 	</script>
 <?if($orders){?>
-<div class="grid_600 mt10 left">
-<div  class="table-Ui list_order">
-<table border="0" cellspacing="5" cellpadding="5">
+<div class="grid_600 mt10 left relative">
+
+<div  class="table-Ui list_order grid_600"  >
+	<div class="items_order hide grid_350 relative" style="top:0px;right:-600px;">
+		<div class="inner fixed grid_350" style=" background:white"></div>
+	</div>	
+<table border="0" cellspacing="5" cellpadding="5" class="relative" style="z-index:auto; background:white">
 	<thead>
 	<tr class="dark">
 		<td class="grid_70"><small>Order No:</small></td>
@@ -65,8 +89,8 @@ $data_order = $data['order_data'];
 $data_prodsold = $data['prodsold_data'];
 $data_shipto = $data['shipto_data'];
 ?> 	
-		<tr id="orderid_<?=$order->id;?>">
-			<td class="text_center"><small><?=$order->id;?></small></td>
+		<tr id="orderid_<?=$order->id;?>" class="order">
+			<td class="text_center"><small><?=$order->id;?></small><br/> <span class="show_item font70" orderid="<?=$order->id;?>">show items</span></td>
 			<td class="vTop font90">
 			<div class="left w_50">
 			<div class="data_rowSet">
@@ -140,6 +164,7 @@ $data_shipto = $data['shipto_data'];
 </table>
 
 </div>
+
 <br class="clear"/>
 <div class="pagination"><?=$this->barock_page->make_link()?></div>
 </div>
