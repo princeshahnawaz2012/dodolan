@@ -139,8 +139,13 @@ class MY_Cart extends CI_Cart {
 			$i++;
 			}
 		}
-		$final = $this->groupArray($i_attrb);
-		return $final;
+		$return['index'] = $this->groupArray($i_attrb);
+		
+		foreach($return['index'] as $index){
+			$return['attribute'][$index] = $this->loadAttrib($data, $index);
+		}
+		
+		return $return;
 	}
 	/**
 	 * Show_price, showing formated money format which selected currency or site default currency

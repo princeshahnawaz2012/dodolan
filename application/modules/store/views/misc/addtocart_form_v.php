@@ -82,22 +82,16 @@
 		<div class="attrbProd">
 			
 	<? if($a){?>
-		<?/*
-		
-		//next version task
-		$index_attrb = $this->cart->extractAttrib($a);
-		foreach($index_attrb as $attrb){
-			$new_sort[$attrb] = $this->cart->loadAttrib($a, $attrb);
-		;?>
-		<select name="<?=$attrb;?>">
-			<option value="no"><?=$attrb;?></option>
-			<? foreach($new_sort[$attrb] as $value){?>
-				<option value="<?=$value;?>"> <?=$value;?> </option>
-			<?
-			}
-			?>
-		</select>
-
+		<?/* next task, for next version
+		// I think its, pretty simpler.. heheheh
+		$attributes = $this->cart->extractAttrib($a);
+			foreach($attributes['attribute'] as $index => $value){;?>
+				<select name="<?=$index?>">
+					<option value="nope"><?=$index?></option>
+					<?foreach($value as $v){?>
+						<option value="<?=$v;?>"><?=$v?></option>
+			<?}?>
+				</select>
 		<?}*/?>
 		
 		
