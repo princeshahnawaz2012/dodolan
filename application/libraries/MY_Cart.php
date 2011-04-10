@@ -98,7 +98,7 @@ class MY_Cart extends CI_Cart {
 	 * @return new sorted array $attribs
 	 * @author Zidni Mubarock
 	 */	
-	function groupAttrib($attribs){		
+	function groupArray($attribs){		
 	$gr_attrib = array();		
 	foreach ($attribs as $key => $value) {		
 		if (array_key_exists($value, $gr_attrib)) {		
@@ -126,9 +126,21 @@ class MY_Cart extends CI_Cart {
 				$preFinalArray[] = $attrb[$index];		
 			} 		
 				
-			$attrb = $this->groupAttrib($preFinalArray);		
+			$attrb = $this->groupArray($preFinalArray);		
 			return $attrb;		
 			
+	}
+	function extractAttrib($data){
+		$i = 0;
+		foreach($data as $dt){
+			$attrib = explode(';',$dt->attribute);
+			foreach($attrib as $a){
+			$i_attrb[$i] = strstr($a, ':', true);
+			$i++;
+			}
+		}
+		$final = $this->groupArray($i_attrb);
+		return $final;
 	}
 	/**
 	 * Show_price, showing formated money format which selected currency or site default currency
