@@ -80,10 +80,30 @@
 <div class="addToCart">
 	<form method="post" id="buyProd" action="<?=current_url();?>">
 		<div class="attrbProd">
+			
 	<? if($a){?>
+		<?/*
+		
+		//next version task
+		$index_attrb = $this->cart->extractAttrib($a);
+		foreach($index_attrb as $attrb){
+			$new_sort[$attrb] = $this->cart->loadAttrib($a, $attrb);
+		;?>
+		<select name="<?=$attrb;?>">
+			<option value="no"><?=$attrb;?></option>
+			<? foreach($new_sort[$attrb] as $value){?>
+				<option value="<?=$value;?>"> <?=$value;?> </option>
+			<?
+			}
+			?>
+		</select>
+
+		<?}*/?>
+		
+		
 	<?
-	$colors = $this->addon_store->loadAttrib($a, 'c');
-	$sizes = $this->addon_store->loadAttrib($a, 's');
+	$colors = $this->cart->loadAttrib($a, 'c');
+	$sizes = $this->cart->loadAttrib($a, 's');
 	?>
 		<select name="s">
 			<option value="no">size</option>
