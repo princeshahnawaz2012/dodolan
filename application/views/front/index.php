@@ -1,11 +1,4 @@
 <?=$this->load->view('front/header');?>
-	<script type="text/javascript" charset="utf-8">
-			$(document).ready(function(){
-				$('#mainLayer').hide();
-				$('#mainLayer').show('drop',500);
-			});
-			
-	</script>
 	<div class="mainGrid">
 		<?=$this->load->view('front/msg');?>
 	<div class="header relative">
@@ -32,7 +25,6 @@
 			?>	
 			<div class="sidebar grid_210 left">
 			<?=modules::run('store/store_widget/categoryMenu');?>
-			
 			</div>
 			
 		<?}else{
