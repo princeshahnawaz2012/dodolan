@@ -214,8 +214,6 @@ class Checkout extends Controller {
 	 */
 	function shipping_method(){	
 	// only can accessed if already have customer_info data or shito_info data
-	$this->bug->send(json_encode($this->cart->shipping_info));
-	$this->bug->send(json_encode($this->cart->shipto_info));
 	if($this->cart->customer_info || $this->cart->shipto_info){
 		if($this->cart->shipto_info){
 			$buyer_info = $this->cart->shipto_info;
@@ -236,12 +234,6 @@ class Checkout extends Controller {
 		// if order send to indonesia; jne will apply
 		if($buyer_info['country_id'] == 100 && $buyer_info['city_code'] != null){
 			$rates = modules::run('store/shipping/jne');
-				/*// not really need
-				if(!$this->session->userdata('shipping_info')){
-					$ship_info = array('shipping_info' => array('carrier' => 'JNE',),);
-					$this->cart->write_data($ship_info);
-					} 
-				*/
 		}
 		// do else here 
 		$data['buyer_info'] = $buyer_info;

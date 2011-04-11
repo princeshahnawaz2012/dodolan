@@ -58,6 +58,14 @@ $(document).ready(function(){
 
 	
   });
+$(document).ready(function(){
+	var link = $('a').attr('href');
+	var current = $(location).attr('href');
+	
+	if( link == current){
+		$('[href="'+current+'"]').addClass('current_link');
+	}
+});
 
 //Tab UI
 //---------------------------------------------------------------------------------------/
@@ -89,16 +97,7 @@ $(document).ready(function(){
 	$('.msg-Ui .msg-item').delay(4000).slideUp();
 
 })
-$(document).ready(function(){
-	$('input[type=text],input[type=password],textarea').each(function(){
-		var paddR = $(this).css('padding-right').replace("px", "");
-		var paddL = $(this).css('padding-left').replace("px", "");
-		var curW = $(this).css('width').replace("px", "");
-		var newW = curW - (paddR*2);
-		$(this).css('width', newW);
-	});
 
-});
 jQuery(document).ready(function(){
 jQuery('.text-input').each(function() {
 	        var default_value = this.value;

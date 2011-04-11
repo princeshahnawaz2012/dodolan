@@ -1,9 +1,12 @@
 <script type="text/javascript" charset="utf-8">
+	
 	$(document).ready(function(){
+		
 		$('.loginMod form').submit(function(){
 			var data = $(this).serialize();
 			$('.loginMod .ajx_msg-Ui').empty();
 			$('.loginMod .ajx_msg-Ui').append('<div class="ajax_loader_small"></div>');
+		
 			$.ajax({
 				 type: "POST",
 					   dataType : "json",	
@@ -11,10 +14,10 @@
 					   data: data ,
 					   success: function(data){					     
 						   	if(data.status == 'success'){
-						   	window.location = "<?=site_url()?>/backend"; 	
+						   	$('.mainGrid').show('fade','slow', redi_to);
 						   	}else if(data.status == 'failed'){
 						   		$('.loginMod .ajax_loader_small').fadeOut();
-						   		$('.loginMod .ajx_msg-Ui').append(data.msg).fadeIn().delay(2000).fadeOut();
+						   		$('.loginMod .ajx_msg-Ui').hide().append(data.msg).delay(100).fadeIn().delay(2000).fadeOut();
 						   	}
 					   }
 
@@ -22,18 +25,38 @@
 			return false;
 			
 		});
+		$('.mainGrid').hide();
+		$('.mainGrid').show('fade','slow' );
 	});
 </script>
-
-<div class="grid_420 right">
+<div class="grid_960 ctr">
+	
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div class="grid_420 ctr mt20 mainGrid ui-corner-all">
 	<div class="form-Ui loginMod">
-		<h3 class="formName">Login</h3>
+		<h4 class="formName"><?=$this->config->item('site_name');?> Backend Login</h4>
 		<form action="<?=current_url();?>" method="post">
-			<div class="grid_200 left">
+			<div class="mb20">
+				<div class="left grid_100 text_right mr10">
+					Email 
+				</div>
+				<div class="grid_300 left">
 				<input type="text" class="text-input" name="email" value="email">
+				</div>
+				<br class="clear"/>
 			</div>
-			<div class="grid_200 right">
-				<input class="text-input" type="password" name="password" value="password">
+			<div class="">
+					<div class="left grid_100 text_right mr10">
+						Password 
+					</div>
+					<div class="grid_300 left">
+					<input type="password" class="text-input" name="password" value="password">
+					</div>
+					<br class="clear"/>
 			</div>
 			<div class="clear"></div>
 			<br>
@@ -48,3 +71,4 @@
 	</div>
 </div>
 <div class="clear"></div>
+</div>

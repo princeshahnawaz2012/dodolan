@@ -16,7 +16,7 @@ class Auth extends Controller {
 	function backend_login(){
 		$data['pt'] = 'Back end Login';
 		$data['mainLayer'] = 'user/page/backend_login_v';
-		$this->theme->render($data,'back');
+		$this->theme->render($data,'back', 'free_layout');
 		
 		if($this->input->post('login')){
 			$q = $this->auth_m->checkCombination($this->input->post('email'), $this->input->post('password'));

@@ -12,16 +12,21 @@ Color Code
 ungu = EB6BF2;
 
 **/
-
+.backend { background:#efefef;}
+.mainGrid { background:#fff; padding:10px 15px; -webkit-box-shadow: 0 1px 7px #CCCCCC;
+   -moz-box-shadow: 0 1px 7px #CCCCCC;
+     -o-box-shadow: 0 1px 7px #CCCCCC;
+        box-shadow: 0 1px 7px #CCCCCC; margin-bottom:50px;}
 /* Main Layering
 ----------------------------------------------------------------------------------------------------*/
-.header { height:80px; border-bottom:1px solid #c1c1c1;}
+.header { height:50px; border-bottom:1px solid #c1c1c1;}
 .mainWrap { min-height:300px;}
 .footerWrap { border-top:1px solid #c1c1c1; margin-bottom:30px; font-size:11px; padding-top:5px; margin-top:10px;}
+.navigation { height:30px; background-color: #000; color: #fff; padding-top:5px; }
 
 /* Inside Main Layering
 -----------------------*/
-.header .logoText { color: #EB6BF2; bottom:0px; margin-bottom:0px; font-size:36px; letter-spacing:-3px; opacity:0.5; }
+.header .logoText { color: -moz-linear-gradient(center top , #EDEDED, #C4C4C4) repeat scroll 0 0 transparent; bottom:0px; margin-bottom:0px; font-size:26px; letter-spacing:-2px; opacity:0.5; }
 .header .logoText:hover { opacity:1;}
 .header .topMenu { bottom:0px; right:0px;}
 .header .topMenu ul { margin:0; padding:0px;}
@@ -31,10 +36,18 @@ ungu = EB6BF2;
 .header .topMenu ul li:hover ul { display:inherit;}
 .header .topMenu ul li a:hover { background:#e4e4e4; text-shadow:0 1px 0 #fff; color:#666666;}
 .pageTitle{ font-size:24px; margin:0px; text-transform:capitalize;}
+.navigation .inner {position: relative;z-index:2;bottom:-1px}
+.navigation .inner .topMenu ul { padding:0px; margin:0px; list-style:none;}
+.navigation .inner .topMenu ul li {padding-left:0px; float :left; margin-left:0px; line-height:30px; height:30px; font-weight:normal;}
+.navigation .inner .topMenu ul li a { display:block; padding:0px 10px; text-decoration:none; text-shadow:0 1px 0 #fff;}
+.navigation .inner .topMenu ul ul {display:none;}
+.navigation .inner .topMenu ul li a:hover, .navigation .inner .topMenu ul li a.current_link{ background-color: #fff;}
+
 
 /* Widget
 ----------------------------------------------------------------------------------------------------*/
-.backUserWid{ padding:5px; background:#EDEDED;-moz-border-radius-bottomleft:3px;-moz-border-radius-bottomright:3px;}
+.backUserWid{-moz-border-radius-bottomleft:3px;-moz-border-radius-bottomright:3px;font-weight:normal;	}
 .backUserWid .u_image { margin-right:10px;}
 .backUserWid .u_image img { border:1px solid #FFFFFF; height:25px;}
 .backUserWid span{ text-shadow:0 1px 0 #fff;}
+.backUserWid a {text-shadow:0 1px 0 #fff; }

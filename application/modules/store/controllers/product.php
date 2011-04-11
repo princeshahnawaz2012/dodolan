@@ -180,30 +180,15 @@ class Product extends Controller {
 		$this->barock_page->initialize($confpage);
 		$data = array(
 			'mainLayer' => 'page/browse_view_v',
-			'pT'        => 'Browse - '.$prods['num_rec'],
-			'ht'        => 'Browse',
 			'prods'     => $prods['prods'],
 			'param'     => $param
 			);
-		// filterize 
-		/*
-		if($this->input->post('submitfilter')){
-			if($this->input->post('keyword') && $this->input->post('keyword') != 'keyword'){
-				$filter['q'] = $this->input->post('keyword');
-			}
-			if($this->input->post('cat_id')){
-				$filter['cat'] = $this->input->post('cat_id');
-			}
-			if($this->input->post('publish')){
-				$filter['pub'] = $this->input->post('publish');
-			}
-			if(isset($filter)){
-			$outputFilter = $this->uri->assoc_to_uri($filter);
-			redirect('backend/store/b_product/listprod/'.$outputFilter);
-			}
+		if($param['cat']){
+			$cat = modules::run('store/category/getCatDet', $param['cat']);
+			$data['pT'] = $cat->name; 
+		}else{
+		$data['pT'] = 'Store Product';
 		}
-		*/	
-		
 		$this->theme->render($data);
 	}
 	

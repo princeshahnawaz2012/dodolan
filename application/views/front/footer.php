@@ -1,13 +1,8 @@
 <small>Debug</small>
 	<div class="horline"></div>
 	<?=$this->bug->show();?>
-	
-	<?
-	$time_start = microtime(true);
-$time_end = microtime(true);
-$time = $time_end - $time_start;
-echo "Displaying the render time: $time seconds\n";
-	?>
+	<br class="clear"/>
+Page rendered in {elapsed_time} seconds
 	</div>
 	<div id="front_ajaxdialog" class="ajaxdialog hide msg-Ui">
 		

@@ -1,9 +1,15 @@
 <?=$this->load->view('front/header');?>
-	
+	<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				$('#mainLayer').hide();
+				$('#mainLayer').show('drop',500);
+			});
+			
+	</script>
 	<div class="mainGrid">
 		<?=$this->load->view('front/msg');?>
 	<div class="header relative">
-		<h1 class="logoText absolute">CultureUpdate<small> Beta 0.1</small></h1>
+		<h1 class="logoText absolute"><?=$this->config->item('site_name')?></h1>
 		<div class="sideTop">
        <div class="smallcart">
 		<?=modules::run('store/store_widget/cart');?>
@@ -14,7 +20,7 @@
 		<div class="clear"></div>
 	</div>
 	
-	<div class="grid_960 ctr">
+	<div class="grid_960 ctr" id="mainLayer">
 			<div class="breadcrumb left font70"><?php echo set_breadcrumb(); ?></div>
     	<div class="right">
          <?=modules::run('store/store_widget/currency');?>

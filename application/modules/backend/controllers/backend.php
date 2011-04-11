@@ -29,5 +29,6 @@ class Backend extends Controller {
 		$this->theme->render($data, 'back');
 	}
 	
+	
 
 }?>

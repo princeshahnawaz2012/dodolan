@@ -20,6 +20,13 @@ class shipping extends Controller {
 		$this->cart->meta_transaction['no_shpping'] = true;
 		$this->cart->write();
 	}
+	function shipping_mod($shipping){
+		if($shipping != false){
+			return $shipping
+		}else{
+			return false;
+		}
+	}
 	function jne($id_fee = false){
 		if($this->cart->shipto_info){
 			$buyer_info = $this->cart->shipto_info;

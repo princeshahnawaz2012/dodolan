@@ -15,17 +15,17 @@ class Widget extends Controller {
 	}
 	
 	function topmenu() {
-		$content = '<div class="topMenu absolute right">
+		$content = '<div class="topMenu">
 				<ul>
-			<li><a href="#">Dashboard</a></li>
-			<li><a href="#">Store</a>
+			<li><a class="ui-corner-top" href="'.site_url('backend').'">Dashboard</a></li>
+			<li><a class="ui-corner-top" href="'.site_url('backend/store').'">Store</a>
 			<ul>
 				<li><a href="'.site_url('backend/store/b_product/addprod').'">Add Product</a></li>
 				<li><a href="'.site_url('backend/store/b_product/listprod').'">List Product</a></li>
 			</ul>
 			</li>
-			<li><a href="#">Article</a></li>
-			<li><a href="#">Report</a></li>
+			<li><a class="ui-corner-top" href="#">Article</a></li>
+			<li><a class="ui-corner-top" href="#">Report</a></li>
 			<div class="clear"></div>
 				</ul>
 		

@@ -20,7 +20,22 @@ class category extends Controller {
 	function Category() {
 		parent::Controller();
 	}
-	
+	/**
+	 * Get Detail Of Category
+	 *
+	 * @param int $id 
+	 * @return object
+	 * @author Zidni Mubarock
+	 */
+	function getCatDet($id){
+		$cat = $this->store_cat->getcatbyid($id);
+		if($cat){
+			return $cat;
+		}else{
+			return false;
+		}
+		
+	}
 	function showAllCat() {
 		$q = $this->store_cat->getAllCat();
 		if($q){

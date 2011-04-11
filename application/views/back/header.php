@@ -16,14 +16,19 @@
 <script type="text/javascript" src="<?=base_url();?>assets/theme/back/js/dodolan_js_lib.js"></script>
 </head>
 
-<body  id="<?=$this->router->class.'_'.$this->router->method;?>">
-
-<div class="mainGrid">
+<body  id="<?=$this->router->class.'_'.$this->router->method;?>" class="backend">
+<div class="navigation ui-widget-header"><div class="inner ctr grid_990">
+	
+	<div class="left"><?=modules::run('backend/widget/topmenu');?></div> <?=modules::run('backend/widget/backUserWid');?>
+	<br class="clear"/>
+	</div>
+</div>
+<div class="mainGrid ui-corner-bottom">
 	<div class="header grid_950 ctr relative">
 		<div class="left logoTop">
 		<h1 class="logoText absolute"><?=$this->config->item('site_name');?><small> Beta 0.1</small></h1>
 		</div>
-		<?=modules::run('backend/widget/backUserWid');?>
-		<?=modules::run('backend/widget/topmenu');?>
+
+		
 		<div class="clear"></div>
 	</div>
