@@ -28,7 +28,7 @@ class Ajax extends Controller {
 			echo json_encode($data);	
 		}
 	}
-	function showmsg(){
+	function js_showmsg(){
 		echo ("
 		<script>
 			function loadmsg(){
