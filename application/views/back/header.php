@@ -23,7 +23,6 @@
 	</div>
 </div>
 <div class="grid_990 ctr">
-	<?$this->load->view('back/msg');?>
 <div class="mainGrid ui-corner-bottom">
 	<div class="header grid_950 ctr relative">
 		<div class="left logoTop">
