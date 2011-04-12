@@ -5,7 +5,17 @@
 // file name : dodolan_js_lib.js
 
 
-
+$(document).ready(function(){
+	$.ajax({
+	  url: 'http://localhost/dodolan/ajax/loadmsg',
+	  dataType: 'json',
+	  success: function(data){
+		if(data.status == 'on'){
+			$('body').prepend(data.msg);
+		}
+	}
+	});
+});
 
 //Tab UI
 //---------------------------------------------------------------------------------------/
