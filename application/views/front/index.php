@@ -1,7 +1,7 @@
 <?=$this->load->view('front/header');?>
 
 	<div class="mainGrid">
-		<?=$this->load->view('front/msg');?>
+	
 	<div class="header relative">
 		<h1 class="logoText absolute"><?=$this->config->item('site_name')?></h1>
 		<div class="sideTop">
@@ -15,8 +15,7 @@
 	</div>
 	
 	<div class="grid_960 ctr" id="mainLayer">
-			<div class="breadcrumb left font70"><?php echo set_breadcrumb(); ?></div>
-    	<div class="right">
+		<div class="right">
          <?=modules::run('store/store_widget/currency');?>
         </div>
         <div class="clear"></div>
