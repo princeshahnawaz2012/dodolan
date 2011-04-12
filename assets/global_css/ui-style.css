@@ -2,22 +2,22 @@
 .horline { height:1px; background:#E4E4E4;}
 .button { border:1px solid #c1c1c1; background-color:#e4e4e4; color:#7b7979; text-shadow:0 1px 0 #fff; padding:5px 10px;-moz-border-radius:3px; border-radius:3px; cursor:pointer}
 .button:hover { background-color: #ECECEC;}
-.save-button-Ui { background:url(../img/icon/boxdownload32_16px.png) 5px no-repeat #e4e4e4; padding-left:25px;}
-.cancel-button-Ui { background:url(../img/icon/stop32_16px.png) 5px no-repeat #e4e4e4; padding-left:25px;}
-.add-button-Ui {background:url(../img/icon/plus32_16px.png) 5px no-repeat #e4e4e4; padding-left:25px;}
-.min-button-Ui{ background:url(../img/icon/minus32_16px.png) 5px no-repeat #e4e4e4; padding-left:25px;}
-.newslett-button-Ui{ background:url(../img/icon/mailplus32_16px.png) 5px no-repeat #e4e4e4; padding-left:25px;}
+.save-button-Ui { background:url(../global_img/icon/boxdownload32_16px.png) 5px no-repeat #e4e4e4; padding-left:25px;}
+.cancel-button-Ui { background:url(../global_img/icon/stop32_16px.png) 5px no-repeat #e4e4e4; padding-left:25px;}
+.add-button-Ui {background:url(../global_img/icon/plus32_16px.png) 5px no-repeat #e4e4e4; padding-left:25px;}
+.min-button-Ui{ background:url(../global_img/icon/minus32_16px.png) 5px no-repeat #e4e4e4; padding-left:25px;}
+.newslett-button-Ui{ background:url(../global_img/icon/mailplus32_16px.png) 5px no-repeat #e4e4e4; padding-left:25px;}
 .act { display:inline-table; width:10px; height:10px; margin-right:5px; background:no-repeat center center;}
-.view { background-image:url(../img/icon/light/document-text.gif)}
-.view:hover { background-image:url(../img/icon/dark/document-text.gif)}
-.del { background-image:url(../img/icon/light/x.gif)}
-.del:hover { background-image:url(../img/icon/dark/x.gif)}
-.edit { background:url(../img/icon/light/pencil.gif)}
-.edit:hover { background:url(../img/icon/dark/pencil.gif)}
+.view { background-image:url(../global_img/icon/light/document-text.gif)}
+.view:hover { background-image:url(../global_img/icon/dark/document-text.gif)}
+.del { background-image:url(../global_img/icon/light/x.gif)}
+.del:hover { background-image:url(../global_img/icon/dark/x.gif)}
+.edit { background:url(../global_img/icon/light/pencil.gif)}
+.edit:hover { background:url(../global_img/icon/dark/pencil.gif)}
 
 /** AJX Stle **/
-.ajax_loader_small { background:url(../img/ajax_loader_small.gif) center no-repeat; width:16px; height:16px;}
-.ajax_loader_big { background:url(../img/ajax_loader_big.gif) center no-repeat; width:16px; height:16px;}
+.ajax_loader_small { background:url(../global_img/ajax_loader_small.gif) center no-repeat; width:16px; height:16px;}
+.ajax_loader_big { background:url(../global_img/ajax_loader_big.gif) center no-repeat; width:16px; height:16px;}
 
 
 /* Typo
@@ -101,14 +101,14 @@ select { border:#b2b2b2 1px solid; color: #7b7979; padding:2px; -moz-border-radi
 .msg-Ui { position:fixed; width:960px;}
 .msg-Ui .msg-item {padding:5px 5px 5px 50px;margin:0 auto 10px auto;position:relative;min-height:20px;-moz-border-radius:3px; border-radius:3px; max-width:400px; }
 .msg-Ui .msg-item p { margin-bottom:0px;}
-.msg-Ui .msg-item .close { position:absolute; display:block; width:16px; height:16px;right:-5px; top:-5px; background:url(../img/icon/stop32_16px.png) center center no-repeat; cursor:pointer; opacity:0.5;}
+.msg-Ui .msg-item .close { position:absolute; display:block; width:16px; height:16px;right:-5px; top:-5px; background:url(../global_img/icon/stop32_16px.png) center center no-repeat; cursor:pointer; opacity:0.5;}
 .msg-Ui .msg-item .close:hover{ opacity:1;}
-.msg-Ui .information { background:#c7e3ff url(../img/infomation_msg_bg.png) 10px center no-repeat; border:#c8d5e3 2px solid;}
-.msg-Ui .success { background:#d0ffc7 url(../img/success_msg_bg.png) 10px center no-repeat; border:#cfebca 2px solid;}
-.msg-Ui .warning { background:#feffc7 url(../img/warning_msg_bg.png) 10px center no-repeat;; border:#f1f0c9 2px solid; }
+.msg-Ui .information { background:#c7e3ff url(../global_img/infomation_msg_bg.png) 10px center no-repeat; border:#c8d5e3 2px solid;}
+.msg-Ui .success { background:#d0ffc7 url(../global_img/success_msg_bg.png) 10px center no-repeat; border:#cfebca 2px solid;}
+.msg-Ui .warning { background:#feffc7 url(../global_img/warning_msg_bg.png) 10px center no-repeat;; border:#f1f0c9 2px solid; }
 /*Hack For jQuery-ui Dialog*/
 .msg-Ui .ui-dialog-titlebar { padding-left:50px !important; background-position: 10px center; background-repeat: no-repeat;}
-.ui-dialog .warning { background-image: url(../img/warning_msg_bg.png);}
+.ui-dialog .warning { background-image: url(../global_img/warning_msg_bg.png);}
 /** Socio icon 
 ----------------------------------------------------------------------------------------------------*/
 .socioIcon { width:26px; height:26px;}

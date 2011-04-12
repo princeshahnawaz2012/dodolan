@@ -93,6 +93,38 @@ $(document).ready(function(){
 
 });
 
+(function($){
+	$.fn.notice = function(title, content) {
+		$(this).append('<div class="header_notice">'+content+'</div>');
+		$(this).dialog({
+			title: title,
+			show: 'easeInExpo',
+			hide: 'easeOutExpo',
+			minHeight: 100,
+			create: function(event, ui) {
+
+			},
+			open: function(event, ui){
+			$('.ui-dialog').addClass('msg-Ui');
+			$('.ui-dialog-titlebar').addClass('msg-header');
+			$('.ui-dialog-titlebar').addClass(title);
+
+
+			},
+			close: function(event, ui) {
+			$('.ui-dialog').removeClass('msg-Ui');
+			$('.ui-dialog-titlebar').removeClass('');
+			$(this).empty().dialog('destroy');
+	}
+});
+
+
+
+
+}
+
+})(jQuery);
+
 //The Plugin Script Cloning Form
 (function($) {
 
