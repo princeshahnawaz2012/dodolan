@@ -17,11 +17,11 @@ class Ajax extends Controller {
 	function index() {
 		
 	}
-	function loadmsg($segment = 'front'){
+	function loadmsg(){
 	$render['msg'] = $this->messages->get();
 		if(is_array($render['msg'])){
 			$data['status'] = 'on';
-			$data['msg']   = $this->load->view($segment.'/msg',$render, true);
+			$data['msg']   = $this->load->view('msg',$render, true);
 			echo json_encode($data);
 		}else{
 			$data['status'] = 'off';
@@ -42,8 +42,9 @@ class Ajax extends Controller {
 			}
 			});
 			}
-
-		setInterval('loadmsg()', 5000);
+		$(document).ready(function(){
+			loadmsg();
+		});
 		</script>
 		");
 	}

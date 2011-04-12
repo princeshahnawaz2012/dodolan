@@ -10,9 +10,11 @@
 <link href="<?=base_url();?>assets/global_css/text.css" rel="stylesheet" type="text/css" />
 <link href="<?=base_url();?>assets/global_css/grid.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>/assets/global_js/jquery_ui/theme/Aristo/jquery-ui-1.8.7.custom.css" media="screen"  />	
+<link rel="stylesheet" type="text/css" href="<?=base_url();?>/assets/global_js/jgrowl/jquery.jgrowl.css" media="screen"  />	
 <script src="<?=base_url();?>/assets/global_js/jquery.min.js"></script>
 <script src="<?=base_url();?>/assets/global_js/jquery_ui/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<?=base_url();?>/assets/global_js/dodolan_js_lib.js"></script>
+<script type="text/javascript" src="<?=base_url();?>/assets/global_js/jgrowl/jquery.jgrowl.js"></script>
 
 <!-- Css and JS for Specify Individual Theme -->
 <link href="<?=base_url();?>assets/theme/front/css/front-style.css" rel="stylesheet" type="text/css" />
@@ -23,6 +25,12 @@
 <script type="text/javascript" src="<?=base_url();?>assets/theme/front/js/cloud-zoom.1.0.2.js"></script>
 
 <?=modules::run('ajax/js_showmsg')?>
+
+<script type="text/javascript" charset="utf-8">
+	$(document).ready(function(){
+		$.jGrowl("Hello world!");		
+	});
+</script>
 </head>
 
 <body <?if(isset($jsBodyAction)){echo $jsBodyAction;}?> class="<?=$this->router->class.'_'.$this->router->method;?>" >
