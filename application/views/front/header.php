@@ -22,7 +22,7 @@
 <!-- Extension JS for Individual Theme -->
 <script type="text/javascript" src="<?=base_url();?>assets/theme/front/js/cloud-zoom.1.0.2.js"></script>
 
-
+<?=modules::run('ajax/js_showmsg')?>
 </head>
 
 <body <?if(isset($jsBodyAction)){echo $jsBodyAction;}?> class="<?=$this->router->class.'_'.$this->router->method;?>" >
