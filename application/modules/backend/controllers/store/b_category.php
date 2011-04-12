@@ -8,7 +8,7 @@ class B_category extends Controller {
 	function __construct() {
 		parent::Controller();
 		$this->load->model('store/category_m');
-		modules::run('user/auth/backendLogCheck');
+		modules::run('user/auth/userRoleCheck', 'owner');
 	}
 	
 	//php 4 constructor

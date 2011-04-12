@@ -177,5 +177,11 @@ $(document).ready(function(){
 		}
     };
 
-})(jQuery);    
+})(jQuery);  
+(function($) {
+
+    $.fn.jRedi = function(location) {
+	$(location).attr('href', location)
+	}
+})(jQuery);
 

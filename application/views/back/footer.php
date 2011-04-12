@@ -6,5 +6,6 @@
 	<div class="horline"></div>
 Page rendered in {elapsed_time} seconds
 </div>
+</div>
 </body>
 </html>

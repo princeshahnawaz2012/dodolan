@@ -18,11 +18,11 @@ function render($data, $mode=false, $layer=false){
 	}
 	
 	if($mode != 'back' && $mode == null ){
-	$rend = $this->_ci->load->view('front/'.$layer, $data);
+	$rend = $this->_ci->parser->parse('front/'.$layer, $data);
 	return $rend;
 	}
 	else{
-	$rend = $this->_ci->load->view('back/'.$layer, $data);
+	$rend = $this->_ci->parser->parse('back/'.$layer, $data);
 	return $rend;	
 	}
 }

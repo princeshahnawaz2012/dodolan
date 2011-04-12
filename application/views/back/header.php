@@ -10,7 +10,6 @@
 <link href="<?=$this->asset->theme('css', 'back', 'admin-style.css')?>" rel="stylesheet" type="text/css" />
 <link href="<?=base_url();?>assets/theme/back/css/page_style.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>/assets/theme/jquery-ui/jquery-ui_theme/Aristo/jquery-ui-1.8.7.custom.css" media="screen"  />	
-
 <script src="<?=base_url();?>assets/js_general/jquery.min.js"></script>
 <script src="<?=base_url();?>assets/js_general/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<?=base_url();?>assets/theme/back/js/dodolan_js_lib.js"></script>
@@ -23,12 +22,12 @@
 	<br class="clear"/>
 	</div>
 </div>
+<div class="grid_990 ctr">
+	<?$this->load->view('back/msg');?>
 <div class="mainGrid ui-corner-bottom">
 	<div class="header grid_950 ctr relative">
 		<div class="left logoTop">
 		<h1 class="logoText absolute"><?=$this->config->item('site_name');?><small> Beta 0.1</small></h1>
 		</div>
-
-		
 		<div class="clear"></div>
 	</div>

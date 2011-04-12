@@ -1,4 +1,5 @@
 <?=$this->load->view('front/header');?>
+
 	<div class="mainGrid">
 		<?=$this->load->view('front/msg');?>
 	<div class="header relative">
@@ -41,4 +42,6 @@
 	<div class="footerWrap">
 	
 	</div>
+
 	<?=$this->load->view('front/footer');?>
+	

@@ -8,6 +8,7 @@ class B_order extends Controller {
 	function __construct() {
 		parent::Controller();
 		$this->load->model('store/order_m');
+		modules::run('user/auth/userRoleCheck', 'owner');
 	}
 	
 	//php 4 constructor

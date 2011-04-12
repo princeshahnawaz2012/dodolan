@@ -14,7 +14,16 @@ class Auth extends Controller {
 	
 	// misc function
 	function backend_login(){
-		$data['pt'] = 'Back end Login';
+		if($this->session->userdata('login_data') &&	modules::run('user/auth/userRoleCheck', 'owner')){
+			redirect('backend');
+		}else{
+		$url = str_replace('/red/', '', strstr(current_url(), '/red/' ));
+		if($url){
+			$data['redi'] = $url;	
+		}else{
+			$data['redi'] = false;
+		}
+		$data['pT'] = 'Backend Login';
 		$data['mainLayer'] = 'user/page/backend_login_v';
 		$this->theme->render($data,'back', 'free_layout');
 		
@@ -27,6 +36,7 @@ class Auth extends Controller {
 				$this->messages->add('combination failed', 'warning');
 				return false;
 			}	
+		}
 		}
 		
 	}
@@ -43,18 +53,19 @@ class Auth extends Controller {
 		
 	}
 	function userRoleCheck($role=false){
+		$source = str_replace(site_url(), '', current_url());
 		$backend_sess = $this->session->userdata('login_data'); 
 		if($role){
 			if($role == $backend_sess['role'] && $backend_sess['login'] == true && $backend_sess['user_id'] != null ){
 				return true;
 			}else{
-				redirect('backlogin');
+				redirect('backlogin/red/'.$source);
 			}
 		}else{
 			if($backend_sess['login'] == true && $backend_sess['user_id'] != null ){
 				return true;
 			}else{
-				redirect('backlogin');
+				redirect('backlogin/red/'.$source);
 			}
 		}
 	}

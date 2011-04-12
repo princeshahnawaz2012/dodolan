@@ -43,12 +43,15 @@
 $route['default_controller'] = "store";
 $route['scaffolding_trigger'] = "";
 $route['backlogin'] = "user/auth/backend_login";
+$route['backlogin/(:any)'] = "user/auth/backend_login/$1";
 $route['backlogout'] = "user/auth/backend_login";
 $route['backend/store'] = "backend/store_back";
 $route['store/cart/(:any)'] = "store/store_cart/$1";
 $route['store/cart'] = "store/store_cart";
 $route['login/(:any)'] = "user/frontend_login/$1";
+$route['login'] = "user/frontend_login";
 $route['logout'] = "user/auth/frontlogout";
+
 
 /* End of file routes.php */
 /* Location: ./system/application/config/routes.php */

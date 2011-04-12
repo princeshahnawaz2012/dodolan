@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title><?=$this->config->item('site_name')?> <?if(isset($pT)){echo ' | '.$pT;}?></title>
+<title><?=$this->config->item('site_name')?> | {pT}</title>
 <link href="<?=base_url();?>assets/theme/global_css/reset.css" rel="stylesheet" type="text/css" />
 <link href="<?=base_url();?>assets/theme/global_css/ui-style.css" rel="stylesheet" type="text/css" />
 <link href="<?=base_url();?>assets/theme/global_css/text.css" rel="stylesheet" type="text/css" />

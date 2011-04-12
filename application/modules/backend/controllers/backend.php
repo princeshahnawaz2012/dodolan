@@ -15,8 +15,9 @@ class Backend extends Controller {
 		parent::Controller();
 	}
 	function index() {
+		$url = $this->uri->segment(4);
 		$u = modules::run('user/profiledata', $this->session->userdata['login_data']['user_id']);
-		$data['pt'] = 'Dodolan';
+		$data['pT'] = 'Backend';
 		$data['mainLayer'] = 'backend/sample_view_admin';
 		$data['u_name'] = $u->first_name.' '.$u->last_name;
 		$this->theme->render($data, 'back');
