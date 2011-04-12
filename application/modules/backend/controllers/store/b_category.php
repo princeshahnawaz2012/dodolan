@@ -26,7 +26,7 @@ class B_category extends Controller {
 	function addcat(){
 		$data = array(
 			'pt'  => 'Add Category',
-			'mainLayer' => 'backend/page/store/addcat_v',
+			'mainLayer' => 'backend/page/store/category/addcat_v',
 			'ht' => 'Add Category'
 				);
 		$this->theme->render($data, 'back');
@@ -39,7 +39,7 @@ class B_category extends Controller {
 		$cat = $this->category_m->getcatbyid($id);
 		$data = array(
 			'pt'  => 'Edit Category',
-			'mainLayer' => 'backend/page/store/editcat_v',
+			'mainLayer' => 'backend/page/store/category/editcat_v',
 			'ht' => 'Edit Category',
 			'category' => $cat
 				);
@@ -52,7 +52,7 @@ class B_category extends Controller {
 		$cats = $this->category_m->getAllCAt();
 		$data = array(
 		'pt' => 'list category',
-		'mainLayer' => 'backend/page/store/listcat_v',
+		'mainLayer' => 'backend/page/store/category/listcat_v',
 		'cats' =>$cats,
 			);
 			$this->theme->render($data, 'back');

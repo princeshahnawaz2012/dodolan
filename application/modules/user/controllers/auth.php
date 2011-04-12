@@ -24,7 +24,7 @@ class Auth extends Controller {
 			$data['redi'] = false;
 		}
 		$data['pT'] = 'Backend Login';
-		$data['mainLayer'] = 'user/page/backend_login_v';
+		$data['mainLayer'] = 'user/page/backend/backend_login_v';
 		$this->theme->render($data,'back', 'free_layout');
 		
 		if($this->input->post('login')){

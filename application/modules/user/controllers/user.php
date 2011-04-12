@@ -35,7 +35,7 @@ class User extends Controller {
 	}
 	function frontend_login(){
 		$data = array(
-			'mainLayer'=>'user/page/frontend_login_v',
+			'mainLayer'=>'user/page/frontend/frontend_login_v',
 			'mod_login' => modules::run('user/user_widget/login_mod_front'),
 			'pT' => 'Login'
 			);
@@ -44,7 +44,7 @@ class User extends Controller {
 	function register(){
 		$q = $this->db->get('store_country');
 		$data = array(
-			'mainLayer' => 'user/page/register_v',
+			'mainLayer' => 'user/page/frontend/register_v',
 			'pT' => 'Register',
 			'countries' => $q->result(),
 			);
