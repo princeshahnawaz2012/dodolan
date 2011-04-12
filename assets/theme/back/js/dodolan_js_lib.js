@@ -3,48 +3,20 @@
 // Url    : http://barockprojects.com
 // Email  : zidmubarock@gmail.com
 // file name : dodolan_js_lib.js
-/*
-$(document).ready(function() {
-           createDropDown();
-           
-           $(".dropdown dt a").click(function() {
-               $(".dropdown dd ul").toggle();
-           });
 
-           $(document).bind('click', function(e) {
-               var $clicked = $(e.target);
-               if (! $clicked.parents().hasClass("dropdown"))
-                   $(".dropdown dd ul").hide();
-           });
-                       
-           $(".dropdown dd ul li a").click(function() {
-               var text = $(this).html();
-               $(".dropdown dt a").html(text);
-               $(".dropdown dd ul").hide();
-               
-               var source = $("#source");
-               source.val($(this).find("span.value").html())
-           });
-       });
+$(document).ready(function(){
+	$.ajax({
+	  url: 'http://localhost/dodolan/ajax/loadmsg',
+	  dataType: 'json',
+	  success: function(data){
+		if(data.status == 'on'){
+			$('body').prepend(data.msg);
+		}
+	}
+	});
+});
 
-function createDropDown(class, id){
-            var source = $(class);
-            var selected = source.find("option[selected]");
-            var options = $("option", source);
-            var id = $("#target").size()+1;
-            $("body").append('<dl id="target_'+id+'" class="dropdown"></dl>')
-            $('target_'+id).append('<dt><a href="#">' + selected.text() + 
-                '<span class="value">' + selected.val() + 
-                '</span></a></dt>')
-            $('target_'+id).append('<dd><ul></ul></dd>')
 
-            options.each(function(){
-                $('target_'+id+' dd ul').append('<li><a href="#">' + 
-                    $(this).text() + '<span class="value">' + 
-                    $(this).val() + '</span></a></li>');
-            });
-        }
-*/
 // Date Picker
 // -------------------------------------------------------------------------------------/
 $(document).ready(function(){
