@@ -20,7 +20,7 @@ class Store_widget extends Controller {
 	function categoryMenu($id=0){
 		$q = modules::run('store/category/catlistmenu', $id);
 		$data['menu'] = $q;
-		$this->load->view('store/widget/categoryMenu_v', $data);
+		$this->load->view('store/widget/category/categoryMenu_v', $data);
 	}
 	function currency(){
 		if($this->router->class != 'checkout'){
@@ -50,7 +50,7 @@ class Store_widget extends Controller {
 			redirect(current_url());
 		}
 		
-		$this->load->view('store/widget/currency_v');
+		$this->load->view('store/widget/cart/currency_v');
 	}
 	}
 	function cart(){
@@ -60,7 +60,7 @@ class Store_widget extends Controller {
 			'total_price' => $this->cart->total(),
 			'total_item' => $this->cart->total_items()
 			);
-		$this->load->view('store/widget/cart_v', $data);
+		$this->load->view('store/widget/cart/cart_v', $data);
 		
 	}
 	function smallcart(){
@@ -76,7 +76,7 @@ class Store_widget extends Controller {
 		}else{
 			$data['buyer_info'] = $this->session->userdata('ship_to_info');
 		}
-		$this->load->view('store/widget/smallcart_v', $data);
+		$this->load->view('store/widget/cart/smallcart_v', $data);
 	}
 
 

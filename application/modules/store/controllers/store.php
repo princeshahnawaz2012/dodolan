@@ -24,15 +24,9 @@ class Store extends Controller {
 		echo $source;
 		
 	}
-	function addToCartForm($attribute, $product){
-		$data = array(
-			'a' => $attribute,
-			'p' => $product
-			);
-		$this->load->view('store/misc/addtocart_form_v', $data);
-	}
+	
 	function request_restock($data=array()){
-		$this->load->view('store/misc/request_restockform_v', $data);
+		$this->load->view('store/misc/store/request_restockform_v', $data);
 	}
 	function exe_requestRestock(){
 		$data = array(

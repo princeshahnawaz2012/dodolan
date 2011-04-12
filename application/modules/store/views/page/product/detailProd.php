@@ -19,7 +19,7 @@
 	<div class="descProd">
 		 <?=$p->l_desc;?>
 	</div>
-	<?=modules::run('store/addToCartForm', $a, $p);?>
+	<?=modules::run('store/store_cart/addToCartForm', $a, $p);?>
 	
 	<div class="mediaProd right">
 		<script>

@@ -28,7 +28,7 @@ class Product extends Controller {
 		$q = $this->product_m->getProdSnap($id);
 		$data['prod'] =  $q['prod'];
 		$data['media'] = $q['media'];
-		$this->load->view('store/misc/productSnap_v', $data);
+		$this->load->view('store/misc/product/productSnap_v', $data);
 	}
 	function sendCatalog(){
 		$param['id'] = $this->uri->segment(4);
@@ -179,7 +179,7 @@ class Product extends Controller {
 		// execute the pagination conf
 		$this->barock_page->initialize($confpage);
 		$data = array(
-			'mainLayer' => 'page/browse_view_v',
+			'mainLayer' => 'page/product/browse_view_v',
 			'prods'     => $prods['prods'],
 			'param'     => $param
 			);

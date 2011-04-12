@@ -127,7 +127,13 @@ class Store_cart extends Controller {
 			redirect(current_url());
 		}
 	}
-	
+	function addToCartForm($attribute, $product){
+		$data = array(
+			'a' => $attribute,
+			'p' => $product
+			);
+		$this->load->view('store/misc/cart/addtocart_form_v', $data);
+	}
 	function exe_updateCart($rowid, $newqty){
 		$item = $this->getCartItem($rowid);
 		if(isset($item['id_attrb'])){
