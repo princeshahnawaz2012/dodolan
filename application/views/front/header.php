@@ -26,11 +26,6 @@
 
 <?=modules::run('ajax/js_showmsg')?>
 
-<script type="text/javascript" charset="utf-8">
-	$(document).ready(function(){
-		$.jGrowl("Hello world!");		
-	});
-</script>
 </head>
 
 <body <?if(isset($jsBodyAction)){echo $jsBodyAction;}?> class="<?=$this->router->class.'_'.$this->router->method;?>" >

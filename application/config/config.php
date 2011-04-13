@@ -11,7 +11,7 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://localhost/dodolan/";
+$config['base_url']	= "http://".$_SERVER['SERVER_NAME']."/dodolan/";
 
 /*
 |--------------------------------------------------------------------------

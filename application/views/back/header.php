@@ -9,10 +9,11 @@
 <link href="<?=base_url();?>assets/global_css/text.css" rel="stylesheet" type="text/css" />
 <link href="<?=base_url();?>assets/global_css/grid.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>/assets/global_js/jquery_ui/theme/Aristo/jquery-ui-1.8.7.custom.css" media="screen"  />	
+<link rel="stylesheet" type="text/css" href="<?=base_url();?>/assets/global_js/jgrowl/jquery.jgrowl.css" media="screen"  />	
 <script src="<?=base_url();?>/assets/global_js/jquery.min.js"></script>
 <script src="<?=base_url();?>/assets/global_js/jquery_ui/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<?=base_url();?>/assets/global_js/dodolan_js_lib.js"></script>
-
+<script type="text/javascript" src="<?=base_url();?>/assets/global_js/jgrowl/jquery.jgrowl.js"></script>
 <!-- Css and JS for Specify Individual Theme -->
 <link href="<?=base_url();?>assets/theme/back/css/admin-style.css" rel="stylesheet" type="text/css" />
 <link href="<?=base_url();?>assets/theme/back/css/page_style.css" rel="stylesheet" type="text/css" />

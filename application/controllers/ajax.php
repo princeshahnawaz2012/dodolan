@@ -21,7 +21,7 @@ class Ajax extends Controller {
 	$render['msg'] = $this->messages->get();
 		if(is_array($render['msg'])){
 			$data['status'] = 'on';
-			$data['msg']   = $this->load->view('msg',$render, true);
+			$data['msg']   = $render['msg'];
 			echo json_encode($data);
 		}else{
 			$data['status'] = 'off';
@@ -36,15 +36,40 @@ class Ajax extends Controller {
 			  url: '".site_url('ajax/loadmsg')."',
 			  dataType: 'json',
 			  success: function(data){
-				if(data.status == 'on'){
-					$('body').prepend(data.msg);
-				}
-			}
+					if(data.status == 'on'){
+						var msg = data.msg
+						$.each(msg, function(index, value){
+							
+							if(value.length > 0){
+								if(value.length > 1 ){
+										var content = '';
+										$.each(value, function(key, val){
+											content += val+'<br/>';
+										});
+								}
+								else{
+									var content = value;
+								}
+								$.jGrowl(content, {position: 'center', header: index, theme: index });
+							}
+						});
+								
+					}	
+				},
+				global : false,
+				
 			});
 			}
-		$(document).ready(function(){
-			loadmsg();
-		});
+			function retrive_msg(){
+				$(document).ajaxStop(function(){
+					loadmsg();
+				});
+			}
+			$(document).ready(function(){
+				retrive_msg();
+				loadmsg();
+			});
+	
 		</script>
 		");
 	}
