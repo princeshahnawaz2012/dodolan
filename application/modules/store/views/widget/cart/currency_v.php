@@ -1,4 +1,7 @@
 <div class="currency_widget widget">
+<div class="horline"></div>
+ <span class="left padd10">Select Currency</span>
+<div class="padd10 grid_50 ctr right">
 	<script type="text/javascript">
         $(document).ready(function () {
            $('.currency').change(function() {
@@ -7,17 +10,12 @@
         });
     </script>
     <?
-    if($this->session->userdata('currency')){
-    	$currency = $this->session->userdata('currency');
-    }else{
-    	$currency = $this->config->item('currency');
-    }
-    $list_currency = array('IDR', 'USD');
+      $list_currency = array('IDR', 'USD');
     ?>
 	<form id="currency_select" action="" method="post">
-		<span>Currency :</span><select class="currency" name="currency">
+		<select class="currency" name="currency">
 			<?foreach($list_currency as $c){
-			if($c == $currency){
+			if($c == $this->cart->currency()){
 				$select = 'selected';
 			}else{
 				$select = '';
@@ -28,4 +26,7 @@
 			<?}?>
 		</select>
 	</form>
+</div>
+<div class="clear"></div>
+<div class="horline"></div>
 </div>

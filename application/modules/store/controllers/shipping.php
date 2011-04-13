@@ -22,7 +22,7 @@ class shipping extends Controller {
 	}
 	function shipping_mod($shipping){
 		if($shipping != false){
-			return $shipping
+			return $shipping;
 		}else{
 			return false;
 		}

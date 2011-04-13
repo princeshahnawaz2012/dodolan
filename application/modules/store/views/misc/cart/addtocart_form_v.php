@@ -6,34 +6,31 @@
 			var size= $('select[name="s"]');
 			var color = $('select[name="c"]');
 			var qty= $('input[name=qty]');
-		
 			if(size.val() == 'no' && color.val() == 'no'){
-				$('.ajaxdialog').notice('warning','please choose color and size');
+				$.jGrowl('Please Choose size and color', {position: 'center', header: 'warning', theme: 'warning' });
 			}else if(size.val() != 'no' && color.val() == 'no'){
-				$('.ajaxdialog').notice('warning','please choose color');
+				$.jGrowl('Please Choose color', {position: 'center', header: 'warning', theme: 'warning' });
 			}else if(size.val() == 'no' && color.val() != 'no'){
-					$('.ajaxdialog').notice('warning','please choose size');
+				$.jGrowl('Please Choose size', {position: 'center', header: 'warning', theme: 'warning' });
 			}else if(qty.val() == 'QTY'){
-				$('.ajaxdialog').notice('warning','please input the quantity');
-				}
-			else{
+				$.jGrowl('Please the Quantity', {position: 'center', header: 'warning', theme: 'warning' });
+			}else{
 			var data = $(this).serialize();
+			$('input[name="addcart"]').val('adding..')
 			$.ajax({
 				type : "POST",
 				dataType : "json",
 				url : "<?=site_url()?>/store/cart/ajax_buyProd",
 				data : data,
+				complete :function(){
+				    $('input[name="addcart"]').val('Add To Cart');
+				},
 				success: function(data){					     
 						if(data.status == 'on') {
 							$('.smallcart').empty().append(data.new_cart);
-							$('.ajaxdialog').notice('success','item successfully added to cart');
-						}else if(data.status == 'min') {
-							$('.ajaxdialog').notice('information','please input lower quantity');
-						}else{
-							
-							$('.ajaxdialog').append(data.msg+'<div class="clear"></div>request restock update for this item ?');
-						//	$('.ajaxdialog').notice('information', data.msg+'<div class="clear"></div>would request restock update for this item ?, we we will send you email, when this item available');
-						
+						}else if(data.status = 'min'){
+						    $.jGrowl('Please enter lower number for the quatity', {position: 'center', header: 'warning', theme: 'warning' });
+						}else if(data.status == 'off'){
 						$('.ajaxdialog').dialog({
 									title : 'Request Restock Update',
 									modal: true,

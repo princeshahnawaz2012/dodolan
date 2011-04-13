@@ -9,7 +9,6 @@ class Store_cart extends Controller {
 		parent::Controller();
 		$this->load->model('store/store_cart_m');
 		$this->load->model('store/product_m');
-//		$this->load->library('cart');
 		$this->load->library('jne');
 	}
 	
@@ -21,58 +20,55 @@ class Store_cart extends Controller {
 		echo 'this is cart controller';
 	}
 	function buyProd(){
-	if($this->input->post('addcart')){
-		$param = array('id_prod' => $this->input->post('id_prod'), 'qty' => $this->input->post('qty'));
-		if($this->input->post('have_attrb') == 'y'){
-		$attrb = 'c:'.$this->input->post('c').';s:'.$this->input->post('s');
-		$param['attrb_key'] = $attrb;
-		}else{
-			unset($param['attrb_key']);
-		}
-		$addToCart = $this->addToCart($param);
-		if($addToCart['addtocart']== 'success'){
-			$this->messages->add('succesfully add to cart', 'success');
-			redirect(current_url());
-			
-		}else{
-			$this->messages->add('failed add to cart ', 'warning');
-			redirect(current_url());	
-		}
-
-	}
+    	if($this->input->post('addcart')){
+    		$param = array('id_prod' => $this->input->post('id_prod'), 'qty' => $this->input->post('qty'));
+    		if($this->input->post('have_attrb') == 'y'){
+    		$attrb = 'c:'.$this->input->post('c').';s:'.$this->input->post('s');
+    		$param['attrb_key'] = $attrb;
+    		}else{
+    			unset($param['attrb_key']);
+    		}
+    		$addToCart = $this->addToCart($param);
+    		if($addToCart['addtocart']== 'success'){
+    			$this->messages->add('succesfully add to cart', 'success');
+    			redirect(current_url());
+    		}else{
+    			$this->messages->add('failed add to cart ', 'warning');
+    			redirect(current_url());	
+    		}
+    	}
 	}
 	function ajax_buyProd(){
-	if($this->input->post('have_attrb') ){
-		$param['id_prod'] = $this->input->post('id_prod');
-		$param['qty'] = $this->input->post('qty');
-		if($this->input->post('have_attrb') == 'y'){
-		$attrb = 'c:'.$this->input->post('c').';s:'.$this->input->post('s');
-		$param['attrb_key'] = $attrb;
-		}else{
-		unset($param['attrb_key']);
-		}
-		$addToCart = $this->addToCart($param);
-		if($addToCart['status'] == 'on'){
-			$data['status'] = 'on';
-			$data['new_cart'] = modules::run('store/store_widget/cart');
-			echo  json_encode($data);
-		}elseif($addToCart['status'] == 'min'){
-			$data['status'] = 'min';
-			echo  json_encode($data);
-		}elseif($addToCart['status'] == 'off'){
-			$request_param['id_prod'] = $this->input->post('id_prod');
-			if($this->input->post('have_attrb') == 'y' && !isset($addToCart['id_attrb'])){
-			$request_param['attrb_key'] = $attrb;
-			}elseif($this->input->post('have_attrb') == 'y' && isset($addToCart['id_attrb'])){
-			$request_param['id_attrb'] = $addToCart['id_attrb'];
-			}
-			$data['status'] = 'off';
-			$data['msg'] = 'Atribute product with color '.$this->input->post('c').' and size '.$this->input->post('s').' is out off stock';
-			$data['request_form'] = modules::run('store/request_restock', $request_param);
-			echo  json_encode($data);
-		}
-
-		}
+	    if($this->input->post('have_attrb')){
+    		$param['id_prod'] = $this->input->post('id_prod');
+    		$param['qty'] = $this->input->post('qty');
+    		if($this->input->post('have_attrb') == 'y'){
+    		    $attrb = 'c:'.$this->input->post('c').';s:'.$this->input->post('s');
+        		$param['attrb_key'] = $attrb;
+    		}else{
+        		unset($param['attrb_key']);
+    		}
+    		$addToCart = $this->addToCart($param);
+    		if($addToCart['status'] == 'on'){
+    			$data['status'] = 'on';
+    			$data['new_cart'] = modules::run('store/store_widget/cart');
+    			echo  json_encode($data);
+    		}elseif($addToCart['status'] == 'min'){
+    			$data['status'] = 'min';
+    			echo  json_encode($data);
+    		}elseif($addToCart['status'] == 'off'){
+    			$request_param['id_prod'] = $this->input->post('id_prod');
+    			if($this->input->post('have_attrb') == 'y' && !isset($addToCart['id_attrb'])){
+    			    $request_param['attrb_key'] = $attrb;
+    			}elseif($this->input->post('have_attrb') == 'y' && isset($addToCart['id_attrb'])){
+    			    $request_param['id_attrb'] = $addToCart['id_attrb'];
+    			}
+    			$data['status'] = 'off';
+    			$data['msg'] = 'Atribute product with color '.$this->input->post('c').' and size '.$this->input->post('s').' is out off stock';
+    			$data['request_form'] = modules::run('store/request_restock', $request_param);
+    			echo  json_encode($data);
+    		}
+    	}
 	}
 	function ajax_updateCart(){
 		if($this->input->post('rowid')){
@@ -82,38 +78,38 @@ class Store_cart extends Controller {
 		
 		if($update['status'] == 'on' && $qty != 0){
 			$cart = $this->getCartItem($rowid);
-			$data['status'] = 'on';
-			$data['new_qty'] = $cart['qty'];
-			$data['new_subtotal'] = $this->addon_store->show_price($cart['subtotal']);
+			$data['status']         = 'on';
+			$data['new_qty']        = $cart['qty'];
+			$data['new_subtotal']   = $this->addon_store->show_price($cart['subtotal']);
 			$data['new_total_item'] = $this->cart->total_items();
 			$data['new_total'] = $this->addon_store->show_price($this->cart->total());
 			if($this->session->userdata('shipping_info') && isset($this->session->userdata['shipping_info']['fee'])){
-			$data['new_ship_fee'] = $this->addon_store->show_price($this->session->userdata['shipping_info']['fee']);
-			$data['new_final_total'] = $this->addon_store->show_price($this->cart->total()+$this->session->userdata['shipping_info']['fee']);
+		    	$data['new_ship_fee']    = $this->addon_store->show_price($this->session->userdata['shipping_info']['fee']);
+    			$data['new_final_total'] = $this->addon_store->show_price($this->cart->total()+$this->session->userdata['shipping_info']['fee']);
 			}else{
-			$data['new_final_total'] = $this->addon_store->show_price($this->cart->total());
+			    $data['new_final_total'] = $this->addon_store->show_price($this->cart->total());
 			}
 			echo  json_encode($data);
 		}elseif($update['status'] == 'on' && $qty == 0){
-			$data['status'] = 'on';
-			$data['new_qty'] = $qty;
+			$data['status']         = 'on';
+			$data['new_qty']        = $qty;
 			$data['new_total_item'] = $this->cart->total_items();
-			$data['new_total'] = $this->addon_store->show_price($this->cart->total());
+			$data['new_total']      = $this->addon_store->show_price($this->cart->total());
 			if($this->session->userdata('shipping_info') && isset($this->session->userdata['shipping_info']['fee'])){
-			$data['new_ship_fee'] = $this->addon_store->show_price($this->session->userdata['shipping_info']['fee']);
-			$data['new_final_total'] = $this->addon_store->show_price($this->cart->total()+$this->session->userdata['shipping_info']['fee']);
+		    	$data['new_ship_fee']       = $this->addon_store->show_price($this->session->userdata['shipping_info']['fee']);
+    			$data['new_final_total']    = $this->addon_store->show_price($this->cart->total()+$this->session->userdata['shipping_info']['fee']);
 			}else{
-			$data['new_final_total'] = $this->addon_store->show_price($this->cart->total());
+			    $data['new_final_total']    = $this->addon_store->show_price($this->cart->total());
 			}
 			echo  json_encode($data);
-		}else{
-			$cart = $this->getCartItem($rowid);
-			$data['status'] = 'off';
-			$data['new_qty'] = $cart['qty'];
-			$data['msg']  = 'stock not available';
+	    	}else{
+    			$cart = $this->getCartItem($rowid);
+    			$data['status']     = 'off';
+    			$data['new_qty']    = $cart['qty'];
+    			$data['msg']        = 'stock not available';
 			
-			echo  json_encode($data);
-		}
+    			echo  json_encode($data);
+    		}
 		}	
 	}
 	function updateCart(){
@@ -167,35 +163,22 @@ class Store_cart extends Controller {
 		}else{
 			$buyer_info = false;
 		}
-		
 		if(isset($this->session->userdata['shipping_info']['fee']) && $buyer_info != false){
+		    $this->cart->destroy_data('shipping_info');
+		    /*
 			$id_rate = $this->session->userdata['shipping_info']['rate_id'];
 			$newfee = $this->jne->choosenRate($buyer_info['city_code'], $this->getAllWeight(), $id_rate);
 			$this->session->userdata['shipping_info']['fee'] = $newfee['rate'] ;
-			$this->session->sess_write();
-			
+			$this->session->sess_write();	
+			*/
 		}else{
 			return false;
 		}
 	}
 	
 	function validateProduct($param=array()) {
-		/* param :
-		id_prod
-		id_attrb
-		qty
-		*/
-	$check = $this->store_cart_m->validateProduct($param);
-	if($check['status'] == 'on'){
-		return $check;
-	}elseif($check['status'] == 'min'){
-		$this->messages->add('please enter lower qty', 'warning');
-		return $check;
-	}else{
-		$this->messages->add('stock not available', 'warning');
-		return $check;
-	}
-
+    	$check = $this->store_cart_m->validateProduct($param);
+    	return $check;
 	}
 	function getAllWeight(){
 		$index = 0;
@@ -210,8 +193,8 @@ class Store_cart extends Controller {
 	}
 	function getCartItem($rowid){
 		if($rowid){
-		$cartContent = $this->cart->_cart_contents[$rowid];
-		return $cartContent;
+		    $cartContent = $this->cart->_cart_contents[$rowid];
+		    return $cartContent;
 		}else{
 			return false;
 		}
@@ -352,8 +335,7 @@ class Store_cart extends Controller {
 		
 	}
 	
-	function viewcart(){
-		
+	function viewcart(){	
 		$data = array(
 			'mainLayer' => 'store/page/cart/cartView_v',
 			'items' => $this->cart->contents(),

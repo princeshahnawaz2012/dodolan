@@ -38,8 +38,7 @@ class Ajax extends Controller {
 			  success: function(data){
 					if(data.status == 'on'){
 						var msg = data.msg
-						$.each(msg, function(index, value){
-							
+						$.each(msg, function(index, value){	
 							if(value.length > 0){
 								if(value.length > 1 ){
 										var content = '';

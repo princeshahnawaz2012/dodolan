@@ -15,16 +15,13 @@
 	</div>
 	
 	<div class="grid_960 ctr" id="mainLayer">
-		<div class="right">
-         <?=modules::run('store/store_widget/currency');?>
-        </div>
-        <div class="clear"></div>
-		
 		<? if(!isset($loadSide) ){
 			$mainComp = '';
 			?>	
 			<div class="sidebar grid_210 left">
 			<?=modules::run('store/store_widget/categoryMenu');?>
+			<br class="clear"/>
+			   <?=modules::run('store/store_widget/currency');?>
 			</div>
 			
 		<?}else{
