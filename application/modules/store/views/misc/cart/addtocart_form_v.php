@@ -2,6 +2,9 @@
 	
 	<script>
 		$(document).ready(function(){
+		   	function destroy(){
+    			    	$('.confirmation_msg').remove();
+    		}
 			$('#buyProd').submit(function(){
 			var size= $('select[name="s"]');
 			var color = $('select[name="c"]');
@@ -15,6 +18,7 @@
 			}else if(qty.val() == 'QTY'){
 				$.jGrowl('Please the Quantity', {position: 'center', header: 'warning', theme: 'warning' });
 			}else{
+		
 			var data = $(this).serialize();
 			$('input[name="addcart"]').val('adding..')
 			$.ajax({
@@ -27,39 +31,24 @@
 				},
 				success: function(data){					     
 						if(data.status == 'on') {
-							$('.smallcart').empty().append(data.new_cart);
-						}else if(data.status = 'min'){
-						    $.jGrowl('Please enter lower number for the quatity', {position: 'center', header: 'warning', theme: 'warning' });
+						    $('.smallcart').empty().append(data.new_cart);
+						}else if(data.status == 'min'){
+						    $.jGrowl('Please enter lower number for the quatity', {position: 'center', header: 'warning', theme: 'warning' });			
 						}else if(data.status == 'off'){
-						$('.ajaxdialog').dialog({
-									title : 'Request Restock Update',
-									modal: true,
-									buttons: {
-										"Yes": function() {
-												$( this ).dialog( "close" );
-											
-												$('.addToCart').hide('drop', {direction:'top'});
-												$('.request_area').hide();
-												$('.request_area').append(data.request_form);
-												$('.request_area').delay(500).show('drop', {direction:'top'});
-												
-										},
-										no: function() {
-												$( this ).dialog( "close" );
-											
-										}
-									},
-									close: function(event, ui) {
-										$(this).empty().dialog('destroy');
-										}
-								});
-						
-						/*
-							$('.addToCart').fadeOut(1000)
-							$('.request_area').hide();
-							$('.request_area').append(data.request_form);
-							$('.request_area').delay(1000).fadeIn('slow');
-							*/
+						$('.request_area').hide();
+						$('.confirmation_msg').hide();
+						$('.addToCart').hide('drop', {direction : 'right'});
+						$('.request_area').before(data.msg);
+						$('.confirmation_msg').delay(500).show('drop', {direction:'left'});
+				    	$('.confirm .yes').click(function(){
+    					     $('.confirmation_msg').hide('drop', {direction :'right'}, destroy);
+    					     $('.request_area').delay(1000).append(data.request_form).show('drop', {direction:'left'});
+    					});
+    					$('.confirm .no').click(function(){
+				             $('.confirmation_msg').hide('drop', {direction :'left'}, destroy);
+				    	    $('.addToCart').delay(1000).show('drop', {direction : 'right'});
+    					});
+
 						}
 					}
 				
