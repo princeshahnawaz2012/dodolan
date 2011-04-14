@@ -14,7 +14,7 @@ class Bug {
 			return false;
 		}
 	}
-	function show(){
+	function show(){	    
 		if(count($this->msg) > 0){
 			$i= 1;
 			foreach($this->msg as $msg){

@@ -39,7 +39,7 @@
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('theme', 'asset', 'database', 'session', 'messages', 'addon_store', 'yh_conv', 'addon_store', 'cart', 'bug', 'misc', 'parser');
+$autoload['libraries'] = array('theme', 'asset', 'database', 'session', 'messages', 'addon_store', 'yh_conv', 'addon_store', 'cart', 'bug', 'misc', 'parser', 'firephp');
 
 
 /*

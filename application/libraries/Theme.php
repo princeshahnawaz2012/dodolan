@@ -18,10 +18,15 @@ function render($data, $mode=false, $layer=false){
 	}
 	
 	if($mode != 'back' && $mode == null ){
+	$this->_ci->firephp->setEnabled(true);
+    $this->_ci->firephp->info(get_defined_vars());
+    $this->_ci->firephp->info($this->_ci->session->userdata);
 	$rend = $this->_ci->load->view('front/'.$layer, $data);
 	return $rend;
 	}
 	else{
+	$this->_ci->firephp->setEnabled(true);
+	$this->_ci->firephp->info(get_defined_vars());
 	$rend = $this->_ci->load->view('back/'.$layer, $data);
 	return $rend;	
 	}
