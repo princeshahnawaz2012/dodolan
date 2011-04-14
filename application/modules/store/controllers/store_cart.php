@@ -64,7 +64,7 @@ class Store_cart extends Controller {
     			    $request_param['id_attrb'] = $addToCart['id_attrb'];
     			}
     			$data['status'] = 'off';
-    			$data['msg'] = 'Atribute product with color '.$this->input->post('c').' and size '.$this->input->post('s').' is out off stock';
+    			$data['msg'] = '<div class="confirmation_msg hide">Atribute product with color '.$this->input->post('c').' and size '.$this->input->post('s').' is out off stock <br/> Woul you like to request update stock ? <br/><small>* we will infrom you when stock available </small><div class="confirm mt20"> <span class="button yes">Yes</span> | <span class="button no">No</span></div></div>';
     			$data['request_form'] = modules::run('store/request_restock', $request_param);
     			echo  json_encode($data);
     		}
