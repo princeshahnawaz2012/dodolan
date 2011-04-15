@@ -1,11 +1,19 @@
 /* @override http://localhost/dodolan/assets/theme/front/css/page_style.css */
 
+/* MISC Style */
+.adding {
+	background-color: #000;
+	color: #fff;
+	text-shadow: none;
+}
+
 /* style page */
 
 
 /* View Detail Product	
 ----------------------------------------------------------------------------------------------------*/
 .viewProduct .detailProd { width:420px;}
+
 .viewProduct .mediaProd { width:300px;}
 .viewProduct .mediaProd .otherImg { margin-top:10px;	}
 

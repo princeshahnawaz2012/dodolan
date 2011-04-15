@@ -45,13 +45,8 @@ class Checkout extends Controller {
 			$q = $this->db->get('store_country');
 			$login_data = $this->session->userdata('login_data');
 			if($login_data && !$this->cart->customer_info){
-				// if user have login, and never fill the customer_info form  
-				// for this transaction set the customer info session from user database
 				$list_fields = 'first_name, id, last_name, email, address, country_id, province, city, zip, city_code, zip, mobile, phone';
 				$userdata = modules::run('user/userdata', $login_data['user_id'], $list_fields);
-				//	$this->cart->customer_info = $userdata;
-				//	$this->cart->write_data($this->cart->customer_info) 
-				//	$this->session->set_userdata($customer_info);			
 				$customer_info = array('customer_info' => $userdata);
 				$this->cart->write_data($customer_info);
 			}
@@ -65,6 +60,7 @@ class Checkout extends Controller {
 				//'loadSide' => false
 				);
 			$this->theme->render($data);
+		
 			if($this->input->post('submit')){
 				$this->load->library('form_validation');
 				// serialize customer information
@@ -472,6 +468,25 @@ class Checkout extends Controller {
 	function checkoutmenu(){
 		$this->load->view('store/widget/checkout/checkout_menu');
 		
+	}/**
+	 * This Function, to check that email which user input, allready on site database or not
+	 *
+	 * @return json
+	 * @author Zidni Mubarock
+	 */
+	function ajax_checkmail(){
+	    if($this->input->post('email')){
+	        $email = $this->input->post('email');
+     	    $this->db->where('email', $email);
+    	    $q = $this->db->get('user');
+    	    if($q->num_rows() > 0){
+    	        $data['hv_user'] = true;
+    	        echo json_encode($data);
+    	    }else{
+    	        $data['hv_user'] = false;
+        	    echo json_encode($data);
+    	    }
+        }
 	}
 	
 	

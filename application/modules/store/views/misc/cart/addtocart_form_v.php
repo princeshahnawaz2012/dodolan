@@ -5,6 +5,12 @@
 		   	function destroy(){
     			    	$('.confirmation_msg').remove();
     		}
+    		function reverse(){
+    		     $('input[name="addcart"]').val('Add To Cart');
+    		}
+    		function delNotif(){
+    		    $('.notif').remove();
+    		}
 			$('#buyProd').submit(function(){
 			var size= $('select[name="s"]');
 			var color = $('select[name="c"]');
@@ -20,17 +26,17 @@
 			}else{
 		
 			var data = $(this).serialize();
-			$('input[name="addcart"]').val('adding..')
+			$('input[name="addcart"]').val('adding..').addClass('adding', 1000);
 			$.ajax({
 				type : "POST",
 				dataType : "json",
 				url : "<?=site_url()?>/store/cart/ajax_buyProd",
 				data : data,
-				complete :function(){
-				    $('input[name="addcart"]').val('Add To Cart');
-				},
-				success: function(data){					     
+				success: function(data){
+				    	$('input[name="addcart"]').delay(1000).removeClass('adding', 1000, reverse)			     
 						if(data.status == 'on') {
+						    $('input[name="addcart"]').after('<br class="clear"/><div class="notif hide">success add to cart</div>');
+						    $('.notif').show('fade').delay(2000).hide('fade', delNotif);
 						    $('.smallcart').empty().append(data.new_cart);
 						}else if(data.status == 'min'){
 						    $.jGrowl('Please enter lower number for the quatity', {position: 'center', header: 'warning', theme: 'warning' });			

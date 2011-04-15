@@ -136,7 +136,7 @@ class Product extends Controller {
 		
 		$param = $this->uri->uri_to_assoc(4);
 		if(!isset($param['limit'])){
-			$param['limit'] = 1;
+			$param['limit'] = 5;
 		}
 		if(!isset($param['cat'])){
 			$param['cat'] = false;

@@ -49,26 +49,98 @@ $(document).ready(function(){
 <h3 class="left">Customer Info</h3><div class="right"><?=modules::run('store/checkout/checkoutmenu')?></div> 
 <br class="clear"/>
 <?=$cart;?>
+  <script type="text/javascript" charset="utf-8">
+    $(document).ready(function(){
+        $('.form_buyerinfo .email_customer').blur(function(){
+            var email = $('.email_customer').val();
+           $.ajax({
+               url : '<?=site_url('store/checkout/ajax_checkmail');?>',
+               type : 'POST',
+               dataType : 'json',
+               data : {email: email },
+               success : function(data){},
+               
+           })
+        });
+    });
+  </script>
+  
   
     <div class="form_buyerinfo">
     <form action="<?=current_url();?>" method="post">
-     
+      <h4 class="noBold mb5">Contact Detail</h4>
+      <div class="horline"></div>
+     <div class="contact_detail">
+        <div class="customer_email  padd10 left mr10 " style="border-right:1px solid #E4E4E4">
+        <div class="grid_100 mr10 left">Your Mail</div><div class="left"><input type="text" name="email" class="email_customer grid_300 padd10" value="<?=$buyer_data['email'];?>"></div>
+        <br class="clear"/>
+        </div>
+        <div class="login_confirm padd5 left grid_260 relative">
+             <? if(!$this->session->userdata('login_data') && !$this->cart->customer_info){?>
+                 <h4 class="noBold mb5 left mr10">Login</h4>
+                    <div class="left mt10"><small>You can Login here, if you already register</small></div>
+                <br class="clear"/>
+          
 
+            <script>
+            $(document).ready(function(){
+            	$('a.do_login').click(function(){
+            		var dataPost = {email :$('input[name="log_email"]').val(), password:$('input[name="log_password"]').val(), red:'store/checkout/buyer/info'};
+            		$.ajax({
+            			type : "POST",
+            			dataType : "json",
+            			url : "<?=site_url()?>/user/auth/ajx_frontend_login",
+            			data : dataPost,
+            			success: function(data){					     
+            						   	if(data.status == 'success'){
+            						  	window.location.reload();
+            						   	}else if(data.status == 'failed'){
+            						   		$('.loginMod .ajax_loader_small').fadeOut();
+            						   		$('.loginMod .ajx_msg-Ui').append(data.msg).fadeIn().delay(2000).fadeOut();
+            						   	}
+            					   },
+            			})
+            		return false;
+            		});
+            	});
+
+            </script>
+            	<div class="login_mod form-Ui absolute mt10 grid_270">
+              		<div class="login_form ">
+                    <div class="inputSet">
+            			<div class="label">
+                        	<span>email</span>
+                        </div>
+            			<div class="input">
+            				<input type="text" name="log_email" value="">
+            			</div>
+            			<div class="clear"></div>
+            		</div>
+                    <div class="inputSet">
+            			<div class="label">
+                        	<span>Password</span>
+                        </div>
+            			<div class="input">
+            				<input type="password" name="log_password" value="">
+            			</div>
+            			<div class="clear"></div>
+            		</div>
+                    <a href="#" class="do_login button"><span>Login</span></a>
+                    </div>
+              <?  //echo modules::run('user/user_widget/login_mod_front');?>
+            	</div>
+            <?}?>
+        </div>
+        
+        <br class="clear"/>
+    </div>
+    <div class="horline mb10"></div>
+     
    <div class="form-Ui customer_info grid_370 left" style="background-color:#FFF;">
-  
+  <h4 class="noBold">Billing Infomation</h4>
    <div class="form-Info">
    <small>Fill This form completely</small>
    </div>
-     <div class="inputSet">
-			<div class="label">
-            	<span>Email</span>
-            </div>
-			<div class="input">
-				<input type="text" name="email" value="<?=$buyer_data['email'];?>">
-			</div>
-			<div class="clear"></div>
-		</div>
-		
     	<div class="inputSet">
 			<div class="label">
             	<span>First Name</span>
@@ -255,61 +327,7 @@ $(document).ready(function(){
 		
     </div>
         <div class="addOn_info right grid_300">
-<? if(!$this->session->userdata('login_data') && !$this->cart->customer_info){?>
 
-<script>
-$(document).ready(function(){
-	$('a.do_login').click(function(){
-		var dataPost = {email :$('input[name="log_email"]').val(), password:$('input[name="log_password"]').val(), red:'store/checkout/buyer/info'};
-		$.ajax({
-			type : "POST",
-			dataType : "json",
-			url : "<?=site_url()?>/user/auth/ajx_frontend_login",
-			data : dataPost,
-			success: function(data){					     
-						   	if(data.status == 'success'){
-						  	window.location = '<?=site_url('store/checkout/buyerinfo');?>';
-						   	}else if(data.status == 'failed'){
-						   		$('.loginMod .ajax_loader_small').fadeOut();
-						   		$('.loginMod .ajx_msg-Ui').append(data.msg).fadeIn().delay(2000).fadeOut();
-						   	}
-					   },
-			})
-		return false;
-		});
-	});
-
-</script>
-	<div class="login_mod form-Ui">
-    <h4 class="noBold">Login</h4>
-       <div class="form-Info">
-       <small>You can Login here, if you already register</small>
-   </div>
-
-  		<div class="login_form ">
-        <div class="inputSet">
-			<div class="label">
-            	<span>email</span>
-            </div>
-			<div class="input">
-				<input type="text" name="log_email" value="">
-			</div>
-			<div class="clear"></div>
-		</div>
-        <div class="inputSet">
-			<div class="label">
-            	<span>Password</span>
-            </div>
-			<div class="input">
-				<input type="password" name="log_password" value="">
-			</div>
-			<div class="clear"></div>
-		</div>
-        <a href="#" class="do_login button"><span>Login</span></a>
-        </div>
-  <?  //echo modules::run('user/user_widget/login_mod_front');?>
-	</div>
-<?}?>
       <div class="form-Ui  register_info hide">
       <h4 class="noBold">Register Information</h4>
        <div class="inputSet">

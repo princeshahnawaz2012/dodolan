@@ -1,5 +1,5 @@
 <div class="summary">
-	<h3 class="left">Confirm</h3><div class="right"><?=modules::run('store/checkout/checkoutmenu')?></div> 
+	<h3 class="left">Confirm</h3><div class="right font70"><?=modules::run('store/checkout/checkoutmenu')?></div> 
 	<br class="clear"/>
 	<div class="cartView_v">
 	<div class="table-Ui">
@@ -92,7 +92,7 @@
 	</div>
 	<div class="data_rowSet">
 		<div class="label">Address </div>
-		<div class="data"><?=$customer['address']?> sdasasdasd asdyafas asfas asda asdasua  asdauysavas afsa</div>
+		<div class="data"><?=$customer['address']?></div>
 		<div class="clear"></div>
 	</div>
 	<div class="data_rowSet">
@@ -144,7 +144,7 @@
 	</div>
 	<div class="data_rowSet">
 		<div class="label">Address </div>
-		<div class="data"><?=$customer['address']?> sdasasdasd asdyafas asfas asda asdasua  asdauysavas afsa</div>
+		<div class="data"><?=$customer['address']?></div>
 		<div class="clear"></div>
 	</div>
 	<div class="data_rowSet">
