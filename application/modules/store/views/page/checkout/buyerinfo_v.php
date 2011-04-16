@@ -26,20 +26,20 @@ $(document).ready(function(){
 		
 		if($('input[name=register]').is (':checked')){
 			$('.register_info').show();
-			$('.login_mod').hide();
+		//	$('.login_mod').hide();
 			}else{
-			$('.login_mod').show();
+		//	$('.login_mod').show();
 			$('.register_info').hide();
 			}
 		$('input[name=register]').click(function(){
 		
 			if($('input[name=register]').is (':checked')){
-			$('.login_mod').hide('drop');
-			$('.register_info').delay(500).show('drop');
+		//	$('.login_mod').hide('slide', {direction:'up'});
+			$('.register_info').delay(500).show('slide', {direction:'up'});
 			
 			}else{
-			$('.register_info').hide('drop');
-			$('.login_mod').delay(500).show('drop');
+			$('.register_info').hide('slide', {direction:'up'});
+		//	$('.login_mod').delay(500).show('slide', {direction:'up'});
 			}
 		});
 	});
@@ -64,71 +64,60 @@ $(document).ready(function(){
         });
     });
   </script>
-  
-  
     <div class="form_buyerinfo">
     <form action="<?=current_url();?>" method="post">
       <h4 class="noBold mb5">Contact Detail</h4>
       <div class="horline"></div>
+     <? if(!$this->session->userdata('login_data') && !$this->cart->customer_info){;?>
+         <script>
+         $(document).ready(function(){
+         	$('a.do_login').click(function(){
+         		var dataPost = {email :$('input[name="log_email"]').val(), password:$('input[name="log_password"]').val(), red:'store/checkout/buyer/info'};
+         		$.ajax({
+         			type : "POST",
+         			dataType : "json",
+         			url : "<?=site_url()?>/user/auth/ajx_frontend_login",
+         			data : dataPost,
+         			success: function(data){					     
+         						   	if(data.status == 'success'){
+         						  	window.location.reload();
+         						   	}else if(data.status == 'failed'){
+         						   		$('.loginMod .ajax_loader_small').fadeOut();
+         						   		$('.loginMod .ajx_msg-Ui').append(data.msg).fadeIn().delay(2000).fadeOut();
+         						   	}
+         					   },
+         			})
+         		return false;
+         		});
+         	});
+
+         </script>
+         	<div class="login_mod form-Ui relative">
+           		<div class="login_form">
+                <div class="w_30 left mr20">
+           		<label for="log_email">Email</label><input type="text" name="log_email" value="">
+           		</div>
+           		<div class="w_30 left">
+           		<label for="log_password">Password</label><input type="password" name="log_password" value="">
+           		</div>
+           	    <div class="w_20 left ml20 font70 relative">
+                    <a href="#" class="do_login absolute" style="bottom:0px"><span class="button">Login</span></a>
+                 </div>
+                 <br class="clear"/>
+                 </div>
+           <?  //echo modules::run('user/user_widget/login_mod_front');?>
+         	</div>
+     <?}?>
      <div class="contact_detail">
         <div class="customer_email  padd10 left mr10 " style="border-right:1px solid #E4E4E4">
         <div class="grid_100 mr10 left">Your Mail</div><div class="left"><input type="text" name="email" class="email_customer grid_300 padd10" value="<?=$buyer_data['email'];?>"></div>
         <br class="clear"/>
         </div>
         <div class="login_confirm padd5 left grid_260 relative">
-             <? if(!$this->session->userdata('login_data') && !$this->cart->customer_info){?>
+             <?if(!$this->session->userdata('login_data') && !$this->cart->customer_info){?>
                  <h4 class="noBold mb5 left mr10">Login</h4>
                     <div class="left mt10"><small>You can Login here, if you already register</small></div>
                 <br class="clear"/>
-          
-
-            <script>
-            $(document).ready(function(){
-            	$('a.do_login').click(function(){
-            		var dataPost = {email :$('input[name="log_email"]').val(), password:$('input[name="log_password"]').val(), red:'store/checkout/buyer/info'};
-            		$.ajax({
-            			type : "POST",
-            			dataType : "json",
-            			url : "<?=site_url()?>/user/auth/ajx_frontend_login",
-            			data : dataPost,
-            			success: function(data){					     
-            						   	if(data.status == 'success'){
-            						  	window.location.reload();
-            						   	}else if(data.status == 'failed'){
-            						   		$('.loginMod .ajax_loader_small').fadeOut();
-            						   		$('.loginMod .ajx_msg-Ui').append(data.msg).fadeIn().delay(2000).fadeOut();
-            						   	}
-            					   },
-            			})
-            		return false;
-            		});
-            	});
-
-            </script>
-            	<div class="login_mod form-Ui absolute mt10 grid_270">
-              		<div class="login_form ">
-                    <div class="inputSet">
-            			<div class="label">
-                        	<span>email</span>
-                        </div>
-            			<div class="input">
-            				<input type="text" name="log_email" value="">
-            			</div>
-            			<div class="clear"></div>
-            		</div>
-                    <div class="inputSet">
-            			<div class="label">
-                        	<span>Password</span>
-                        </div>
-            			<div class="input">
-            				<input type="password" name="log_password" value="">
-            			</div>
-            			<div class="clear"></div>
-            		</div>
-                    <a href="#" class="do_login button"><span>Login</span></a>
-                    </div>
-              <?  //echo modules::run('user/user_widget/login_mod_front');?>
-            	</div>
             <?}?>
         </div>
         
@@ -293,84 +282,74 @@ $(document).ready(function(){
 				<input type="text" name="mobile" value="<?=$buyer_data['mobile'];?>">
 			</div>
 			<div class="clear"></div>
-		</div>
-		<div class="inputSet">
+		</div>	
+		<?if(!$this->session->userdata('login_data') && !$this->cart->customer_info){?>
+		  <div class="inputSet left  w_50">
+    			Become a Member <br class="clear"/>
+    			<input type="checkbox" name="register" value="1"><small>Creditial Info is Required</small>
+    		</div>
+		<?}?>
+		<div class="inputSet left w_50">
 			<? if($this->cart->shipto_info || $this->input->post('different_address')){
 				$different = 'checked';
 			}else{
 				$different ='';
 			}?>
-			<div class="label">
-            	<span>Ship To Different Address</span>
-                
-            </div>
-			<div class="input">
-				<input type="checkbox" <?=$different;?> name="different_address" value="1">
-			</div>
+			ship to different addres <br class="clear"/>
+			<input type="checkbox" <?=$different;?> name="different_address" value="1">
 			<div class="clear"></div>
 		</div>
 		<?if(!$this->session->userdata('login_data') && !$this->cart->customer_info){?>
-         <div class="inputSet">
-			<div class="label">
-            	<span>Become Member</span>
-                <div class="clear"></div>
-                <small>*you have to provide info for login</small>
-            </div>
-			<div class="input">
-				<input type="checkbox" name="register" value="1">
-			</div>
-			<div class="clear"></div>
-		</div>
-		<?}?>
 		<div class="clear"></div>
+		<div class="form-Ui  register_info hide">
+        <h4 class="noBold">Register Information</h4>
+         <div class="inputSet">
+  			<div class="label">
+              	<span>Password</span>
+              </div>
+  			<div class="input">
+  				<input type="password" name="password" value="">
+  			</div>
+  			<div class="clear"></div>
+  		</div>
+  		 <div class="inputSet">
+  			<div class="label">
+              	<span>Retype Password</span>
+              </div>
+  			<div class="input">
+  				<input type="password" name="re_password" value="">
+  			</div>
+  			<div class="clear"></div>
+  		</div>
+          <div class="inputSet">
+  			<div class="label">
+              	<span>Gender</span>
+              </div>
+  			<div class="input">
+  				<select name="gender">
+                 		 <option value="">Choose One</option>
+                  	<option value="m">Male</option>
+                      <option value="f">female</option>
+                  </select>
+  			</div>
+  			<div class="clear"></div>
+  		</div>
+           <div class="inputSet">
+  			<div class="label">
+              	<span>Birthday</span>
+              </div>
+  			<div class="input ">
+  				<input class="text-input grid_250"  type="text" name="birthday" value="yyyy-mm-dd">
+  			</div>
+  			<div class="clear"></div>
+  		</div>
+        </div>
+		<?}?>
+	
 		
 		
     </div>
         <div class="addOn_info right grid_300">
-
-      <div class="form-Ui  register_info hide">
-      <h4 class="noBold">Register Information</h4>
-       <div class="inputSet">
-			<div class="label">
-            	<span>Password</span>
-            </div>
-			<div class="input">
-				<input type="password" name="password" value="">
-			</div>
-			<div class="clear"></div>
-		</div>
-		 <div class="inputSet">
-			<div class="label">
-            	<span>Retype Password</span>
-            </div>
-			<div class="input">
-				<input type="password" name="re_password" value="">
-			</div>
-			<div class="clear"></div>
-		</div>
-        <div class="inputSet">
-			<div class="label">
-            	<span>Gender</span>
-            </div>
-			<div class="input">
-				<select name="gender">
-               		 <option value="">Choose One</option>
-                	<option value="m">Male</option>
-                    <option value="f">female</option>
-                </select>
-			</div>
-			<div class="clear"></div>
-		</div>
-         <div class="inputSet">
-			<div class="label">
-            	<span>Birthday</span>
-            </div>
-			<div class="input ">
-				<input class="text-input grid_250"  type="text" name="birthday" value="yyyy-mm-dd">
-			</div>
-			<div class="clear"></div>
-		</div>
-      </div>
 <script>
 $(document).ready(function(){
 	$('input[name=different_address]').click(function(){

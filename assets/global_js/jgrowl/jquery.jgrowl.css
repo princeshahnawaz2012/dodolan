@@ -83,9 +83,7 @@ div.center div.jGrowl-notification, div.center div.jGrowl-closer {
 
 div.jGrowl div.jGrowl-notification, div.jGrowl div.jGrowl-closer {
 	background-color: 		#000;
-	opacity: 				.50;
-    -ms-filter: 			"progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; 
-    filter: 				progid:DXImageTransform.Microsoft.Alpha(Opacity=50); 
+
 	zoom: 					1;
 	width: 					235px;
 	padding: 				10px;

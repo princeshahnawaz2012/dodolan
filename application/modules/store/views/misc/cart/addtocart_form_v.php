@@ -22,20 +22,20 @@
 			}else if(size.val() == 'no' && color.val() != 'no'){
 				$.jGrowl('Please Choose size', {position: 'center', header: 'warning', theme: 'warning' });
 			}else if(qty.val() == 'QTY'){
-				$.jGrowl('Please the Quantity', {position: 'center', header: 'warning', theme: 'warning' });
+				$.jGrowl('Please enter the Quantity', {position: 'center', header: 'warning', theme: 'warning' });
 			}else{
 		
 			var data = $(this).serialize();
-			$('input[name="addcart"]').val('adding..').addClass('adding', 1000);
+			$('input[name="addcart"]').val('adding..').animate({backgroundColor : '#000', color: '#fff'}, 1000);
 			$.ajax({
 				type : "POST",
 				dataType : "json",
 				url : "<?=site_url()?>/store/cart/ajax_buyProd",
 				data : data,
 				success: function(data){
-				    	$('input[name="addcart"]').delay(1000).removeClass('adding', 1000, reverse)			     
+				    	$('input[name="addcart"]').delay(1000).animate({backgroundColor : '#ccc', color: '#7B7979'}, 1000, reverse);
 						if(data.status == 'on') {
-						    $('input[name="addcart"]').after('<br class="clear"/><div class="notif hide">success add to cart</div>');
+						    $('input[name="addcart"]').after('<br class="clear"/><div class="notif hide"><small>success add to cart</small></div>');
 						    $('.notif').show('fade').delay(2000).hide('fade', delNotif);
 						    $('.smallcart').empty().append(data.new_cart);
 						}else if(data.status == 'min'){
@@ -112,7 +112,7 @@
 		<div class="clear"></div>
 		<br/>
 		<input type="hidden" value="<?=$p->id;?>" name="id_prod"/>
-		<input type="submit" name="addcart" value="Add to Cart" class="button"/>
+		<input type="submit" name="addcart" value="Add to Cart"/>
 		
 		
 	</form>

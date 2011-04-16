@@ -1,10 +1,21 @@
 /* @override http://localhost/dodolan/assets/theme/front/css/page_style.css */
 
 /* MISC Style */
-.adding {
-	background-color: #000;
-	color: #fff;
-	text-shadow: none;
+input.adding {
+	background: #000 !important;
+	color: #fff !important;
+	text-shadow: none !important;
+}
+input[name="addcart"]{
+	background:#ccc;
+	border:none;
+	color:#7B7979;
+	text-shadow:none;
+	padding:5px 10px;
+	cursor: pointer;
+	-webkit-border-radius: 3px;
+	   -moz-border-radius: 3px;
+	        border-radius: 3px;
 }
 
 /* style page */
