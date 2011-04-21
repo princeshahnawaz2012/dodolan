@@ -24,7 +24,7 @@
 
 
 <body  id="<?=$this->router->class.'_'.$this->router->method;?>" class="backend">
-<div class="navigation ui-widget-header"><div class="inner ctr grid_990">
+<div class="navigation"><div class="inner ctr grid_990">
 	
 	<div class="left"><?=modules::run('backend/widget/topmenu');?></div> <?=modules::run('backend/widget/backUserWid');?>
 	<br class="clear"/>

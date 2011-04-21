@@ -44,9 +44,12 @@
 <br/>
 <br/>
 
-<div class="grid_420 ctr mt20 mainGrid ui-corner-all">
+<div class="grid_420 ctr mt20 login_page mainGrid ui-corner-all">
+     <div class="heading_page  def_grad">
+		<h4><?=$this->config->item('site_name');?> Backend Login</h4>
+		</div>
 	<div class="form-Ui loginMod padd20">
-		<h4 class="formName"><?=$this->config->item('site_name');?> Backend Login</h4>
+	   
 		<form action="<?=current_url();?>" method="post">
 			<div class="mb20">
 				<div class="left grid_100 text_right mr10">

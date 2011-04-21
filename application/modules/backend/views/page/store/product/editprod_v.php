@@ -1,17 +1,23 @@
-<div class="addprod_v">
-	<form enctype="multipart/form-data" method="post" action="<?=current_url()?>">
-	<div class="tab-Ui" id="addProdTab">
-	<div class="nav">
-		<div class="item" rel="1">Main Info</div>
-		<div class="item" rel="2">Attribute and Stock</div>
-		<div class="item" rel="3">S.E.O Setup</div>
-		<div class="item" rel="4">Product Media</div>
-		<div class="right"><input type="submit" name="submit" value="save" class="button save-button-Ui" style="margin-right:5px;"/><a href="<?=site_url();?>backend/store"><button class="button cancel-button-Ui" >Cancel</button></a></div>
-		<div class="clear"></div>
-		
-	</div>
-	<div class="comp">
-		<div no="1" class="item">
+<form enctype="multipart/form-data" method="post" action="<?=current_url()?>">
+	
+	<script type="text/javascript" charset="utf-8">
+		$(function() {
+				$( "#addProdTab" ).tabs();
+			});
+	</script>
+<div class="tab-Ui" id="addProdTab">
+	<div class="right" style="margin-bottom:-40px"><input type="submit" name="submit" value="save" class="button save-button-Ui" style="margin-right:5px;"/><a href="<?=site_url();?>backend/store/b_product/listprod/"><span class="button cancel-button-Ui" >Cancel</span></a></div>	
+	<br class="clear"/>
+	
+<ul class="nav">
+	<li><a href="#tab_1">Main Info</a></li>
+	<li><a href="#tab_2">Inventory and Stock</a></li>
+	<li><a href="#tab_3">S.E.O Setup</a></li>
+	<li><a href="#tab_4">Product Media</a></li>
+	<li><a href="#tab_5">Product Association</a></li>
+</ul>
+
+		<div id="tab_1" class="item">
 		<div class="form-Ui productInfo">
 					<div class="inputSet">
 						<div class="label"><span>Product Name</span></div>
@@ -81,7 +87,7 @@
 		</div>
 		</div>
 		
-		<div no="2" class="item">
+		<div id="tab_2" class="item">
 			<script type="text/javascript" charset="utf-8">
 				$(document).ready(function(){
 					$('#attrib_prod .clone-Add').click(function(){
@@ -146,7 +152,7 @@
 		</div>
 		</div>
 	
-		<div no="3" class="item">
+		<div id="tab_3" class="item">
 			<div class="form-Ui metaDesc">
 					<div class="inputSet">
 						<div class="label"><span>Meta Description</span></div>
@@ -160,7 +166,7 @@
 					</div>
 			</div>
 		</div>
-		<div no="4" class="item">
+		<div id="tab_4" class="item">
 			<script type="text/javascript" charset="utf-8">
 $(document).ready(function(){
 	
@@ -232,7 +238,10 @@ $(document).ready(function(){
 				
 		</div>
 		</div>
-	</div>
+        <div id="tab_5" class="item">
+        <p>Product Association</p>
+        
+        </div>
 	
 	</form>
 </div>

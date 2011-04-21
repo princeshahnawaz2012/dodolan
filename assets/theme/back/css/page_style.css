@@ -15,3 +15,9 @@
 #b_order_browse .list_order .update_form .inner {padding:0px 3px;}
 #b_order_browse .list_order .update_form ul li { margin:0px 2px; list-style:none; text-transform: capitalize; padding:3px; cursor:pointer;}
 #b_order_browse .list_order .update_form ul li.active {background-color: #12b8b6; margin:0px -3px; color:#fff; padding:3px 5px;}
+
+/** backend Front Login **/
+.backend .login_page .heading_page { margin: -10px -15px 0px -15px; padding: 10px;-webkit-border-radius: 3px;
+   -moz-border-radius: 3px;
+        border-radius: 3px; color: #fff;}
+.backend .login_page .heading_page h4 {margin:0px; font-weight: normal;}

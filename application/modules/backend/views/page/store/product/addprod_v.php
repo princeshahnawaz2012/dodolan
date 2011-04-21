@@ -15,7 +15,7 @@
 		<li><a href="#tab_2">Inventory and Stock</a></li>
 		<li><a href="#tab_3">S.E.O Setup</a></li>
 		<li><a href="#tab_4">Product Media</a></li>
-		
+		<li><a href="#tab_5">Product Association</a></li>
 	</ul>
 	
 		<div id="tab_1" class="item">
@@ -179,7 +179,10 @@ $(document).ready(function(){
 				
 		</div>
 		</div>
-
+        <div id="tab_5" class="item">
+        <p>Product Association</p>
+        
+        </div>
 	
 	</form>
 </div>

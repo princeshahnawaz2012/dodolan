@@ -30,8 +30,17 @@ input[name="addcart"]{
 
 /* Browse Product
 ----------------------------------------------------------------------------------------------------*/
-.browseProduct .productSnap { width:240px; float:left;}
-.browseProduct .productSnap  .productImg img { width:230px;}
+.browseProduct .productSnap { width:240px; float:left; margin-left:3px; margin-bottom:20px;}
+.browseProduct .productSnap a {text-decoration: none;}
+.browseProduct .productSnap .productImg img { width:240px;}
+.browseProduct .productSnap .productDetail { border-top:1px solid #ccc;  border-bottom:1px solid #ccc; padding: 5px 0px; margin-top:5px;}
+.browseProduct .productSnap .productPrice {float: right;}
+.browseProduct .productSnap .productImg {position: relative;}
+.browseProduct .productSnap .productImg .snap_tool {width:100%; position:absolute; bottom:0px; height:40px; background:url(../img/opacity_black.png);padding-top:10px; display:none;}
+.browseProduct .productSnap .productImg .snap_tool p { line-height:30px; margin:0px; text-align:center; font-size: 80%;}
+.browseProduct .productSnap .productImg .snap_tool p span {-webkit-border-radius: 3px;
+   -moz-border-radius: 3px;
+        border-radius: 3px;padding: 3px 5px; background:#ccc; color:#000; margin-right:5px;}
 
 /* VIEW CART 
 ----------------------------------------------------------------------------------------------------*/
