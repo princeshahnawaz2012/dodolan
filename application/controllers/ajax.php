@@ -72,5 +72,9 @@ class Ajax extends Controller {
 		</script>
 		");
 	}
+	function post (){
+	
+	
+	}
 
 }
