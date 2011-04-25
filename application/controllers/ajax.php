@@ -72,8 +72,9 @@ class Ajax extends Controller {
 		</script>
 		");
 	}
-	function post (){
 	
+	function post(){
+	    $action = current_url();
 	
 	}
 
