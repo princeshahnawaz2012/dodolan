@@ -75,7 +75,7 @@ class Ajax extends Controller {
 	
 	function post(){
 	    $action = current_url();
-        $this->load->helper('string');
+        ///$this->load->helper('string');
         
 	}
 
