@@ -70,7 +70,7 @@ class Ajax extends Controller {
 			});
 	
 		</script>
-		");--git= 
+		");
 	}
 	
 	function post(){
