@@ -12,6 +12,33 @@
 	</div>
 	<div id="component">
 	<div class="mainWrap grid_950 ctr" id="mainArea">
+	<!PAGE HEADING AND TOOL/>
+		<?if (isset($pageTool) || isset($pH)):?>
+		<div class="pageHeading">
+			<?if(isset($pH)):?>
+			<div class="headingTitle left">
+				<h1><?=$pH?></h1>
+			</div>
+			<?endif?>
+			
+			<?if(isset($pageTool)):?>
+			<div class="pageTool right">
+				<?if(is_array($pageTool)):?>
+					<?foreach($pageTool as $pt):?>
+						<?= $pt ?>
+					<?endforeach?>
+				<?else:?>
+					<?= $pageTool?>
+				<?endif?>
+				<span>Tool shuld load here</span>
+			</div >
+			<?endif?>
+			<div class="clear"></div>
+		</div>
+		
+		<?endif?>
+	<!END OF PAGE HEADING>
+		
 	<!component start here/>
 	<?if(isset($directLayer)){
 	echo $directLayer;}?>
