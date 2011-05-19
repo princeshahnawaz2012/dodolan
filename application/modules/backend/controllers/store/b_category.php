@@ -48,6 +48,9 @@ class B_category extends Controller {
 			$this->exe_editcat($id);
 		}
 	}
+	function browse(){
+		$this->listcat();
+	}
 	function listcat(){
 		$cats = $this->category_m->getAllCAt();
 		$data = array(

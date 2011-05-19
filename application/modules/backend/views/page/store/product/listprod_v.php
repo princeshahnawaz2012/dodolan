@@ -40,35 +40,7 @@
 <div class="clear"></div>
 <div class="listprod_v mt10">
 	<?if($prods){?>
-	    <script type="text/javascript" charset="utf-8">
-	       $().ready(function(){
-            $(".prodList th").each(function(){
-
-             $(this).addClass("ui-state-default");
-
-             });
-            $(".prodList td").each(function(){
-
-             $(this).addClass("ui-widget-content");
-
-             });
-            $(".prodList tr").hover(
-                function()
-                {
-                 $(this).children("td").addClass("ui-state-hover");
-                },
-                function()
-                {
-                 $(this).children("td").removeClass("ui-state-hover");
-                }
-               );
-            $(".prodList tr").click(function(){
-
-              $(this).children("td").toggleClass("ui-state-highlight");
-             });
-
-           });
-	    </script>
+	   
 <div class="table-Ui">
 	
 <table class="prodList">
@@ -85,8 +57,7 @@
  <tbody>
 
 <?
-
-	foreach($prods as $prod){
+foreach($prods as $prod){
 	$param = array(
 		'id' => $prod->p_id,
 		'select' => 'sku, name, publish, id, cat_id',

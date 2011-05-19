@@ -93,7 +93,7 @@ class B_product extends Controller {
 		$data = array(
 			'mainLayer' => 'backend/page/store/product/listprod_v',
 			'pt'        => 'List Product',
-			'ht'        => 'List Product',
+			'pH'        => 'List Product',
 			'prods'     => $prods['prods'],
 			'num_rec'	=> $prods['num_rec']
 			);
