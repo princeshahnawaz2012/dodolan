@@ -26,7 +26,7 @@
 <body  id="<?=$this->router->class.'_'.$this->router->method;?>" class="backend">
 <div class="navigation"><div class="inner ctr grid_990">
 	
-	<div class="left"><?=modules::run('backend/widget/topmenu');?></div> <?=modules::run('backend/widget/backUserWid');?>
+	<div class="left"><?=modules::run('backend/widget/topmenu');?></div>
 	<br class="clear"/>
 	</div>
 </div>

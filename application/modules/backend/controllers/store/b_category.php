@@ -41,6 +41,7 @@ class B_category extends Controller {
 			'pt'  => 'Edit Category',
 			'mainLayer' => 'backend/page/store/category/editcat_v',
 			'ht' => 'Edit Category',
+			'pH' => 'Edit Category',
 			'category' => $cat
 				);
 		$this->theme->render($data, 'back');

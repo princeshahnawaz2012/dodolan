@@ -18,12 +18,16 @@ $(document).ready(function(){
 	
   });
 $(document).ready(function(){
-	var link = $('a').attr('href');
-	var current = $(location).attr('href');
 	
-	if( link == current){
-		$('[href="'+current+'"]').addClass('current_link');
-	}
+	var current = $(location).attr('href');
+	$('a').each(function(){
+		var a_link = $(this).attr("href"); 
+		if(a_link == current){
+			$(this).addClass('current_link');
+		}
+		
+	});
+
 });
 
 //Tab UI
