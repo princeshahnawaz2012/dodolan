@@ -46,10 +46,9 @@
 <table class="prodList">
  <thead>
   <tr>
-  	<td>no</td>
-    <td>Product Name</td>
-    <td>Category</td>
-     <td>publish</td>
+  	<td class="grid_120"></td>
+    <td class="grid_350">Product Name</td>
+    <td>Invetory</td>
     <td>Action</td>
 
   </tr>
@@ -60,17 +59,31 @@
 foreach($prods as $prod){
 	$param = array(
 		'id' => $prod->p_id,
-		'select' => 'sku, name, publish, id, cat_id',
+		'attr' => true
 		);	
 	$q = modules::run('store/product/detProd', $param);
 	$p = $q['prod'];
-	$c = $q['cat']
+	$c = $q['cat'];
+	$attrs = $q['attrb'];
+	$img = modules::run('store/product/prodImg', $prod->p_id);
 	?>
  <tr>
- 	<td><?=$p->sku?></td>
-    <td><?=$p->name;?></td>
-    <td><?=$c->name;?></td>
-    <td><?=$p->publish;?></td>
+ 	<td><img src="<?=site_url('thumb/show/100-50-crop/dir/assets/product-img/'.$img->path)?>"></td>
+    <td class="vTop">
+		<div class="prodDet">
+			<span class=""><?=$p->name?></span>
+			<div class="horline"></div>
+			<p>Publish : <?=$p->publish?> | Category : <?=$c->name;?></p>
+		</div>
+	</td>
+    <td>
+    	<div class="list_attr">
+    		<?if($attrs):foreach($attrs as $attr):?>	
+			<div class="item_attr"><?=$attr->attribute;?></div>
+			<?endforeach;endif?>
+    	</div>
+    </td>
+    
     <td class="action">
 		<a href="#"><span class="act view"></span></a>
 		<a href="<?=site_url('backend/store/b_product/editprod/'.$p->id);?>"><span class="act edit"></span></a>

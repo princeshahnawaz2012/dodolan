@@ -64,7 +64,7 @@ select { border:#b2b2b2 1px solid; color: #7b7979; padding:2px; -moz-border-radi
 .table-Ui table tbody { border-bottom:1px solid #7b7979}
 .table-Ui table tbody .act { display:inline-table; margin-right:5px;}
 .table-Ui table tbody td.action { text-align: center;}
-.table-Ui .horline { height:2px !important; background:#c1c1c1;}
+.table-Ui .horline { height:1px !important; background:#c1c1c1;}
 .table-Ui table tr.dark td {
     background: none repeat scroll 0 0 #F2F2F2;
     border-bottom: 1px solid #D8D8D8;
@@ -142,6 +142,9 @@ select { border:#b2b2b2 1px solid; color: #7b7979; padding:2px; -moz-border-radi
 
 /*  MISC
 ----------------------------------------------------------------------------------------------------*/
+.vTop {vertical-align:top;}
+.vBottom {vertical-align:bottom}
+.bold{ font-weight: bold;}
 .noBold { font-weight:normal !important}
 .noBorder {border:none !important;}
 .font70 {
