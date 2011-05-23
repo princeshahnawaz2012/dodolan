@@ -35,5 +35,15 @@ function ajax_loader($width=50, $class="loader"){
 	$loader = '<img class="'.$class.'" src="'.base_url().'/assets/gen_img/loader.gif" alt="loader" width="'.$width.'">';
 	return $loader;
 }
+function menu_rend($source){
+	$out = "<ul>";
+	foreach($source as $s){
+		$out .= '<li><a href="'.$s['link'].'">'.$s['anchor'].'</a></li>';
+	}
+	$out .= '<div class="clear"></div></ul>';
+	return $out;
+	
+	
+}
 
 }

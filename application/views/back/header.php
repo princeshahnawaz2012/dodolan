@@ -34,7 +34,10 @@
 <div class="mainGrid ui-corner-bottom">
 	<div class="header grid_950 ctr relative">
 		<div class="left logoTop">
-		<h1 class="logoText absolute"><?=$this->config->item('site_name');?><small> Beta 0.1</small></h1>
+		<h1 class="logoText"><?=$this->config->item('site_name');?><small> Beta 0.1</small></h1>
 		</div>
+		<?if(isset($pageMenu)):?>
+			<div class="pageMenu right absolute"><?=$pageMenu?></div>
+		<?endif?>
 		<div class="clear"></div>
 	</div>

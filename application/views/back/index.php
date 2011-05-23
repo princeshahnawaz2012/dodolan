@@ -5,11 +5,6 @@
 		$('.mainGrid').hide().show('slide', {direction:'up'});
 	</script>
 	<?}?>
-	<div class="grid_950 ctr">
-		
-	<div class="pageTitle left"><?if(isset($ht)){echo $ht;};?></div>
-	<div class="clear"></div>
-	</div>
 	<div id="component">
 	<div class="mainWrap grid_950 ctr" id="mainArea">
 	<!PAGE HEADING AND TOOL/>
@@ -30,7 +25,7 @@
 				<?else:?>
 					<?= $pageTool?>
 				<?endif?>
-				<span>Tool shuld load here</span>
+			
 			</div >
 			<?endif?>
 			<div class="clear"></div>

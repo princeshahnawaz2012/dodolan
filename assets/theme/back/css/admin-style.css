@@ -26,7 +26,7 @@ background-image: -webkit-gradient(linear, 0 top, 0 bottom, from( #059a9f ), to(
         box-shadow: 0 1px 7px #CCCCCC; margin-bottom:50px;}
 /* Main Layering
 ----------------------------------------------------------------------------------------------------*/
-.header { height:50px; border-bottom:1px solid #c1c1c1;}
+.header {border-bottom:1px solid #c1c1c1; margin-top:20px; margin-bottom:10px}
 .mainWrap { min-height:300px;}
 .footerWrap { border-top:1px solid #c1c1c1; margin-bottom:30px; font-size:11px; padding-top:5px; margin-top:10px;}
 .navigation { height:30px; background-color: #000; color: #fff; padding-top:5px; background-image: -moz-linear-gradient(-90deg, #059a9f , #058b9b );
@@ -35,7 +35,7 @@ background-image: -webkit-gradient(linear, 0 top, 0 bottom, from( #059a9f ), to(
 .navigation a { color: #000; text-shadow: 0 1px 0 #058b9b;}
 /* Inside Main Layering
 -----------------------*/
-.header .logoText {color :#058b9b;bottom:0px; margin-bottom:0px; font-size:26px; letter-spacing:-2px;}
+.header .logoText {color :#058b9b;margin-bottom:10px; font-size:26px; letter-spacing:-2px; height:30px}
 .header .topMenu { bottom:0px; right:0px;}
 .header .topMenu ul { margin:0; padding:0px;}
 .header .topMenu ul li { float:left; list-style: none;}
@@ -50,7 +50,10 @@ background-image: -webkit-gradient(linear, 0 top, 0 bottom, from( #059a9f ), to(
 .navigation .inner .topMenu ul li a { display:block; padding:0px 10px; color: #fff;text-decoration:none; text-shadow:0 1px 0 #058b9b;}
 .navigation .inner .topMenu ul ul {display:none;}
 .navigation .inner .topMenu ul li a:hover, .navigation .inner .topMenu ul li a.current_link{ background-color: #fff; color: #058b9b; text-shadow:none;}
-
+.header .pageMenu { bottom:0px; right:0px;}
+.header .pageMenu ul {padding:0px;margin:0px }
+.header .pageMenu li { list-style: none; float:left; margin:0px 0px 0px 5px; }
+.header .pageMenu a {display:block;padding: 5px;-moz-border-radius-topleft:3px; -moz-border-radius-topright:3px;border-radius-topleft:3px; border-radius-topright:3px; background:#ccc; }
 
 /* Widget
 ----------------------------------------------------------------------------------------------------*/

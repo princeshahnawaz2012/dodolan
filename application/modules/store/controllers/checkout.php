@@ -16,10 +16,11 @@ class Checkout extends Controller {
 		parent::Controller();
 		$this->load->library('cart');
 		$this->load->library('jne');
-	$this->step = $this->session->userdata('checkout_step');
-	if($this->cart->total_items() == 0){
+		$this->step = $this->session->userdata('checkout_step');
+	
+		if($this->cart->total_items() == 0){
 		redirect('store/cart/viewcart');
-	}
+		}
 	}
 	
 	//php 4 constructor
@@ -31,7 +32,26 @@ class Checkout extends Controller {
 	function index() {
 		redirect('store/checkout/buyerinfo');
 	}
-
+	function check_customer(){
+		$email = $this->input->post('email');
+		$q = modules::run('store/customer/getByEmail', $email);
+		if($q){
+			
+			$data = array(
+				'msg' => true,
+				'customer_data' => $q
+			);
+			json_encode($data);
+			return true;
+		
+		}else{
+			$data = array(
+				'msg' => false,
+			);
+			json_encode($data);
+			return false;
+		}
+	}
 	/**
 	 * Buyer info Page
 	 *

@@ -50,6 +50,11 @@ class B_product extends Controller {
 			$this->exe_editprod($idprod);
 		}
 	}
+	
+	function prod_filter(){
+		
+		$this->load->view('backend/page/store/misc/prod_filter_v');
+	}
 	function listprod(){
 		$this->load->library('barock_page');
 		$limit = 10;
@@ -90,10 +95,20 @@ class B_product extends Controller {
 			'cur_page'   => $param['page']
 			);
 		$this->barock_page->initialize($confpage);
+		$menuSource = array(
+			array(
+				'anchor' => 'Add Product', 'link' => site_url('backend/store/b_product/addProd')),
+			array(
+				'anchor' => 'Add Product', 'link' => site_url('backend/store/b_product/addProd')),
+		);
+		$menu = $this->theme->menu_rend($menuSource);
 		$data = array(
 			'mainLayer' => 'backend/page/store/product/listprod_v',
 			'pt'        => 'List Product',
 			'pH'        => 'List Product',
+			'pageTool'  => modules::run('backend/store/b_product/prod_filter'),
+			'pageMenu'  => 'test',
+			'pageMenu'  => $menu,
 			'prods'     => $prods['prods'],
 			'num_rec'	=> $prods['num_rec']
 			);
