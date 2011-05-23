@@ -32,26 +32,7 @@ class Checkout extends Controller {
 	function index() {
 		redirect('store/checkout/buyerinfo');
 	}
-	function check_customer(){
-		$email = $this->input->post('email');
-		$q = modules::run('store/customer/getByEmail', $email);
-		if($q){
-			
-			$data = array(
-				'msg' => true,
-				'customer_data' => $q
-			);
-			json_encode($data);
-			return true;
-		
-		}else{
-			$data = array(
-				'msg' => false,
-			);
-			json_encode($data);
-			return false;
-		}
-	}
+	
 	/**
 	 * Buyer info Page
 	 *
