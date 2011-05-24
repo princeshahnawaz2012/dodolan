@@ -10,7 +10,7 @@ class Mailer
 	var $to = '';
 	var $subject ='';
 	var $from = 'zidmubarock@gmail.com';
-	var $name_from = 'Culture Update ';
+	var $name_from = 'Culture Update';
 	var $cssinline ='';
 	var $body = '';
 	

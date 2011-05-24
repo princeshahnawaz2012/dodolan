@@ -68,8 +68,7 @@ class User extends Controller {
 			'city_code' => $this->input->post('city_code'),
 			'zip' =>$this->input->post('zip'),
 			'mobile' => $this->input->post('mobile'),
-			'c_date' => date('Y-m-d H:i:s'),
-			
+			'c_date' => date('Y-m-d H:i:s'),	
 			);
 		$ins = $this->user_m->register($data);
 		if($ins){

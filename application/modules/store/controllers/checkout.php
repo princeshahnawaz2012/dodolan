@@ -47,7 +47,7 @@ class Checkout extends Controller {
 			$login_data = $this->session->userdata('login_data');
 			if($login_data && !$this->cart->customer_info){
 				$list_fields = 'first_name, id, last_name, email, address, country_id, province, city, zip, city_code, zip, mobile, phone';
-				$userdata = modules::run('user/userdata', $login_data['user_id'], $list_fields);
+				$userdata = modules::run('store/customer/getByUser', $login_data['user_id'], $list_fields);
 				$customer_info = array('customer_info' => $userdata);
 				$this->cart->write_data($customer_info);
 			}
@@ -134,36 +134,52 @@ class Checkout extends Controller {
 		
 	if(!$this->input->post('register') || $this->input->post('register') == null ){
 			// if user surely they have login
-			// put the data from user personal info from database to "custumer_info" session
-			$ins_data = array('customer_info' => $data);
-			//$this->cart->customer_info = $data;
-			$this->cart->write_data($ins_data);
-			
-			if($this->input->post('different_address') != 1 || !$this->input->post('different_address') || $this->input->post('different_address') == null ){
-				// Everything DONE !!
-				// So Go to the next step "SHIPPING METHOD"
-				//$this->cart->check_step['custumer_info'] = true;
-				$this->cart->check_step['custumer_info'] = true;
-				$this->cart->write_data();
-				redirect('store/checkout/shipping_method');
+			// update the data from user personal info to store_customer
+			$login_data = $this->session->userdata('login_data');
+			$getId = modules::run('store/customer/getByUser', $login_data['user_id']);
+			$new_customer = modules::run('store/customer/exe_updateById', $getId['id'], $data);
+			if($new_customer){
+				$list_fields = 'first_name, last_name, email, id, address, country_id, province, city, zip, city_code, zip, mobile, phone';
+				$user = modules::run('store/customer/getById', $new_customer, $list_fields);
+
+				$ins_data = array('customer_info' => $user);
+				//$this->cart->customer_info = $data;
+				$this->cart->write_data($ins_data);
+
+				if($this->input->post('different_address') != 1 || !$this->input->post('different_address') || $this->input->post('different_address') == null ){
+					// Everything DONE !!
+					// So Go to the next step "SHIPPING METHOD"
+					//$this->cart->check_step['custumer_info'] = true;
+					$this->cart->check_step['custumer_info'] = true;
+					$this->cart->write_data();
+					redirect('store/checkout/shipping_method');
+				}else{
+					$ship_to_data = array('shipto_info' => $ship_to_info);
+					$this->cart->write_data($ship_to_data);
+					// Everything DONE !!
+					// So Go to the next step "SHIPPING METHOD"
+					$this->session->userdata['checkout_step']['custumer_info'] = true;
+					$this->session->sess_write();
+					redirect('store/checkout/shipping_method');
+				}
 			}else{
-				$ship_to_data = array('shipto_info' => $ship_to_info);
-				$this->cart->write_data($ship_to_data);
-				// Everything DONE !!
-				// So Go to the next step "SHIPPING METHOD"
-				$this->session->userdata['checkout_step']['custumer_info'] = true;
-				$this->session->sess_write();
-				redirect('store/checkout/shipping_method');
+				$this->messages->add('this email already registered', 'warning');
+				// if register not success ussualy cause;
+				redirect('store/checkout/buyerinfo');
 			}
 	}elseif($this->input->post('register') == 1 && !$this->session->userdata('login_data') ){
-		// if user choose to register, So do the registration
+		// if user choose to register, So do the registration, 
 		// and user absolutey not login
+		
 		$reg = modules::run('user/exe_register');
+		
 		if($reg){
-			// if register success
+			// if register success, insert NEW CUSTOMER data to store_customer, with new user user_id
 			// fecting user data from database
-			$list_fields = 'first_name, last_name, email, address, country_id, province, city, zip, city_code, zip, mobile, phone';
-			$user = modules::run('user/userdata', $reg, $list_fields);
+			$data['user_id'] = $reg;
+			$new_customer = modules::run('store/customer/exe_create', $data);
+			$list_fields = 'first_name, last_name, email, id, address, country_id, province, city, zip, city_code, zip, mobile, phone';
+			$user = modules::run('store/customer/getByUser',$reg, $list_fields);
 			if($user){
 				// if fecthing success, system will automatically do login for this user
 				$this->load->model('user/auth_m');
@@ -361,12 +377,13 @@ class Checkout extends Controller {
 			$currency = $this->config->item('currency');
 		}
 		if(!$this->session->userdata('order_id')){
-		$order_id = modules::run('store/order/create_order');
+			$order_id = modules::run('store/order/create_order');
 		}else{
-		$order_id= $this->session->userdata('order_id');
+			$order_id= $this->session->userdata('order_id');
 		}
 		$order_data = array(
 			'c_date' => date('Y-m-d H:i:s'),
+			'customer_id' => $this->cart->customer_info['id'],
 			'payment_method' => $this->cart->payment_info['method'],
 			'total_amount' => $this->cart->total()+$this->cart->shipping_info['fee'],
 			'sub_amount' => $this->cart->total(),
@@ -382,15 +399,12 @@ class Checkout extends Controller {
 		if($this->session->userdata('login_data')){
 			$order_data['user_id'] = $this->session->userdata['login_data']['user_id'];
 		}
-		
-		// serialize for order_personal_data
-		$personal_data = $this->cart->customer_info;
-		$personal_data['order_id'] = $order_id ;
 		// serialize for order_shipto_data
 		if(!$this->cart->shipto_info){
 			$shipto_data = $this->cart->customer_info;
 			$shipto_data['order_id'] = $order_id;
 			unset($shipto_data['email']);
+			unset($shipto_data['id']);
 		}else{
 			$shipto_data = $this->cart->shipto_info;
 			$shipto_data['order_id'] = $order_id;	
@@ -411,14 +425,13 @@ class Checkout extends Controller {
 		}
 		$param = array(
 			'order_data' => $order_data,
-			'personal_data' => $personal_data,
 			'shipto_data' => $shipto_data,
 			'product_sold_data' => $product_sold_data
 		);
 		if(!$this->session->userdata('order_id')){
-		$insert_order = modules::run('store/order/create_order', $param, $order_id);
+			$insert_order = modules::run('store/order/create_order', $param, $order_id);
 		}else{
-		$insert_order = true;	
+			$insert_order = true;	
 		}
 		if($insert_order){
 			$data = array('order_id' => $order_id);

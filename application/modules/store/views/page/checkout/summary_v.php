@@ -202,8 +202,7 @@
 			<textarea name="customer_note" class="grid_300" rows="8"></textarea>
 			</div>
 			<div class="grid_300 right captcha">
-				<?
-					$this->recaptcha->show_it();
+				<?					$this->recaptcha->show_it();
 				?>
 				<br class="clear"/>
 					<input type="submit" name="process" class="button right" value="Process">

@@ -116,14 +116,13 @@ class Order_m extends Model {
 		// insert store_order, which actally update the record with complete data;
 		$this->db->where('id', $id);
 		$order = $this->db->update('store_order', $param['order_data']);
-		// insert personal data
+		
 	if($order){
-		$personal_data = $this->insert_personal_data($param['personal_data']);
 		// insert shipto_data
 		$shipto_data = $this->insert_shipto_data($param['shipto_data']);
 		// insert product_sold_data
 		$product_sold_data = $this->insert_product_sold_data($param['product_sold_data']);
-		return $id;
+		return true;
 	}else{
 		return false;
 	}
@@ -193,8 +192,12 @@ class Order_m extends Model {
 		return $order;
 	}
 	function get_personal_data($id_order){
-		$this->db->where('order_id', $id_order);
-		$q2 = $this->db->get('store_order_personal_data');
+		$this->db->select('customer_id');
+		$this->db->where('id', $id_order);
+		$q = $this->db->get('store_order');
+		$this->db->where('id', $q->row()->customer_id);
+		$q2 =  $this->db->get('store_customer');
+		
 		if($q2->num_rows() == 1){
 			$personal_data = $q2->row();
 		}else{

@@ -15,9 +15,9 @@ class Bug {
 		}
 	}
 	function show(){	    
-		if(count($this->msg) > 0){
+		if(count(get_defined_vars()) > 0){
 			$i= 1;
-			foreach($this->msg as $msg){
+			foreach(get_defined_vars() as $msg){
 				echo '<div class=""><h4 class="left mr20">'.$i.'</h4>'.$msg.'</div><br class="clear"><div class="horline"></div>';
 				$i++;
 			}
