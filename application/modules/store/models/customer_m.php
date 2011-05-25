@@ -55,7 +55,7 @@ $this->db->get('store_customer', $param['limit'], $param['start']);
 	function create($data){
 		$this->db->where('email', $data['email']);
 		$pre = $this->db->get('store_customer');
-		if($pre->num_rows() == 0){
+		if($pre->num_rows() == 0 ){
 		$q = $this->db->insert('store_customer', $data);
 			if($q){
 				return $this->db->insert_id();
@@ -68,13 +68,29 @@ $this->db->get('store_customer', $param['limit'], $param['start']);
 		
 	}
 	function updateById($id, $passdata){
-		$this->db->where('id', $id);
-		$q = $this->db->update('store_customer', $passdata);
-		if($q){
-			return true;
-		}else{
+		$current_data = $this->getById($id);
+		
+		// check, that there is other customer with email inputed
+		$this->db->where('email', $passdata['email']);
+		$this->db->where('id !=', $id);
+		$pre = $this->db->get('store_customer');
+		// check, that there is no user register with email inputed
+		$this->db->where('email', $passdata['email']);
+		$this->db->where('id !=', $current_data['user_id']);
+		$pre2 = $this->db->get('user');
+		
+		// if all pre qualify, update the data;
+		if($pre->num_rows() == 0 && $pre2->num_rows() == 0):
+			$this->db->where('id', $id);
+			$q = $this->db->update('store_customer', $passdata);
+			if($q){
+				return true;
+			}else{
+				return false;
+			}
+		else:
 			return false;
-		}
+		endif;
 	}
 
 }

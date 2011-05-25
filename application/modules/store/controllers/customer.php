@@ -28,21 +28,11 @@ class Customer extends Controller {
 		return $q;
 	}
 	function exe_create($passdata){
-		$data = array(
-			'first_name' => $passdata['first_name'],
-			'last_name'  => $passdata['last_name'],
-			'email'      => $passdata['email'],
-			'address'    => $passdata['address'],
-			'country_id' => $passdata['country_id'],
-			'province'   => $passdata['province'],
-			'city'       => $passdata['city'],
-			'city_code'  => $passdata['city_code'],
-			'zip'        =>	$passdata['zip'],
-			'mobile'     => $passdata['mobile'],
-			'c_date'     => date('Y-m-d H:i:s'),	
-		);
+		$data = $passdata;
+	
+		$data['c_date'] = date('Y-m-d H:i:s');
 		if(isset($passdata['user_id'])){
-			$data['user_id']= $passdata['user_id'];
+			$data['user_id'] = $passdata['user_id'];
 		}
 		$q = $this->mod->create($data);
 		return $q;

@@ -53,32 +53,27 @@ class User extends Controller {
 			$this->exe_register();
 		}
 	}
-	function exe_register(){
-		$data = array(
-			'first_name' => $this->input->post('first_name'),
-			'last_name' => $this->input->post('last_name'),
-			'email' => $this->input->post('email'),
-			'password' => md5($this->input->post('password')),
-			'gender' => $this->input->post('gender'),
-			'birthday' => $this->input->post('birthday'),
-			'address' => $this->input->post('address'),
-			'country_id' => $this->input->post('country_id'),
-			'province' => $this->input->post('province'),
-			'city' => $this->input->post('city'),
-			'city_code' => $this->input->post('city_code'),
-			'zip' =>$this->input->post('zip'),
-			'mobile' => $this->input->post('mobile'),
-			'c_date' => date('Y-m-d H:i:s'),	
-			);
+	function exe_register($passdata){
+	
+		// encrypt, password inputed
+		$password = md5($passdata['password']);
+		// unset password from passdata.
+		unset($passdata['password']);
+		// serialize $passdata to $data;
+		$data = $passdata;
+		// set password to $data, with encrypted one;
+		$data['password']  	= $password;
+		// assign current datetime
+		$data['c_date'] 	= date('Y-m-d H:i:s');
+		// passing the $data to model
 		$ins = $this->user_m->register($data);
-		if($ins){
-			return $ins;
-		}else{
-			return false;
-		}
+		return $ins;
+
 	}
-	function exe_edit(){
-		
+	function exe_edit($passdata, $id){
+		$passdata['m_date'] = date('Y-m-d H:i:s');
+		$q = $this->user_m->update($passdata, $id);
+		return $q;
 	}
 	function getCity(){
 		if($this->input->post('city')){

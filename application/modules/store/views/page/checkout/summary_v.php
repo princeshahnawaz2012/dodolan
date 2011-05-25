@@ -132,49 +132,49 @@
 	<? 
 
 	if($this->session->userdata('ship_to_info')){
-	$customer = $this->session->userdata('ship_to_info');
+	$ship = $this->session->userdata('ship_to_info');
 	}else{
-	$customer = $this->session->userdata('customer_info');
+	$ship = $this->session->userdata('customer_info');
 	}
 	;?>
 	<div class="data_rowSet">
 		<div class="label">Aimed to </div>
-		<div class="data"><?=$customer['first_name']?> <?=$customer['last_name']?></div>
+		<div class="data"><?=$ship['first_name']?> <?=$ship['last_name']?></div>
 		<div class="clear"></div>
 	</div>
 	<div class="data_rowSet">
 		<div class="label">Address </div>
-		<div class="data"><?=$customer['address']?></div>
+		<div class="data"><?=$ship['address']?></div>
 		<div class="clear"></div>
 	</div>
 	<div class="data_rowSet">
 		<div class="label">Country </div>
-		<div class="data"><?=$customer['country_id']?></div>
+		<div class="data"><?=$ship['country_id']?></div>
 		<div class="clear"></div>
 	</div>
 	<div class="data_rowSet">
 		<div class="label">Province </div>
-		<div class="data"><?=$customer['province']?></div>
+		<div class="data"><?=$ship['province']?></div>
 		<div class="clear"></div>
 	</div>
 	<div class="data_rowSet">
 		<div class="label">First Name </div>
-		<div class="data"><?=$customer['city']?></div>
+		<div class="data"><?=$ship['city']?></div>
 		<div class="clear"></div>
 	</div>
 	<div class="data_rowSet">
 		<div class="label">Zip </div>
-		<div class="data"><?=$customer['zip']?></div>
+		<div class="data"><?=$ship['zip']?></div>
 		<div class="clear"></div>
 	</div>
 	<div class="data_rowSet">
 		<div class="label">Phone </div>
-		<div class="data"><?=$customer['phone']?></div>
+		<div class="data"><?=$ship['phone']?></div>
 		<div class="clear"></div>
 	</div>
 	<div class="data_rowSet">
 		<div class="label">Mobile </div>
-		<div class="data"><?=$customer['mobile']?></div>
+		<div class="data"><?=$ship['mobile']?></div>
 		<div class="clear"></div>
 	</div>
 		

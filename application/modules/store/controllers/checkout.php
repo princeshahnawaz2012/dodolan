@@ -63,6 +63,7 @@ class Checkout extends Controller {
 			$this->theme->render($data);
 		
 			if($this->input->post('submit')){
+				/*
 				$this->load->library('form_validation');
 				// serialize customer information
 					$this->form_validation->set_rules('first_name', 'first name', 'required');
@@ -86,8 +87,9 @@ class Checkout extends Controller {
 					//redirect('store/checkout/buyerinfo');
 					return false;
 				}else{
+				*/
 					$this->exe_buyerinfo();
-				}
+				//}
 				
 			}
 			
@@ -131,21 +133,24 @@ class Checkout extends Controller {
 			'phone'      => $this->input->post('ship_phone'),
 			'zip'        => $this->input->post('ship_zip'),
 			);
+	
+		// case 1
+		// user is defenitely LOGIN
+		if($this->session->userdata('login_data') ){
 		
-	if(!$this->input->post('register') || $this->input->post('register') == null ){
-			// if user surely they have login
-			// update the data from user personal info to store_customer
+			// FLOW OPERATION : all input data from field personal info 
+			// will update the customer_store base on current logged_in user
+			
 			$login_data = $this->session->userdata('login_data');
 			$getId = modules::run('store/customer/getByUser', $login_data['user_id']);
-			$new_customer = modules::run('store/customer/exe_updateById', $getId['id'], $data);
-			if($new_customer){
-				$list_fields = 'first_name, last_name, email, id, address, country_id, province, city, zip, city_code, zip, mobile, phone';
-				$user = modules::run('store/customer/getById', $new_customer, $list_fields);
-
-				$ins_data = array('customer_info' => $user);
-				//$this->cart->customer_info = $data;
+			$update = modules::run('store/customer/exe_updateById', $getId['id'], $data);
+			//if update store_customer succes, fect back it, and put to cusomer_info session
+			if($update == true){
+				$list_fields = 
+				'first_name, last_name, email, id, address, country_id, province, city, zip, city_code, zip, mobile, phone';
+				$customer_data = modules::run('store/customer/getById', $getId['id'], $list_fields);
+				$ins_data = array('customer_info' => $customer_data);
 				$this->cart->write_data($ins_data);
-
 				if($this->input->post('different_address') != 1 || !$this->input->post('different_address') || $this->input->post('different_address') == null ){
 					// Everything DONE !!
 					// So Go to the next step "SHIPPING METHOD"
@@ -162,60 +167,86 @@ class Checkout extends Controller {
 					$this->session->sess_write();
 					redirect('store/checkout/shipping_method');
 				}
-			}else{
-				$this->messages->add('this email already registered', 'warning');
+				
+			}
+			// if unsuccess, it's caused by, already other registerd user or customer with email inputed
+			else{
+				$this->messages->add('you cannot use <strong>'.$data['email'].'</strong>, it\'s already registered ', 'warning');
 				// if register not success ussualy cause;
 				redirect('store/checkout/buyerinfo');
 			}
-	}elseif($this->input->post('register') == 1 && !$this->session->userdata('login_data') ){
-		// if user choose to register, So do the registration, 
-		// and user absolutey not login
-		
-		$reg = modules::run('user/exe_register');
-		
-		if($reg){
-			// if register success, insert NEW CUSTOMER data to store_customer, with new user user_id
-			// fecting user data from database
-			$data['user_id'] = $reg;
-			$new_customer = modules::run('store/customer/exe_create', $data);
-			$list_fields = 'first_name, last_name, email, id, address, country_id, province, city, zip, city_code, zip, mobile, phone';
-			$user = modules::run('store/customer/getByUser',$reg, $list_fields);
-			if($user){
-				// if fecthing success, system will automatically do login for this user
-				$this->load->model('user/auth_m');
-				$log = $this->auth_m->checkCombination($this->input->post('email'), $this->input->post('password'));
-				if($log){
-				// if login success so put the  userdata fecting to "customer_info" session
-				$ins_data = array('customer_info' => $user);
-				$this->session->set_userdata($ins_data);
-				
+			
+			
+			
+		}
+		// case 2
+		// user not login and choose to register
+		elseif(!$this->session->userdata('login_data') && $this->input->post('register') == 1){
+			// FLOW OPERATION 
+			// 1. User will Register with inputed data
+			// 2. create store_customer data for this new user
+			// 3. do login
+			$data['password'] = $this->input->post('password');
+			$data['gender']   = $this->input->post('gender');
+			$data['birthday'] = $this->input->post('birthday');
+			$reguser = modules::run('user/exe_register', $data);
+			// if register success
+			if($reguser){
+				// do login
+				$auth = $this->load->model('user/auth_m');
+				$auth->checkCombination($data['email'], $data['password']);
+				// unset unused data, kep clean the array $data;
+				unset($data['password']);
+				unset($data['gender']);
+				unset($data['birthday']);
+				$data['user_id'] = $reguser;
+				// create store_customer data for this user
+				$new_customer = modules::run('store/customer/exe_create',$data);
+				if($new_customer){
+					// fecth back the new_customer
+					$list_fields = 
+					'first_name, last_name, email, id, address, country_id, province, city, zip, city_code, zip, mobile, phone';
+					$customer_data = modules::run('store/customer/getById', $new_customer, $list_fields);
+					$ins_data = array('customer_info' => $customer_data);
+					$this->cart->write_data($ins_data);
 					if($this->input->post('different_address') != 1 || !$this->input->post('different_address') || $this->input->post('different_address') == null ){
 						// Everything DONE !!
 						// So Go to the next step "SHIPPING METHOD"
+						//$this->cart->check_step['custumer_info'] = true;
+						$this->cart->check_step['custumer_info'] = true;
+						$this->cart->write_data();
 						redirect('store/checkout/shipping_method');
 					}else{
-						// if the custumer choose to ship the order to different address
-						// so put ship form inputed data to "ship_to_info" session
-						$ship_to_data = array('shipto_info' => $ship_to_info );
-						$this->session->set_userdata($ship_to_data);
-
+						$ship_to_data = array('shipto_info' => $ship_to_info);
+						$this->cart->write_data($ship_to_data);
 						// Everything DONE !!
 						// So Go to the next step "SHIPPING METHOD"
 						$this->session->userdata['checkout_step']['custumer_info'] = true;
 						$this->session->sess_write();
-						redirect('store/checkout/shipping_method');	
+						redirect('store/checkout/shipping_method');
 					}
-
 				}
+				
+			}
+			// if unsuccess, alredy email registerd
+			else{
+				$this->messages->add('you cannot use <strong>'.$data['email'].'</strong>, it\'s already registered ', 'warning');
+
+				redirect('store/checkout/buyerinfo');
 			}
 			
+			
 		}
+		//case 3
+		//user not login and not choose to register
+		elseif(!$this->session->userdata('login_data') && $this->input->post('register') != 1 ){
+		}
+		// case 4
+		// common error
 		else{
-			$this->messages->add('this email already registered', 'warning');
-			// if register not success ussualy cause;
-			redirect('store/checkout/buyerinfo');
+			
 		}
-	}
+		
 	
 	}
 	
@@ -344,8 +375,11 @@ class Checkout extends Controller {
 	 * @author Zidni Mubarock
 	 */
 	function summary(){
+	
 		$this->load->library('recaptcha');
 		if($this->cart->payment_info){
+				$this->bug->send(json_encode($this->cart->customer_info));
+				$this->bug->send(json_encode($this->cart->shipto_info));
 			$rendered = array(	
 				'mainLayer' => 'store/page/checkout/summary_v',
 				'pT'        => 'Checkout - Order Summary',
