@@ -51,4 +51,19 @@ class Misc {
 	function arrayObject($array){
 		return json_decode(json_encode($array));
 	}
+	function print_arrayRecrusive($array){
+		$output = '';
+		foreach($array as $key => $value){
+			$output .= '<div class="box2 mb10"><span class="bold">'.$key.'</span> =';
+			if(is_array($value)){
+				$output .= $this->print_arrayRecrusive($value);
+			}else{
+				$output .= $value;
+			}
+				
+				
+			$output .= '</div>';
+		}
+		return $output;
+	}
 }

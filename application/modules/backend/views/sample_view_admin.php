@@ -1,6 +1,4 @@
-
-
-<br/>
 <div class="padd20">
-<h2>This is Aadministrator Area, You should becarefull here.. heheheh :)</h2>
+
+<?=modules::run('backend/widget/ga_chart')?>
 </div>

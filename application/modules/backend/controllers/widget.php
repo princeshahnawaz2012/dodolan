@@ -52,5 +52,17 @@ class Widget extends Controller {
 		return false;
 		}
 	}
+	function ga_chart()
+	{
+		$this->load->view('backend/widget/ga_chart_v');
+	}
+	function ga_req(){	
+		$data['email'] = $this->config->item('ga_account');
+		$data['password'] = $this->config->item('ga_pass');
+		$ga = $this->load->library('gapi',$data);
+		return  $ga->requestReportData(17866436,array('date'),array('newVisits', 'pageviews', 'visits'), array('-date'),  $filter=null, $start_date=null, $end_date=null, $start_index=1, $max_results=5, 'json');
+		
+	}
+	
 
 }?>
