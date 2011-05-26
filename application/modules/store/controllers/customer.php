@@ -39,20 +39,9 @@ class Customer extends Controller {
 	}
 
 	function exe_updateById($id, $passdata){
-		$data = array(
-			'first_name' => $passdata['first_name'],
-			'last_name'  => $passdata['last_name'],
-			'email'      => $passdata['email'],
-			'address'    => $passdata['address'],
-			'country_id' => $passdata['country_id'],
-			'province'   => $passdata['province'],
-			'city'       => $passdata['city'],
-			'city_code'  => $passdata['city_code'],
-			'zip'        =>	$passdata['zip'],
-			'mobile'     => $passdata['mobile'],
-			'm_date'     => date('Y-m-d H:i:s'),	
-		);
-		$q = $this->mod->updateById($id, $data);
+		
+		$passdata['m_date'] =date('Y-m-d H:i:s');
+		$q = $this->mod->updateById($id, $passdata);
 		return $q;
 	}
 	function getAll(){
@@ -61,6 +50,9 @@ class Customer extends Controller {
 		$param['limit'] = 10;
 		$q = $this->mod->getAll($param);
 	//	$data['mainLayer'] = ''
+		
+	}
+	function browse(){
 		
 	}
 	

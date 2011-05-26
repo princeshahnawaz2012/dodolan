@@ -47,7 +47,7 @@ class Order_m extends Model {
 				'c.first_name' => $param['query'],
 				'c.last_name' => $param['query']
 			);
-			$this->db->join('store_order_personal_data as b', 'b.order_id=a.id' );
+			$this->db->join('store_customer as b', 'b.id=a.customer_id' );
 			$this->db->join('store_order_shipto_data as c', 'c.order_id=a.id' );
 			$this->db->or_like($term);
 		}
@@ -74,7 +74,7 @@ class Order_m extends Model {
 				'c.first_name' => $param['query'],
 				'c.last_name' => $param['query']
 			);
-			$this->db->join('store_order_personal_data as b', 'b.order_id=a.id' );
+			$this->db->join('store_customer as b', 'b.id=a.customer_id' );
 			$this->db->join('store_order_shipto_data as c', 'c.order_id=a.id' );
 			$this->db->or_like($term);
 		}

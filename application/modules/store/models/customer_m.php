@@ -24,6 +24,14 @@ $this->db->get('store_customer', $param['limit'], $param['start']);
 		}
 		 
 	}
+	function browse($param = false){
+		$q = $this->db->get('store_customer');
+		if($q->num_rows() > 0){
+			return $q->result();
+		}else{
+			return false;
+		}
+	}
 	function getByUser($id , $select =false){
 		if($select){
 			$this->db->select($select);
@@ -55,7 +63,14 @@ $this->db->get('store_customer', $param['limit'], $param['start']);
 	function create($data){
 		$this->db->where('email', $data['email']);
 		$pre = $this->db->get('store_customer');
-		if($pre->num_rows() == 0 ){
+		if(isset($data['user_id'])){
+			$numrows = 0;
+		}else{
+			$numrows = $pre->num_rows();
+		}
+		
+		
+		if($numrows == 0 ){
 		$q = $this->db->insert('store_customer', $data);
 			if($q){
 				return $this->db->insert_id();
@@ -91,6 +106,15 @@ $this->db->get('store_customer', $param['limit'], $param['start']);
 		else:
 			return false;
 		endif;
+	}
+	function getByEmail($email){
+		$this->db->where('email', $email);
+		$q = $this->db->get('store_customer');
+		if($q->num_rows() == 1){
+			return $q->row();
+		}else{
+			return false;
+		}
 	}
 
 }

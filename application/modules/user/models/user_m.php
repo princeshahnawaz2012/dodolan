@@ -17,7 +17,9 @@ class User_m extends Model {
 	function register($data=array()) {
 		$this->db->where('email', $data['email']);
 		$q = $this->db->get('user');
-		if($q->num_rows() == 0){
+		$this->db->where('email', $data['email']);
+		$q2 = $this->db->get('store_customer');
+		if($q->num_rows() == 0 && $q2->num_rows() == 0){
 			$ins = $this->db->insert('user', $data);
 			if($ins){
 				$id = $this->db->insert_id();
@@ -61,6 +63,19 @@ class User_m extends Model {
 		$this->db->select($select);
 		}
 		$this->db->where('id', $id);
+		$q = $this->db->get('user');
+		if($q->num_rows() == 1){
+			$data['user'] = $q->row_array();
+			return $data;
+		}else{
+			return false;
+		}
+	}
+	function get_userdata_by_email($email, $select=false){
+		if($select){
+		$this->db->select($select);
+		}
+		$this->db->where('email', $email);
 		$q = $this->db->get('user');
 		if($q->num_rows() == 1){
 			$data['user'] = $q->row_array();

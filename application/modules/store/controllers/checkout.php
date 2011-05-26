@@ -240,6 +240,78 @@ class Checkout extends Controller {
 		//case 3
 		//user not login and not choose to register
 		elseif(!$this->session->userdata('login_data') && $this->input->post('register') != 1 ){
+		// FLOW OPERATION
+		// 1. check the email, is there on user table 
+		// 2. check the email, is there on store_customer table
+		
+		$u_m = $this->load->model('user/user_m');
+		$c_m = $this->load->model('store/customer_m');	
+		$is_user = $u_m->get_userdata_by_email($data['email']);
+		$is_customer = $c_m->getByEmail($data['email']);
+		// if email already registered
+		if($is_user){
+			$this->messages->add('email '.$data['email'].' is already registered, have you register here before ? why you don\'t try to sign in', 'warning');
+			redirect('store/checkout/buyerinfo');
+		}
+		// if the email is not registered
+		else{
+			// if the email is already taken by other customer
+			if($is_customer){
+					// update the customer data;
+					$upd_data = modules::run('store/customer/exe_updateById', $is_customer->id, $data);
+					$list_fields = 
+					'first_name, last_name, email, id, address, country_id, province, city, zip, city_code, zip, mobile, phone';
+					$customer_data = modules::run('store/customer/getById', $is_customer->id, $list_fields);
+					$ins_data = array('customer_info' => $customer_data);
+					$this->cart->write_data($ins_data);
+					
+					if($this->input->post('different_address') != 1 || !$this->input->post('different_address') || $this->input->post('different_address') == null ){
+						// Everything DONE !!
+						// So Go to the next step "SHIPPING METHOD"
+						//$this->cart->check_step['custumer_info'] = true;
+						$this->cart->check_step['custumer_info'] = true;
+						$this->cart->write_data();
+						redirect('store/checkout/shipping_method');
+					}else{
+						$ship_to_data = array('shipto_info' => $ship_to_info);
+						$this->cart->write_data($ship_to_data);
+						// Everything DONE !!
+						// So Go to the next step "SHIPPING METHOD"
+						$this->session->userdata['checkout_step']['custumer_info'] = true;
+						$this->session->sess_write();
+						redirect('store/checkout/shipping_method');
+					}
+			}
+			// if the email not yet taken by other customer
+			else{
+				$new_customer = modules::run('store/customer/exe_create',$data);
+				if($new_customer){
+					// fecth back the new_customer
+					$list_fields = 
+					'first_name, last_name, email, id, address, country_id, province, city, zip, city_code, zip, mobile, phone';
+					$customer_data = modules::run('store/customer/getById', $new_customer, $list_fields);
+					$ins_data = array('customer_info' => $customer_data);
+					$this->cart->write_data($ins_data);
+					if($this->input->post('different_address') != 1 || !$this->input->post('different_address') || $this->input->post('different_address') == null ){
+						// Everything DONE !!
+						// So Go to the next step "SHIPPING METHOD"
+						//$this->cart->check_step['custumer_info'] = true;
+						$this->cart->check_step['custumer_info'] = true;
+						$this->cart->write_data();
+						redirect('store/checkout/shipping_method');
+					}else{
+						$ship_to_data = array('shipto_info' => $ship_to_info);
+						$this->cart->write_data($ship_to_data);
+						// Everything DONE !!
+						// So Go to the next step "SHIPPING METHOD"
+						$this->session->userdata['checkout_step']['custumer_info'] = true;
+						$this->session->sess_write();
+						redirect('store/checkout/shipping_method');
+					}
+				}
+			}
+		}
+
 		}
 		// case 4
 		// common error

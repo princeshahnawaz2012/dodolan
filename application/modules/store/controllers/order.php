@@ -151,5 +151,21 @@ if(!$data){
 			$this->mailer->body = $body;
 			$this->mailer->send();
 	}
+	function test_getorder()
+	{
+		$id = $this->uri->segment(4);
+		$order = $this->order_m->getall_orderdata($id);
+		$person = $order['personal_data'];
+		$data  = $order['order_data'];
+		$body = array('person'=> $person, 'data' => $data, 'template' => 'store/misc/order/mail_order_notify_v');
+		
+		$this->load->library('mailer');
+		$this->mailer->to = 'zidmubarock@gmail.com';
+		$this->mailer->subject = 'Update Order Status Notification,  order no- '.$data->id;
+		$this->mailer->body = $body;
+		$this->mailer->send();
+		
+		
+	}
 
 }
