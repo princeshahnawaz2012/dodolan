@@ -1,4 +1,4 @@
-<?<?php 
+<?php 
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
@@ -21,16 +21,18 @@ class B_collection extends Controller {
 		$passdata = array();
 		$q = modules::run('store/collection/exe_create', $passdata);
 		$data['mainLayer'] = 'backend/page/store/collection/detail_v';
-		$this->theme->render($data);
+		$this->theme->render($data, 'back');
 	}
 	function detail(){
 		$id = $this->uri->segment(5);
 		$q = modules::run('store/collection/exe_getById', $id);
 		$data['mainLayer'] = 'backend/page/store/collection/detail_v';
-		$this->theme->render($data);
+		$this->theme->render($data, 'back');
 	}
 	function browse(){
-		
+		$data['pH'] = 'Collection';
+		$data['mainLayer'] = 'backend/page/store/collection/browse_v';
+		$this->theme->render($data, 'back');
 	}
 	function delete(){
 		$id = $this->uri->segment(5);
@@ -39,7 +41,7 @@ class B_collection extends Controller {
 		$id = $this->uri->segment(5);
 		$q = modules::run('store/collection/exe_update', $id);
 		$data['mainLayer'] = 'backend/page/store/collection/detail_v';
-		$this->theme->render($data);
+		$this->theme->render($data, 'back');
 		
 	}
 
