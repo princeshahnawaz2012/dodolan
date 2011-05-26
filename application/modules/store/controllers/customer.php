@@ -53,6 +53,11 @@ class Customer extends Controller {
 		
 	}
 	function browse(){
+		$q = $this->mod->browse();
+		$data['lists']  = $q;
+		$data['mainLayer'] = 'store/page/customer/browse_v';
+		$data['pT'] = 'Browse Customer';
+		$this->theme->render($data);
 		
 	}
 	

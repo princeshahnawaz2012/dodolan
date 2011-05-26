@@ -14,7 +14,9 @@ class Order extends Controller {
 	function Order() {
 		parent::Controller();
 	}
-	
+	function index(){
+		echo 'index';
+	}
 	function create_order($data=false, $id=false) {
 		// create order id first
 		
@@ -37,14 +39,38 @@ if(!$data){
 	function getorder($id){
 	$order = $this->order_m->getall_orderdata($id);
 	
-	if ($order){
-		$data['data'] = $order;
-		$data['mainLayer'] = 'store/page/order/order_show_v';
-		return $data;
-	}else{
-		return false;
+		if ($order){
+			$data['data'] = $order;
+			$data['mainLayer'] = 'store/page/order/order_show_v';
+			return $data;
+		}else{
+			return false;
+		}
 	}
-	
+	function getorderbycustomer($user_id){
+		$q = $this->order_m->getorderbycustomer($user_id);
+		
+		if($q){
+			$mount = 0;
+			foreach($q->result() as $order){ $mount = $mount+$order->total_amount;}
+			
+			$data['orders'] = $q->result();
+			$data['count']  = $q->num_rows();
+			$data['mount'] = $mount;
+		}else{
+			$data['orders'] = false;
+			$data['count']  = 0;
+			$data['mount']  = 0;
+		}
+		
+		return $data;
+	}
+	function tester(){
+			$id = $this->uri->segment(4);
+			$q = $this->getorderbycustomer($id);
+			echo json_encode($q);
+			echo $id;
+		
 	}
 	function orderprice($id, $num){
 		$order = $this->order_m->getOrder($id);

@@ -14,20 +14,41 @@ class Customer_m extends Model {
 		parent::Model();
 	}
 	
-	function getAll($param) {
-		$q = 
-$this->db->get('store_customer', $param['limit'], $param['start']);
-		if($q->num_rows() > 0){
-			return $q->result();
-		}else{
-			return false;
+	
+	function browse($param){
+		$this->db->select('id');
+		
+		if($param['query']){
+			$term = array(
+				'email' => $param['query'],
+				'first_name' => $param['query'],
+				'last_name'  => $param['query']
+			);
+			$this->db->or_like($term);
 		}
-		 
-	}
-	function browse($param = false){
-		$q = $this->db->get('store_customer');
+		if($param['reg'] == 'y'){
+			$this->db->where('user_id >', 0);
+		}elseif($param['reg']== 'n'){
+			$this->db->where('user_id', 0);
+		}
+		
+		$q = $this->db->get('store_customer', $param['end'], $param['start']);
+		$this->db->select('id');
+		if(isset($param['query'])){
+			$term = array(
+				'email' => $param['query'],
+				'first_name' => $param['query'],
+				'last_name'  => $param['query']
+			);
+			$this->db->or_like($term);
+		}
+		$q2 = $this->db->get('store_customer');
+		
 		if($q->num_rows() > 0){
-			return $q->result();
+			$data['result'] = $q->result();
+			$data['num_rec'] = $q2->num_rows();
+			return $data;
+			
 		}else{
 			return false;
 		}

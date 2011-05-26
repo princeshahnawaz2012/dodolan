@@ -20,7 +20,8 @@ class Widget extends Controller {
 			<li><a class="ui-corner-top" href="'.site_url('backend').'">Dashboard</a></li>
 			<li><a class="ui-corner-top" href="'.site_url('backend/store/b_order/browse/').'">Order</a></li>
 			<li><a class="ui-corner-top" href="'.site_url('backend/store/b_product/listprod/').'">Product</a>	</li>
-			<li><a class="ui-corner-top" href="'.site_url('backend/store/b_customer/browse/').'">Cusomer</a></li>
+			<li><a class="ui-corner-top" href="'.site_url('backend/store/b_collection/browse').'">Collection</a>	</li>
+			<li><a class="ui-corner-top" href="'.site_url('backend/store/b_customer/browse/').'">Customer</a></li>
 			<li><a class="ui-corner-top" href="'.site_url('backend/store/b_category/browse/').'">Category</a></li>
 			<li><a class="ui-corner-top" href="'.site_url('backend/store/b_collection/browse/').'">Collection</a></li>
 			<div class="clear"></div>

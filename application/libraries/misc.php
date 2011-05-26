@@ -48,4 +48,7 @@ class Misc {
 		    }
 		    return "$difference $periods[$j] {$tense}";
 	}
+	function arrayObject($array){
+		return json_decode(json_encode($array));
+	}
 }

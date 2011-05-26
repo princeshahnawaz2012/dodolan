@@ -158,7 +158,8 @@ class MY_Cart extends CI_Cart {
 	function show_price($number, $curr=false){		
 		if($curr == false){		
 		$formated = $this->currency().' '.number_format($number, 2, ',', '.');		
-		}else{		
+		}else{	
+			// TODO : Change when currency session change	
 		$formated = $curr.' '.number_format($number, 2, ',', '.');		
 		}		
 		return $formated;		

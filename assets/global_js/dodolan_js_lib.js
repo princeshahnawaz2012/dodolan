@@ -29,6 +29,10 @@ $(document).ready(function(){
 	});
 
 });
+$(document).ready(function(){
+	$(".table-Ui tbody tr:visible:even",this).addClass("even"); 
+    $(".table-Ui tbody tr:visible:odd",this).addClass("odd");
+});
 
 //Tab UI
 //---------------------------------------------------------------------------------------/

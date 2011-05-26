@@ -225,4 +225,13 @@ class Order_m extends Model {
 			}
 		return $product_sold_data;
 	}
+	function getorderbycustomer($id){
+		$this->db->where('customer_id', $id);
+		$q = $this->db->get('store_order');
+		if($q->num_rows() > 0){
+			return $q;
+		}else{
+			return false;
+		}
+	}
 }
