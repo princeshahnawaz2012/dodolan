@@ -63,3 +63,7 @@ background-image: -webkit-gradient(linear, 0 top, 0 bottom, from( #059a9f ), to(
 .backUserWid span{ text-shadow:0 1px 0 #fff;}
 .backUserWid a {text-shadow:0 1px 0 #fff; }
 
+/* Page 
+----------------------------------------------------------------------------------------------------*/
+.pageHeading .headingTitle h1 {font-weight: normal; font-size:18px;}
+

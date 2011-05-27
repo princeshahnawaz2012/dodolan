@@ -19,9 +19,17 @@ class B_collection extends Controller {
 	}
 	function create(){
 		$passdata = array();
-		$q = modules::run('store/collection/exe_create', $passdata);
-		$data['mainLayer'] = 'backend/page/store/collection/detail_v';
+		//$q = modules::run('store/collection/exe_create', $passdata);
+		$data['mainLayer'] = 'backend/page/store/collection/create_v';
+		$data['pH']   		= 'Create New Collection';
 		$this->theme->render($data, 'back');
+		if($this->input->post('submit')){
+			$passdata['name'] = $this->input->post('title');
+			$passdata['description'] = $this->input->post('description');
+			$passdata['img_file'] = 'img_file';
+			$passdata['p_date'] =date('Y-m-d H:i:s');
+			$q = modules::run('store/collection/exe_create', $passdata);
+		}
 	}
 	function detail(){
 		$id = $this->uri->segment(5);

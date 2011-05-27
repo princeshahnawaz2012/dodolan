@@ -1,7 +1,25 @@
 /* Global Misc */
 .horline { height:1px; background:#E4E4E4;}
-.button { border:1px solid #c1c1c1; background-color:#e4e4e4; color:#7b7979; text-shadow:0 1px 0 #fff; padding:5px 10px;-moz-border-radius:3px; border-radius:3px; cursor:pointer}
-.button:hover { background-color: #ECECEC;}
+.button {
+	-moz-border-bottom-colors: none;
+    -moz-border-image: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: url("../images/admin/btns/bg.gif?1") repeat-x scroll left top #DDDDDD;
+    border-color: #CCCCCC #BBBBBB #AAAAAA;
+    border-left: 1px solid #BBBBBB;
+    border-radius: 5px 5px 5px 5px;
+    border-right: 1px solid #BBBBBB;
+    border-style: solid;
+    border-width: 1px;
+    color: #3A3A3A;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 4px 6px;
+    text-shadow: 0 1px 1px #FFFFFF;
+}
+.button:hover { box-shadow: 0 0 3px #3084CA;}
 .save-button-Ui { background:url(../global_img/icon/boxdownload32_16px.png) 5px no-repeat #e4e4e4; padding-left:25px;}
 .cancel-button-Ui { background:url(../global_img/icon/stop32_16px.png) 5px no-repeat #e4e4e4; padding-left:25px;}
 .add-button-Ui {background:url(../global_img/icon/plus32_16px.png) 5px no-repeat #e4e4e4; padding-left:25px;}

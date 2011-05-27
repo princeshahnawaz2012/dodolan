@@ -15,11 +15,14 @@ class Collection_m extends Model {
 	}
 	//// API /////
 	function create($data) {
+		$data['main']['c_date'] =  date('Y-m-d H:i:s');
 		$q = $this->db->insert('store_collection', $data['main']);
 		if($q):
-			$id = $this->db->iinsert_id();
-			foreach($data['ref'] as $r){
-				$this->additem($id, $r['id']);
+			$id = $this->db->insert_id();
+			if(isset($data['ref'])){
+				foreach($data['ref'] as $r){
+					$this->additem($id, $r['id']);
+				}
 			}
 			return $id;
 		else :
