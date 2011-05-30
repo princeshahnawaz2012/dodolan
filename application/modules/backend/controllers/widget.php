@@ -54,13 +54,35 @@ class Widget extends Controller {
 	{
 		$this->load->view('backend/widget/ga_chart_v');
 	}
-	function ga_req(){	
+	function ga_chart_visit_req(){	
 		$data['email'] = $this->config->item('ga_account');
 		$data['password'] = $this->config->item('ga_pass');
+		$profileTable = 17866436;
 		$ga = $this->load->library('gapi',$data);
-		return  $ga->requestReportData(17866436,array('date'),array('newVisits', 'pageviews', 'visits'), array('-date'),  $filter=null, $start_date=null, $end_date=null, $start_index=1, $max_results=5, 'json');
+		$ga->requestReportData($profileTable,array('date'),array('visitors', 'newVisits'), array('-date'),  $filter=null, $start_date=null, $end_date=null, $start_index=1, $max_results=5, 'ori');
 		
+		return $this->ga_data_extractor($ga->getDataArray());
+	}
+	function ga_data_extractor($gadata){
+		
+		$visitors =  array();
+		$newVisits = array();
+		// visitors
+		foreach($gadata as $dt => $datval){
+			$date = date_create_from_format('Ymd', $dt);
+		
+			$str_date = $date->format('l, F j,  Y');
+			$v = array($str_date, $datval['ga:visitors']);
+			$nv = array($str_date, $datval['ga:newVisits']);
+			array_push($visitors, $v);
+			array_push($newVisits, $nv);
+			
+		}
+		$return['visitors'] = $visitors;
+		$return['newVisits'] = $newVisits;
+		return $return;
+	
 	}
 	
 
-}?>
+}

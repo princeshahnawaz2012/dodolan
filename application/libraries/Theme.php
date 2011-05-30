@@ -56,7 +56,7 @@ function load_text_editor($id){
 
 				//Optionnal values
 				'config' => array(
-					'toolbar' 	=> 	"Full", 	//Using the Full toolbar
+					'toolbar' 	=> 	"Basic", 	//Using the Full toolbar
 					'width' 	=> 	"100%",	//Setting a custom width
 					'height' 	=> 	'200px',	//Setting a custom height
 

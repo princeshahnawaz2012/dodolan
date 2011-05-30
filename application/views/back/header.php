@@ -14,6 +14,10 @@
 <script src="<?=base_url();?>/assets/global_js/jquery_ui/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<?=base_url();?>/assets/global_js/dodolan_js_lib.js"></script>
 <script type="text/javascript" src="<?=base_url();?>/assets/global_js/jgrowl/jquery.jgrowl.js"></script>
+
+<!-- js for HighCharts and CSS -->
+<script src="<?=base_url();?>/assets/global_js/hc/highcharts.js" type="text/javascript" charset="utf-8"></script>
+<script src="<?=base_url();?>/assets/global_js/hc/modules/exporting.js" type="text/javascript" charset="utf-8"></script>
 <!-- Css and JS for Specify Individual Theme -->
 <link href="<?=base_url();?>assets/theme/back/css/admin-style.css" rel="stylesheet" type="text/css" />
 <link href="<?=base_url();?>assets/theme/back/css/page_style.css" rel="stylesheet" type="text/css" />

@@ -40,6 +40,8 @@ class Gapi
   private $report_aggregate_metrics = array();
   private $report_root_parameters = array();
   private $results = array();
+
+public $ori_data;
   
   /**
    * Constructor function for all new gapi instances
@@ -99,6 +101,54 @@ class Gapi
       throw new Exception('GAPI: Failed to request account data. Error: "' . strip_tags($response['body']) . '"');
     }
   }
+
+// zidmubarock@gmail.com extended
+// sample
+// $aProperties = 	array( 'dimensions' => 'ga:day',
+//                               'metrics'    => 'ga:visits',
+//                               'sort'       => 'ga:day'));
+	public function getDataArray(){
+       	$dom = new DOMDocument();
+		    $dom->loadXML($this->ori_data);
+
+		    $entries = $dom->getElementsByTagName('entry');
+		    $data = array();
+		    foreach($entries as $entry) {
+
+		        $index = array();
+		        foreach($entry->getElementsByTagName('dimension') as $dimension) {
+		            $index[] = $dimension->getAttribute('value');
+		        }
+
+		        switch(count($index)) {
+
+		            case 1:
+		                foreach($entry->getElementsByTagName('metric') as $metric) {
+		                    $data[$index[0]][$metric->getAttribute('name')] = $metric->getAttribute('value');
+		                }
+		            break;
+
+		            case 2:
+		                foreach($entry->getElementsByTagName('metric') as $metric) {
+		                    $data[$index[0]][$index[1]][$metric->getAttribute('name')] = $metric->getAttribute('value');
+		                }
+		            break;
+
+		            case 3:
+		                foreach($entry->getElementsByTagName('metric') as $metric) {
+		                    $data[$index[0]][$index[1]][$index[2]][$metric->getAttribute('name')] = $metric->getAttribute('value');
+		                }
+		            break;
+
+		        }
+
+		    }
+
+		    return $data;
+}
+
+
+
 
   /**
    * Request report data from Google Analytics
@@ -221,7 +271,8 @@ class Gapi
     //HTTP 2xx
     if(substr($response['code'],0,1) == '2')
     {
-		if($type == 'json'){
+	$this->ori_data = $response['body'];
+	if($type == 'json'){
 			return $response['body'];
 		}else{
 	       	return $this->reportObjectMapper($response['body']);
@@ -833,4 +884,8 @@ class gapiReportEntry
 
     throw new Exception('No valid metric or dimesion called "' . $name . '"');
   }
+
+
+
+
 }
