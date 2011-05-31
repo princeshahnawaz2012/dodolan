@@ -103,6 +103,14 @@ class Tester extends Controller {
 				echo $single_data[1].'<hr/>';
 		}
 	}
+	function test10(){
+		$css = array('theme/back/css/admin-style.css', 'theme/back/css/admin-style.css');
+		$this->theme->register_css($css);
+		$this->theme->load_css();
+	}
+	function test11(){
+			$this->theme->load_css();
+	}
 
 
 }

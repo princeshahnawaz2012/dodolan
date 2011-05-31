@@ -3,5 +3,5 @@ $config['site_name'] = 'Culture-Update';
 $config['currency']  = 'IDR';
 
 $config['ga_account'] = 'zidmubarock@gmail.com';
-$config['ga_pass']    = 'alzid4evermail';
-$config['ga_profile'] = '17866436';
+$config['ga_password']    = 'alzid4evermail';
+$config['ga_profile'] = 17866436;

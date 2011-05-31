@@ -50,18 +50,26 @@ class Widget extends Controller {
 			return false;
 		}
 	}
+	
+	//widget google analytics
 	function ga_chart()
 	{
 		$this->load->view('backend/widget/ga_chart_v');
 	}
-	function ga_chart_visit_req(){	
-		$data['email'] = $this->config->item('ga_account');
-		$data['password'] = $this->config->item('ga_pass');
-		$profileTable = 17866436;
-		$ga = $this->load->library('gapi',$data);
-		$ga->requestReportData($profileTable,array('date'),array('visitors', 'newVisits'), array('-date'),  $filter=null, $start_date=null, $end_date=null, $start_index=1, $max_results=5, 'ori');
-		
-		return $this->ga_data_extractor($ga->getDataArray());
+	function ga_chart_visit_req(){
+		if($this->input->post('type')){
+		$ga = $this->load->library('gapi');
+		$req = $ga->requestReportData(array('date'),array('visitors', 'newVisits'), array('-date'),  $filter=null, $start_date=null, $end_date=null, $start_index=1, $max_results=30, 'ori');
+			if($req){
+				$data = $this->ga_data_extractor($ga->getDataArray());
+				$data_ext = array('status' => 'true');
+				echo json_encode($data);
+			}else{
+				$data = array('status' => 'error');
+				echo json_encode($data);
+			}
+			
+		}
 	}
 	function ga_data_extractor($gadata){
 		
@@ -70,10 +78,10 @@ class Widget extends Controller {
 		// visitors
 		foreach($gadata as $dt => $datval){
 			$date = date_create_from_format('Ymd', $dt);
-		
 			$str_date = $date->format('l, F j,  Y');
-			$v = array($str_date, $datval['ga:visitors']);
-			$nv = array($str_date, $datval['ga:newVisits']);
+			$v = array('date' => $str_date, 'value' => $datval['ga:visitors']);
+			
+			$nv = array('date' => $str_date, 'value' => $datval['ga:newVisits']);
 			array_push($visitors, $v);
 			array_push($newVisits, $nv);
 			

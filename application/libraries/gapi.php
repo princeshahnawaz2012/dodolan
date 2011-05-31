@@ -40,6 +40,10 @@ class Gapi
   private $report_aggregate_metrics = array();
   private $report_root_parameters = array();
   private $results = array();
+	var $email;
+	var $password;
+	var $profile_id;
+	var $_ci;
 
 public $ori_data;
   
@@ -53,15 +57,18 @@ public $ori_data;
    * @param String $token
    * @return gapi
    */
-  public function Gapi($data = array())
+  public function Gapi()
   {
+	$this->_ci =& get_instance();
+	$this->email = $this->_ci->config->item('ga_account');
+	$this->password = $this->_ci->config->item('ga_password');
+	$this->profile_id = $this->_ci->config->item('ga_profile');
 	if(!isset($data['token'])){
 		$token = null;
 	}else{
 		$token = $data['token'];
 	}
-	$email = $data['email'];
-	$password = $data['password'];
+	
 	
     if($token !== null)
     {
@@ -69,7 +76,7 @@ public $ori_data;
     }
     else 
     {
-      $this->authenticateUser($email,$password);
+      $this->authenticateUser($this->email, $this->password);
     }
   }
  /**
@@ -167,9 +174,9 @@ public $ori_data;
    * @param Int $start_index OPTIONAL: Start index of results
    * @param Int $max_results OPTIONAL: Max results returned
    */
-  public function requestReportData($report_id, $dimensions, $metrics, $sort_metric=null, $filter=null, $start_date=null, $end_date=null, $start_index=1, $max_results=30, $type='json')
+  public function requestReportData($dimensions, $metrics, $sort_metric=null, $filter=null, $start_date=null, $end_date=null, $start_index=1, $max_results=30, $type='json')
   {
-    $parameters = array('ids'=>'ga:' . $report_id);
+    $parameters = array('ids'=>'ga:' . $this->profile_id);
 	if($type=='json'){
 		$parameters['alt'] = 'json';
 	}
