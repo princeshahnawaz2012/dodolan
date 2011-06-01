@@ -153,12 +153,14 @@
 		});
 	</script>
 	
+	<div class="ga_widget grid_600">
 	<div id="chart_main" class="grid_600 left" style="height: 200px; margin: 0 auto" >
 		
 	</div>
-	<br>
+	<div class="clear"></div>
 	<span class="button ga_refresh">Refresh</span>
 	<div class="clear"></div>
+	</div>
 </div>
 <?
 ?>

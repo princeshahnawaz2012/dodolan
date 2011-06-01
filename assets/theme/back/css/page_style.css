@@ -37,3 +37,7 @@
 #b_customer_browse .customer_filter ul li a {text-decoration: none;}
 #b_customer_browse .customer_filter .mod_head { border-bottom:1px solid #ddd;  padding:5px 10px; font-weight: bold; font-size:12px}
 #b_customer_browse .customer_filter h3 { font-size: 12px; font-weight: bold; margin:0px;}
+
+/* Collection List
+-------------------------------------------------------------------------------------------------------*/
+#b_collection_browse .coll_list .collection_snap h3 { font-size:15px; margin:0px}

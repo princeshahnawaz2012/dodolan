@@ -111,6 +111,20 @@ class Tester extends Controller {
 	function test11(){
 			$this->theme->load_css();
 	}
+	function test12(){
+		echo ('
+		<form method="post">
+			<input type="file" name="file" value="">
+			<input type="submit" name="submit" value="submit" id="submit">
+		</form>
+		');
+		if($this->input->post('file')){
+			echo $this->input->post('file');
+		}else{
+			echo 'asuh';
+		}
+		
+	}
 
 
 }

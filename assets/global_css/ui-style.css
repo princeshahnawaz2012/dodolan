@@ -167,7 +167,7 @@ select { border:#b2b2b2 1px solid; color: #7b7979; padding:2px; -moz-border-radi
 	float: right;
 }
 
-/*  MISC
+/*  MISC Position and TYPO
 ----------------------------------------------------------------------------------------------------*/
 .vTop {vertical-align:top;}
 .vBottom {vertical-align:bottom}
@@ -187,6 +187,12 @@ select { border:#b2b2b2 1px solid; color: #7b7979; padding:2px; -moz-border-radi
 	font-size: 100%;
 }
 .items_order {
+}
+.dark_shadow{
+	text-shadow:0 1px 0 #ccc;
+}
+.light_shadow{
+	text-shadow:0 1px 0 #fff;
 }
 /* MISC CSS3
 ----------------------------------------------------------------------------------------------------*/

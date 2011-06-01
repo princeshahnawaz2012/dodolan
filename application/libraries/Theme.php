@@ -170,6 +170,11 @@ public function load_js()
 
 	}
 }
+public function show_date($date){
+		$date = date_create_from_format('Y-m-d H:i:s', $date);
+		$str_date = $date->format('l, F j,  Y');
+		return $str_date;
+}
 
 
 
