@@ -63,11 +63,7 @@ $items = $data['ref'];
 									   	if(data.status != 'failed'){
 										$('.search_r').append(data.prods);
 										$('.search_r').show('slide', {direction: 'up'});
-										$('div.search_r > div.coll_item').click(function(){
-											var coll_id = <?=$coll->id?>;
-											var prod_id = $(this).attr('id');
-											addcoll_item(prod_id, coll_id)
-										});
+										exe_additem();
 									   	}else{
 									   	$('.search_r').append('nothing found');
 										$('.search_r').show('slide', {direction: 'up'});
@@ -79,6 +75,14 @@ $items = $data['ref'];
 						}
 					})
 			});	
+			function exe_additem(){
+				$('div.search_r > div.coll_item').click(function(){
+					var coll_id = <?=$coll->id?>;
+					var prod_id = $(this).attr('id');
+					addcoll_item(prod_id, coll_id);
+					$(this).remove();
+				});
+			}
 			function addcoll_item(idProd, idColl){
 				var datapost = {
 					'idProd' : idProd,
