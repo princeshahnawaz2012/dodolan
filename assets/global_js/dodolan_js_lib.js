@@ -184,3 +184,28 @@ $(document).ready(function(){
 	}
 })(jQuery);
 
+jQuery.event.special.keyupdelay = {
+    add : function(handler, data, namespaces) {
+        var delay = data && data.delay || 100,
+            that = this;
+
+        return function(event) {                                                
+            setTimeout(function() { handler.apply(that, arguments);}, data);
+        }
+    },
+
+    setup: function(data, namespaces) {
+        jQuery(this).bind("keyup", jQuery.event.special.keyupdelay.handler);
+    },
+
+    teardown: function(namespaces) {
+        jQuery(this).unbind("keyup", jQuery.event.special.keyupdelay.handler);        
+    },
+
+    handler: function(event) {              
+        event.type = "keyupdelay";
+        jQuery.event.handle.apply(this, arguments);
+    }
+};
+
+

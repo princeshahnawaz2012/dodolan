@@ -46,22 +46,31 @@ class B_collection extends Controller {
 	// dependecy for function detail
 	function ajax_search_prod(){
 		$this->load->model('store/product_m');
-		$q_post = 'zig';
-		$output['prods'] = array();
+		$q_post = $this->input->post('q_post');
+		$coll_id = $this->input->post('coll_id');
+		$final_item ='';
 		if($q_post){
-			$conf = array(
-				'search'   =>  $q_post
-				);
-			$prods = $this->product_m->getListProd($conf);
-			if($prods){
-				foreach($prods['prods'] as $p){
-					$param = array(
-						'id' => $p->p_id,
-						);	
-					$q = modules::run('store/product/detProd', $param);
-					$prod = $q['prod'];
-					$img = modules::run('store/product/prodImg', $p->p_id);
-					$final_item = '
+		// exception item initialize
+		$coll = modules::run('store/collection/exe_getById', $coll_id);
+		$ref = $coll['ref'];
+		if($ref->num_rows() > 0){
+			$except_item = array();
+			foreach($ref->result() as $item){
+				array_push($except_item, $item->product_id);
+			}	
+			$this->db->where_not_in('id', $except_item);
+		}
+		// illegal query outside model :) heheheh
+		$this->db->like('name', $q_post);
+		$this->db->or_like('sku', $q_post);
+		$prods = $this->db->get('store_product');
+		
+		
+			if($prods->num_rows() > 0){
+				foreach($prods->result() as $prod){
+					
+					$img = modules::run('store/product/prodImg', $prod->id);
+					$final_item .= '
 					<div class="coll_item mb10" id="'.$prod->id.'">
 						<div class="img_prod left mr5"><img src="'.site_url('thumb/show/70-30-crop/dir/assets/product-img/'.$img->path).'"/></div>
 						<div class="detail_prod left">
@@ -71,9 +80,8 @@ class B_collection extends Controller {
 						<div class="horline"></div>
 						<div class="clear"></div>
 					</div>';
-				array_push($output['prods'], $final_item);
-			
 				}
+					$output['prods'] = $final_item;
 					$output['status'] = 'success';
 			}else{
 					$output['status'] = 'failed';
@@ -84,25 +92,34 @@ class B_collection extends Controller {
 		}
 			echo json_encode($output);
 	}
-	function ajx_getItem(){
-		$id = $this->input->post('id');
-		if($id){
-			$param = array(
-				'id' => $id,
-				);	
-			$q = modules::run('store/product/detProd', $param);
-			$prod = $q['prod'];
-			$img = modules::run('store/product/prodImg', $id);
-			$final_item = '
-			<div class="coll_item mb10" id="'.$prod->id.'">
-				<div class="img_prod left mr5"><img src="'.site_url('thumb/show/70-30-crop/dir/assets/product-img/'.$img->path).'"/></div>
-				<div class="detail_prod left">
-				'.$prod->name.'
-				</div>
-				<div class="clear"></div>
-				<div class="horline"></div>
-				<div class="clear"></div>
-			</div>';
+	function ajx_addItem(){
+		if($this->input->post('idProd')){
+			$add = modules::run('store/collection/exe_additem', $this->input->post('idColl'), $this->input->post('idProd'));
+			if($add){
+				// initialize product by product_id
+				$param = array(
+					'id' => $this->input->post('idProd'),
+					);	
+				$q = modules::run('store/product/detProd', $param);
+				$p = $q['prod'];
+				$img = modules::run('store/product/prodImg', $this->input->post('idProd'));
+				$output = '
+				<div class="coll_item mb10">
+					<div class="img_prod left mr5"><img src="'.site_url('thumb/show/70-30-crop/dir/assets/product-img/'.$img->path).'"/></div>
+					<div class="detail_prod left">
+					'.$p->name.'
+					</div>
+					<div class="clear"></div>
+					<div class="horline"></div>
+					<div class="clear"></div>
+				</div>';
+				$data = array('prod' => $output, 'status' => 'success');
+				echo json_encode($data);
+			}
+			else{
+				$data = array('status' => 'failed');
+				echo json_encode($data);
+			}
 		}
 	}
 	// end  dependecy for function detail

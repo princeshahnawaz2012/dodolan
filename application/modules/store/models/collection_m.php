@@ -86,7 +86,7 @@ class Collection_m extends Model {
 		$data = array('collection_id' => $coll_id, 'product_id' => $prod_id);
 		$this->db->where('collection_id', $coll_id);
 		$this->db->where('product_id', $prod_id);
-		$pre = $this->db->get('store_collection');
+		$pre = $this->db->get('store_collection_ref');
 		if($pre->num_rows() == 0):
 			$this->db->insert('store_collection_ref', $data);
 			return $this->db->insert_id();

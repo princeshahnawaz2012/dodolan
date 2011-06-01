@@ -40,36 +40,88 @@ $items = $data['ref'];
 <?endif?>
 	</div>
 	<script type="text/javascript" charset="utf-8">
+		
+		
+	
 		$(document).ready(function(){
-				$('#q_prod').keyup(function(){
-					
-					$.ajax({
-						type: "POST",
-						dataType : "json",
-						data : {'type' : 'json'},	
-						url: "<?=site_url('backend/widget/ga_chart_visit_req')?>",
-						success: function(data){					     
-							   	if(data.status != 'error'){
-								allVisits = ga_data_extract(data.visitors),
-								newVisitors = ga_data_extract(data.newVisits),
-								options.series[0].data = allVisits;
-								options.series[1].data = newVisitors;
+		
+			$('.search_r').hide();
+			var delayer = delayTimer(500);
+			$('#q_prod').keyup(function(){
+					delayer(function(){
+						var q = $('#q_prod').val();
+						var coll_id = <?=$coll->id?>;
 
-								chart = new Highcharts.Chart(options);
-							   	}else{
-							   		alert('somthing wrong');
-							   	}
-						   }
-					});
-				});	
+						if(q.length >= 3){
+						$('.search_r').empty().hide('slide', {direction: 'up'});
+						$.ajax({
+								type: "POST",
+								dataType : "json",
+								data : {'q_post' : q, 'coll_id' : coll_id},	
+								url: "<?=site_url('backend/store/b_collection/ajax_search_prod')?>",
+								success: function(data){					     
+									   	if(data.status != 'failed'){
+										$('.search_r').append(data.prods);
+										$('.search_r').show('slide', {direction: 'up'});
+										$('div.search_r > div.coll_item').click(function(){
+											var coll_id = <?=$coll->id?>;
+											var prod_id = $(this).attr('id');
+											addcoll_item(prod_id, coll_id)
+										});
+									   	}else{
+									   	$('.search_r').append('nothing found');
+										$('.search_r').show('slide', {direction: 'up'});
+									   	}
+								   }
+							});
+
+
+						}
+					})
+			});	
+			function addcoll_item(idProd, idColl){
+				var datapost = {
+					'idProd' : idProd,
+					'idColl' : idColl
+				}
+				$.ajax({
+					type: "POST",
+					dataType : "json",
+					data : datapost,	
+					url: "<?=site_url('backend/store/b_collection/ajx_addItem')?>",
+					success: function(data){					     
+						   	if(data.status != 'failed'){
+								$('.itemList').append(data.prod);
+						   	}
+					   }
+				});
+			}
+			function delayTimer(delay){
+			     var timer;
+			     return function(fn){
+			          timer=clearTimeout(timer);
+			          if(fn)
+			               timer=setTimeout(function(){
+			               fn();
+			               },delay);
+			          return timer;
+			     }
+			}
+			
+			
+		
 		});
 	
 	</script>
+	<span class="asuh"><span class="koe button">Ngilang</span></span>
 	 <div class="addItem_coll form-Ui mt10 box2">
 	 	<form action="" method="POST" accept-charset="utf-8">
 	 	<input type="text" class="text-input" name="q_prod" value="Start Search product to add" id="q_prod">
 		
 	 	</form>
+		<div class="search_r mt10" style="min-height:30px">
+			
+		</div>
 	 </div>
 </div>
 
