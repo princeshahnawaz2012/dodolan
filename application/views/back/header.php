@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title><?=$this->config->item('site_name')?> - 	<? if(isset($pT)){ echo $pT ;}?></title>
+<title><?=$this->config->item('site_name')?> - 	<? if(isset($pT)){ echo $pT ;}elseif(!isset($pT) && isset($pH)){echo $pH;}?></title>
 <!-- CSS and JS Global -->
 <link href="<?=base_url();?>assets/global_css/reset.css" rel="stylesheet" type="text/css" />
 <link href="<?=base_url();?>assets/global_css/ui-style.css" rel="stylesheet" type="text/css" />
@@ -12,6 +12,8 @@
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>/assets/global_js/jgrowl/jquery.jgrowl.css" media="screen"  />	
 <script src="<?=base_url();?>/assets/global_js/jquery.min.js"></script>
 <script src="<?=base_url();?>/assets/global_js/jquery_ui/jquery-ui.min.js"></script>
+<script src="<?=base_url();?>/assets/global_js/jquery_ui/jquery-ui-timepicker-addon.js" type="text/javascript" charset="utf-8"></script>
+
 <script type="text/javascript" src="<?=base_url();?>/assets/global_js/dodolan_js_lib.js"></script>
 <script type="text/javascript" src="<?=base_url();?>/assets/global_js/jgrowl/jquery.jgrowl.js"></script>
 

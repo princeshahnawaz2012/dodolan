@@ -50,6 +50,17 @@ class B_product extends Controller {
 			$this->exe_editprod($idprod);
 		}
 	}
+	function deleteprod(){
+		$id = $this->uri->segment(5);
+		$del = modules::run('store/product/exe_delete', $id);
+		if($del){
+			$this->messages->add('Success Delete Product with id '.$id, 'success');
+			redirect('backend/store/b_product/listprod');
+		}else{
+			$this->messages->add('Failed Delete Product with id '.$id, 'warning');
+			redirect('backend/store/b_product/listprod');
+		}
+	}
 	
 	function prod_filter(){
 		
@@ -98,13 +109,11 @@ class B_product extends Controller {
 		$menuSource = array(
 			array(
 				'anchor' => 'Add Product', 'link' => site_url('backend/store/b_product/addProd')),
-			array(
-				'anchor' => 'Add Product', 'link' => site_url('backend/store/b_product/addProd')),
 		);
 		$menu = $this->theme->menu_rend($menuSource);
 		$data = array(
 			'mainLayer' => 'backend/page/store/product/listprod_v',
-			'pt'        => 'List Product',
+			'pT'        => 'List Product',
 			'pH'        => 'List Product',
 			'pageTool'  => modules::run('backend/store/b_product/prod_filter'),
 			'pageMenu'  => 'test',

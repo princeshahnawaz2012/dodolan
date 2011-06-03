@@ -55,6 +55,15 @@ class Category_m extends Model {
 			return false;
 		}
 	}
+	function deletecat($id){
+		$this->db->where('id', $id);
+		$q = $this->db->delete('store_category');
+		if($q){
+			return true;
+		}else{
+			return false;
+		}
+	}
 	
 
 }?>

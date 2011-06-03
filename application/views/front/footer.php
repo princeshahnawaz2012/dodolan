@@ -5,6 +5,7 @@
 	<br class="clear"/>
 Page rendered in {elapsed_time} seconds
 	</div>
+
 	<div id="front_ajaxdialog" class="ajaxdialog hide msg-Ui">
 		
 	</div>

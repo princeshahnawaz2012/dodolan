@@ -34,6 +34,31 @@ $(document).ready(function(){
     $(".table-Ui tbody tr:visible:odd",this).addClass("odd");
 });
 
+// delte confirmation 
+$(document).ready(function(){
+	$('span.del').click(function(){
+		var link = $(this).parent().attr('href');
+		$('.ajaxdialog').append('Are you Sure to Delete this item permanently ?');
+		$('.ajaxdialog').dialog({
+					resizable: false,
+					title: 'Delete Confirmation', 
+					height:140,
+					buttons: {
+						"Yes": function() {
+							$(location).attr('href',link);
+							$( this ).empty().dialog('destroy');
+						},
+						Cancel: function() {
+							$( this ).dialog( "close" );
+							$( this ).empty().dialog('destroy');
+						}
+					}
+				});
+		return false;
+	});
+});
+
+
 //Tab UI
 //---------------------------------------------------------------------------------------/
 $(document).ready(function() {

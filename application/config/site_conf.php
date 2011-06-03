@@ -1,5 +1,5 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-$config['site_name'] = 'Culture-Update';
+$config['site_name'] = 'Oline Workrobe';
 $config['currency']  = 'IDR';
 
 $config['ga_account'] = 'zidmubarock@gmail.com';

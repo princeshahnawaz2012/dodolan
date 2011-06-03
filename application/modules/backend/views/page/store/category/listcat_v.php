@@ -32,7 +32,7 @@ if($cats){
     <td class="action">
 		<a href="#"><span class="act view"></span></a>
 		<a href="<?=site_url('backend/store/b_category/editcat/'.$cat->id);?>"><span class="act edit"></span></a>
-		<a href="#"><span class="act del"></span></a>
+		<a href="<?=site_url('backend/store/b_category/deletecat/'.$cat->id);?>"><span class="act del"></span></a>
 	</td>
 	</tr>
 <?}}else{

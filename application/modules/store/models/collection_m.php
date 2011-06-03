@@ -96,7 +96,7 @@ class Collection_m extends Model {
 	}
 	function deleteitem($id_ref){
 		$this->db->where('id', $id_ref);
-		$q = $this->db->delete('store_collection');
+		$q = $this->db->delete('store_collection_ref');
 		if($q){
 			return true;
 		}else{

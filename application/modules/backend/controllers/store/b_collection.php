@@ -29,6 +29,13 @@ class B_collection extends Controller {
 			$passdata['img_file'] = 'img_file';
 			$passdata['p_date'] = $this->input->post('p_date');
 			$q = modules::run('store/collection/exe_create', $passdata);
+			if($q){
+				$this->messages->add('Success Create collection with name '.$passdata['name'], 'success');
+				redirect('backend/store/b_collection/detail/'.$q['id']);
+			}else{
+				$this->messages->add('Failed Create collection with name '.$passdata['name'], 'warning');
+				redirect('backend/store/b_collection/browse');
+			}
 		}
 	}
 	function detail(){
@@ -104,7 +111,7 @@ class B_collection extends Controller {
 				$p = $q['prod'];
 				$img = modules::run('store/product/prodImg', $this->input->post('idProd'));
 				$output = '
-				<div class="coll_item mb10">
+				<div class="coll_item mb10" id="'.$add.'">
 					<div class="img_prod left mr5"><img src="'.site_url('thumb/show/70-30-crop/dir/assets/product-img/'.$img->path).'"/></div>
 					<div class="detail_prod left">
 					'.$p->name.'
@@ -122,9 +129,29 @@ class B_collection extends Controller {
 			}
 		}
 	}
+	function ajax_deleteItem(){
+		$id = $this->input->post('id_ref');
+		if($id){
+			$del = modules::run('store/collection/exe_deleteitem', $id);
+			if($del){
+				$return = array('status' => 'success', 'id_ref' => $id);
+				echo json_encode($return);
+			}else{
+				$return = array('status' => 'failed', 'id_ref' => $id);
+				echo json_encode($return);
+			}
+		}
+		
+	}
 	// end  dependecy for function detail
 	function browse(){
 		$q = modules::run('store/collection/exe_browse');
+		$menuSource = array(
+			array(
+				'anchor' => 'Create Collection', 'link' => site_url('backend/store/b_collection/create')),
+		);
+		$menu = $this->theme->menu_rend($menuSource);
+		$data['pageMenu'] = $menu;
 		$data['pH'] = 'Collection';
 		$data['mainLayer'] = 'backend/page/store/collection/browse_v';
 		$data['data'] = $q;
@@ -132,6 +159,14 @@ class B_collection extends Controller {
 	}
 	function delete(){
 		$id = $this->uri->segment(5);
+		$del = modules::run('store/collection/exe_delete', $id);
+		if($del){
+			$this->messages->add('Success Delete Collection with id '.$id, 'success');
+			redirect('backend/store/b_collection/browse');
+		}else{
+			$this->messages->add('failed Delete Collection with id '.$id, 'warning');
+			redirect('backend/store/b_collection/browse');
+		}
 	}
 	function edit(){
 		$id = $this->uri->segment(5);
@@ -152,6 +187,13 @@ class B_collection extends Controller {
 			}
 			$passdata['p_date'] = $this->input->post('p_date');
 			$q = modules::run('store/collection/exe_update', $id, $passdata);	
+			if($q){
+				$this->messages->add('Success Update collection with name '.$passdata['name'], 'success');
+				redirect('backend/store/b_collection/browse');
+			}else{
+				$this->messages->add('Failed update collection with name '.$passdata['name'], 'warning');
+				redirect('backend/store/b_collection/browse');
+			}
 		}
 		
 	}

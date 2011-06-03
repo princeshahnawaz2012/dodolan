@@ -67,6 +67,7 @@
 					<div class="inputSet">
 						<div class="label"><span>Description</span></div>
 						<div class="input"><textarea name="p_desc" style="height:150px;"></textarea></div>
+						<?$this->theme->load_text_editor('p_desc')?>
 						<div class="clear"></div>
 					</div>
 					

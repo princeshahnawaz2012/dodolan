@@ -26,12 +26,12 @@
 .min-button-Ui{ background:url(../global_img/icon/minus32_16px.png) 5px no-repeat #e4e4e4; padding-left:25px;}
 .newslett-button-Ui{ background:url(../global_img/icon/mailplus32_16px.png) 5px no-repeat #e4e4e4; padding-left:25px;}
 .act { display:inline-table; width:10px; height:10px; margin-right:5px; background:no-repeat center center;}
-.view { background-image:url(../global_img/icon/light/document-text.gif)}
-.view:hover { background-image:url(../global_img/icon/dark/document-text.gif)}
-.del { background-image:url(../global_img/icon/light/x.gif)}
-.del:hover { background-image:url(../global_img/icon/dark/x.gif)}
-.edit { background:url(../global_img/icon/light/pencil.gif)}
-.edit:hover { background:url(../global_img/icon/dark/pencil.gif)}
+.view { background-image:url(../global_img/icon/dark/document-text.gif); opacity:0.50;}
+.view:hover {  opacity:100;}
+.del { background-image:url(../global_img/icon/dark/x.gif); opacity:0.50;}
+.del:hover {opacity:100;}
+.edit { background:url(../global_img/icon/dark/pencil.gif); opacity:0.50;}
+.edit:hover { opacity:100;}
 
 /** AJX Stle **/
 .ajax_loader_small { background:url(../global_img/ajax_loader_small.gif) center no-repeat; width:16px; height:16px;}

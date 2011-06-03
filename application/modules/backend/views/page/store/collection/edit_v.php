@@ -8,17 +8,15 @@
 		<script>
 		$(document).ready(function(){
 
-		$(".hasdate").datepicker({				
-		dateFormat:"yy-mm-dd",
-		changeMonth:true,
-		changeYear:true,
-		yearRange: 'c-0:c+1'
-		});
+			$(".hasTime").datetimepicker({
+				dateFormat:"yy-mm-dd",
+				timeFormat: 'hh:mm:ss'
+				});
 		});
 		</script>
 		<br/>
 		<div class="grid_250 mr20 left">
-			<input type="text" name="p_date" value="<?=$coll->p_date;?>" class="hasdate">
+			<input type="text" name="p_date" value="<?=$coll->p_date;?>" class="hasTime">
 		</div>
 		<div class="grid_250 left">
 			<input type="file" name="img_file" value=""><br class="clear">

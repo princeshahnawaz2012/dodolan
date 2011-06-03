@@ -49,13 +49,17 @@ class B_category extends Controller {
 			$this->exe_editcat($id);
 		}
 	}
+	
 	function browse(){
-		$this->listcat();
-	}
-	function listcat(){
 		$cats = $this->category_m->getAllCAt();
+		$menuSource = array(
+			array(
+				'anchor' => 'Create Category', 'link' => site_url('backend/store/b_category/addcat')),
+		);
+		$menu = $this->theme->menu_rend($menuSource);
 		$data = array(
-		'pt' => 'list category',
+		'pH' => 'list category',
+		'pageMenu' => $menu,
 		'mainLayer' => 'backend/page/store/category/listcat_v',
 		'cats' =>$cats,
 			);
@@ -78,7 +82,7 @@ class B_category extends Controller {
 		$q = $this->category_m->addcat($ins);
 		if($q){
 			$this->messages->add('Your Succes add category with name '.$this->input->post('name'), 'success');
-			redirect('backend/store/b_category/listcat');
+			redirect('backend/store/b_category/browse');
 		}
 		else{
 			$this->messages->add('category named '.$this->input->post('name').' cannot be added', 'warning');
@@ -102,13 +106,25 @@ class B_category extends Controller {
 		$q = $this->category_m->editcat($ins, $id);
 		if($q){
 			$this->messages->add('Your Succes add category with name '.$this->input->post('name'), 'success');
-			redirect('backend/store/b_category/listcat');
+			redirect('backend/store/b_category/browse');
 		}
 		else{
 			$this->messages->add('category named '.$this->input->post('name').' cannot be added', 'warning');
 			redirect('backend/store/b_category/editcat/'.$id);
 		}
 		
+	}
+	function deletecat(){
+		$id = $this->uri->segment(5);
+		$del = modules::run('store/category/exe_delete', $id);
+		if($del){
+			$this->messages->add('Your Succes delete category with id '.$id, 'success');
+			redirect('backend/store/b_category/browse');
+		}
+		else{
+			$this->messages->add('Failed delete category with id '.$id, 'warning');
+			redirect('backend/store/b_category/browse');
+		}
 	}
 
 	function viewcat(){

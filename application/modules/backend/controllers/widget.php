@@ -77,8 +77,12 @@ class Widget extends Controller {
 		$newVisits = array();
 		// visitors
 		foreach($gadata as $dt => $datval){
-			$date = date_create_from_format('Ymd', $dt);
+			list($year, $month, $day) = sscanf($dt, '%04d%02d%02d');
+			$date = new DateTime($year.'-'.$month.'-'.$day);
+
 			$str_date = $date->format('l, F j,  Y');
+			//$date = date_create_from_format('Ymd', $dt);
+			//$str_date = $dt;
 			$v = array('date' => $str_date, 'value' => $datval['ga:visitors']);
 			
 			$nv = array('date' => $str_date, 'value' => $datval['ga:newVisits']);

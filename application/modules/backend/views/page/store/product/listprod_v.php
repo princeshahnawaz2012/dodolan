@@ -54,9 +54,9 @@ foreach($prods as $prod){
     </td>
     <td class="text_center"><?=$stock?></td>
     <td class="action">
-		<a href="#"><span class="act view"></span></a>
+		<a href="<?=site_url('store/product/view/'.$p->id);?>"><span class="act view"></span></a>
 		<a href="<?=site_url('backend/store/b_product/editprod/'.$p->id);?>"><span class="act edit"></span></a>
-		<a href="#"><span class="act del"></span></a>
+		<a href="<?=site_url('backend/store/b_product/deleteprod/'.$p->id);?>"><span class="act del"></span></a>
 	</td>
 	</tr>
 

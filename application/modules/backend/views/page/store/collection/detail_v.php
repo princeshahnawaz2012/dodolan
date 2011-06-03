@@ -24,10 +24,15 @@ $items = $data['ref'];
 		$p = $q['prod'];
 		$img = modules::run('store/product/prodImg', $item->product_id);
 		?>
-		<div class="coll_item mb10">
+		<div id="<?=$item->id;?>" class="coll_item mb10">
 			<div class="img_prod left mr5"><img src="<?=site_url('thumb/show/70-30-crop/dir/assets/product-img/'.$img->path)?>"/></div>
 			<div class="detail_prod left">
 			<?=$p->name;?>
+			</div>
+			<div class="right tool">
+				<a href="<?=site_url('backend/store/b_product/editprod/'.$item->product_id);?>"><span class="edit act"></span></a>
+				<a href="<?=site_url('store/product/view/'.$item->product_id);?>"><span class="view act"></span></a>
+				<a href="<?=site_url('backend/store/b_collection/delete/'.$item->product_id);?>"><span class="del act"></span></a>
 			</div>
 			<div class="clear"></div>
 			<div class="horline"></div>
@@ -36,23 +41,20 @@ $items = $data['ref'];
 	<?endforeach?>
 	<div class="clear"></div>
 <?else:?>
-	<span>This Collection have no Item, <br/>Maybe you want to choose one :)</span>
+	<span class="msg">This Collection have no Item, <br/>Maybe you want to choose one :)</span>
 <?endif?>
 	</div>
 	<script type="text/javascript" charset="utf-8">
-		
-		
-	
 		$(document).ready(function(){
 		
 			$('.search_r').hide();
-			var delayer = delayTimer(500);
-			$('#q_prod').keyup(function(){
+			var delayer = delayTimer(1000);
+			$('#q_prod').live('keyup',function(event){
 					delayer(function(){
 						var q = $('#q_prod').val();
 						var coll_id = <?=$coll->id?>;
 
-						if(q.length >= 3){
+						
 						$('.search_r').empty().hide('slide', {direction: 'up'});
 						$.ajax({
 								type: "POST",
@@ -72,11 +74,16 @@ $items = $data['ref'];
 							});
 
 
-						}
-					})
+						
+					});
 			});	
+			$('.itemList .coll_item').click(function(){
+				var dom_el = $(this);
+				var id_ref = $(this).attr('id');
+				deleteItem(id_ref, dom_el);
+			});
 			function exe_additem(){
-				$('div.search_r > div.coll_item').click(function(){
+				$('div.search_r > div.coll_item').live('click',function(event){
 					var coll_id = <?=$coll->id?>;
 					var prod_id = $(this).attr('id');
 					addcoll_item(prod_id, coll_id);
@@ -95,9 +102,29 @@ $items = $data['ref'];
 					url: "<?=site_url('backend/store/b_collection/ajx_addItem')?>",
 					success: function(data){					     
 						   	if(data.status != 'failed'){
+							if($('.itemList .msg').size() > 0){
+								$('.itemList .msg').hide('fade').remove();
+							}
 								$('.itemList').append(data.prod);
 						   	}
 					   }
+				});
+			}
+			function deleteItem(id_ref, dom_el){
+				var datapost = {
+					'id_ref': id_ref
+				};
+				var dom_el = dom_el;
+				$.ajax({
+					type: 'POST',
+					dataType : 'json',
+					data: datapost,
+					url : "<?=site_url('backend/store/b_collection/ajax_deleteItem');?>",
+					success: function(data){
+						if(data.status != 'failed'){
+							dom_el.hide('slide', {'direction' : 'up'})
+						}
+					}
 				});
 			}
 			function delayTimer(delay){
@@ -117,7 +144,6 @@ $items = $data['ref'];
 		});
 	
 	</script>
-	<span class="asuh"><span class="koe button">Ngilang</span></span>
 	 <div class="addItem_coll form-Ui mt10 box2">
 	 	<form action="" method="POST" accept-charset="utf-8">
 	 	<input type="text" class="text-input" name="q_prod" value="Start Search product to add" id="q_prod">

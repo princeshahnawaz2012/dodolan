@@ -39,6 +39,15 @@ class Product_m extends Model {
 			return false;
 		}
 	}
+	function deleteProduct($id){
+		$this->db->where('id', $id);
+		$q = $this->db->delete('store_product');
+			if($q){
+				return true;
+			}else{
+				return false;
+			}
+	}
 	function getAttrbByKey($id_prod, $attrb_key){
 		$this->db->where('prod_id', $id_prod);
 		$this->db->where('attribute', $attrb_key);

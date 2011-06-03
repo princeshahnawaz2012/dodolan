@@ -5,8 +5,26 @@
 			
 			<textarea name="description" id="text_editor" rows="8" cols="40"></textarea>
 		<?$this->theme->load_text_editor('text_editor')?>
-			<input type="file" name="img_file" value=""><br class="clear">
-			<input type="submit" name="submit" value="Create Collection">
+				<script>
+				$(document).ready(function(){
+
+				$(".hasTime").datetimepicker({
+					dateFormat:"yy-mm-dd",
+					timeFormat: 'hh:mm:ss'
+					});
+				});
+				</script>
+				<br/>
+				<div class="grid_250 mr20 left">
+					<input type="text" name="p_date" value="<?=date('Y-m-d');?>" class="hasTime">
+				</div>
+				<div class="grid_250 left">
+					<input type="file" name="img_file" value=""><br class="clear">
+				</div>
+
+				<div class="clear"></div>
+							<br/>
+					<input type="submit" name="submit" value="create Collection" class="button">
 		</form>
 </div>
 </div>

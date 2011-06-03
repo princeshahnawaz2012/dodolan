@@ -111,5 +111,12 @@ class category extends Controller {
 		return $tree;
 	}
 	// end of category menu list	
+	
+	
+	/// API ///
+	function exe_delete($id){
+		$del = $this->store_cat->deletecat($id);
+		return $del;
+	}
 
 }?>

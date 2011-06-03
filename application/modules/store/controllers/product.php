@@ -192,5 +192,11 @@ class Product extends Controller {
 		$this->theme->render($data);
 	}
 	
+	/// API ///
+	function exe_delete($id){
+		$del = $this->product_m->deleteProduct($id);
+		return $del;
+	}
+	
 
 }?>
