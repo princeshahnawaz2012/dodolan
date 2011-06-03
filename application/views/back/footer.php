@@ -11,7 +11,7 @@
 		echo $str_date;
 	?>
 	<small>Debug</small>
-		<a href="http://localhost/dodolan/backend/"><span class="act del"></span></a>
+	
 	<div class="horline"></div>
 Page rendered in {elapsed_time} seconds
 </div>

@@ -7,9 +7,6 @@ input.adding {
 	text-shadow: none !important;
 }
 input[name="addcart"]{
-	background:#ccc;
-	border:none;
-	color:#7B7979;
 	text-shadow:none;
 	padding:5px 10px;
 	cursor: pointer;

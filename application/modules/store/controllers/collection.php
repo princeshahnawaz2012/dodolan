@@ -14,6 +14,29 @@ class Collection extends Controller {
 	function Collection() {
 		parent::Controller();
 	}
+	/// FRONT FUNCTION //////
+	function index(){
+			
+		$coll = $this->exe_browse();
+		$data['pT'] = 'collections';
+		$data['colls'] = $coll;
+		$data['mainLayer'] = 'store/page/collection/index_v';
+		$this->theme->render($data);
+	}
+	function detail(){
+		$id = $this->uri->segment(4);
+		$q = modules::run('store/collection/exe_getById', $id);
+		$coll = $q['main'];
+		$data['coll'] = $coll ;
+		$data['pT'] = $coll->name;
+		$data['items'] = $q['ref'];
+		$data['mainLayer'] = 'store/page/collection/detail_v';
+		$this->theme->render($data);
+		
+	}
+	
+	
+	
 	
 	
 	/////////// API /////////
@@ -76,6 +99,8 @@ class Collection extends Controller {
 			return $return;
 	
 	}
+	
+	
 	function exe_browse($param=false){
 		return $this->mod->browse($param);
 	}

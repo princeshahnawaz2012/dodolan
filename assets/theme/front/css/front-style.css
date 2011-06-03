@@ -26,7 +26,13 @@ ungu = EB6BF2;
 .sideTop { font-size:11px; padding-top:10px;}
 .sideTop p { margin:0px; padding-top:3px;}
 .sideTop .widget { float:right; margin-left:10px;}
-
+.header .topMenu{ position:absolute; bottom:0px; right:0px; }
+.header .topMenu ul {margin:0px; padding:0px; list-style: none ;}
+.header .topMenu ul li:last-child { border-right:none;}
+.header .topMenu ul li {float:left; margin:0px; border-right:1px solid #C1C1C1; }
+.header .topMenu ul li a { display:block; padding:7px 10px; text-decoration:none;}
+.header .topMenu ul li a:hover {background:#eaeaea; color:#767676; text-shadow:0 1px 0 #fff;}
+.header .topMenu .mod_search { padding-top:5px;}
 /* Widget
 ----------------------------------------------------------------------------------------------------*/
 

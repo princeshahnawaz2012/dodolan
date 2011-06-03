@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title><?=$this->config->item('site_name')?> | {pT}</title>
+<title><?=$this->config->item('site_name')?> | 	<? if(isset($pT)){ echo $pT ;}elseif(!isset($pT) && isset($pH)){echo $pH;}?></title>
 
 <!-- CSS and JS Global -->
 <link href="<?=base_url();?>assets/global_css/reset.css" rel="stylesheet" type="text/css" />

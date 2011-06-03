@@ -5,12 +5,42 @@
 	<div class="header relative">
 		<h1 class="logoText absolute"><?=$this->config->item('site_name')?></h1>
 		<div class="sideTop">
-       <div class="smallcart">
-		<?=modules::run('store/store_widget/cart');?>
+	       <div class="smallcart">
+			<?=modules::run('store/store_widget/cart');?>
+			</div>
+			<?=modules::run('user/user_widget/user_mod');?>	
+			<div class="clear"></div>
 		</div>
-		<?=modules::run('user/user_widget/user_mod');?>	
+		<script type="text/javascript" charset="utf-8">
+			$(document).ready(function(){
+				$('.topMenu a').hover(
+				function(){
+					$(this).animate({backgroundColor : '#eaeaea', color: '#767676'}, 300);
+				},
+				function(){
+					$(this).animate({backgroundColor : '#ffffff', color: '#7B7979'}, 300);
+				}
+				);
+			});
+		</script>
+		<div class="topMenu right">
+		<ul class="left">
+			<li><a href="<?=site_url('store/collection');?>">Collection</a></li>
+			<li><a href="#">Sale</a></li>
+			<li><a href="#">New Arrival</a></li>
+			<li><a href="#">About</a></li>
+			<li><a href="#">Contact</a></li>
+			<li><a href="#">Help & FAQ</a></li>
+			<div class="clear"></div>
+		</ul>
+		<div class="mod_search left">
+			<form action="" method="post">
+			<input type="text" name="site_search" value="search" id="site_search" class="ml10 text-input">
+			</form>
+		</div>
 		<div class="clear"></div>
 		</div>
+		
 		<div class="clear"></div>
 	</div>
 	

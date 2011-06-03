@@ -178,6 +178,11 @@ public function show_date($date){
 		$str_date = $date->format('l, F j,  Y');
 		return $str_date;
 }
+public function nice_strlink($string)
+{
+	$new_string = strtolower(str_replace(' ', '-', $string));
+	return $new_string;
+}
 
 
 

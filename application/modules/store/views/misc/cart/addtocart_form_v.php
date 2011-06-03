@@ -33,7 +33,7 @@
 				url : "<?=site_url()?>/store/cart/ajax_buyProd",
 				data : data,
 				success: function(data){
-				    	$('input[name="addcart"]').delay(1000).animate({backgroundColor : '#ccc', color: '#7B7979'}, 1000, reverse);
+				    	$('input[name="addcart"]').delay(1000).animate({backgroundColor : '#DDDDDD', color: '#7B7979'}, 1000, reverse);
 						if(data.status == 'on') {
 						    $('input[name="addcart"]').after('<br class="clear"/><div class="notif hide"><small>success add to cart</small></div>');
 						    $('.notif').show('fade').delay(2000).hide('fade', delNotif);
@@ -112,7 +112,7 @@
 		<div class="clear"></div>
 		<br/>
 		<input type="hidden" value="<?=$p->id;?>" name="id_prod"/>
-		<input type="submit" name="addcart" value="Add to Cart"/>
+		<input type="submit" name="addcart" value="Add to Cart" class="button"/>
 		
 		
 	</form>
