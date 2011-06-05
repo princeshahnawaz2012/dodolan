@@ -30,6 +30,8 @@
 .view:hover {  opacity:100;}
 .del { background-image:url(../global_img/icon/dark/x.gif); opacity:0.50;}
 .del:hover {opacity:100;}
+.delete_ajx { background-image:url(../global_img/icon/dark/x.gif); opacity:0.50;}
+.delete_ajx:hover {opacity:100;}
 .edit { background:url(../global_img/icon/dark/pencil.gif); opacity:0.50;}
 .edit:hover { opacity:100;}
 

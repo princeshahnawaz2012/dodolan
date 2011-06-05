@@ -32,7 +32,7 @@ $items = $data['ref'];
 			<div class="right tool">
 				<a href="<?=site_url('backend/store/b_product/editprod/'.$item->product_id);?>"><span class="edit act"></span></a>
 				<a href="<?=site_url('store/product/view/'.$item->product_id);?>"><span class="view act"></span></a>
-				<a href="<?=site_url('backend/store/b_collection/delete/'.$item->product_id);?>"><span class="del act"></span></a>
+				<a href="#"><span class="delete_ajx act"></span></a>
 			</div>
 			<div class="clear"></div>
 			<div class="horline"></div>
@@ -77,10 +77,12 @@ $items = $data['ref'];
 						
 					});
 			});	
-			$('.itemList .coll_item').click(function(){
-				var dom_el = $(this);
-				var id_ref = $(this).attr('id');
-				deleteItem(id_ref, dom_el);
+			$('.coll_item a .delete_ajx').click(function(){
+				var dom_el = $(this).parent().parent().parent();
+				var id_ref = dom_el.attr('id');
+			    deleteItem(id_ref, dom_el);
+			
+			
 			});
 			function exe_additem(){
 				$('div.search_r > div.coll_item').live('click',function(event){

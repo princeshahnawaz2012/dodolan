@@ -14,7 +14,7 @@
 	<div class="right tool">
 		<a href="<?=site_url('backend/store/b_collection/edit/'.$c->id);?>"><span class="edit act"></span></a>
 		<a href="<?=site_url('backend/store/b_collection/detail/'.$c->id);?>"><span class="view act"></span></a>
-		<a href="<?=site_url('backend/store/b_collection/delete/'.$c->id);?>"><span class="del act"></span></a>
+		<a href="<?=site_url('backend/store/b_collection/delete/'.$c->id);?>"><span class="del deleteItem act"></span></a>
 	</div>
 	<br class="clear">
 	</div>
