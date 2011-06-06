@@ -70,6 +70,11 @@ class Store_cart extends Controller {
     		}
     	}
 	}
+	function delete_cartitem(){
+		$iditem = $this->uri->segment(4);
+		$this->exe_updateCart($iditem, 0);
+		redirect('store/cart/viewcart');
+	}
 	function ajax_updateCart(){
 		if($this->input->post('rowid')){
 		$qty = $this->input->post('qty');
