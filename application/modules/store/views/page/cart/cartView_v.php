@@ -20,7 +20,7 @@
 								$('.totalitems').empty().append(data.new_total_item	);
 						   	}else if(data.status == 'off'){
 								$(parent).find('.input_qty').val(data.new_qty);
-						   		alert(data.msg);
+						   			$.jGrowl(data.msg, {position: 'center', header: 'warning', theme: 'warning' });
 						   	}else if(data.new_qty == 0 && data.status == 'on'){
 								$(parent).slideUp('slow');
 								$('.totalcartvalue').empty().append(data.new_total);
@@ -78,7 +78,7 @@
 		</div>
 		<div class="clear"></div>
  	</td>
-    <td class="text_right subtotal"><?=$this->addon_store->show_price($item['subtotal'])?></td>
+    <td class="text_right subtotal grid_150"><?=$this->addon_store->show_price($item['subtotal'])?></td>
 
 	</tr>
 
