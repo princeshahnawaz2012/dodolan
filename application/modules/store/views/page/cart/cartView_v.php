@@ -66,13 +66,17 @@
     	<div class="clear"></div>
 	</td>
     <td class="text_center"><?=$this->addon_store->show_price($item['price'])?></td>
-    <td class="qty grid_120">
+    <td class="qty grid_150">
     	
-    	<div class="update_form ctr">
+    	<div class="update_form left">
     	<input type="text" class="grid_50 input_qty" name="qty" value="<?=$item['qty'];?>"/>
     	<input type="hidden" name="rowid" class="input_rowid" value="<?=$item['rowid'];?>"/>
     	<a href="" class="button update_button">update</a>
     	</div>
+<div class="right padd5">
+		<a href="<?=site_url('store/cart/delete_cartitem/'.$item['rowid']);?>"><span class="act del"></span></a>
+		</div>
+		<div class="clear"></div>
  	</td>
     <td class="text_right subtotal"><?=$this->addon_store->show_price($item['subtotal'])?></td>
 
