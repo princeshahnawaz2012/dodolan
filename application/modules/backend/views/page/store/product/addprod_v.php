@@ -181,8 +181,62 @@ $(document).ready(function(){
 		</div>
 		</div>
         <div id="tab_5" class="item">
-        <p>Product Association</p>
-        
+	<script type="text/javascript" charset="utf-8">
+	$(document).ready(function(){
+			var delayer = delayTimer(1000);
+			$('#product_rel').live('keyup',function(event){
+					delayer(function(){
+						var q = $('#product_rel').val();
+												
+						$('.src_r').empty().hide('slide', {direction: 'up'});
+						$.ajax({
+								type: "POST",
+								dataType : "json",
+								data : {'rel_search' : q},	
+								url: "<?=site_url('backend/store/b_product/ajax_prod_search_rel')?>",
+								success: function(data){					     
+									   	if(data.status != false){
+										$('.src_r').append(data.prods);
+										$('.src_r').show('slide', {direction: 'up'});
+									
+									   	}else{
+									   	$('.src_r').append('nothing found');
+										$('.src_r').show('slide', {direction: 'up'});
+									   	}
+								   }
+							});
+
+
+						
+					});
+			
+			});
+			function delayTimer(delay){
+			     var timer;
+			     return function(fn){
+			          timer=clearTimeout(timer);
+			          if(fn)
+			               timer=setTimeout(function(){
+			               fn();
+			               },delay);
+			          return timer;
+			     }
+			}
+	});
+	</script>
+			<div id="product_assoc">
+					<div class="box2 grid_270 left">
+						<input type="text" name="product_rel" value="Type SKU or Name Product" id="product_rel" class="text-input grid_260">
+						<div class="clear"></div>
+						<div class="src_r mt10">
+						
+						</div>
+					</div>
+					<div class="rel_items left ml20">
+							<div class="msg">This product have no Association</div>
+					</div>
+					<div class="clear"></div>
+			</div>
         </div>
 	
 	</form>

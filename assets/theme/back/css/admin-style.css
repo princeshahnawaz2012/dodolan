@@ -63,6 +63,12 @@ background-image: -webkit-gradient(linear, 0 top, 0 bottom, from( #059a9f ), to(
 .backUserWid span{ text-shadow:0 1px 0 #fff;}
 .backUserWid a {text-shadow:0 1px 0 #fff; }
 
+.main_statistic_widget .item {float:left; border-right:#ccc 1px dotted ; padding :0 15px;}
+.main_statistic_widget .item span {display:block; text-align:center;}
+.main_statistic_widget .item span.title { text-shadow:0 1px 0 #fff;}
+.main_statistic_widget .item span.value { font-size:14px; font-weight:bold;}
+.main_statistic_widget div:last-child{ border-right:none ;}
+
 /* Page 
 ----------------------------------------------------------------------------------------------------*/
 .pageHeading .headingTitle h1 {font-weight: normal; font-size:18px;}

@@ -371,6 +371,36 @@ class B_product extends Controller {
 			redirect('backend/store/product/addprod');
 			}
 	}
+	
+	function ajax_prod_search_rel(){
+		$q = $this->input->post('rel_search');
+		//$exc = $this->input->post('except');
+		$combine_q = array('name' => $q, 'sku' => $q);
+		$this->db->or_like($combine_q);
+		$prods = $this->db->get('store_product');
+		if($prods->num_rows() > 0){
+			$data['status'] = true;
+			$data['prods'] = '';
+			foreach($prods->result() as $prod){
+				$img = modules::run('store/product/prodImg', $prod->id);
+				$data['prods'] .= '
+					<div class="coll_item mb10" id="'.$prod->id.'">
+						<div class="img_prod left mr5"><img src="'.site_url('thumb/show/70-30-crop/dir/assets/product-img/'.$img->path).'"/></div>
+						<div class="detail_prod left">
+						'.$prod->name.'
+						</div>
+						<div class="clear"></div>
+						<div class="horline"></div>
+						<div class="clear"></div>
+					</div>
+				';
+			}
+		}else{
+			$data['status'] = false;
+		}
+		echo json_encode($data);
+		
+	}
 	//// Tester Deploy /////
 	function testrename(){
 		$new_name = 'once again, again';

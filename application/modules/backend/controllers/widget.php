@@ -51,6 +51,59 @@ class Widget extends Controller {
 		}
 	}
 	
+	//widget main statictic site 
+	
+	function main_statistic(){
+		// get the total order
+		$this->db->select('id');
+		$q = $this->db->get('store_order');
+		$num_order = $q->num_rows();
+		
+		// get the total amount order
+		// set to get the only order which have been ship
+		// $this->db->where('order_status');
+		
+		$this->db->select_sum('sub_amount');
+		$this->db->where('c_date <' , date("Y-m-d"));
+		$this->db->where('c_date >=' , date("Y-m-d", strtotime("-1 weeks")));
+		$week = $this->db->get('store_order');
+		$lastweek = $week->row()->sub_amount;
+		
+		$this->db->select_sum('sub_amount');
+		$this->db->where('c_date <' , date("Y-m-01"));
+		$this->db->where('c_date >=' , date("Y-m-01", strtotime("-1 months")));
+		$month = $this->db->get('store_order');
+		$lastmonth = $month->row()->sub_amount;
+		
+		$this->db->select_sum('sub_amount');
+		$this->db->where('c_date <' , date("Y-m-d"));
+		$this->db->where('c_date >=' , date("Y-m-d", strtotime("-1 days")));
+		$yester = $this->db->get('store_order');
+		$yesterday = $yester->row()->sub_amount;
+		
+		$this->db->select_sum('sub_amount');
+		$this->db->where('c_date >=' , date("Y-m-d"));
+		$this->db->where('c_date <=' , date("Y-m-d 23:59:59"));
+		$day = $this->db->get('store_order');
+		$today = $day->row()->sub_amount;
+		
+		$this->db->select_sum('sub_amount');
+		$q = $this->db->get('store_order');
+		$total = $q->row()->sub_amount;
+		
+		$data['num_order'] = $num_order;
+		$data['test'] = date("Y-m-d", strtotime("-1 months"));
+		$data['omzet'] = array(
+			'lastmonth' => $this->cart->show_price($lastmonth),
+			'lastweek' => $this->cart->show_price($lastweek),
+			'yesterday' => $this->cart->show_price($yesterday),
+			'today' => $this->cart->show_price($today),
+			'total' => $this->cart->show_price($total),
+		);
+		
+		$this->load->view('backend/widget/main_statistic_v', $data);
+	}
+	
 	//widget google analytics
 	function ga_chart()
 	{

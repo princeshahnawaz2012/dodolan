@@ -8,14 +8,15 @@
 				chart: {
 					renderTo: 'chart_main'
 				},
-				title: {
-					text: 'Actual Statistic Visitor Counter'
-				},
-		
-				subtitle: {
-					text: 'Source: Google Analytics'
-				},
 				
+				exporting :{
+					enabled : false,
+				},
+				title: {
+					text : '<?=$this->config->item('site_name');?> traffic report',
+					align : 'right',
+					style: {fontSize : '13px'},
+				},
 				xAxis: {
 					type: 'datetime',
 					tickInterval: 7 * 24 * 3600 * 1000, // one week
@@ -62,7 +63,7 @@
 				legend: {
 					align: 'left',
 					verticalAlign: 'top',
-					y: 20,
+					y: 0,
 					floating: true,
 					borderWidth: 0
 				},
@@ -153,12 +154,13 @@
 		});
 	</script>
 	
-	<div class="ga_widget grid_600">
-	<div id="chart_main" class="grid_600 left" style="height: 200px; margin: 0 auto" >
+	<div class="ga_widget ctr">
+	<div id="chart_main" class="ctr grid_920" style="height: 200px; margin: 0 auto" >
 		
 	</div>
-	<div class="clear"></div>
+	<div class="analytic_tool mt20">
 	<span class="button ga_refresh">Refresh</span>
+	</div>
 	<div class="clear"></div>
 	</div>
 </div>

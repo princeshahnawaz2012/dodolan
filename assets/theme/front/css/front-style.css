@@ -15,7 +15,7 @@ ungu = EB6BF2;
 
 /* Main Layering
 ----------------------------------------------------------------------------------------------------*/
-.header { height:80px; border-bottom:1px solid #c1c1c1; margin-bottom:5px;}
+.header { height:80px; border-bottom:1px solid #c1c1c1; margin-bottom:20px;}
 .mainWrap { min-height:300px;}
 .footerWrap { border-top:1px solid #c1c1c1; margin-bottom:30px; font-size:11px; padding-top:5px; margin-top:10px;}
 .mainComp { width:730px;}
