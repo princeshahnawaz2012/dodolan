@@ -28,9 +28,9 @@
 			<li><a href="<?=site_url('store/collection');?>">Collection</a></li>
 			<li><a href="#">Sale</a></li>
 			<li><a href="#">New Arrival</a></li>
-			<li><a href="#">About</a></li>
-			<li><a href="#">Contact</a></li>
-			<li><a href="#">Help & FAQ</a></li>
+			<li><a href="<?=site_url('page/view/3');?>">About</a></li>
+			<li><a href="<?=site_url('page/view/5');?>">Contact</a></li>
+			<li><a href="<?=site_url('page/view/4');?>">Help & FAQ</a></li>
 			<div class="clear"></div>
 		</ul>
 		<div class="mod_search left">
@@ -45,7 +45,7 @@
 	</div>
 	
 	<div class="grid_960 ctr" id="mainLayer">
-		<? if(!isset($loadSide) ){
+		<? if(!isset($loadSide) || !$this->input->get('dsply')){
 			$mainComp = '';
 			?>	
 			<div class="sidebar grid_210 left">
@@ -54,7 +54,7 @@
 			   <?=modules::run('store/store_widget/currency');?>
 			</div>
 			
-		<?}else{
+		<?}elseif($this->input->get('dsply') == 'full'){
 			$mainComp = 'fullWidth';
 			}?>
 	
@@ -68,6 +68,6 @@
 	<div class="footerWrap">
 	
 	</div>
-
+	
 	<?=$this->load->view('front/footer');?>
 	

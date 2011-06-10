@@ -33,11 +33,12 @@ function theme(){
 	$this->_ci =& get_instance();
 }
 function render($data, $mode=false, $layer=false){
-	if($layer == false){
+	if(!$this->_ci->input->get('tpl')){
 		$layer = 'index';
-	}else{
-		$layer = $layer;
+	}elseif($this->_ci->input->get('tpl')){
+		$layer = $this->_ci->input->get('tpl');
 	}
+
 	
 	if($mode != 'back' && $mode == null ){
 	$this->_ci->firephp->setEnabled(true);

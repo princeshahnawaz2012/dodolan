@@ -13,7 +13,6 @@
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>/assets/global_js/jquery_ui/theme/Aristo/jquery-ui-1.8.7.custom.css" media="screen"  />	
 <link rel="stylesheet" type="text/css" href="<?=base_url();?>/assets/global_js/jgrowl/jquery.jgrowl.css" media="screen"  />	
 
-
 <script src="<?=base_url();?>/assets/global_js/jquery.min.js"></script>
 <script src="<?=base_url();?>/assets/global_js/jquery_ui/jquery-ui.min.js"></script>
 <script type="text/javascript" src="<?=base_url();?>/assets/global_js/dodolan_js_lib.js"></script>

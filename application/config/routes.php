@@ -52,6 +52,7 @@ $route['login/(:any)'] = "user/frontend_login/$1";
 $route['login'] = "user/frontend_login";
 $route['logout'] = "user/auth/frontlogout";
 $route['store/products/(:num)/(:any)'] = "store/product/view/$1/$2";
+$route['about'] = "page/view/3";
 
 
 /* End of file routes.php */

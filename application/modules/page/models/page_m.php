@@ -56,7 +56,17 @@ class Page_m extends Model {
 			return false;
 		}
 	}
-	function browse($param){
+	function browse($param =false){
+		$this->db->select('a.*', false);
+		$this->db->select('b.*', false);
+		$this->db->select('a.id as page_id, b.id as cat_id');
+		$this->db->join('page_category b', 'a.category_id=b.id');
+		$q = $this->db->get('page a');
+		if($q){
+			return $q;
+		}else{
+			return false;
+		}
 		
 	}
 

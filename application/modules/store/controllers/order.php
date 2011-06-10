@@ -65,13 +65,7 @@ if(!$data){
 		
 		return $data;
 	}
-	function tester(){
-			$id = $this->uri->segment(4);
-			$q = $this->getorderbycustomer($id);
-			echo json_encode($q);
-			echo $id;
-		
-	}
+	
 	function orderprice($id, $num){
 		$order = $this->order_m->getOrder($id);
 		if($order->currency != $this->addon_store->currency()){
@@ -95,10 +89,7 @@ if(!$data){
 		$send = $this->mailer->send();
 		echo $send['debug'];
 	}
-	function test(){
-		$id = $this->uri->segment(4);
-		modules::run('store/order/send_order_data', $id);
-	}
+	
 	function count_qty_order($id){
 		$data = $this->order_m->get_prodsold_data($id);
 		$qty = array();

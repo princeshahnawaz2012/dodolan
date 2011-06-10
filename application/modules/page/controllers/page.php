@@ -8,7 +8,7 @@ class Page extends Controller {
 	function __construct() {
 		parent::Controller();
 		$this->mod = $this->load->model('page/page_m');
-		$this->mod_cat = $this->load->model('page/category_m');
+		$this->mod_cat = $this->load->model('page/page_category_m');
 	}
 	
 	//php 4 constructor
@@ -18,12 +18,18 @@ class Page extends Controller {
 	
 	function index() {
 		$page = modules::run('page/exe_getbyid', 1);
-		echo $page->c_date;
+		$this->theme->render($render);
 		
 		
 	}
-	
-	
+	function view(){
+		$id = $this->uri->segment(3);
+		$page = modules::run('page/exe_getbyid', $id);
+		$render['page'] = $page;
+		$render['pT'] = $page->title;
+		$render['mainLayer'] = 'page/view_v';
+		$this->theme->render($render);
+	}
 	// API ///
 
 	// API MISC
@@ -54,7 +60,7 @@ class Page extends Controller {
 	function exe_getbyid($id){
 		return $this->mod->getbyid($id);
 	}
-	function exe_browse($param){
+	function exe_browse($param = false){
 		return $this->mod->browse($param);
 	}
 

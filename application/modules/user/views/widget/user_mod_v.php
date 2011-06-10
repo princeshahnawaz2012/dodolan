@@ -10,7 +10,6 @@ $(document).ready(function(){
 				<p>
 <? $login_data = $this->session->userdata('login_data');					
 if($login_data){?>
-	<span><?=$login_data['user_id'];?></span> | 
 	<a href="<?=site_url('logout')?>">Logout</a>
 <?}else{?>
 					<a href="<?=site_url('login/red/'.$this->uri->uri_string());?>" class="show_logMod" title="Register">Sing In</a> 

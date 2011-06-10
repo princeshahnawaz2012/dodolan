@@ -26,7 +26,7 @@ background-image: -webkit-gradient(linear, 0 top, 0 bottom, from( #059a9f ), to(
         box-shadow: 0 1px 7px #CCCCCC; margin-bottom:50px;}
 /* Main Layering
 ----------------------------------------------------------------------------------------------------*/
-.header {border-bottom:1px solid #c1c1c1; margin-top:20px; margin-bottom:10px}
+.header {border-bottom:1px solid #058B9B; margin-top:20px; margin-bottom:10px}
 .mainWrap { min-height:300px;}
 .footerWrap { border-top:1px solid #c1c1c1; margin-bottom:30px; font-size:11px; padding-top:5px; margin-top:10px;}
 .navigation { height:30px; background-color: #000; color: #fff; padding-top:5px; background-image: -moz-linear-gradient(-90deg, #059a9f , #058b9b );
@@ -53,7 +53,12 @@ background-image: -webkit-gradient(linear, 0 top, 0 bottom, from( #059a9f ), to(
 .header .pageMenu { bottom:0px; right:0px;}
 .header .pageMenu ul {padding:0px;margin:0px }
 .header .pageMenu li { list-style: none; float:left; margin:0px 0px 0px 5px; }
-.header .pageMenu a {display:block;padding: 5px;-moz-border-radius-topleft:3px; -moz-border-radius-topright:3px;border-radius-topleft:3px; border-radius-topright:3px; background:#ccc; }
+.header .pageMenu a {
+	text-decoration: none;
+	background-color: #000000;
+    background-image: -moz-linear-gradient(-90deg, #059A9F, #058B9B);
+    color: #FFFFFF;
+	display:block;padding: 5px 10px;-moz-border-radius-topleft:3px; -moz-border-radius-topright:3px;border-radius-topleft:3px; border-radius-topright:3px; }
 
 /* Widget
 ----------------------------------------------------------------------------------------------------*/
