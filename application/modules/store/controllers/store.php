@@ -19,12 +19,7 @@ class Store extends Controller {
 		$data['data'] = 'asuh';
 		$this->theme->render($data);
 	}
-	function test(){
-		$source = $this->yh_conv->conv(1, 'USD', 'IDR');
-		echo $source;
-		
-	}
-	
+
 	function request_restock($data=array()){
 		$this->load->view('store/misc/store/request_restockform_v', $data);
 	}

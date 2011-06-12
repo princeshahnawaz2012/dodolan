@@ -47,6 +47,9 @@ class Product extends Controller {
 		$q = $this->product_m->getProdById($param);
 		return $q;
 	}
+	function get_relation($id){
+		return $this->product_m->getRel($id);
+	}
 	function view(){
 		$param['id'] = $this->uri->segment(4);
 		$param['attr'] = true;
@@ -197,6 +200,7 @@ class Product extends Controller {
 		$del = $this->product_m->deleteProduct($id);
 		return $del;
 	}
+	
 	
 
 }?>

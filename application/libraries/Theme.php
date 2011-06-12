@@ -3,6 +3,7 @@
 Theme Library for CI, Personaly Use for barock [zidmubarock@gmail.com]
 file name : Theme.php
 **/
+
 class Theme
 {
 var $_ci 		=  '';

@@ -184,5 +184,27 @@ if(!$data){
 		
 		
 	}
+	function confirm_payment(){
+		$render['pH'] = 'Confirmation Order Payment';
+		$render['mainLayer'] = 'store/page/order/confirm_payment_v';
+		$this->theme->render($render);
+		if($this->input->post('submit')):
+			$passdata['information'] = '
+			Order <span class="bold">#'.$this->input->post('order_number').'</span><br/>
+			Payment Method 		: '.$this->input->post('payment_method').'<br/>
+			Payed Amount 		: '.$this->input->post('payed_amount').'<br/>
+			Date Payment 		: '.$this->input->post('date_payment').'<br/>
+			Acount Name 		: '.$this->input->post('acount_name').'</br>
+			';
+		endif;
+	}
+	// ORDER HISTORY API //
+	function create_history_order($id,$type,$information){
+		
+	}
+	function mark_read_history($id){
+		
+	}
+	
 
 }

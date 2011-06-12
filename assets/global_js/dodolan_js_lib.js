@@ -18,6 +18,13 @@ $(document).ready(function(){
 	
   });
 $(document).ready(function(){
+
+		$(".hastime").datetimepicker({
+			dateFormat:"yy-mm-dd",
+			timeFormat: 'hh:mm:ss'
+			});
+});
+$(document).ready(function(){
 	
 	var current = $(location).attr('href');
 	$('a').each(function(){

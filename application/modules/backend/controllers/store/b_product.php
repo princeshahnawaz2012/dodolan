@@ -42,6 +42,7 @@ class B_product extends Controller {
 		$data['prod'] = $prod['prod'];
 		$data['attrb'] = $prod['attrb'];
 		$data['media'] = $prod['media'];
+		$data['relations'] = modules::run('store/product/get_relation', $idprod);
 		$data['mainLayer'] = 'backend/page/store/product/editprod_v';
 		$data['pt'] = 'edit product';
 		$data['ht'] = 'edit product - '.$prod['prod']->name;
@@ -212,6 +213,13 @@ class B_product extends Controller {
 			);
 		$ins = $this->product_m->editProduct($mainInfo, $id);
 		if($ins){
+				// insert relation
+				if($this->input->post('product_rel') != null){
+					$rel_array = explode(',', $this->input->post('product_rel'));
+				
+					$this->product_m->addRel($id, $rel_array);
+
+				}
 			//update attribute
 			$num_attrb = count($this->input->post('attribute'));
 				for($i=0;$i<$num_attrb;$i++){
@@ -304,6 +312,13 @@ class B_product extends Controller {
 			);
 		$ins = $this->product_m->addProduct($mainInfo);
 		if($ins){
+			// insert relation
+			if($this->input->post('product_rel') != null){
+				$rel_array = explode(',', $this->input->post('product_rel'));
+				$this->product_m->addRel($ins['id'], $rel_array);
+				
+			}
+			
 			// insert attrib
 			$num_attrb = count($this->input->post('attribute'));
 				for($i=0;$i<$num_attrb;$i++){
@@ -368,24 +383,31 @@ class B_product extends Controller {
 			// there something wrong when add product
 			else{
 			$this->messages->add('something done not correctly, we so sorry, you can try again now',  'warning');
-			redirect('backend/store/product/addprod');
+			redirect('backend/store/b_product/addprod');
 			}
 	}
 	
 	function ajax_prod_search_rel(){
 		$q = $this->input->post('rel_search');
-		//$exc = $this->input->post('except');
+		
 		$combine_q = array('name' => $q, 'sku' => $q);
+		if($this->input->post('except') != null){
+			$exc = explode(',', $this->input->post('except'));
+			$this->db->where_not_in('id', $exc);
+		}
+		
 		$this->db->or_like($combine_q);
 		$prods = $this->db->get('store_product');
 		if($prods->num_rows() > 0){
 			$data['status'] = true;
 			$data['prods'] = '';
+		
 			foreach($prods->result() as $prod){
 				$img = modules::run('store/product/prodImg', $prod->id);
 				$data['prods'] .= '
-					<div class="coll_item mb10" id="'.$prod->id.'">
-						<div class="img_prod left mr5"><img src="'.site_url('thumb/show/70-30-crop/dir/assets/product-img/'.$img->path).'"/></div>
+					<div class="rel_item mb10"  id="'.$prod->id.'">
+						<div class="img_prod left mr5"><img
+						 src="'.site_url('thumb/show/70-30-crop/dir/assets/product-img/'.$img->path).'"/></div>
 						<div class="detail_prod left">
 						'.$prod->name.'
 						</div>
@@ -394,6 +416,7 @@ class B_product extends Controller {
 						<div class="clear"></div>
 					</div>
 				';
+				
 			}
 		}else{
 			$data['status'] = false;
@@ -401,31 +424,40 @@ class B_product extends Controller {
 		echo json_encode($data);
 		
 	}
-	//// Tester Deploy /////
-	function testrename(){
-		$new_name = 'once again, again';
-				$path = './assets/product-img/p_249_Blue_kam.jpg';
-				$ext  = pathinfo($path);
-				$new  = './assets/product-img/'.$new_name.'.'.$ext['extension'];
-				if(file_exists($path)){
-					$ren = rename($path, $new);
-					if ($ren){
-						$new_file = pathinfo($new);
-						echo $new_file['filename'];
-					}else{
-						return false;
-					}
-				}else{
-					echo 'nggak enek filenya cok !!!';
-				}
+	function ajax_get_prodrel(){
+		$id = $this->input->post('id_prod');
+		$this->db->where('id', $id);
+		$q= $this->db->get('store_product');
+		$prod = $q->row();
+		$img = modules::run('store/product/prodImg', $id);
+		$data['prod'] = '
+			<div id="'.$prod->id.'" class="item mb10">
+				<div class="img_prod left mr5"><img src="'.site_url('thumb/show/70-30-crop/dir/assets/product-img/'.$img->path).'"/></div>
+				<div class="detail_prod left">
+				'.$prod->name.'
+				</div>
+				<div class="right tool">
+					<a href="'.site_url('backend/store/b_product/editprod/'.$prod->id).'"><span class="edit act"></span></a>
+					<a href="'.site_url('store/product/view/'.$prod->id).'"><span class="view act"></span></a>
+					<a href="#"><span class="delete_ajx act pre_del"></span></a>
+				</div>
+				<div class="clear"></div>
+				<div class="horline"></div>
+				<div class="clear"></div>
+			</div>
+		';
+		$data['status'] = true;
+		echo json_encode($data);
 	}
-	function infopath(){
-		$path = './assets/product-img/p_249_merah_kam.jpg';
-		$info = pathinfo($path);
-		echo $info['basename'].'<br/>';
-		echo $info['dirname'].'<br/>';
-		echo $info['extension'].'<br/>';
-		echo $info['filename'].'<br/>';
-				
+	function ajax_del_prodrel(){
+		$id = $this->input->post('id_rel');
+		$q = $this->product_m->delRel($id);
+		if($q){
+			$data['status'] = true;
+		}else{
+			$data['status'] = false;
+		}
+		echo json_encode($data);
 	}
+
 }

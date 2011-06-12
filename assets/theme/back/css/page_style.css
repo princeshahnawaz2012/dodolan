@@ -16,6 +16,11 @@
 #b_order_browse .list_order .update_form ul li { margin:0px 2px; list-style:none; text-transform: capitalize; padding:3px; cursor:pointer;}
 #b_order_browse .list_order .update_form ul li.active {background-color: #12b8b6; margin:0px -3px; color:#fff; padding:3px 5px;}
 
+#b_order_view .left_pane h3  {border-bottom:1px solid #ccc ;}
+#b_order_view  h3  {font-size:13px; margin-bottom:5px;}
+#b_order_view .order_items .final_total { border-top:1px solid #ccc;}
+#b_order_view .order_items .final_total td { background:#fff; border-bottom: none;border-top:1px solid #000;}
+#b_order_view .order_items thead tr td { text-align:left;}
 /** backend Front Login **/
 .backend .login_page .heading_page { margin: -10px -15px 0px -15px; padding: 10px;-webkit-border-radius: 3px;
    -moz-border-radius: 3px;

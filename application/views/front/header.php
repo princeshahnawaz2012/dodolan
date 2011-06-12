@@ -15,6 +15,8 @@
 
 <script src="<?=base_url();?>/assets/global_js/jquery.min.js"></script>
 <script src="<?=base_url();?>/assets/global_js/jquery_ui/jquery-ui.min.js"></script>
+<script src="<?=base_url();?>/assets/global_js/jquery_ui/jquery-ui-timepicker-addon.js" type="text/javascript" charset="utf-8"></script>
+
 <script type="text/javascript" src="<?=base_url();?>/assets/global_js/dodolan_js_lib.js"></script>
 <script type="text/javascript" src="<?=base_url();?>/assets/global_js/jgrowl/jquery.jgrowl.js"></script>
 
@@ -30,4 +32,4 @@
 
 </head>
 
-<body <?if(isset($jsBodyAction)){echo $jsBodyAction;}?> class="<?=$this->router->class.'_'.$this->router->method;?>" >
+<body <?if(isset($jsBodyAction)){echo $jsBodyAction;}?> id="<?=$this->router->class.'_'.$this->router->method;?>" >

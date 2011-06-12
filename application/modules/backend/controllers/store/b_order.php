@@ -42,10 +42,10 @@ class B_order extends Controller {
 		}
 		
 		$conf = array(
-			'start' => $start,
-			'end'   => $limit,
-			'status' => $param['status'],
-			'query' => $param['q'],
+			'start' 	=> $start,
+			'end'   	=> $limit,
+			'status' 	=> $param['status'],
+			'query' 	=> $param['q'],
 			);
 		
 		//$prods = $this->product_m->getListProd($conf);
@@ -53,21 +53,39 @@ class B_order extends Controller {
 		if($query){
 		$target_url = str_replace('/page/'.$param['page'] , '', current_url());
 		$confpage = array(
-			'target_page' => $target_url,
-			'num_records' => $query['number_rec'],
-			'num_link'	  => 5,
-			'per_page'   => $limit,
-			'cur_page'   => $param['page']
+			'target_page' 	=> $target_url,
+			'num_records' 	=> $query['number_rec'],
+			'num_link'	  	=> 5,
+			'per_page'   	=> $limit,
+			'cur_page'   	=> $param['page']
 			);
 			
 		$this->barock_page->initialize($confpage);
 		}
-		$data['orders'] = $query['orders'];
-		$data['pT'] = $query['number_rec'];
-		$data['mainLayer'] ='backend/page/store/order/browse_order_v';
-		$data['asuh'] = $query['number_rec'];
+		$data['orders']    	= $query['orders'];
+		$data['pT']     	= $query['number_rec'];
+		$data['mainLayer'] 	='backend/page/store/order/browse_order_v';
+		$data['asuh'] 		= $query['number_rec'];
 		$this->theme->render($data, 'back');
 		
+	}
+	function view(){
+		$id = $this->uri->segment(5);
+		$data = modules::run('backend/store/b_order/getorder_byid', $id);
+		$order  = $data['order_data'];
+		$render['data_personal'] = $data['personal_data'];
+		$render['data_order'] = $order;
+		$render['data_prodsold'] = $data['prodsold_data'];
+		$render['data_shipto'] = $data['shipto_data'];
+		$render['pageTool'] = modules::run('backend/store/b_order/updater_form', $order->id, $order->status);
+		$render['pH'] = 'Order No. '.$order->id;
+		$render['mainLayer'] 	='backend/page/store/order/view_v';
+		$this->theme->render($render, 'back');
+	}
+	function updater_form($id_order, $current){
+		$render['id'] = $id_order;
+		$render['current'] = $current;
+		$this->load->view('backend/page/store/order/updater_form_v', $render);
 	}
 	function getorder_byid($id){
 		$order = $this->order_m->getall_orderdata($id);

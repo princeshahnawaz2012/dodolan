@@ -70,7 +70,15 @@ class B_page extends Controller {
 		
 	}
 	function delete(){
-		
+		$id = $this->uri->segment(5);
+		$q = modules::run('page/exe_delete', $id);
+		if($q){
+			$this->messages->add('Success Delete Page with id '.$id, 'success');
+			redirect('backend/page/b_page/browse');
+		}else{
+			$this->messages->add('Something Wrong', 'warning');
+			redirect('backend/page/b_page/browse');
+		}
 	}
 	function view(){
 		

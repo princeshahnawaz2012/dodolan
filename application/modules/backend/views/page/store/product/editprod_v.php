@@ -1,3 +1,4 @@
+<div class="editProd">
 <form enctype="multipart/form-data" method="post" action="<?=current_url()?>">
 	
 	<script type="text/javascript" charset="utf-8">
@@ -6,10 +7,13 @@
 			});
 	</script>
 <div class="tab-Ui" id="addProdTab">
-	<div class="right" style="margin-bottom:-40px"><input type="submit" name="submit" value="save" class="button save-button-Ui" style="margin-right:5px;"/><a href="<?=site_url();?>backend/store/b_product/listprod/"><span class="button cancel-button-Ui" >Cancel</span></a></div>	
-	<br class="clear"/>
+		<div class="right" style="margin-bottom:-40px">
+		<input type="submit" name="submit" value="save" class="button save-button-Ui" style="margin-right:5px;"/>
+		<a href="<?=site_url();?>backend/store/b_product/listprod/"><span class="button cancel-button-Ui" >Cancel</span></a>
+	</div>	
+		<br class="clear"/>
 	
-<ul class="nav">
+		<ul class="nav">
 	<li><a href="#tab_1">Main Info</a></li>
 	<li><a href="#tab_2">Inventory and Stock</a></li>
 	<li><a href="#tab_3">S.E.O Setup</a></li>
@@ -240,9 +244,141 @@ $(document).ready(function(){
 		</div>
 		</div>
         <div id="tab_5" class="item">
-        <p>Product Association</p>
+				<script type="text/javascript" charset="utf-8">
+					$(document).ready(function(){
+
+						var delayer = delayTimer(1000);
+						$('#product_rel').live('keyup',function(event){
+								delayer(function(){
+									var q = $('#product_rel').val();						
+									if(get_rel_array() != false){
+									var except = get_rel_array();
+									}else{
+									var except = null;	
+									}
+									$('.src_r').empty().hide('slide', {direction: 'up'});
+									$.ajax({
+											type: "POST",
+											dataType : "json",
+											data : {'rel_search' : q, 'except' : except},	
+											url: "<?=site_url('backend/store/b_product/ajax_prod_search_rel')?>",
+											success: function(data){					     
+												   	if(data.status != false){
+													$('.src_r').append(data.prods);
+													$('.src_r').show('slide', {direction: 'up'});
+													add_rel();
+												   	}else{
+												   	$('.src_r').append('nothing found');
+													$('.src_r').show('slide', {direction: 'up'});
+												   	}
+											   }
+										});
+								});
+
+						});
+						function delayTimer(delay){
+						     var timer;
+						     return function(fn){
+						          timer=clearTimeout(timer);
+						          if(fn)
+						               timer=setTimeout(function(){
+						               fn();
+						               },delay);
+						          return timer;
+						     }
+						}
+						function add_rel(){
+							$('.src_r .rel_item').click(function(){
+								var suspect = $(this);
+								var id = suspect.attr('id');
+
+
+								$.ajax({
+										type: "POST",
+										dataType : "json",
+										data : {'id_prod' : id},	
+										url: "<?=site_url('backend/store/b_product/ajax_get_prodrel')?>",
+										success: function(data){					     
+											   	if(data.status != false){
+												if($('.rel_items .msg').size() > 0){
+													$('.rel_items .msg').remove();
+												}
+												suspect.hide('drop', {direction: 'right'});
+												$('.rel_items').append(data.prod);
+
+											   	}
+										   }
+									});
+							});
+						}
+						function get_rel_array(){
+							var array_rel = '';
+
+							$('.rel_items .item').each(function(){
+								var suspect = $(this),
+								id = suspect.attr('id');
+								array_rel += id+',';
+							});
+							return 	array_rel.substr(0,array_rel.length - 1);
+
+						}
+						// put the rel to the input field
+						$('input[name="submit"]').click(function(){
+							if(get_rel_array() != false){
+							var rel_list = get_rel_array();
+							}else{
+							var rel_list = '';	
+							}
+							$('input[name="product_rel"]').val(rel_list);
+							alert($('input[name="product_rel"]').val());
+						});
+
+				});
+				</script>        
+				<div id="product_assoc">
+					<div class="box2 grid_270 left">
+						<input type="text" name="product_rel" value="Type SKU or Name Product" id="product_rel" class="text-input grid_260">
+						<div class="clear"></div>
+						<div class="src_r mt10">
+
+						</div>
+						
+					</div>
+					<div class="rel_items left ml20 grid_300">
+						<?if($relations):
+						foreach($relations->result() as $rel):?>
+							<?
+							// initialize product by product_id
+							$param = array(
+								'id' => $rel->p_rel,
+								);	
+							$q = modules::run('store/product/detProd', $param);
+							$p = $q['prod'];
+							$img = modules::run('store/product/prodImg', $rel->p_rel);
+							?>
+							<div id="<?=$rel->p_rel;?>" class="item mb10">
+								<div class="img_prod left mr5"><img src="<?=site_url('thumb/show/70-30-crop/dir/assets/product-img/'.$img->path)?>"/></div>
+								<div class="detail_prod left">
+								<?=$p->name;?>
+								</div>
+								<div class="right tool">
+									<a href="<?=site_url('backend/store/b_product/editprod/'.$rel->p_rel);?>"><span class="edit act"></span></a>
+									<a href="<?=site_url('store/product/view/'.$rel->p_rel);?>"><span class="view act"></span></a>
+									<a href="#"><span class="delete_ajx act"></span></a>
+								</div>
+								<div class="clear"></div>
+								<div class="horline"></div>
+								<div class="clear"></div>
+							</div>
+						<?endforeach;else:?>
+						<div class="msg">This product have no Association</div>
+						<?endif;?>
+					</div>
+					<div class="clear"></div>
+				</div>
         
         </div>
-	
-	</form>
+</div>
+
+</form>
 </div>

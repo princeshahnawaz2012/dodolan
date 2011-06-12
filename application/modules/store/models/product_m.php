@@ -31,6 +31,7 @@ class Product_m extends Model {
 	}
 	// edit Product
 	function editProduct($data, $id){
+	
 		$this->db->where('id', $id);
 		$q = $this->db->update('store_product', $data);
 		if($q){
@@ -303,6 +304,40 @@ class Product_m extends Model {
 				return false;
 			}
 		
+	}
+	/////////// Product Relation ///////////
+	function addRel($id, $rel_list=array()){
+		foreach($rel_list as $p_rel):
+		$this->db->where('p_own', $id);
+		$this->db->where('p_rel', $p_rel);
+		$q = $this->db->get('store_product_rel');
+			if($q->num_rows() == 0):
+				$data = array(
+					'p_own' => $id,
+					'p_rel' => $p_rel
+				);
+				$this->db->insert('store_product_rel', $data);
+			endif;
+		endforeach;
+		return true;
+	}
+	function getRel($id){
+		$this->db->where('p_own', $id);
+		$q = $this->db->get('store_product_rel');
+		if($q->num_rows() > 0){
+			return $q;
+		}else{
+			return false;
+		}
+	}
+	function delRel($id){
+		$this->db->where('id', $id);
+		$q = $this->db->delete('store_product_rel');
+		if($q){
+			return true;
+		}else{
+			return false;
+		}
 	}
 	
 	

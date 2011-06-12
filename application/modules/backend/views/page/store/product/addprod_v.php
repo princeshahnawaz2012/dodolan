@@ -46,7 +46,7 @@
 					</div>
 					<div class="inputSet">
 						<div class="label"><span>Publish</span></div>
-						<div class="input left"><input type="checkbox" value="1" name="p_publish"></div>
+						<div class="input left"><input type="checkbox" value="y" name="p_publish"></div>
 						<div class="clear"></div>
 					</div>
 					<div class="inputSet">
@@ -181,49 +181,103 @@ $(document).ready(function(){
 		</div>
 		</div>
         <div id="tab_5" class="item">
-	<script type="text/javascript" charset="utf-8">
-	$(document).ready(function(){
-			var delayer = delayTimer(1000);
-			$('#product_rel').live('keyup',function(event){
-					delayer(function(){
-						var q = $('#product_rel').val();
-												
-						$('.src_r').empty().hide('slide', {direction: 'up'});
-						$.ajax({
-								type: "POST",
-								dataType : "json",
-								data : {'rel_search' : q},	
-								url: "<?=site_url('backend/store/b_product/ajax_prod_search_rel')?>",
-								success: function(data){					     
-									   	if(data.status != false){
-										$('.src_r').append(data.prods);
-										$('.src_r').show('slide', {direction: 'up'});
-									
-									   	}else{
-									   	$('.src_r').append('nothing found');
-										$('.src_r').show('slide', {direction: 'up'});
-									   	}
-								   }
+			<script type="text/javascript" charset="utf-8">
+				$(document).ready(function(){
+	
+					var delayer = delayTimer(1000);
+					$('#product_rel').live('keyup',function(event){
+							delayer(function(){
+								var q = $('#product_rel').val();						
+								if(get_rel_array() != false){
+								var except = get_rel_array();
+								}else{
+								var except = null;	
+								}
+								$('.src_r').empty().hide('slide', {direction: 'up'});
+								$.ajax({
+										type: "POST",
+										dataType : "json",
+										data : {'rel_search' : q, 'except' : except},	
+										url: "<?=site_url('backend/store/b_product/ajax_prod_search_rel')?>",
+										success: function(data){					     
+											   	if(data.status != false){
+												$('.src_r').append(data.prods);
+												$('.src_r').show('slide', {direction: 'up'});
+												add_rel();
+											   	}else{
+											   	$('.src_r').append('nothing found');
+												$('.src_r').show('slide', {direction: 'up'});
+											   	}
+										   }
+									});
 							});
-
-
-						
+			
 					});
+					function delayTimer(delay){
+					     var timer;
+					     return function(fn){
+					          timer=clearTimeout(timer);
+					          if(fn)
+					               timer=setTimeout(function(){
+					               fn();
+					               },delay);
+					          return timer;
+					     }
+					}
+					function add_rel(){
+						$('.src_r .rel_item').live('click', function(event){
+							var suspect = $(this);
+							var id = suspect.attr('id');
+							$.ajax({
+									type: "POST",
+									dataType : "json",
+									data : {'id_prod' : id},	
+									url: "<?=site_url('backend/store/b_product/ajax_get_prodrel')?>",
+									success: function(data){					     
+										   	if(data.status != false){
+											if($('.rel_items .msg').size() > 0){
+												$('.rel_items .msg').remove();
+												
+											}
+											
+											suspect.hide('drop', {direction: 'right'});
+											$('.rel_items').append(data.prod);
+								
+										   	}
+									   }
+								});
+						});
+					}
+					function get_rel_array(){
+						var array_rel = '';
+				
+						$('.rel_items .item').each(function(){
+							var suspect = $(this),
+							id = suspect.attr('id');
+							array_rel += id+',';
+						});
+						return 	array_rel.substr(0,array_rel.length - 1);
+				
+					}
+					// put the rel to the input field
+					$('input[name="submit"]').click(function(){
+						if(get_rel_array() != false){
+						var rel_list = get_rel_array();
+						}else{
+						var rel_list = '';	
+						}
+						$('input[name="product_rel"]').val(rel_list);
+						alert($('input[name="product_rel"]').val());
+					});
+				
+					$('.pre_del').click(function(){
+						var suspect  = $(this).parent().parent().parent();
+						suspect.hide('fade').remove();
+					});
+				
 			
 			});
-			function delayTimer(delay){
-			     var timer;
-			     return function(fn){
-			          timer=clearTimeout(timer);
-			          if(fn)
-			               timer=setTimeout(function(){
-			               fn();
-			               },delay);
-			          return timer;
-			     }
-			}
-	});
-	</script>
+			</script>
 			<div id="product_assoc">
 					<div class="box2 grid_270 left">
 						<input type="text" name="product_rel" value="Type SKU or Name Product" id="product_rel" class="text-input grid_260">
@@ -232,12 +286,15 @@ $(document).ready(function(){
 						
 						</div>
 					</div>
-					<div class="rel_items left ml20">
-							<div class="msg">This product have no Association</div>
+					<div class="rel_items left ml20 grid_300">
+						
+						<div class="msg">This product have no Association</div>
 					</div>
+					<input type="hidden" name="product_rel" value="">
 					<div class="clear"></div>
 			</div>
+		
         </div>
-	
+	</div>
 	</form>
 </div>
