@@ -2,20 +2,14 @@
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class Ajax extends Controller {
+class Ajax extends MX_Controller {
 
-	//php 5 constructor
 	function __construct() {
-		parent::Controller();
-	}
+		parent::__construct();
 	
-	//php 4 constructor
-	function Ajax() {
-		parent::Controller();
 	}
-	
 	function index() {
-		
+		echo 'ajax';
 	}
 	function loadmsg(){
 	$render['msg'] = $this->messages->get();

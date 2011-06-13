@@ -1,5 +1,5 @@
 <?php
-class Assets_m extends Model
+class Assets_m extends CI_Model
 {
 
   public $path          = "";
@@ -19,7 +19,7 @@ class Assets_m extends Model
   
   public function __construct()
   {
-    parent::Model();
+    parent::__construct();
     $this->load->library('image_lib');
     $this->load->helper('file');
     $this->path = BASEPATH."../";

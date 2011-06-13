@@ -2,17 +2,17 @@
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class Newsletter extends Controller {
+class Newsletter extends MX_Controller {
 
 	//php 5 constructor
 	function __construct() {
-		parent::Controller();
+		parent::__construct();
 		$this->load->model('newsletter/newsletter_m');
 	}
 	
 	//php 4 constructor
 	function Newsletter() {
-		parent::Controller();
+		parent::__construct();
 	}
 	
 	function addMember() {

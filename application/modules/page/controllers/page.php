@@ -2,18 +2,18 @@
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class Page extends Controller {
+class Page extends MX_Controller {
 
 	//php 5 constructor
 	function __construct() {
-		parent::Controller();
+		parent::__construct();
 		$this->mod = $this->load->model('page/page_m');
 		$this->mod_cat = $this->load->model('page/page_category_m');
 	}
 	
 	//php 4 constructor
 	function Page() {
-		parent::Controller();
+		parent::__construct();
 	}
 	
 	function index() {

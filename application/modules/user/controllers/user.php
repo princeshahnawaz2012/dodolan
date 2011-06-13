@@ -2,17 +2,17 @@
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class User extends Controller {
+class User extends MX_Controller {
 
 	//php 5 constructor
 	function __construct() {
-		parent::Controller();
+		parent::__construct();
 		$this->load->model('user/user_m');
 	}
 	
 	//php 4 constructor
 	function User() {
-		parent::Controller();
+		parent::__construct();
 	
 	}
 	

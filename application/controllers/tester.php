@@ -2,16 +2,16 @@
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class Tester extends Controller {
+class Tester extends MX_Controller {
 
 	//php 5 constructor
 	function __construct() {
-		parent::Controller();
+		parent::__construct();
 	}
 	
 	//php 4 constructor
 	function Tester() {
-		parent::Controller();
+		parent::__construct();
 	}
 	function index(){
 		echo 'just tester';

@@ -16,8 +16,9 @@ class MY_Cart extends CI_Cart {
 	var $meta  			= '';
 	var $check_step 	= '';	
 	
-	function __construct(){	
-		parent::__construct();	
+	function MY_Cart(){	
+		parent::__construct();
+		
 		$this->_ci =& get_instance();		
 		$this->_ci->load->library('session');
 		$this->customer_info = $this->get_sess('customer_info');

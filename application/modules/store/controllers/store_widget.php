@@ -2,17 +2,17 @@
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class Store_widget extends Controller {
+class Store_widget extends MX_Controller {
 
 	//php 5 constructor
 	function __construct() {
-		parent::Controller();
+		parent::__construct();
 		$this->load->model('store/category_m');
 	}
 	
 	//php 4 constructor
 	function Store_widget() {
-		parent::Controller();
+		parent::__construct();
 	}
 	function index(){
 		

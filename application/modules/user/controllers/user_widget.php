@@ -2,16 +2,16 @@
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class User_widget extends Controller {
+class User_widget extends MX_Controller {
 
 	//php 5 constructor
 	function __construct() {
-		parent::Controller();
+		parent::__construct();
 	}
 	
 	//php 4 constructor
 	function User_widget() {
-		parent::Controller();
+		parent::__construct();
 	}
 	
 	function login_mod_front() {

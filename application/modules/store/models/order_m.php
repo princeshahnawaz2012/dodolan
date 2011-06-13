@@ -4,18 +4,18 @@ if (! defined('BASEPATH')) exit('No direct script access');
 
 
 
-class Order_m extends Model {
+class Order_m extends CI_Model {
 	var $history_type = array('payment_confirm', 'update_status');
 	var $status_type = array('pending', 'confirm', 'process', 'cancel','shipped', 'refund');
 	//php 5 constructor
 	function __construct() {
-		parent::Model();
+		parent::__construct();
 	
 	}
 	
 	//php 4 constructor
 	function Order_m() {
-		parent::Model();
+		parent::__construct();
 	}
 	
 	// Group Function Admin Order

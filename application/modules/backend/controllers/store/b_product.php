@@ -2,18 +2,18 @@
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class B_product extends Controller {
+class B_product extends MX_Controller {
 
 	//php 5 constructor
 	function __construct() {
-		parent::Controller();
+		parent::__construct();
 		$this->load->model('store/product_m');
 		modules::run('user/auth/userRoleCheck', 'owner');
 	}
 	
 	//php 4 constructor
 	function B_product() {
-		parent::Controller();
+		parent::__construct();
 	}
 	
 	//Page

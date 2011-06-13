@@ -2,16 +2,16 @@
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class Analytic extends Controller {
+class Analytic extends MX_Controller {
 
 	//php 5 constructor
 	function __construct() {
-		parent::Controller();
+		parent::__construct();
 	}
 	
 	//php 4 constructor
 	function Analytic() {
-		parent::Controller();
+		parent::__construct();
 	}
 	
 	function ga_chart_req(){	

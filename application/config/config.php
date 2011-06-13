@@ -11,7 +11,7 @@
 |	http://example.com/
 |
 */
-$config['base_url']	= "http://".$_SERVER['SERVER_NAME']."/dodolan/";
+$config['base_url']	= "http://".$_SERVER['SERVER_NAME']."/codeigniter_2/";
 
 /*
 |--------------------------------------------------------------------------
@@ -216,7 +216,7 @@ $config['cache_path'] = '';
 | enabled you MUST set an encryption key.  See the user guide for info.
 |
 */
-$config['encryption_key'] = "";
+$config['encryption_key'] = "Asuhhaa57657usada7a6as";
 
 /*
 |--------------------------------------------------------------------------

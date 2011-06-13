@@ -2,18 +2,15 @@
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class Backend extends Controller {
+class Backend extends MX_Controller {
 
 	//php 5 constructor
 	function __construct() {
-		parent::Controller();
+		parent::__construct();
 		modules::run('user/auth/userRoleCheck', 'owner');
 	}
 	
-	//php 4 constructor
-	function Backend() {
-		parent::Controller();
-	}
+	
 	function index() {
 		$url = $this->uri->segment(4);
 		$u = modules::run('user/profiledata', $this->session->userdata['login_data']['user_id']);

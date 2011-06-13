@@ -2,11 +2,11 @@
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class Store_cart extends Controller {
+class Store_cart extends MX_Controller {
 
 	//php 5 constructor
 	function __construct() {
-		parent::Controller();
+		parent::__construct();
 		$this->load->model('store/store_cart_m');
 		$this->load->model('store/product_m');
 		$this->load->library('jne');
@@ -14,7 +14,7 @@ class Store_cart extends Controller {
 	
 	//php 4 constructor
 	function Store_cart() {
-		parent::Controller();
+		parent::__construct();
 	}
 	function index(){
 		echo 'this is cart controller';

@@ -2,17 +2,17 @@
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class Store extends Controller {
+class Store extends MX_Controller {
 
 	//php 5 constructor
 	function __construct() {
-		parent::Controller();
+		parent::__construct();
 		$this->load->model('store_m');
 	}
 	
 	//php 4 constructor
 	function Store() {
-		parent::Controller();
+		parent::__construct();
 	}
 	
 	function index() {

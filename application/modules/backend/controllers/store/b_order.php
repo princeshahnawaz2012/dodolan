@@ -2,18 +2,18 @@
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class B_order extends Controller {
+class B_order extends MX_Controller {
 
 	//php 5 constructor
 	function __construct() {
-		parent::Controller();
+		parent::__construct();
 		$this->load->model('store/order_m');
 		modules::run('user/auth/userRoleCheck', 'owner');
 	}
 	
 	//php 4 constructor
 	function B_order() {
-		parent::Controller();
+		parent::__construct();
 	}
 	
 	function index() {

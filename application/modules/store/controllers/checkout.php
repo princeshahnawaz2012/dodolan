@@ -8,12 +8,12 @@ if (! defined('BASEPATH')) exit('No direct script access');
  * @package store
  * @author Zidni Mubarock
  */
-class Checkout extends Controller {
+class Checkout extends MX_Controller {
 
 	//php 5 constructor
 
 	function __construct() {
-		parent::Controller();
+		parent::__construct();
 		$this->load->library('cart');
 		$this->load->library('jne');
 		$this->step = $this->session->userdata('checkout_step');
@@ -26,7 +26,7 @@ class Checkout extends Controller {
 	//php 4 constructor
 	
 	function Checkout() {
-		parent::Controller();
+		parent::__construct();
 	}
 	
 	function index() {

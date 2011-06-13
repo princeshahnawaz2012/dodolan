@@ -2,11 +2,11 @@
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class Auth extends Controller {
+class Auth extends MX_Controller {
 
 	//php 5 constructor
 	function __construct() {
-		parent::Controller();
+		parent::__construct();
 		$this->load->model('user/auth_m');
 	}
 	
@@ -54,7 +54,7 @@ class Auth extends Controller {
 	}
 	function userRoleCheck($role=false){
 		$source = str_replace(site_url(), '', current_url());
-		$backend_sess = $this->session->userdata('login_data'); 
+		$backend_sess = $this->session->userdata('login_data');
 		if($role){
 			if($role == $backend_sess['role'] && $backend_sess['login'] == true && $backend_sess['user_id'] != null ){
 				return true;

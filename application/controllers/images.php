@@ -1,9 +1,9 @@
 <?php  if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-class Images extends Controller {
+class Images extends MX_Controller {
 
     function Images() {
-        parent::Controller();
+        parent::__construct();
 
         // directory where source images are stored
         $this->img_dir = './images';

@@ -7,18 +7,18 @@ if (! defined('BASEPATH')) exit('No direct script access');
  * @package default
  * @author Zidni Mubarock
  */
-class category extends Controller {
+class category extends MX_Controller {
 
 	//php 5 constructor
 	function __construct() {
-		parent::Controller();
+		parent::__construct();
 		$this->store_cat = $this->load->model('store/category_m');
 		$this->load->model('store/product_m');
 	}
 	
 	//php 4 constructor
 	function Category() {
-		parent::Controller();
+		parent::__construct();
 	}
 	/**
 	 * Get Detail Of Category

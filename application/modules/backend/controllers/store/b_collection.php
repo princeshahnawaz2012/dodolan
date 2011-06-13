@@ -2,16 +2,16 @@
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class B_collection extends Controller {
+class B_collection extends MX_Controller {
 
 	//php 5 constructor
 	function __construct() {
-		parent::Controller();
+		parent::__construct();
 	}
 	
 	//php 4 constructor
 	function B_collection() {
-		parent::Controller();
+		parent::__construct();
 	}
 	
 	function index() {

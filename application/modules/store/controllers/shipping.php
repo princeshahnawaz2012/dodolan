@@ -2,16 +2,16 @@
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class shipping extends Controller {
+class shipping extends MX_Controller {
 
 	//php 5 constructor
 	function __construct() {
-		parent::Controller();
+		parent::__construct();
 	}
 	
 	//php 4 constructor
 	function shipping() {
-		parent::Controller();
+		parent::__construct();
 	}
 	
 	function index() {

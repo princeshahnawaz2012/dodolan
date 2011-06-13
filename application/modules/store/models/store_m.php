@@ -2,16 +2,16 @@
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class Store_m extends Model {
+class Store_m extends CI_Model {
 
 	//php 5 constructor
 	function __construct() {
-		parent::Model();
+		parent::__construct();
 	}
 	
 	//php 4 constructor
 	function Store_m() {
-		parent::Model();
+		parent::__construct();
 	}
 	
 	function add_request_restock($param=array()) {

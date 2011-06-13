@@ -2,17 +2,17 @@
 
 if (! defined('BASEPATH')) exit('No direct script access');
 
-class Collection extends Controller {
+class Collection extends MX_Controller {
 
 	//php 5 constructor
 	function __construct() {
-		parent::Controller();
+		parent::__construct();
 		$this->mod = $this->load->model('store/collection_m');
 	}
 	
 	//php 4 constructor
 	function Collection() {
-		parent::Controller();
+		parent::__construct();
 	}
 	/// FRONT FUNCTION //////
 	function index(){
