@@ -51,6 +51,25 @@ class Misc {
 	function arrayObject($array){
 		return json_decode(json_encode($array));
 	}
+	function objectToArray($object)
+		{
+			$array=array();
+			foreach($object as $member=>$data)
+			{
+				$array[$member]=$data;
+			}
+			return $array;
+		}
+		
+	function jsonToArray($json){
+		return json_decode($json, true);
+	}
+	function arrayToJson($array){
+		return json_encode($array);
+	}
+	function objectToJson($objects){
+		return json_encode($this->objectToArray($objects));
+	}
 	function print_arrayRecrusive($array){
 		$output = '';
 		foreach($array as $key => $value){
@@ -65,5 +84,12 @@ class Misc {
 			$output .= '</div>';
 		}
 		return $output;
+	}
+	function datetime($sort=false){
+		if($sort){
+			return date('Y-m-d H:i:s', strtotime($sort));
+		}else{
+			return date('Y-m-d H:i:s');
+		}
 	}
 }

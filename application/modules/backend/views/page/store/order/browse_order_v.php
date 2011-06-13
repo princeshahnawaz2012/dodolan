@@ -1,5 +1,6 @@
 <div class="clear"></div>
 <div class="list_order">
+	<?if($orders):?>
 	<div class="table-Ui">
 		<table>
 			<thead>
@@ -33,4 +34,7 @@
 			<?endforeach;?>
 		</table>
 	</div>
+	<?else:?>
+	there's no order yet
+	<?endif;?>
 </div>

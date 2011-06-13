@@ -129,6 +129,11 @@ class Tester extends MX_Controller {
 		$id = $this->uri->segment(3);
 		echo $id;
 	}
+	function test14(){
+		$parameter = array(101, 'payment_confirm', 'testing cron');
+		$do_time = $this->misc->datetime('+5 minutes');
+		$cron = modules::run('cron/add', 'store/order/create_history_order', $parameter, $do_time );
+	}
 
 
 }
