@@ -94,6 +94,23 @@
 			
 		</div>
 		<?endif?>
+	
+		<?if($order_history):?>
+		
+		<div class="order_history mt20">
+		<h3>Order Feed</h3>
+			<ul>
+		<?foreach($order_history->result() as $item):?>
+			<li class="">
+				<div class="feed_item">
+					<span class="date"><?=$this->misc->custom_time($item->c_date)?></span> |
+					<span class="bold <?=$item->type;?>"><?=$item->type;?></span>
+				</div>
+			</li>
+		<?endforeach?>
+			</ul>
+		</div>
+		<?endif;?>
 	</div>
 	<div class="clear"></div>
 </div>

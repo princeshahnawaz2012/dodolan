@@ -1,8 +1,9 @@
 <div class="updater_form">
 	<form action="" method="POST" accept-charset="utf-8">
 	<span>Update the Order Status</span>
-	<select name="status">
-		<? $statuses = modules::run('store/order/status_list');
+	<select name="new_status">
+		<? $statuses = $this->load->model('store/order_m')->status_type;
+		
 			foreach($statuses as $status){
 			if($status == $current){
 				$select = 'selected';
@@ -12,6 +13,7 @@
 			
 			?>
 			<option <?=$select?> value="<?=$status?>"><?=$status?></option>
+	
 		<?}?>
 		
 	

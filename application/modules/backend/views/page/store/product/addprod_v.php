@@ -45,6 +45,11 @@
 						<div class="clear"></div>
 					</div>
 					<div class="inputSet">
+						<div class="label"><span>Stock</span></div>
+						<div class="input left"><input type="text" name="global_stock" ></div>
+						<div class="clear"></div>
+					</div>
+					<div class="inputSet">
 						<div class="label"><span>Publish</span></div>
 						<div class="input left"><input type="checkbox" value="y" name="p_publish"></div>
 						<div class="clear"></div>

@@ -77,6 +77,7 @@ class B_order extends Controller {
 		$render['data_order'] = $order;
 		$render['data_prodsold'] = $data['prodsold_data'];
 		$render['data_shipto'] = $data['shipto_data'];
+		$render['order_history'] = $this->order_m->get_history_by($id);
 		$render['pageTool'] = modules::run('backend/store/b_order/updater_form', $order->id, $order->status);
 		$render['pH'] = 'Order No. '.$order->id;
 		$render['mainLayer'] 	='backend/page/store/order/view_v';
@@ -86,6 +87,11 @@ class B_order extends Controller {
 		$render['id'] = $id_order;
 		$render['current'] = $current;
 		$this->load->view('backend/page/store/order/updater_form_v', $render);
+		if ($this->input->post('update_status')){
+			$update = modules::run('store/order/update_status', $id_order, $this->input->post('new_status'));
+			$this->messages->add('Success Update Order #'.$id_order.' Status to '.$this->input->post('new_status'), 'success');
+			redirect(current_url());
+		}
 	}
 	function getorder_byid($id){
 		$order = $this->order_m->getall_orderdata($id);

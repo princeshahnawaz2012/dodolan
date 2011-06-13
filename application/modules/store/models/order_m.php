@@ -5,10 +5,12 @@ if (! defined('BASEPATH')) exit('No direct script access');
 
 
 class Order_m extends Model {
+	var $history_type = array('payment_confirm', 'update_status');
+	var $status_type = array('pending', 'confirm', 'process', 'cancel','shipped', 'refund');
 	//php 5 constructor
-
 	function __construct() {
 		parent::Model();
+	
 	}
 	
 	//php 4 constructor
@@ -229,6 +231,62 @@ class Order_m extends Model {
 		$this->db->where('customer_id', $id);
 		$q = $this->db->get('store_order');
 		if($q->num_rows() > 0){
+			return $q;
+		}else{
+			return false;
+		}
+	}
+	
+	function create_history($idorder, $type, $information){
+		$data =array(
+		'order_id' => $idorder,
+		'type' => $type,
+		'information' => $information,
+		'c_date' => date('Y-m-d H:i:s')
+		);
+		$q = $this->db->insert('store_order_history', $data);
+		if($q){
+			return $this->get_history_byid($this->db->insert_id());
+		}else{
+			return false;
+		}
+	}
+	function mark_read_history($id){
+		$this->db->where('id', $id);
+		$q = $this->db->get('store_order_history');
+		if($q->num_rows() == 1 && $q->row()->read != 'y'){
+			$data = array('read' => 'y');
+			$this->db->where('id', $id);
+			$q2 = $this->db->update('store_order_history', $data);
+		}
+	}
+	function get_history_by($id_order=false, $type = false, $read = false){
+		// get by order
+	
+		if($id_order){
+			$this->db->where('order_id', $id_order);
+		}
+		// get by type
+		if($type){
+			$this->db->where('type', $type);
+		}
+		// get by status read
+		if($read){
+			$this->db->where('read', $read);
+		}
+		$this->db->where('order_id', $id_order);
+		$q = $this->db->get('store_order_history');
+		if($q->num_rows() > 0){
+			return $q;
+		}else{
+		
+			return false;
+		}
+	}
+	function get_history_byid($id){
+		$this->db->where('id', $id);
+		$q = $this->db->get('store_order_history');
+		if($q->num_rows() == 1){
 			return $q;
 		}else{
 			return false;

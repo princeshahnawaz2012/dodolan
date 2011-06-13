@@ -327,6 +327,7 @@ if (is_file($location = APPPATH.'libraries/MX_Loader'.EXT)) {
 	include_once $location;
 }
 
+
 class Controller
 {			
 	public $autoload = array();

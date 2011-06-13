@@ -125,6 +125,10 @@ class Tester extends Controller {
 		}
 		
 	}
+	function test13(){
+		$id = $this->uri->segment(3);
+		echo $id;
+	}
 
 
 }

@@ -92,7 +92,7 @@ $(document).ready(function(){
          	});
 
          </script>
-         	<div class="login_mod form-Ui relative">
+         	<div class="login_mod form-Ui relative hide">
            		<div class="login_form">
                 <div class="w_30 left mr20">
            		<label for="log_email">Email</label><input type="text" name="log_email" value="">

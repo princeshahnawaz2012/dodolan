@@ -48,6 +48,11 @@
 						<div class="clear"></div>
 					</div>
 					<div class="inputSet">
+						<div class="label"><span>Stock</span></div>
+						<div class="input left"><input type="text" name="global_stock" value="<?=$prod->stock;?>" ></div>
+						<div class="clear"></div>
+					</div>
+					<div class="inputSet">
 						<div class="label"><span>Publish</span></div>
 						<?if ($prod->publish=='y') {
 							$check = 'checked';

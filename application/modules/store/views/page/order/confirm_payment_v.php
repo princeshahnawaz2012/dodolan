@@ -1,5 +1,6 @@
 <h2>Confirmation Payment Order</h2>
 <div class="payment_confirm_form form-Ui grid_500">
+	<form action="" method="post">
 	<div class="inputSet">
 		<div class="label"><span>Order Number</span></div>
 		<div class="input" class="grid_200">	
@@ -42,5 +43,7 @@
 		<div class="clear"></div>
 		<small>*Bank Account Name,if Use Paypal fill with email Paypal Acount</small>
 	</div>
-	
+	<div class="right"><input type="submit" name="submit" value="Apply" id="submit" class="button"></div>
+	<br class="clear"/>
+	</form>
 </div>

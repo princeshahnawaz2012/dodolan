@@ -103,57 +103,15 @@ if(!$data){
 	function status_list(){
 		return array('pending', 'confirm', 'process', 'cancel','shipped', 'refund');
 	}
-	function update_status(){
-		$new_status =  $this->input->post('new_status');
-		$id = $this->input->post('order_id');
+	function update_status($id, $new_status){
 		$q = $this->order_m->update_status_order($id, $new_status);
-		$notify = $this->input->post('notify_user');
 		if($q){
-			if($notify == 1){
-				$this->notify($id);
-			}
-			if($this->uri->segment(4)=='ajax'){
-				$return_data = array('msg'=> 'success', 'new_status' => $q['status'], 'time' => $this->misc->custom_time($q['m_date']), 'id' => $id);
-				echo json_encode($return_data);
-			}else{
-				return true;
-			}
-			
-				
-			
+			$information = 'set new status as <span>'.$new_status.'</span>';
+			$this->create_history_order($id,'update_status',$information);
+			$this->notify($id);
+			return true;
 		}else{
-			if($this->uri->segment(4)=='ajax'){
-				$return_data = array('msg' => 'failed');
-				echo json_encode($return_data);
-			}else{
-				return false;
-			}
-		}
-	}
-	function getorder_item($id){
-		if($this->uri->segment(4) == 'ajax'){
-			$id = $this->input->post('order_id');
-		}else{
-			$id = $id;
-		}
-		
-		$items = $this->order_m->get_prodsold_data($id);
-		if($items){
-			if($this->uri->segment(4) == 'ajax'){
-				$render['items'] = $items;
-				$data['content'] = $this->load->view('store/page/order/ajax_getorder_items_v', $render, true);
-				$data['msg'] = 'success';
-				echo json_encode($data);
-			}else{
-			return $items	;
-			}
-		}else{
-			if($this->uri->segment(4) == 'ajax'){
-				$data['msg'] = 'failed';
-				echo json_encode($data);
-			}else{
-				return false;
-			}
+			return false;
 		}
 	}
 	function notify($id){
@@ -168,43 +126,49 @@ if(!$data){
 			$this->mailer->body = $body;
 			$this->mailer->send();
 	}
-	function test_getorder()
-	{
-		$id = $this->uri->segment(4);
-		$order = $this->order_m->getall_orderdata($id);
-		$person = $order['personal_data'];
-		$data  = $order['order_data'];
-		$body = array('person'=> $person, 'data' => $data, 'template' => 'store/misc/order/mail_order_notify_v');
-		
-		$this->load->library('mailer');
-		$this->mailer->to = 'zidmubarock@gmail.com';
-		$this->mailer->subject = 'Update Order Status Notification,  order no- '.$data->id;
-		$this->mailer->body = $body;
-		$this->mailer->send();
-		
-		
-	}
 	function confirm_payment(){
 		$render['pH'] = 'Confirmation Order Payment';
 		$render['mainLayer'] = 'store/page/order/confirm_payment_v';
 		$this->theme->render($render);
 		if($this->input->post('submit')):
-			$passdata['information'] = '
+			$information = '
 			Order <span class="bold">#'.$this->input->post('order_number').'</span><br/>
 			Payment Method 		: '.$this->input->post('payment_method').'<br/>
 			Payed Amount 		: '.$this->input->post('payed_amount').'<br/>
 			Date Payment 		: '.$this->input->post('date_payment').'<br/>
-			Acount Name 		: '.$this->input->post('acount_name').'</br>
+			Acount Name 		: '.$this->input->post('acount_name').'<br/>
 			';
+			$history = $this->create_history_order($this->input->post('order_number'), 'payment_confirm', $information);
+			$customer_data = $this->order_m->get_personal_data($this->input->post('order_number'));
+			
+			// prepare send email data
+			$for_customer = 'Thanks For your Payment Confirmation, we just recieved it, we will Process it soon
+					<div class="horline"></div>';
+			$body = array('mailmsg' => $for_customer.'<p>'.$history->row()->information.'</p>');
+			$this->load->library('mailer');
+			$this->mailer->to = $customer_data->email;
+			$this->mailer->subject = 'Payment Confirmation,  order #'.$history->row()->order_id;
+			$this->mailer->body = $body;
+			$this->mailer->send();
+			
+			// email to owner
+			$body = array('mailmsg' => '<p>'.$history->row()->information.'</p>');
+			$this->load->config('store');
+			$this->load->library('mailer');
+			$this->mailer->to = $this->config->item('owner_email');
+			$this->mailer->subject = 'Payment Confirmation,  order #'.$history->row()->order_id;
+			$this->mailer->body = $body;
+			$this->mailer->send();
 		endif;
 	}
 	// ORDER HISTORY API //
 	function create_history_order($id,$type,$information){
-		
+		return $this->order_m->create_history($id,$type,$information);
 	}
 	function mark_read_history($id){
-		
+		return $this->order_m->mark_read_history($id);
 	}
+	
 	
 
 }
