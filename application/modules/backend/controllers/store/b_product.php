@@ -69,7 +69,7 @@ class B_product extends MX_Controller {
 	}
 	function listprod(){
 		$this->load->library('barock_page');
-		$limit = 10;
+		$limit = 20;
 		$param = $this->uri->uri_to_assoc();
 		if(!isset($param['cat'])){
 			$param['cat'] = false;

@@ -1,7 +1,7 @@
 <?
-class Misc {
+class Dodol {
 	
-	function Misc()
+	function Dodol()
 	{
 			$this->_ci =& get_instance();
 	}
@@ -90,6 +90,31 @@ class Misc {
 			return date('Y-m-d H:i:s', strtotime($sort));
 		}else{
 			return date('Y-m-d H:i:s');
+		}
+	}
+	function db_found_rows(){
+
+		return $this->_ci->db->query('SELECT FOUND_ROWS() as total;')->row()->total;
+	}
+	function db_calc_found_rows(){
+		$select = array();
+		$selects =  $this->_ci->db->ar_select;
+		$this->_ci->db->ar_select = array();
+		// if already have select put the index 0 together with calc_found_row
+		if(count($selects) == 1){
+			$CALC = 'SQL_CALC_FOUND_ROWS '.$selects[0];
+			$this->_ci->db->select($CALC,false);
+		}elseif(count($selects) > 1){
+			$CALC = 'SQL_CALC_FOUND_ROWS '.$selects[0].',';
+			$this->_ci->db->select($CALC,false);
+			unset($selects[0]);
+			foreach($selects as $s){
+				$this->_ci->db->select($s);
+			}
+			
+		}elseif(count($selects) < 1){
+			$CALC = 'SQL_CALC_FOUND_ROWS *';
+			$this->_ci->db->select($CALC,false);
 		}
 	}
 }

@@ -131,7 +131,7 @@ class Tester extends MX_Controller {
 	}
 	function test14(){
 		$parameter = array(101, 'payment_confirm', 'testing cron');
-		$do_time = $this->misc->datetime('+5 minutes');
+		$do_time = $this->dodol->datetime('+5 minutes');
 		$cron = modules::run('cron/add', 'store/order/create_history_order', $parameter, $do_time );
 	}
 

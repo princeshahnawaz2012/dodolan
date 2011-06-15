@@ -30,10 +30,13 @@ var $js			= array(
 					array('route' => 'global', 'file' => 'global_js/dodolan_js_lib.js'),
 					array('route' => 'global', 'file' => 'global_js/jquery.min.js'),
 					);
+
 function theme(){
-	$this->_ci =& get_instance();
+	$this->_ci =& get_instance();	
 }
 function render($data, $mode=false, $layer=false){
+	parse_str($_SERVER['QUERY_STRING'], $_GET); 
+	$this->_ci->input->_clean_input_data($_GET); 
 	if(!$this->_ci->input->get('tpl')){
 		$layer = 'index';
 	}elseif($this->_ci->input->get('tpl')){

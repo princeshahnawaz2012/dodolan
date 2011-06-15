@@ -1,6 +1,6 @@
 Dear <?=$person->first_name.' '.$person->last_name?><br/>
 <br/>
-<p>Your Order with No. <?=$data->id;?>, which Create <?=$this->misc->custom_time($data->c_date)?> (<?=$data->c_date?>) <br/>
+<p>Your Order with No. <?=$data->id;?>, which Create <?=$this->dodol->custom_time($data->c_date)?> (<?=$data->c_date?>) <br/>
 have a new Status, 
 </p>
 <div class="horline"></div>

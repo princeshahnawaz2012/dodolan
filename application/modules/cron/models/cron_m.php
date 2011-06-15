@@ -46,7 +46,7 @@ class Cron_m extends CI_Model  {
 		
 	}
 	function call_all_task(){
-		$this->db->where('do_time <=', $this->misc->datetime());
+		$this->db->where('do_time <=', $this->dodol->datetime());
 		$this->db->where('have_done !=', 'y' );
 		$q = $this->db->get('cron_task');
 		if($q->num_rows() > 0){

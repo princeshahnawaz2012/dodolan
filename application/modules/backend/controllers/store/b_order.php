@@ -23,7 +23,7 @@ class B_order extends MX_Controller {
 	
 	function browse(){
 		$this->load->library('barock_page');
-		$limit = 5;
+		$limit = 20;
 		$param = $this->uri->uri_to_assoc();
 		if(!isset($param['page'])){
 			$param['page'] = 0;

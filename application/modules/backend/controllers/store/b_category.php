@@ -25,7 +25,8 @@ class B_category extends MX_Controller {
 	}
 	function addcat(){
 		$data = array(
-			'pt'  => 'Add Category',
+			'pT'  => 'Add Category',
+			'pH' =>'Add Category',
 			'mainLayer' => 'backend/page/store/category/addcat_v',
 			'ht' => 'Add Category'
 				);
@@ -40,7 +41,7 @@ class B_category extends MX_Controller {
 		$data = array(
 			'pt'  => 'Edit Category',
 			'mainLayer' => 'backend/page/store/category/editcat_v',
-			'ht' => 'Edit Category',
+			'pT' => 'Edit Category',
 			'pH' => 'Edit Category',
 			'category' => $cat
 				);
@@ -51,6 +52,7 @@ class B_category extends MX_Controller {
 	}
 	
 	function browse(){
+		
 		$cats = $this->category_m->getAllCAt();
 		$menuSource = array(
 			array(
@@ -58,12 +60,13 @@ class B_category extends MX_Controller {
 		);
 		$menu = $this->theme->menu_rend($menuSource);
 		$data = array(
-		'pH' => 'list category',
+		'pH' => 'list Product category',
+		'pT' => 'list Product category',
 		'pageMenu' => $menu,
 		'mainLayer' => 'backend/page/store/category/listcat_v',
 		'cats' =>$cats,
-			);
-			$this->theme->render($data, 'back');
+		);
+		$this->theme->render($data, 'back');
 		
 	}
 

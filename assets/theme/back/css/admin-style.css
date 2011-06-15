@@ -56,7 +56,8 @@ background-image: -webkit-gradient(linear, 0 top, 0 bottom, from( #059a9f ), to(
 .header .pageMenu a {
 	text-decoration: none;
 	background-color: #000000;
-    background-image: -moz-linear-gradient(-90deg, #059A9F, #058B9B);
+    background-image: -moz-linear-gradient(-90deg, #059a9f , #058b9b );
+	background-image: -webkit-gradient(linear, 0 top, 0 bottom, from( #059a9f ), to( #058b9b ));
     color: #FFFFFF;
 	display:block;padding: 5px 10px;-moz-border-radius-topleft:3px; -moz-border-radius-topright:3px;border-radius-topleft:3px; border-radius-topright:3px; }
 

@@ -16,7 +16,7 @@ class Cron extends MX_Controller {
 		if(	$all_task = $this->cron_m->call_all_task()):
 			foreach($all_task as $task){
 				$args = array();
-				foreach($this->misc->jsonToArray($task->parameter) as $prm){
+				foreach($this->dodol->jsonToArray($task->parameter) as $prm){
 					array_push($args, $prm);
 				}
 				$run = $this->exec($task->action, $args);
@@ -49,7 +49,7 @@ class Cron extends MX_Controller {
 		$data['action'] = $action;
 		$data['do_time'] = $time;
 		if($parameter){
-			$data['parameter'] = $this->misc->arrayToJson($parameter);
+			$data['parameter'] = $this->dodol->arrayToJson($parameter);
 		}
 		return $this->cron_m->add($data);
 	}

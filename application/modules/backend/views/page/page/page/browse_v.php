@@ -14,7 +14,7 @@
 					<td><?=$page->title?></td>
 					<td><?=$page->name?></td>
 					<td class="action">
-							<a href="<?=site_url('store/product/view/'.$page->page_id);?>"><span class="act view"></span></a>
+							<a href="<?=site_url('page/view/'.$page->page_id);?>"><span class="act view"></span></a>
 							<a href="<?=site_url('backend/page/b_page/update/'.$page->page_id);?>"><span class="act edit"></span></a>
 							<a href="<?=site_url('backend/page/b_page/delete/'.$page->page_id);?>"><span class="act del"></span></a>
 					</td>

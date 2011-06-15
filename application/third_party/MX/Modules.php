@@ -47,6 +47,8 @@ class Modules
 {
 	public static $routes, $registry, $locations;
 	
+	
+	
 	/**
 	* Run a module controller method
 	* Output from module is buffered and returned.
@@ -73,7 +75,7 @@ class Modules
 		
 		log_message('error', "Module controller failed to run: {$module}/{$method}");
 	}
-	
+
 	/** Load a module controller **/
 	public static function load($module) {
 		

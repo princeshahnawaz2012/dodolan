@@ -106,7 +106,7 @@ $data_shipto = $data['shipto_data'];
 
 			<div class="data_rowSet noBorder">
 							<div class="label">Last Modified</div>
-							<div class="data modified_date"><?=$this->misc->custom_time($data_order->m_date, 'never')?></div>
+							<div class="data modified_date"><?=$this->dodol->custom_time($data_order->m_date, 'never')?></div>
 							<br class="clear"/>
 						</div>
 			</div>

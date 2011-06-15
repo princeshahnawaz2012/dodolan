@@ -31,7 +31,7 @@
 // looping start here
 foreach($lists as $cus):?>
 <?
-	$customer  = $this->misc->arrayObject(modules::run('store/customer/getById', $cus->id));
+	$customer  = $this->dodol->arrayObject(modules::run('store/customer/getById', $cus->id));
 	$orders    = modules::run('store/order/getorderbycustomer', $customer->id);
 ?>
 <tr>

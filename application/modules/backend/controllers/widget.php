@@ -113,20 +113,18 @@ class Widget extends MX_Controller {
 	function ga_chart_visit_req(){
 		if($this->input->post('type')){
 		$ga = $this->load->library('gapi');
-		$req = $ga->requestReportData(array('date'),array('visitors', 'newVisits'), array('-date'),  $filter=null, $start_date=null, $end_date=null, $start_index=1, $max_results=30, 'ori');
+		$req = $ga->requestReportData(array('date'),array('visitors', 'newVisits'), array('-date'),  $filter=null, $start_date=null, $end_date=null, $start_index=1, $max_results=50, 'ori');
 			if($req){
 				$data = $this->ga_data_extractor($ga->getDataArray());
 				$data_ext = array('status' => 'true');
-				echo json_encode($data);
 			}else{
 				$data = array('status' => 'error');
-				echo json_encode($data);
 			}
-			
+			echo json_encode($data);
 		}
 	}
+	
 	function ga_data_extractor($gadata){
-		
 		$visitors =  array();
 		$newVisits = array();
 		// visitors
@@ -138,17 +136,14 @@ class Widget extends MX_Controller {
 			//$date = date_create_from_format('Ymd', $dt);
 			//$str_date = $dt;
 			$v = array('date' => $str_date, 'value' => $datval['ga:visitors']);
-			
 			$nv = array('date' => $str_date, 'value' => $datval['ga:newVisits']);
 			array_push($visitors, $v);
-			array_push($newVisits, $nv);
-			
+			array_push($newVisits, $nv);	
 		}
 		$return['visitors'] = $visitors;
 		$return['newVisits'] = $newVisits;
 		return $return;
-	
 	}
-	
+		
 
 }

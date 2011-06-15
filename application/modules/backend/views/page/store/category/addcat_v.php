@@ -1,4 +1,4 @@
-<div class="grid_500">
+<div class="grid_500 ctr box2">
 	<div class="form-Ui">
 		<form action="<?=current_url()?>" method="post">
 		<div class="inputSet">	

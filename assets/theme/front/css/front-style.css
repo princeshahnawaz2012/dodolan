@@ -29,10 +29,31 @@ ungu = EB6BF2;
 .header .topMenu{ position:absolute; bottom:0px; right:0px; }
 .header .topMenu ul {margin:0px; padding:0px; list-style: none ;}
 .header .topMenu ul li:last-child { border-right:none;}
-.header .topMenu ul li {float:left; margin:0px; border-right:1px solid #C1C1C1; }
-.header .topMenu ul li a { display:block; padding:7px 10px; text-decoration:none;}
-.header .topMenu ul li a:hover {background:#eaeaea; color:#767676; text-shadow:0 1px 0 #fff;}
-.header .topMenu .mod_search { padding-top:5px;}
+.header .topMenu ul li {float:left; margin:0px; border-right:1px solid #C1C1C1; border-bottom:1px solid #ccc; margin-bottom :-1px;
+	-webkit-transition-duration:1s;
+	/*-webkit-transition-delay:1s;*/
+	-moz-transition-duration:1s;
+	transition-duration:1s;
+	 }
+
+.header .topMenu ul li:hover {
+	/*@ transition-rule @*/
+	border-bottom:1px solid #000;
+
+}
+.header .topMenu ul li a { display:block; padding:7px 10px; text-decoration:none;
+		-webkit-transition-duration:1s;
+		-moz-transition-duration:1s;
+		transition-duration:1s;
+		}
+.header .topMenu ul li:hover a {
+	/*@ transition-rule @*/
+	background:#eaeaea; color:#767676; text-shadow:0 1px 0 #fff;}
+
+
+
+.header .topMenu .mod_search { padding-top:5px; width:250px}
+.header .topMenu .mod_search input { width : 230px;}
 /* Widget
 ----------------------------------------------------------------------------------------------------*/
 

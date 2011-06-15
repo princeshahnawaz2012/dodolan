@@ -79,11 +79,9 @@ class Product_m extends CI_Model {
 		$this->db->select('name, price, id');
 		$this->db->where('id', $id);
 		$prod = $this->db->get('store_product');
-		
 		$this->db->where('prod_id', $id);
-		$this->db->order_by('default', 'DESC');
+		$this->db->order_by('prod_id', 'DESC');
 		$media = $this->db->get('store_product_media');
-		
 		if($media->num_rows() < 1 ){
 			$data['media'] = false;
 		}else{
@@ -167,8 +165,9 @@ class Product_m extends CI_Model {
 		if(!isset($conf['search'])){
 			$conf['search'] = false;
 		}
-		$this->db->start_cache();
+	
 		$this->db->select('a.id p_id, b.id cat_id');
+		
 		//get the limit and offset record
 		$this->db->like('a.publish', $conf['publish']);//}
 		if($conf['cat_id']){
@@ -180,13 +179,15 @@ class Product_m extends CI_Model {
 		}
 		$this->db->join('store_category b', 'b.id=a.cat_id');
 		$this->db->order_by('a.id', 'desc');
-		$this->db->stop_cache();
+		
+		$this->dodol->db_calc_found_rows();
+		
 		$q  = $this->db->get('store_product a',$conf['limit'], $conf['start']);
-		$q2  = $this->db->get('store_product a');
-		$this->db->flush_cache();
+		
+		
 		if($q->num_rows() > 0){
 			$data['prods']   = $q->result();
-			$data['num_rec'] = $q2->num_rows();
+			$data['num_rec'] = $this->dodol->db_found_rows();
 			return $data;
 		}else{
 			return false;

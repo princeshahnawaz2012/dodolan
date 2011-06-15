@@ -139,7 +139,7 @@ class Product extends MX_Controller {
 		
 		$param = $this->uri->uri_to_assoc(4);
 		if(!isset($param['limit'])){
-			$param['limit'] = 5;
+			$param['limit'] = 2;
 		}
 		if(!isset($param['cat'])){
 			$param['cat'] = false;

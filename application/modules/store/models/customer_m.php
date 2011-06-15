@@ -28,7 +28,7 @@ class Customer_m extends CI_Model {
 		}
 		if($param['reg'] == 'y'){
 			$this->db->where('user_id >', 0);
-		}elseif($param['reg']== 'n'){
+		}elseif($param['reg'] == 'n'){
 			$this->db->where('user_id', 0);
 		}
 		

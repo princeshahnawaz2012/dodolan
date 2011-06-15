@@ -20,6 +20,7 @@
 <script type="text/javascript" src="<?=base_url();?>/assets/global_js/dodolan_js_lib.js"></script>
 <script type="text/javascript" src="<?=base_url();?>/assets/global_js/jgrowl/jquery.jgrowl.js"></script>
 
+
 <!-- Css and JS for Specify Individual Theme -->
 <link href="<?=base_url();?>assets/theme/front/css/front-style.css" rel="stylesheet" type="text/css" />
 <link href="<?=base_url();?>assets/theme/front/css/page_style.css" rel="stylesheet" type="text/css" />
@@ -27,9 +28,7 @@
 
 <!--Extension JS for Individual Theme -->
 <script type="text/javascript" src="<?=base_url();?>assets/theme/front/js/cloud-zoom.1.0.2.js"></script>
-
 <?=modules::run('ajax/js_showmsg')?>
-
 </head>
 
 <body <?if(isset($jsBodyAction)){echo $jsBodyAction;}?> id="<?=$this->router->class.'_'.$this->router->method;?>" >

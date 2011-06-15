@@ -87,7 +87,7 @@ class B_page extends MX_Controller {
 		$menuSource = array(
 				array(
 					'anchor' => 'Create Page', 'link' => site_url('backend/page/b_page/create')),
-				array('anchor' => 'Create Category', 'link' => site_url('backend/page/b_category/create')),
+				array('anchor' => 'Page Category', 'link' => site_url('backend/page/b_page_category/browse')),
 			);
 		$menu = $this->theme->menu_rend($menuSource);
 		$render['pT'] = 'Brwose Page';

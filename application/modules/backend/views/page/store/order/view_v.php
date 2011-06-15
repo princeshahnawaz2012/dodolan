@@ -103,7 +103,7 @@
 		<?foreach($order_history->result() as $item):?>
 			<li class="">
 				<div class="feed_item">
-					<span class="date"><?=$this->misc->custom_time($item->c_date)?></span> |
+					<span class="date"><?=$this->dodol->custom_time($item->c_date)?></span> |
 					<span class="bold <?=$item->type;?>"><?=$item->type;?></span>
 				</div>
 			</li>

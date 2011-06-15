@@ -65,13 +65,10 @@ foreach($prods as $prod){
  
 </tbody>
 </table>
-<div class="horline"></div>
- <div class="pagination right">
-  	<?=$this->barock_page->make_link();?>
-  </div>
-  <div class="clear"></div>
+<div class="pagination right"><?=$this->barock_page->make_link();?></div>
+<div class="clear"></div>
 		</div>	
 		<?}else{
-			echo 'there are no product to show';
-			}?>
+		echo 'there are no product to show';
+		}?>
 </div>

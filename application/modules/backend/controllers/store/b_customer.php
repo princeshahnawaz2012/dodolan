@@ -21,7 +21,7 @@ class b_customer extends MX_Controller {
 
 	function browse(){
 		$this->load->library('barock_page');
-		$limit = 10;
+		$limit = 2;
 		$param = $this->uri->uri_to_assoc();
 		if(!isset($param['page'])): $param['page'] = 0; endif;
 		if(!isset($param['q'])): $param['q'] = false; endif;

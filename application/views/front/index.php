@@ -11,18 +11,7 @@
 			<?=modules::run('user/user_widget/user_mod');?>	
 			<div class="clear"></div>
 		</div>
-		<script type="text/javascript" charset="utf-8">
-			$(document).ready(function(){
-				$('.topMenu a').hover(
-				function(){
-					$(this).animate({backgroundColor : '#eaeaea', color: '#767676'}, 300);
-				},
-				function(){
-					$(this).animate({backgroundColor : '#ffffff', color: '#7B7979'}, 300);
-				}
-				);
-			});
-		</script>
+		
 		<div class="topMenu right">
 		<ul class="left">
 			<li><a href="<?=site_url('store/collection');?>">Collection</a></li>
@@ -66,7 +55,7 @@
 	<div class="clear"></div>
 	</div>
 	<div class="footerWrap">
-	
+	<?=$this->input->get('tpl');?>
 	</div>
 	
 	<?=$this->load->view('front/footer');?>

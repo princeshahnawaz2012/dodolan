@@ -1,4 +1,4 @@
-<div class="grid_800">
+<div class="grid_800 ctr box2">
 	<div class="form-Ui">
 	<form action="<?=current_url();?>" method="post" enctype="multipart/form-data">
 		<div class="grid_480 left">

@@ -34,6 +34,8 @@
 			<?endforeach;?>
 		</table>
 	</div>
+	<div class="pagination right"><?=$this->barock_page->make_link();?></div>
+	<div class="clear"></div>
 	<?else:?>
 	there's no order yet
 	<?endif;?>

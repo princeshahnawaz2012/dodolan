@@ -11,11 +11,31 @@
  Target Server Version : 50144
  File Encoding         : utf-8
 
- Date: 06/12/2011 22:35:15 PM
+ Date: 06/13/2011 20:58:08 PM
 */
 
 SET NAMES utf8;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+--  Table structure for `cron_task`
+-- ----------------------------
+DROP TABLE IF EXISTS `cron_task`;
+CREATE TABLE `cron_task` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `action` varchar(100) NOT NULL,
+  `parameter` text NOT NULL,
+  `have_done` varchar(1) NOT NULL,
+  `do_time` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+--  Records of `cron_task`
+-- ----------------------------
+BEGIN;
+INSERT INTO `cron_task` VALUES ('5', 'store/order/create_history_order', '[101,\"payment_confirm\",\"testing cron\"]', 'y', '2011-06-12 14:24:26');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `newsletter_member`
@@ -89,13 +109,13 @@ CREATE TABLE `product_sold_data` (
   `options` varchar(30) DEFAULT NULL,
   `name` varchar(40) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=126 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=127 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Records of `product_sold_data`
 -- ----------------------------
 BEGIN;
-INSERT INTO `product_sold_data` VALUES ('122', '274', '98', '98', '3', '16000', '{\"c\":\"yellow\",\"s\":\"m\"}', 'Ziggy'), ('123', '274', '98', '99', '1', '16000', '{\"c\":\"yellow\",\"s\":\"m\"}', 'Ziggy'), ('124', '274', '98', '100', '4', '16000', '{\"c\":\"yellow\",\"s\":\"m\"}', 'Ziggy'), ('125', '265', '91', '101', '3', '11', '{\"c\":\"brown\",\"s\":\"m\"}', 'Alysa');
+INSERT INTO `product_sold_data` VALUES ('122', '274', '98', '98', '3', '16000', '{\"c\":\"yellow\",\"s\":\"m\"}', 'Ziggy'), ('123', '274', '98', '99', '1', '16000', '{\"c\":\"yellow\",\"s\":\"m\"}', 'Ziggy'), ('124', '274', '98', '100', '4', '16000', '{\"c\":\"yellow\",\"s\":\"m\"}', 'Ziggy'), ('125', '265', '91', '101', '3', '11', '{\"c\":\"brown\",\"s\":\"m\"}', 'Alysa'), ('126', '281', null, '102', '4', '780990', null, 'Elise');
 COMMIT;
 
 -- ----------------------------
@@ -193,13 +213,13 @@ CREATE TABLE `store_customer` (
   `m_date` datetime NOT NULL,
   `phone` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Records of `store_customer`
 -- ----------------------------
 BEGIN;
-INSERT INTO `store_customer` VALUES ('1', '1', 'zidmubarock@gmail.com', 'Zidni', 'Begitu btt', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. ANggrek XI Blok L4 NO.55 Taman Cibodas', '02183379220', '0000-00-00 00:00:00', '2011-06-10 13:47:33', ''), ('15', '0', 'alent.alzid@gmail.com', 'Aku Cinta', 'Man2', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. Anggrek XI Blok l1', '', '2011-05-24 11:36:06', '2011-05-25 18:11:40', '23632'), ('17', '14', 'ojankil@gmail.com', 'Fauzan', 'Qadri', '0', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. Aggrek Xi', '', '2011-05-25 11:41:57', '2011-05-25 11:44:16', '841268768');
+INSERT INTO `store_customer` VALUES ('18', '0', 'anggi.zweet@yahoo.co.id', 'ANgga', 'Sweet', '100', 'Bantent', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. Anggrek', '76457657', '2011-06-13 20:16:19', '0000-00-00 00:00:00', '12121'), ('15', '0', 'alent.alzid@gmail.com', 'Aku Cinta', 'Man2', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. Anggrek XI Blok l1', '', '2011-05-24 11:36:06', '2011-05-25 18:11:40', '23632'), ('17', '14', 'ojankil@gmail.com', 'Fauzan', 'Qadri', '0', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. Aggrek Xi', '', '2011-05-25 11:41:57', '2011-05-25 11:44:16', '841268768');
 COMMIT;
 
 -- ----------------------------
@@ -223,13 +243,13 @@ CREATE TABLE `store_order` (
   `uniq_id` varchar(40) NOT NULL,
   `status` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=102 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=103 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Records of `store_order`
 -- ----------------------------
 BEGIN;
-INSERT INTO `store_order` VALUES ('98', '14', '17', '2011-05-03 11:43:07', null, 'bca', '130500', '48000', 'IDR', 'jne', 'YES (Yakin Esok Sampai)', '82500', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using', 'be5d8064e1ddcb3313eaa85a3b244085', 'pending'), ('99', null, '15', '2011-06-06 18:21:21', '2011-06-08 13:59:43', 'bca', '49000', '16000', 'IDR', 'jne', 'YES (Yakin Esok Sampai)', '33000', '', 'e728737187afd6ea05efc59bbc838fa8', 'pending'), ('100', '1', '1', '2011-06-07 09:39:38', '0000-00-00 00:00:00', 'bca', '95500', '64000', 'IDR', 'jne', 'OKE (Ongkos Kirim Ekomonis)', '31500', '', 'b841ecb97d6d61ef78e38a1a7f8b1fbc', 'shipped'), ('101', '1', '1', '2011-06-10 13:48:00', null, 'bca', '41', '33', 'USD', 'jne', 'YES (Yakin Esok Sampai)', '8', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using', 'f5a13463f0e023523e03920352231a31', 'pending');
+INSERT INTO `store_order` VALUES ('98', '14', '17', '2011-05-03 11:43:07', null, 'bca', '130500', '48000', 'IDR', 'jne', 'YES (Yakin Esok Sampai)', '82500', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using', 'be5d8064e1ddcb3313eaa85a3b244085', 'pending'), ('99', null, '15', '2011-06-06 18:21:21', '2011-06-13 09:37:21', 'bca', '49000', '16000', 'IDR', 'jne', 'YES (Yakin Esok Sampai)', '33000', '', 'e728737187afd6ea05efc59bbc838fa8', 'pending'), ('100', '1', '1', '2011-06-07 09:39:38', '0000-00-00 00:00:00', 'bca', '95500', '64000', 'IDR', 'jne', 'OKE (Ongkos Kirim Ekomonis)', '31500', '', 'b841ecb97d6d61ef78e38a1a7f8b1fbc', 'shipped'), ('101', '1', '1', '2011-06-10 13:48:00', '2011-06-13 00:03:41', 'bca', '41', '33', 'USD', 'jne', 'YES (Yakin Esok Sampai)', '8', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using', 'f5a13463f0e023523e03920352231a31', 'cancel'), ('102', null, '18', '2011-06-13 20:17:26', null, 'bca', '3156960', '3123960', 'IDR', 'jne', 'YES (Yakin Esok Sampai)', '33000', '', '43fc227993ed99ba9b6905c485ff84f8', 'pending');
 COMMIT;
 
 -- ----------------------------
@@ -244,7 +264,14 @@ CREATE TABLE `store_order_history` (
   `c_date` datetime NOT NULL,
   `read` varchar(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=33 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+--  Records of `store_order_history`
+-- ----------------------------
+BEGIN;
+INSERT INTO `store_order_history` VALUES ('20', '101', 'payment_confirm', '\r\n			Order <span class=\"bold\">#101</span><br/>\r\n			Payment Method 		: <br/>\r\n			Payed Amount 		: 253326<br/>\r\n			Date Payment 		: 2011-06-12 22:59:49<br/>\r\n			Acount Name 		: Zidni Mubarock<br/>\r\n			', '2011-06-12 22:59:58', ''), ('21', '101', 'payment_confirm', '\r\n			Order <span class=\"bold\">#101</span><br/>\r\n			Payment Method 		: <br/>\r\n			Payed Amount 		: 253326<br/>\r\n			Date Payment 		: 2011-06-12 22:59:49<br/>\r\n			Acount Name 		: Zidni Mubarock<br/>\r\n			', '2011-06-12 23:07:09', ''), ('22', '101', 'update_status', 'set new status as <span>process</span>', '2011-06-12 23:59:11', ''), ('23', '101', 'update_status', 'set new status as <span>cancel</span>', '2011-06-13 00:03:29', ''), ('24', '101', 'update_status', 'set new status as <span>cancel</span>', '2011-06-13 00:03:41', ''), ('25', '99', 'update_status', 'set new status as <span>confirm</span>', '2011-06-13 00:04:14', ''), ('26', '99', 'update_status', 'set new status as <span>process</span>', '2011-06-13 00:04:27', ''), ('27', '99', 'update_status', 'set new status as <span>pending</span>', '2011-06-13 09:37:21', ''), ('28', '101', 'payment_confirm', 'testing cron', '2011-06-13 14:56:37', ''), ('29', '101', 'payment_confirm', 'testing cron', '2011-06-13 15:02:38', ''), ('30', '101', 'payment_confirm', 'testing cron', '2011-06-13 15:09:35', ''), ('31', '101', 'payment_confirm', 'testing cron', '2011-06-13 15:11:17', ''), ('32', '101', 'payment_confirm', 'testing cron', '2011-06-13 15:11:54', '');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `store_order_personal_data`
@@ -285,13 +312,13 @@ CREATE TABLE `store_order_shipto_data` (
   `mobile` varchar(25) NOT NULL,
   `phone` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=95 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=96 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 --  Records of `store_order_shipto_data`
 -- ----------------------------
 BEGIN;
-INSERT INTO `store_order_shipto_data` VALUES ('91', '98', 'Fauzan', 'Qadri', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. Aggrek Xi', '', '841268768'), ('92', '99', 'Aku Cinta', 'Man2', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. Anggrek XI Blok l1', '', '23632'), ('93', '100', 'Zidni', 'Begitu btt', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. ANggrek XI Blok L4 NO.55 Taman Cibodas', '02183379220', ''), ('94', '101', 'Zidni', 'Begitu btt', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. ANggrek XI Blok L4 NO.55 Taman Cibodas', '02183379220', '');
+INSERT INTO `store_order_shipto_data` VALUES ('91', '98', 'Fauzan', 'Qadri', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. Aggrek Xi', '', '841268768'), ('92', '99', 'Aku Cinta', 'Man2', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. Anggrek XI Blok l1', '', '23632'), ('93', '100', 'Zidni', 'Begitu btt', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. ANggrek XI Blok L4 NO.55 Taman Cibodas', '02183379220', ''), ('94', '101', 'Zidni', 'Begitu btt', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. ANggrek XI Blok L4 NO.55 Taman Cibodas', '02183379220', ''), ('95', '102', 'ANgga', 'Sweet', '100', 'Bantent', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. Anggrek', '76457657', '12121');
 COMMIT;
 
 -- ----------------------------
@@ -322,7 +349,7 @@ CREATE TABLE `store_product` (
 --  Records of `store_product`
 -- ----------------------------
 BEGIN;
-INSERT INTO `store_product` VALUES ('264', 'Adele', 'wm01', '1.6', '0', null, '', '2011-02-28 23:58:58', '2011-02-21 03:30:22', '19', 'y', 'IDR', '500000', '', '', ''), ('265', 'Alysa', 'wm02', '1.6', '0', null, '', '2011-06-10 21:23:08', '2011-02-21 03:51:01', '19', 'y', 'IDR', '147650', '%:25', '', ''), ('275', '', '', '', '0', null, '', null, '2011-04-12 02:04:40', '0', 'n', '', '0', '', '', ''), ('281', 'Elise', 'el_01', '0.3', '0', null, '<p>\n	It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>\n', '2011-06-10 22:16:00', '2011-06-10 20:19:58', '19', 'y', '', '780990', '', '', ''), ('282', 'Aika', 'AI_01', '0.3', '0', null, '<p>\n	It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>\n', '2011-06-11 06:35:03', '2011-06-11 06:33:13', '18', 'y', '', '4657126', '', '', '');
+INSERT INTO `store_product` VALUES ('264', 'Adele', 'wm01', '1.6', '0', null, '', '2011-06-13 18:28:48', '2011-02-21 03:30:22', '19', 'y', 'IDR', '500000', '', '', ''), ('265', 'Alysa', 'wm02', '1.6', '0', null, '', '2011-06-10 21:23:08', '2011-02-21 03:51:01', '19', 'y', 'IDR', '147650', '%:25', '', ''), ('275', '', '', '', '0', null, '', null, '2011-04-12 02:04:40', '0', 'n', '', '0', '', '', ''), ('281', 'Elise', 'el_01', '0.3', '50', null, '<p>\n	It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>\n', '2011-06-13 00:21:29', '2011-06-10 20:19:58', '19', 'y', '', '780990', '', '', ''), ('282', 'Aika', 'AI_01', '0.3', '99', null, '<p>\n	It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>\n', '2011-06-13 10:16:18', '2011-06-11 06:33:13', '18', 'y', '', '4657126', '', '', '');
 COMMIT;
 
 -- ----------------------------
@@ -357,13 +384,13 @@ CREATE TABLE `store_product_media` (
   `publish` varchar(1) DEFAULT '1',
   `default` int(1) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=94 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=95 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Records of `store_product_media`
 -- ----------------------------
 BEGIN;
-INSERT INTO `store_product_media` VALUES ('83', '267', 'side', 'p_267_m_83_side.jpg', 'y', '0'), ('81', '267', 'front', 'p_267_m_81_front.jpg', 'y', '1'), ('80', '266', 'front', 'p_266_m_80_front1.jpg', 'y', '0'), ('79', '266', 'back', 'p_266_m_79_back1.jpg', 'y', '0'), ('82', '267', 'back', 'p_267_m_82_back.jpg', 'y', '0'), ('78', '265', 'back', 'p_265_m_78_back.jpg', 'y', '0'), ('77', '265', 'front', 'p_265_m_77_front.jpg', 'y', '1'), ('76', '264', 'back view', 'p_264_m_76_back_view.jpg', 'y', '0'), ('74', '264', 'blue', 'p_264_m_74_blue1.jpg', 'y', '0'), ('75', '264', 'red', 'p_264_m_75_red1.jpg', 'y', '1'), ('84', '268', 'front', 'p_268_m_84_front.jpg', 'y', '0'), ('85', '268', 'back', 'p_268_m_85_back.jpg', 'y', '0'), ('86', '268', 'front far', 'p_268_m_86_front_2.jpg', 'n', '0'), ('87', '274', 'Front', 'p_274_m_87_Front.jpg', 'y', '0'), ('88', '274', 'Back', 'p_274_m_88_Back.jpg', 'y', '0'), ('89', '274', 'hhhssa', 'p_274_m_89_hhh.jpg', 'y', '0'), ('90', '277', 'front', 'p_277_m_90_front.jpg', 'y', '0'), ('91', '278', 'Front', 'p_278_m_91_Front.jpg', 'y', '0'), ('92', '281', 'Front', 'p_281_m_92_Front.jpg', 'y', '1'), ('93', '282', 'front', 'p_282_m_93_front.jpg', 'y', '0');
+INSERT INTO `store_product_media` VALUES ('83', '267', 'side', 'p_267_m_83_side.jpg', 'y', '0'), ('81', '267', 'front', 'p_267_m_81_front.jpg', 'y', '1'), ('80', '266', 'front', 'p_266_m_80_front1.jpg', 'y', '0'), ('79', '266', 'back', 'p_266_m_79_back1.jpg', 'y', '0'), ('82', '267', 'back', 'p_267_m_82_back.jpg', 'y', '0'), ('78', '265', 'back', 'p_265_m_78_back.jpg', 'y', '0'), ('77', '265', 'front', 'p_265_m_77_front.jpg', 'y', '1'), ('76', '264', 'back view', 'p_264_m_76_back_view.jpg', 'y', '0'), ('74', '264', 'blue', 'p_264_m_74_blue1.jpg', 'y', '0'), ('75', '264', 'red', 'p_264_m_75_red1.jpg', 'y', '1'), ('84', '268', 'front', 'p_268_m_84_front.jpg', 'y', '0'), ('85', '268', 'back', 'p_268_m_85_back.jpg', 'y', '0'), ('86', '268', 'front far', 'p_268_m_86_front_2.jpg', 'n', '0'), ('87', '274', 'Front', 'p_274_m_87_Front.jpg', 'y', '0'), ('88', '274', 'Back', 'p_274_m_88_Back.jpg', 'y', '0'), ('89', '274', 'hhhssa', 'p_274_m_89_hhh.jpg', 'y', '0'), ('90', '277', 'front', 'p_277_m_90_front.jpg', 'y', '0'), ('91', '278', 'Front', 'p_278_m_91_Front.jpg', 'y', '0'), ('92', '281', 'Front', 'p_281_m_92_Front.jpg', 'y', '1'), ('93', '282', 'front', 'p_282_m_93_front.jpg', 'y', '0'), ('94', '282', 'Back', 'p_282_m_94_Back.jpg', 'y', '0');
 COMMIT;
 
 -- ----------------------------
@@ -375,13 +402,13 @@ CREATE TABLE `store_product_rel` (
   `p_own` int(11) NOT NULL,
   `p_rel` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Records of `store_product_rel`
 -- ----------------------------
 BEGIN;
-INSERT INTO `store_product_rel` VALUES ('2', '281', '265'), ('3', '281', '264'), ('4', '282', '264');
+INSERT INTO `store_product_rel` VALUES ('2', '281', '265'), ('3', '281', '264'), ('4', '282', '264'), ('5', '264', '282'), ('6', '264', '264');
 COMMIT;
 
 -- ----------------------------

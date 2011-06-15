@@ -40,6 +40,7 @@ class Order_m extends CI_Model {
 		}
 
 		$this->db->select('a.id');
+		$this->dodol->db_calc_found_rows();
 		$this->db->from('store_order as a');
 		if(isset($param['query'])){
 			$term = array(
@@ -63,41 +64,12 @@ class Order_m extends CI_Model {
 		}
 		$this->db->order_by('a.id', 'DESC');
 		$q = $this->db->get('', $end, $start);
-		
 	
-	
-	    $this->db->select('a.id');
-		$this->db->from('store_order as a');
-		if(isset($param['query'])){
-			$term = array(
-				'b.first_name' => $param['query'], 
-				'b.last_name' => $param['query'], 
-				'b.email' => $param['query'], 
-				'c.first_name' => $param['query'],
-				'c.last_name' => $param['query']
-			);
-			$this->db->join('store_customer as b', 'b.id=a.customer_id' );
-			$this->db->join('store_order_shipto_data as c', 'c.order_id=a.id' );
-			$this->db->or_like($term);
-		}
-		// if order id set
-		if(isset($param['order_id'])){
-			$this->db->where('a.id', $param['order_id']);
-		}
-		// if search by order_status
-		if(isset($param['status'])){
-			$this->db->where('a.status', $param['status']);
-		}
-		$this->db->order_by('a.id', 'DESC');
-		$q2 = $this->db->get();
-		
-	
-		
 		if($q->num_rows() < 1){
 			return false;
 		}else{
 			$data['orders'] = $q->result();
-			$data['number_rec'] = $q2->num_rows();
+			$data['number_rec'] = $this->dodol->db_found_rows();
 			return $data; 
 		}
 		
