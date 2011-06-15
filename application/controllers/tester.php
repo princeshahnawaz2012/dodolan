@@ -134,6 +134,10 @@ class Tester extends MX_Controller {
 		$do_time = $this->dodol->datetime('+5 minutes');
 		$cron = modules::run('cron/add', 'store/order/create_history_order', $parameter, $do_time );
 	}
+	function flip(){
+		$render['mainLayer'] = 'flip_v';
+		$this->theme->render($render);
+	}
 
 
 }

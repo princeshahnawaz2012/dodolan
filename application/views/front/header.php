@@ -19,7 +19,7 @@
 
 <script type="text/javascript" src="<?=base_url();?>/assets/global_js/dodolan_js_lib.js"></script>
 <script type="text/javascript" src="<?=base_url();?>/assets/global_js/jgrowl/jquery.jgrowl.js"></script>
-
+<script src="<?=base_url();?>/assets/global_js/flip/jquery.flip.js" type="text/javascript" charset="utf-8"></script>
 
 <!-- Css and JS for Specify Individual Theme -->
 <link href="<?=base_url();?>assets/theme/front/css/front-style.css" rel="stylesheet" type="text/css" />

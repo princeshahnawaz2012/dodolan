@@ -56,12 +56,18 @@ class Category_m extends CI_Model {
 		}
 	}
 	function deletecat($id){
-		$this->db->where('id', $id);
-		$q = $this->db->delete('store_category');
-		if($q){
-			return true;
-		}else{
+		$this->db->where('parent_id', $id);
+		$check_depend = $this->db->get('store_category');
+		if($check_depend->num_rows()>0){
 			return false;
+		}else{
+			$this->db->where('id', $id);
+			$q = $this->db->delete('store_category');
+			if($q){
+				return true;
+			}else{
+				return false;
+			}
 		}
 	}
 	
