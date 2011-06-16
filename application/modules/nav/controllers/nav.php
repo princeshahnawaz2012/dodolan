@@ -28,4 +28,17 @@ class Nav extends MX_Controller {
 	function getbyid($id){
 		return $this->mdl->getbyid($id);
 	}
+	function render_nav($id){
+		if($items = modules::run('nav/nav_item/getbynav', $id)){
+			$source = array();
+			foreach($items as $item){
+				$menu_item = array(
+					'anchor' => $item->name,
+					'link' => site_url($item->anchor),
+				);
+				array_push($source, $menu_item);
+			}
+			echo $this->theme->menu_rend($source);
+		}
+	}
 }?>

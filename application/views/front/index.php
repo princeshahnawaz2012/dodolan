@@ -1,9 +1,13 @@
+<script type="text/javascript" charset="utf-8">
+
+</script>
+
 <?=$this->load->view('front/header');?>
 	<div class="wrapper">
 		<div class="wrapper_inner grid_950 ctr">
 			<div class="header">
 				<div class="toppest_spot">
-				<div class="logo_spot left"><h1><?=$this->config->item('site_name')?></h1></div>
+				<div class="logo_spot left"><h1 clas="myriad"><?=$this->config->item('site_name')?></h1></div>
 				<div class="resource_spot right grid_300">
 					<div class="user_menu right">
 						<span><a href="">Login</a><span> | <span><a href=""></a>Track Order</span>  | <span class="cart_item">cart (0 item)<span>
@@ -15,18 +19,8 @@
 				</div>
 				<div class="navigation">
 					<div class="main_menu left">
-						<ul class="menu_hor">
-							<li><a href="">Collection</a></li>
-							<li><a href="">New Arrival</a></li>
-							<li><a href="">Top</a></li>
-							<li><a href="">Dressess</a></li>
-							<li><a href="">Bottom</a></li>
-							<li><a href="">OutWears</a></li>
-							<li><a href="">Accesories</a></li>
-							<li><a href="">How ToShop</a></li>
-							<li><a href="">Contact</a></li>
-							
-						</ul>
+						<?=modules::run('nav/render_nav', 1);?>
+						
 					</div>
 					<div class="search_mod right">
 						<form>
@@ -37,19 +31,19 @@
 				</div>
 			</div>
 			<div class="main_comp">
-				<? if(!isset($loadSide) || !$this->input->get('dsply')){
+					<? 	
+					if($loadSide == true):
 						$mainComp = '';
-						?>	
+					?>	
 						<div class="sidebar grid_210 left">
 						<?=modules::run('store/store_widget/categoryMenu');?>
 						<br class="clear"/>
-						   <?=modules::run('store/store_widget/currency');?>
+						<?=modules::run('store/store_widget/currency');?>
 						</div>
-					<?}elseif($this->input->get('dsply') == 'full'){
-						$mainComp = 'fullWidth';
-					}?>
-					<div class="mainComp <?=$mainComp?> right">
-
+					<?else:
+						$mainComp = '_fullWidth';
+					endif?>
+					<div class="mainComp<?=$mainComp?> right">
 					<? if(isset($directLayer)){ echo $directLayer ;}?>
 					<? if(isset($mainLayer)){ echo $this->load->view($mainLayer) ;}?>
 					</div>

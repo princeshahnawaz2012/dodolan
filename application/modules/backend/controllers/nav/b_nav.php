@@ -152,7 +152,7 @@ class B_nav extends MX_Controller {
 	function reorder_item(){
 		$order_state = explode(',',$this->input->post('order_state'));
 		foreach($order_state as $key=>$value){
-			$data = array('order' => $key+1);
+			$data = array('sort' => $key+1);
 			$q = modules::run('nav/nav_item/exe_update',$value, $data);
 		}
 		echo json_encode(array('return' => true));

@@ -9,12 +9,12 @@ class Nav_item_m extends CI_Model  {
 	// API ///
 	function create($data) {
 		$this->db->where('nav_id', 1);
-		$this->db->select_max('order', 'last_order');
+		$this->db->select_max('sort', 'last_order');
 		$q = $this->db->get('site_nav_item');
 		if($q->row()->last_order != null){
-			$data['order'] = $q->row()->last_order+1;
+			$data['sort'] = $q->row()->last_order+1;
 		}else{
-			$data['order'] = 1;
+			$data['sort'] = 1;
 		}
 				
 		$q = $this->db->insert('site_nav_item', $data);
@@ -54,7 +54,7 @@ class Nav_item_m extends CI_Model  {
 		}
 	}
 	function getbypar($id_parent){
-	$this->db->order_by('order', 'ASC');
+	$this->db->order_by('sort', 'ASC');
 	$this->db->where('parent_id', $id_parent);
 	$q = $this->db->get('site_nav_item');
 		if($q->num_rows() > 0){
@@ -64,7 +64,7 @@ class Nav_item_m extends CI_Model  {
 		}
 	}
 	function getbynav($nav_id){
-		$this->db->order_by('order', 'ASC');
+		$this->db->order_by('sort', 'ASC');
 		$this->db->where('nav_id', $nav_id);
 		$q = $this->db->get('site_nav_item');
 			if($q->num_rows() > 0){
@@ -75,7 +75,7 @@ class Nav_item_m extends CI_Model  {
 		
 	}
 	function getall(){
-		$this->db->order_by('order', 'ASC');
+		$this->db->order_by('sort', 'ASC');
 		$q = $this->db->get('site_nav_item');
 		if($q->num_rows() > 0){
 			return $q->result();
@@ -84,7 +84,7 @@ class Nav_item_m extends CI_Model  {
 		}
 	}
 	function getbyid($id){
-		$this->db->order_by('order', 'ASC');
+		$this->db->order_by('sort', 'ASC');
 		$this->db->where('id', $id);
 			$q = $this->db->get('site_nav_item');
 			if($q->num_rows() == 1){

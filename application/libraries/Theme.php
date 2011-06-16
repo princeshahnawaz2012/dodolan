@@ -43,11 +43,14 @@ function render($data, $mode=false, $layer=false){
 		$layer = $this->_ci->input->get('tpl');
 	}
 
-	
+	if(!isset($data['loadSide'])){
+		$data['loadSide'] = true;
+	}
 	if($mode != 'back' && $mode == null ){
 	$this->_ci->firephp->setEnabled(true);
     $this->_ci->firephp->info(get_defined_vars());
     $this->_ci->firephp->info($this->_ci->session->userdata);
+	
 	$rend = $this->_ci->load->view('front/'.$layer, $data);
 	return $rend;
 	}
@@ -62,8 +65,8 @@ function ajax_loader($width=50, $class="loader"){
 	$loader = '<img class="'.$class.'" src="'.base_url().'/assets/gen_img/loader.gif" alt="loader" width="'.$width.'">';
 	return $loader;
 }
-function menu_rend($source){
-	$out = "<ul>";
+function menu_rend($source, $type = 'menu_hor' ){
+	$out = '<ul class="'.$type.'">';
 	foreach($source as $s){
 		$out .= '<li><a href="'.$s['link'].'">'.$s['anchor'].'</a></li>';
 	}
@@ -187,6 +190,10 @@ public function nice_strlink($string)
 {
 	$new_string = strtolower(str_replace(' ', '-', $string));
 	return $new_string;
+}
+function copy_this_link($string, $anchor = 'copy this' ){
+	$object = '<span class="toClipBoard button" alt="'.$string.'">'.$anchor.'</span>';
+	return $object;
 }
 
 

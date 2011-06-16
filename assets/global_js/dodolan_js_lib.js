@@ -24,6 +24,31 @@ $(document).ready(function(){
 			timeFormat: 'hh:mm:ss'
 			});
 });
+
+// COPY TO CLIP BOARD
+$(document).ready(function(){
+	ZeroClipboard.setMoviePath('http://localhost/dodolan//assets/global_js/zeroclip/ZeroClipboard.swf');
+	clip = new ZeroClipboard.Client();
+	clip.setHandCursor( true );
+	// assign a common mouseover function for all elements using jQuery
+	$('.toClipBoard').mouseover( function() {
+		// set the clip text to our innerHTML
+		text = $(this).attr('alt');
+		clip.setText(text);
+		// reposition the movie over our element
+		// or create it if this is the first time
+		if (clip.div) {
+			clip.receiveEvent('mouseout', null);
+			clip.reposition(this);
+		}
+		else clip.glue(this);
+		// gotta force these events due to the Flash movie
+		// moving all around. This insures the CSS effects
+		// are properly updated.
+		clip.receiveEvent('mouseover', null);
+	} );
+});
+
 $(document).ready(function(){
 	
 	var current = $(location).attr('href');
@@ -216,6 +241,17 @@ $(document).ready(function(){
 	}
 })(jQuery);
 
+function ClipBoard()
+{
+holdtext.innerText = copytext.innerText;
+Copied = holdtext.createTextRange();
+Copied.execCommand("Copy");
+}
+
+
+
+
+
 jQuery.event.special.keyupdelay = {
     add : function(handler, data, namespaces) {
         var delay = data && data.delay || 100,
@@ -296,4 +332,3 @@ $.fn.center = function( options ){
     $w.resize( centerize );
   });
 };
-

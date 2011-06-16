@@ -2,6 +2,7 @@
 	<div id="front_ajaxdialog" class="ajaxdialog hide msg-Ui">
 		
 	</div>
+	
 	<script type="text/javascript" charset="utf-8">
 		$('.mainComp').hide();
 		$(document).ready(function(){

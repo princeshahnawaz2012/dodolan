@@ -1,3 +1,5 @@
+
+
 .header {
 
 }
@@ -10,12 +12,12 @@
 	bottom:15px;
 }
 .header .toppest_spot .logo_spot h1 {
-	line-height:36px;
-	font-size: 36px;
+	line-height:32px;
+	font-size: 32px;
 	margin:0px;
 	padding:0px;
-	font-family":"myriad";
-	font-weight: normal;
+	font-family:Myriad Pro;
+	font-weight:normal;
 }
 .header .toppest_spot .resource_spot{
 	position:absolute;
@@ -34,19 +36,32 @@
 	padding:0px;
 	margin:0px;
 }
-.header .navigation .main_menu ul li { line-height:30px; height:30px}
+.header .navigation .main_menu ul li { 
+	line-height:30px; 
+	height:30px;
+}
 .header .navigation .main_menu ul li a {
 	display:block;
 	padding:0px 10px;
 	text-decoration: none;
 	color:#000;
-	font-family":"myriad";
+	font-size:14px;
+	font-family:Myriad Pro;
 }
 .header .navigation .main_menu ul li a:hover {
 	background:#f7f7f7;
 }
 .header .navigation .search_mod {}
-.header .navigation .search_mod input[type="text"] { color:#000; border:none;font-family":"myriad"; font-size:12px; height: 30px; width:200px; line-height:30px; padding:0px;}
+.header .navigation .search_mod input[type="text"] { 
+	color:#000; 
+	border:none;
+	font-size:14px;
+	font-family:Myriad Pro;
+	height: 30px; 
+	width:200px; 
+	line-height:30px; 
+	padding:0px;
+	}
 
 .footer .resource_bottom {
 	border-bottom:1px solid #ccc;
@@ -122,12 +137,11 @@
 	color:#000;
 	text-decoration: none;
 }
-
-
-/* API INSTANT COMMON LAYOUY */
+/** MISC **/
 ul.menu_hor li {
-	float:left;
-	list-style: none;
+	float:left !important;
+	list-style: none !important;
 	/* RESET THE MARGIN */
-	margin:0px;
+	margin:0px !important;
 }
+

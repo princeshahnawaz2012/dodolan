@@ -16,6 +16,7 @@ class Store extends MX_Controller {
 	}
 	
 	function index() {
+		$data['loadSide'] = false;
 		$data['data'] = 'asuh';
 		$this->theme->render($data);
 	}
