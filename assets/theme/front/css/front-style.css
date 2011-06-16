@@ -1,75 +1,133 @@
-/**
-Author : Zidni Mubarock
-Url    : http://barockprojects.com
-Email  : zidmubarock@gmail.com
-file name : main_style.css
-
-
-Color Code
-+++ = #7b7979;
-++  = #c1c1c1;
-+   = #b2b2b2;
-ungu = EB6BF2;
-
-**/
-
-/* Main Layering
-----------------------------------------------------------------------------------------------------*/
-.header { height:80px; border-bottom:1px solid #c1c1c1; margin-bottom:20px;}
-.mainWrap { min-height:300px;}
-.footerWrap { border-top:1px solid #c1c1c1; margin-bottom:30px; font-size:11px; padding-top:5px; margin-top:10px;}
-.mainComp { width:730px;}
-.fullWidth { width:960px;}
-/* Inside Main Layering
------------------------*/
-.header .logoText { bottom:5px; margin-bottom:0px;}
-.sideTop { font-size:11px; padding-top:10px;}
-.sideTop p { margin:0px; padding-top:3px;}
-.sideTop .widget { float:right; margin-left:10px;}
-.header .topMenu{ position:absolute; bottom:0px; right:0px; }
-.header .topMenu ul {margin:0px; padding:0px; list-style: none ;}
-.header .topMenu ul li:last-child { border-right:none;}
-.header .topMenu ul li {float:left; margin:0px; border-right:1px solid #C1C1C1; border-bottom:1px solid #ccc; margin-bottom :-1px;
-	-webkit-transition-duration:1s;
-	/*-webkit-transition-delay:1s;*/
-	-moz-transition-duration:1s;
-	transition-duration:1s;
-	 }
-
-.header .topMenu ul li:hover {
-	/*@ transition-rule @*/
-	border-bottom:1px solid #000;
+.header {
 
 }
-.header .topMenu ul li a { display:block; padding:7px 10px; text-decoration:none;
-		-webkit-transition-duration:1s;
-		-moz-transition-duration:1s;
-		transition-duration:1s;
-		}
-.header .topMenu ul li:hover a {
-	/*@ transition-rule @*/
-	background:#eaeaea; color:#767676; text-shadow:0 1px 0 #fff;}
+.header .toppest_spot {
+	height:100px;
+	position:relative;
+}
+.header .toppest_spot .logo_spot {
+	position:absolute;
+	bottom:15px;
+}
+.header .toppest_spot .logo_spot h1 {
+	line-height:36px;
+	font-size: 36px;
+	margin:0px;
+	padding:0px;
+	font-family":"myriad";
+	font-weight: normal;
+}
+.header .toppest_spot .resource_spot{
+	position:absolute;
+	bottom:15px;
+	right:0px;
+}
+.header .navigation {
+	height:30px;
+	border-bottom:1px solid #ccc;
+	border-top:1px solid #ccc;
+}
+.header .navigation .main_menu {
+	
+}
+.header .navigation .main_menu ul {
+	padding:0px;
+	margin:0px;
+}
+.header .navigation .main_menu ul li { line-height:30px; height:30px}
+.header .navigation .main_menu ul li a {
+	display:block;
+	padding:0px 10px;
+	text-decoration: none;
+	color:#000;
+	font-family":"myriad";
+}
+.header .navigation .main_menu ul li a:hover {
+	background:#f7f7f7;
+}
+.header .navigation .search_mod {}
+.header .navigation .search_mod input[type="text"] { color:#000; border:none;font-family":"myriad"; font-size:12px; height: 30px; width:200px; line-height:30px; padding:0px;}
+
+.footer .resource_bottom {
+	border-bottom:1px solid #ccc;
+	margin-bottom:5px;
+}
+.footer .resource_bottom .resource_right .front_resource_menu {
+	padding-left:10px;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+.footer .resource_bottom .resource_right .front_resource_menu ul {
+	padding:0px;
+	margin:0px;
+	list-style: none;
+}
+.footer .resource_bottom .resource_right .front_resource_menu ul li {
+	margin :0px;
+	width:50%;
+	float: right;
+	text-align: right;
+}
+.footer .resource_bottom .resource_right .front_resource_menu ul li a {
+	color:#000;
+	text-decoration: none;
+}
+.footer .resource_bottom .resource_right .front_resource_menu ul li:last-clid:after{
+	clear:both;
+	
+}
+.footer .resource_bottom .resource_right {
+	border-left:1px solid #ccc;
+	padding-bottom:15px;
+}
+.footer .resource_bottom .resource_right .news_letter_form {
+	border-top:1px solid #ccc;
+	padding-left:10px;
+}
+.footer .resource_bottom .resource_right .news_letter_form p {
+	margin:0px;
+	font-size:11px;
+}
+.footer .resource_bottom .resource_right .news_letter_form form .form_spot {
+	padding:2px;
+	border:1px solid #ccc;
+	margin-top:15px;
+}
+.footer .resource_bottom .resource_right .news_letter_form form input.required{
+	border:none;
+	padding:0px;
+	margin:0px;
+	height:25px;
+	width:170px;
+	padding:0px 10px;
+}
+.footer .resource_bottom .resource_right .news_letter_form form .trigger {
+	border:none;
+	background:cfcfcf;
+	height:25px;
+	padding:0px 10px;
+	color:#343434;
+	text-shadow:0 1px 0 #fff;
+	float:right;
+}
+.footer .closing_spot{
+	font-size:11px;
+}
+.footer .closing_spot .bottom_menu ul li {
+	border-left:1px solid #ccc ;
+}
+.footer .closing_spot .bottom_menu ul li a {
+	display:block;
+	padding:0px 5px;
+	color:#000;
+	text-decoration: none;
+}
 
 
-
-.header .topMenu .mod_search { padding-top:5px; width:250px}
-.header .topMenu .mod_search input { width : 230px;}
-/* Widget
-----------------------------------------------------------------------------------------------------*/
-
-/*CATEGORY PRODUCT MENU */
-.catMenu ul { list-style:none; padding:0px;}
-.catMenu h3 { font-size:13px;}
-.catMenu ul li { width:100%; text-align:center; margin:0px; font-size:14px; border-bottom:#CCC 1px solid;}
-.catMenu a { text-decoration:none; padding:5px 0px;}
-/*viewcart widget */
-.viewCartWidget p { margin:0px; padding-top:3px;}
-.viewCartWidget .button { padding:2px 4px;}
-
-/*currency widget */
-.currency_widget {}
-.currency_widget select  { padding:2px 4px;font-size:11px;}
-/* MISC
-----------------------------------------------------------------------------------------------------*/
-/*add to cart form */
-.addToCartForm  { margin-top:10px;}
+/* API INSTANT COMMON LAYOUY */
+ul.menu_hor li {
+	float:left;
+	list-style: none;
+	/* RESET THE MARGIN */
+	margin:0px;
+}

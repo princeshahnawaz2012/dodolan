@@ -100,7 +100,7 @@ $(document).ready(function(){
 jQuery(document).ready(function(){
 jQuery('.text-input').each(function() {
 	        var default_value = this.value;
-	        jQuery(this).focus(function() {
+	        jQuery(this).keypress(function() {
 	            if(this.value == default_value) {
 	                this.value = '';
 	            }

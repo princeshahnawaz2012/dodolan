@@ -138,6 +138,16 @@ class Tester extends MX_Controller {
 		$render['mainLayer'] = 'flip_v';
 		$this->theme->render($render);
 	}
+	function test15(){
+		$this->db->where('nav_id', 1);
+		$this->db->select_max('order', 'last_order');
+		$q = $this->db->get('site_nav_item');
+		if($q->row()->last_order != null){
+			echo $q->row()->last_order;
+		}else{
+			echo 'asuh';
+		}
+	}
 
 
 }

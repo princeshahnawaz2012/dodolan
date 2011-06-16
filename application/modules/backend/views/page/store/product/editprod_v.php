@@ -335,7 +335,7 @@ $(document).ready(function(){
 							var rel_list = '';	
 							}
 							$('input[name="product_rel"]').val(rel_list);
-							alert($('input[name="product_rel"]').val());
+							
 						});
 
 				});

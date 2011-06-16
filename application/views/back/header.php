@@ -20,6 +20,10 @@
 <!-- js for HighCharts and CSS -->
 <script src="<?=base_url();?>/assets/global_js/hc/highcharts.js" type="text/javascript" charset="utf-8"></script>
 <script src="<?=base_url();?>/assets/global_js/hc/modules/exporting.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- TAble SOrt -->
+<script src="<?=base_url();?>/assets/global_js/tableSort/jquery.tablednd_0_5.js" type="text/javascript" charset="utf-8"></script>
+
 <!-- Css and JS for Specify Individual Theme -->
 <link href="<?=base_url();?>assets/theme/back/css/admin-style.css" rel="stylesheet" type="text/css" />
 <link href="<?=base_url();?>assets/theme/back/css/page_style.css" rel="stylesheet" type="text/css" />
@@ -31,7 +35,6 @@
 
 <body  id="<?=$this->router->class.'_'.$this->router->method;?>" class="backend">
 <div class="navigation"><div class="inner ctr grid_990">
-	
 	<div class="left"><?=modules::run('backend/widget/topmenu');?></div>
 	<br class="clear"/>
 	</div>

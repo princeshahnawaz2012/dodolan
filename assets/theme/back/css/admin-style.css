@@ -13,7 +13,9 @@ ungu = EB6BF2;
 
 **/
 /** MISC Design Utility **/
-
+body{
+	color : #797979;
+}
 .def_grad {  background-image: -moz-linear-gradient(-90deg, #059a9f , #058b9b );
 background-image: -webkit-gradient(linear, 0 top, 0 bottom, from( #059a9f ), to( #058b9b ));
 }
