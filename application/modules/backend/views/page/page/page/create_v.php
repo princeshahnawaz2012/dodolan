@@ -4,7 +4,7 @@
 	<br/>
 	<br/>
 	<textarea id="page_content" name="content"></textarea>
-	<?$this->theme->load_text_editor('page_content')?>
+	<?$this->dodol_theme->load_text_editor('page_content')?>
 	<br/>
 	<select name="category_id" id="category_id">
 		<option value="">Select Category</option>

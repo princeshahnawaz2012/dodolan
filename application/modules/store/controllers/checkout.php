@@ -60,7 +60,7 @@ class Checkout extends MX_Controller {
 				'ship_data'  => $this->cart->shipto_info,
 				//'loadSide' => false
 				);
-			$this->theme->render($data);
+			$this->dodol_theme->render($data);
 		
 			if($this->input->post('submit')){
 				/*
@@ -357,7 +357,7 @@ class Checkout extends MX_Controller {
 		$data['cart'] = modules::run('store/store_widget/smallcart');
 		$data['mainLayer'] = 'store/page/checkout/shipping_method_v';
 		
-		$this->theme->render($data);
+		$this->dodol_theme->render($data);
 		if($this->input->post('next')){
 			$this->exe_shipping_method();
 		}
@@ -406,7 +406,7 @@ class Checkout extends MX_Controller {
 			'pT'        => 'Checkout - Payment Method',
 			'cart'      => modules::run('store/store_widget/smallcart'),
 		);
-		$this->theme->render($data);
+		$this->dodol_theme->render($data);
 		if($this->input->post('next')){
 			$this->exe_payment();
 		}
@@ -457,7 +457,7 @@ class Checkout extends MX_Controller {
 				'pT'        => 'Checkout - Order Summary',
 				'cart'      => modules::run('store/store_widget/smallcart'),
 				);
-			$this->theme->render($rendered);
+			$this->dodol_theme->render($rendered);
 			if($this->input->post('process') && $this->recaptcha->validate()){
 			  $this->process();
 			}
@@ -573,7 +573,7 @@ class Checkout extends MX_Controller {
 			$this->session->unset_userdata('order_id');
 			$this->cart->destroy_data();
 			$this->cart->destroy();
-			$this->theme->render($data);
+			$this->dodol_theme->render($data);
 		
 		}else{
 			redirect('store/checkout/summary');

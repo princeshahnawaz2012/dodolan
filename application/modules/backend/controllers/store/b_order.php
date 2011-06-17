@@ -18,7 +18,7 @@ class B_order extends MX_Controller {
 	
 	function index() {
 		$data['directLayer'] = 'this is halaman order';
-		$this->theme->render($data, 'back');
+		$this->dodol_theme->render($data, 'back');
 	}
 	
 	function browse(){
@@ -66,7 +66,7 @@ class B_order extends MX_Controller {
 		$data['pT']     	= $query['number_rec'];
 		$data['mainLayer'] 	='backend/page/store/order/browse_order_v';
 		$data['asuh'] 		= $query['number_rec'];
-		$this->theme->render($data, 'back');
+		$this->dodol_theme->render($data, 'back');
 		
 	}
 	function view(){
@@ -81,7 +81,7 @@ class B_order extends MX_Controller {
 		$render['pageTool'] = modules::run('backend/store/b_order/updater_form', $order->id, $order->status);
 		$render['pH'] = 'Order No. '.$order->id;
 		$render['mainLayer'] 	='backend/page/store/order/view_v';
-		$this->theme->render($render, 'back');
+		$this->dodol_theme->render($render, 'back');
 	}
 	function updater_form($id_order, $current){
 		$render['id'] = $id_order;

@@ -38,7 +38,7 @@ class Nav extends MX_Controller {
 				);
 				array_push($source, $menu_item);
 			}
-			echo $this->theme->menu_rend($source);
+			echo $this->dodol_theme->menu_rend($source);
 		}
 	}
 }?>

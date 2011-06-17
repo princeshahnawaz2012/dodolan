@@ -7,7 +7,7 @@ class Store extends MX_Controller {
 	//php 5 constructor
 	function __construct() {
 		parent::__construct();
-		$this->load->model('store_m');
+		$this->load->model('store/store_m');
 	}
 	
 	//php 4 constructor
@@ -18,7 +18,7 @@ class Store extends MX_Controller {
 	function index() {
 		$data['loadSide'] = false;
 		$data['data'] = 'asuh';
-		$this->theme->render($data);
+		$this->dodol_theme->render($data);
 	}
 
 	function request_restock($data=array()){
@@ -71,7 +71,7 @@ class Store extends MX_Controller {
 		$data['form'] = modules::run('paypal/generate_form', $id);
 		$data['loadSide'] = false;
 		$data['mainLayer'] = 'store/page/checkout/payProcessing_v';
-		$this->theme->render($data);
+		$this->dodol_theme->render($data);
 	}
 
 }?>

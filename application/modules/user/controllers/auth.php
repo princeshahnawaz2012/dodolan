@@ -25,7 +25,7 @@ class Auth extends MX_Controller {
 		}
 		$data['pT'] = 'Backend Login';
 		$data['mainLayer'] = 'user/page/backend/backend_login_v';
-		$this->theme->render($data,'back', 'free_layout');
+		$this->dodol_theme->render($data,'back', 'free_layout');
 		
 		if($this->input->post('login')){
 			$q = $this->auth_m->checkCombination($this->input->post('email'), $this->input->post('password'));

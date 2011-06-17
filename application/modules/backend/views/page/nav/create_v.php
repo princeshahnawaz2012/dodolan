@@ -9,7 +9,7 @@
 		<div class="desc">
 			<span>Description</span>
 			<textarea name="description"></textarea>
-			<?$this->theme->load_text_editor('description')?>
+			<?$this->dodol_theme->load_text_editor('description')?>
 		</div>
 		<div class="right">
 			<input type="submit" name="create" value="Submit" class="button save-button-Ui">

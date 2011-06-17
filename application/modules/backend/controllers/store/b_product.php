@@ -26,7 +26,7 @@ class B_product extends MX_Controller {
 			'pt'        => 'Input Product',
 			'ht'		=> 'Input Product',
 			);
-		$this->theme->render($data,'back');
+		$this->dodol_theme->render($data,'back');
 		if($this->input->post('submit')){
 		$this->exe_addprod();
 		}
@@ -46,7 +46,7 @@ class B_product extends MX_Controller {
 		$data['mainLayer'] = 'backend/page/store/product/editprod_v';
 		$data['pt'] = 'edit product';
 		$data['ht'] = 'edit product - '.$prod['prod']->name;
-		$this->theme->render($data, 'back');
+		$this->dodol_theme->render($data, 'back');
 		if($this->input->post('submit')){
 			$this->exe_editprod($idprod);
 		}
@@ -111,7 +111,7 @@ class B_product extends MX_Controller {
 			array(
 				'anchor' => 'Add Product', 'link' => site_url('backend/store/b_product/addProd')),
 		);
-		$menu = $this->theme->menu_rend($menuSource);
+		$menu = $this->dodol_theme->menu_rend($menuSource);
 		$data = array(
 			'mainLayer' => 'backend/page/store/product/listprod_v',
 			'pT'        => 'List Product',
@@ -140,7 +140,7 @@ class B_product extends MX_Controller {
 		}
 		
 		
-		$this->theme->render($data,'back');
+		$this->dodol_theme->render($data,'back');
 	}
 	// Edit Media View
 	function editmedia(){
@@ -154,7 +154,7 @@ class B_product extends MX_Controller {
 			'ht'        => 'Update Media - '.$media->name. '<small> product : '.$prod['prod']->name.' | sku :'.$prod['prod']->sku.'</small>',
 			'media'		=> $media,
 				);
-		$this->theme->render($data,'back');
+		$this->dodol_theme->render($data,'back');
 		if($this->input->post('submit')){
 			if($this->input->post('default') == '1'){$def = 1;}else{$def = 0;}
 			if($this->input->post('publish') == 'y'){ $pub = 'y';}else{ $pub = 'n';}

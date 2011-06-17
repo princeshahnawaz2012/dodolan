@@ -57,7 +57,7 @@ class Product extends MX_Controller {
 		$data['prod'] = $this->detProd($param);
 		$data['mainLayer'] = 'store/page/product/detailProd';
 		$data['pT']        = $data['prod']['prod']->name;
-		$this->theme->render($data);
+		$this->dodol_theme->render($data);
 		// execution buy product
 		modules::run('store/store_cart/buyProd');
 	}
@@ -192,7 +192,7 @@ class Product extends MX_Controller {
 		}else{
 		$data['pT'] = 'Store Product';
 		}
-		$this->theme->render($data);
+		$this->dodol_theme->render($data);
 	}
 	
 	/// API ///

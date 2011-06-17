@@ -8,7 +8,7 @@ $coll = $q['main'];
 
 ?>
 <div class="item">
-	<a href="<?=site_url('store/collection/detail/'.$coll->id.'/'.$this->theme->nice_strlink($coll->name))?>">
+	<a href="<?=site_url('store/collection/detail/'.$coll->id.'/'.$this->dodol_theme->nice_strlink($coll->name))?>">
 <img src="<?=site_url('thumb/show/730-200-crop/dir/assets/collection_img/'.$coll->img_path);?>" />
 </a>
 </div>

@@ -3,7 +3,7 @@
 
 	<div class="grid_70 ctr">
 		
-	<?=$this->theme->ajax_loader(70, 'grid_70');?>
+	<?=$this->dodol_theme->ajax_loader(70, 'grid_70');?>
 <script type="text/javascript" language="javascript">
 $(document).ready(function(){
 	

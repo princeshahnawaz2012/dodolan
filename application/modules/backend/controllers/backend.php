@@ -17,14 +17,14 @@ class Backend extends MX_Controller {
 		$data['pT'] = 'Backend';
 		$data['mainLayer'] = 'backend/sample_view_admin';
 		$data['u_name'] = $u->first_name.' '.$u->last_name;
-		$this->theme->render($data, 'back');
+		$this->dodol_theme->render($data, 'back');
 	}
 	function store_back(){
 		$data = array(
 		'directLayer' => 'this is index of Store banck end',
 		'pt' => 'Store'
 			);
-		$this->theme->render($data, 'back');
+		$this->dodol_theme->render($data, 'back');
 	}
 	
 	

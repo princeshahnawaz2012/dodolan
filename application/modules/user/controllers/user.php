@@ -39,7 +39,7 @@ class User extends MX_Controller {
 			'mod_login' => modules::run('user/user_widget/login_mod_front'),
 			'pT' => 'Login'
 			);
-		$this->theme->render($data);
+		$this->dodol_theme->render($data);
 	}
 	function register(){
 		$q = $this->db->get('store_country');
@@ -48,7 +48,7 @@ class User extends MX_Controller {
 			'pT' => 'Register',
 			'countries' => $q->result(),
 			);
-		$this->theme->render($data);
+		$this->dodol_theme->render($data);
 		if($this->input->post('register')){
 			$this->exe_register();
 		}

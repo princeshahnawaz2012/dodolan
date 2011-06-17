@@ -18,7 +18,7 @@ class Page extends MX_Controller {
 	
 	function index() {
 		$page = modules::run('page/exe_getbyid', 1);
-		$this->theme->render($render);
+		$this->dodol_theme->render($render);
 		
 		
 	}
@@ -28,7 +28,7 @@ class Page extends MX_Controller {
 		$render['page'] = $page;
 		$render['pT'] = $page->title;
 		$render['mainLayer'] = 'page/view_v';
-		$this->theme->render($render);
+		$this->dodol_theme->render($render);
 	}
 	// API ///
 

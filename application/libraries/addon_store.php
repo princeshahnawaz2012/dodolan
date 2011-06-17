@@ -8,6 +8,7 @@ class Addon_store
 var $_ci 		=  '';
 function Addon_store(){
 	$this->_ci =& get_instance();
+
 }
 
 function hackAttrib($value){

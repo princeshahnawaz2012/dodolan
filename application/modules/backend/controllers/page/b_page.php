@@ -20,7 +20,7 @@ class B_page extends MX_Controller {
 	function create(){
 
 		$render['mainLayer'] = 'backend/page/page/page/create_v';
-		$this->theme->render($render, 'back');
+		$this->dodol_theme->render($render, 'back');
 		// EXECUTION
 		if($this->input->post('submit')):
 			$datapass = array(
@@ -66,7 +66,7 @@ class B_page extends MX_Controller {
 		$render['pT'] = 'Update Page - '.$q->title;
 		$render['pH'] = 'Update Page - '.$q->title;
 		$render['mainLayer'] = 'backend/page/page/page/update_v';
-		$this->theme->render($render, 'back');
+		$this->dodol_theme->render($render, 'back');
 		
 	}
 	function delete(){
@@ -89,14 +89,14 @@ class B_page extends MX_Controller {
 					'anchor' => 'Create Page', 'link' => site_url('backend/page/b_page/create')),
 				array('anchor' => 'Page Category', 'link' => site_url('backend/page/b_page_category/browse')),
 			);
-		$menu = $this->theme->menu_rend($menuSource);
+		$menu = $this->dodol_theme->menu_rend($menuSource);
 		$render['pT'] = 'Brwose Page';
 		$render['pH'] = 'Browse Page';
 		$render['pageMenu'] = $menu;
 		$render['mainLayer'] = 'backend/page/page/page/browse_v';
 		/// QUERY
 		$render['pages'] = modules::run('page/exe_browse');
-		$this->theme->render($render, 'back');
+		$this->dodol_theme->render($render, 'back');
 		
 	}
 

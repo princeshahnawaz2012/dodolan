@@ -64,4 +64,5 @@ class Conf_m extends CI_Model  {
 			}
 		}
 	}
+
 }?>

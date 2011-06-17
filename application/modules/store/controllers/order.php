@@ -33,7 +33,7 @@ if(!$data){
 	function showorder($id){
 		$order = $this->getorder($id);
 		if($order){
-		$this->theme->render($order);
+		$this->dodol_theme->render($order);
 		}
 	}
 	function getorder($id){
@@ -129,7 +129,7 @@ if(!$data){
 	function confirm_payment(){
 		$render['pH'] = 'Confirmation Order Payment';
 		$render['mainLayer'] = 'store/page/order/confirm_payment_v';
-		$this->theme->render($render);
+		$this->dodol_theme->render($render);
 		if($this->input->post('submit')):
 			$information = '
 			Order <span class="bold">#'.$this->input->post('order_number').'</span><br/>

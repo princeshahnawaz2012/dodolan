@@ -21,7 +21,7 @@ class Collection extends MX_Controller {
 		$data['pT'] = 'collections';
 		$data['colls'] = $coll;
 		$data['mainLayer'] = 'store/page/collection/index_v';
-		$this->theme->render($data);
+		$this->dodol_theme->render($data);
 	}
 	function detail(){
 		$id = $this->uri->segment(4);
@@ -31,7 +31,7 @@ class Collection extends MX_Controller {
 		$data['pT'] = $coll->name;
 		$data['items'] = $q['ref'];
 		$data['mainLayer'] = 'store/page/collection/detail_v';
-		$this->theme->render($data);
+		$this->dodol_theme->render($data);
 		
 	}
 	

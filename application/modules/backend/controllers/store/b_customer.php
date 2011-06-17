@@ -57,7 +57,7 @@ class b_customer extends MX_Controller {
 		$data['mainLayer'] = 'backend/page/store/customer/browse_v';
 		$data['pH'] = 'Customer' ;
 		$data['pageTool'] = $filter_mod;
-		$this->theme->render($data, 'back');
+		$this->dodol_theme->render($data, 'back');
 		
 		// serach action 
 		if($this->input->post('q')):

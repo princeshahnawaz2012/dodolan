@@ -25,7 +25,5 @@ class Dodol_conf {
 	}
 	
 	function item($config_name, $item_name){
-
 	}
-
 }

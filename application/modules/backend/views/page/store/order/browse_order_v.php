@@ -21,7 +21,7 @@
 			?>
 				<tr>
 					<td>#<?=$data_order->id?></td>
-					<td><?=$this->theme->show_date($data_order->c_date)?></td>
+					<td><?=$this->dodol_theme->show_date($data_order->c_date)?></td>
 					<td><?echo $data_personal->first_name.' '.$data_personal->last_name;?></td>
 					<td><?=$data_order->status?></td>
 					<td><span class="bold"><?=$this->cart->show_price($data_order->total_amount)?></span></td>

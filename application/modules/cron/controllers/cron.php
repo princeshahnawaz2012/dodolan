@@ -53,5 +53,9 @@ class Cron extends MX_Controller {
 		}
 		return $this->cron_m->add($data);
 	}
+	function test(){
+		$var = 'its work';
+		return $var;
+	}
 	
 }

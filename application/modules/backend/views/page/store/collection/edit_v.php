@@ -4,7 +4,7 @@
 			<input type="text" name="title" value="<?=$coll->name?>" class="grid_500 mb10">
 			
 			<textarea name="description" id="text_editor" rows="8" cols="40"><?=$coll->description?></textarea>
-		<?$this->theme->load_text_editor('text_editor')?>
+		<?$this->dodol_theme->load_text_editor('text_editor')?>
 		<script>
 		$(document).ready(function(){
 

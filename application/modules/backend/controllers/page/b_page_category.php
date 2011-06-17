@@ -16,11 +16,11 @@ class B_page_category extends MX_Controller {
 						array(
 						'anchor' => 'Browse Category', 'link' => site_url('backend/page/b_page_category/browse')),
 					);
-		$render['pageMenu'] = $this->theme->menu_rend($menuSource);
+		$render['pageMenu'] = $this->dodol_theme->menu_rend($menuSource);
 		$render['pH'] = 'Create Page Category';
 		$render['pT'] = 'Create Page Category';
 		$render['mainLayer'] = 'page/page/category/create_v';
-		$this->theme->render($render, 'back');
+		$this->dodol_theme->render($render, 'back');
 		
 		if($this->input->post('create')):
 			$insert_data = array(
@@ -43,12 +43,12 @@ class B_page_category extends MX_Controller {
 						array(
 						'anchor' => 'Browse Category', 'link' => site_url('backend/page/b_page_category/browse')),
 					);
-		$render['pageMenu'] = $this->theme->menu_rend($menuSource);
+		$render['pageMenu'] = $this->dodol_theme->menu_rend($menuSource);
 		$render['category'] = $cat = modules::run('page/page_category/get_byid', $id);
 		$render['pH'] = 'Update Page Category '.$cat->name;
 		$render['pT'] = 'Update Page Category '.$cat->name;
 		$render['mainLayer'] = 'page/page/category/update_v';
-		$this->theme->render($render, 'back');
+		$this->dodol_theme->render($render, 'back');
 		if($this->input->post('update')):
 			$insert_data = array(
 				'name' => $this->input->post('name'),
@@ -90,11 +90,11 @@ class B_page_category extends MX_Controller {
 						array(
 						'anchor' => 'Create Category', 'link' => site_url('backend/page/b_page_category/create')),
 					);
-		$render['pageMenu'] = $this->theme->menu_rend($menuSource);
+		$render['pageMenu'] = $this->dodol_theme->menu_rend($menuSource);
 		$render['cats'] = $q;
 		$render['mainLayer'] = 'page/page/category/browse_v';
 		
-		$this->theme->render($render, 'back');
+		$this->dodol_theme->render($render, 'back');
 	}
 	function delete(){
 		if($del = modules::run('page/page_category/exe_delete',$this->uri->segment(5) )):

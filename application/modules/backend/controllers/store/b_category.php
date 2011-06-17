@@ -21,7 +21,7 @@ class B_category extends MX_Controller {
 		'directLayer' => 'this is index of category banck end',
 		'pt' => 'category'
 			);
-			$this->theme->render($data, 'back');
+			$this->dodol_theme->render($data, 'back');
 	}
 	function addcat(){
 		$data = array(
@@ -30,7 +30,7 @@ class B_category extends MX_Controller {
 			'mainLayer' => 'backend/page/store/category/addcat_v',
 			'ht' => 'Add Category'
 				);
-		$this->theme->render($data, 'back');
+		$this->dodol_theme->render($data, 'back');
 		if($this->input->post('submit')){
 			$this->exe_addcat();
 		}
@@ -45,7 +45,7 @@ class B_category extends MX_Controller {
 			'pH' => 'Edit Category',
 			'category' => $cat
 				);
-		$this->theme->render($data, 'back');
+		$this->dodol_theme->render($data, 'back');
 		if($this->input->post('submit')){
 			$this->exe_editcat($id);
 		}
@@ -58,7 +58,7 @@ class B_category extends MX_Controller {
 			array(
 				'anchor' => 'Create Category', 'link' => site_url('backend/store/b_category/addcat')),
 		);
-		$menu = $this->theme->menu_rend($menuSource);
+		$menu = $this->dodol_theme->menu_rend($menuSource);
 		$data = array(
 		'pH' => 'list Product category',
 		'pT' => 'list Product category',
@@ -66,7 +66,7 @@ class B_category extends MX_Controller {
 		'mainLayer' => 'backend/page/store/category/listcat_v',
 		'cats' =>$cats,
 		);
-		$this->theme->render($data, 'back');
+		$this->dodol_theme->render($data, 'back');
 		
 	}
 

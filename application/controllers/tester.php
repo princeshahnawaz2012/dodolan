@@ -105,11 +105,11 @@ class Tester extends MX_Controller {
 	}
 	function test10(){
 		$css = array('theme/back/css/admin-style.css', 'theme/back/css/admin-style.css');
-		$this->theme->register_css($css);
-		$this->theme->load_css();
+		$this->dodol_theme->register_css($css);
+		$this->dodol_theme->load_css();
 	}
 	function test11(){
-			$this->theme->load_css();
+			$this->dodol_theme->load_css();
 	}
 	function test12(){
 		echo ('
@@ -136,7 +136,7 @@ class Tester extends MX_Controller {
 	}
 	function flip(){
 		$render['mainLayer'] = 'flip_v';
-		$this->theme->render($render);
+		$this->dodol_theme->render($render);
 	}
 	function test15(){
 		$this->db->where('nav_id', 1);
@@ -148,6 +148,7 @@ class Tester extends MX_Controller {
 			echo 'asuh';
 		}
 	}
+
 
 
 }

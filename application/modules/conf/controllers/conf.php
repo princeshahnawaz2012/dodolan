@@ -10,8 +10,12 @@ class Conf extends MX_Controller {
 		$this->mdl = $this->load->model('conf/conf_m');
 	}
 	function index() {
-		//echo $this->dodol_conf->load('tester')->tester->name;
+		
+//echo $this->dodol_conf->load('tester')->tester->name;
 		echo $this->dodol_conf->tester->name;
+	}
+	function gettest(){
+		echo $this->dodol_conf->test();
 	}
 	/// API 
 	function exe_create($data){

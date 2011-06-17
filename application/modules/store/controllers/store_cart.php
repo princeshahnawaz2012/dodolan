@@ -345,7 +345,7 @@ class Store_cart extends MX_Controller {
 			'mainLayer' => 'store/page/cart/cartView_v',
 			'items' => $this->cart->contents(),
 			);
-		$this->theme->render($data);
+		$this->dodol_theme->render($data);
 		$this->updateCart();
 	}
 	function destroy_cart(){

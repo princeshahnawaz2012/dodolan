@@ -57,7 +57,7 @@ class Customer extends MX_Controller {
 		$data['lists']  = $q;
 		$data['mainLayer'] = 'store/page/customer/browse_v';
 		$data['pT'] = 'Browse Customer';
-		$this->theme->render($data);
+		$this->dodol_theme->render($data);
 		
 	}
 	

@@ -4,7 +4,6 @@ class Dodol {
 	function Dodol()
 	{
 			$this->_ci =& get_instance();
-		
 	}
 	
 	function custom_time($date, $nodate=false)

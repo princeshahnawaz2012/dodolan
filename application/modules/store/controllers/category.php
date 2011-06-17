@@ -50,7 +50,7 @@ class category extends MX_Controller {
 		$q = $this->product_m->getProdByCatid($id);
 		$data['prods'] = $q['prodid'];
 		$data['mainLayer'] = 'store/page/category/cat_view_v';
-		$this->theme->render($data);
+		$this->dodol_theme->render($data);
 	}
 	
 	

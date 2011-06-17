@@ -8,7 +8,7 @@
 	$coll = $q['main'];
 	?>
 	<h3 class="light_shadow"><?=$coll->name?></h3>
-	<small>Publish : <?=$this->theme->show_date($coll->p_date)?></small>
+	<small>Publish : <?=$this->dodol_theme->show_date($coll->p_date)?></small>
 		<a href="<?=site_url('backend/store/b_collection/detail/'.$c->id);?>"><img src="<?=site_url('thumb/show/260-100-crop/dir/assets/collection_img/'.$coll->img_path);?>" /></a>
 	<span>Items : <?=$items->num_rows()?></span>
 	<div class="right tool">

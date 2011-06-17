@@ -22,7 +22,7 @@ class B_collection extends MX_Controller {
 		//$q = modules::run('store/collection/exe_create', $passdata);
 		$data['mainLayer'] = 'backend/page/store/collection/create_v';
 		$data['pH']   		= 'Create New Collection';
-		$this->theme->render($data, 'back');
+		$this->dodol_theme->render($data, 'back');
 		if($this->input->post('submit')){
 			$passdata['name'] = $this->input->post('title');
 			$passdata['description'] = $this->input->post('description');
@@ -48,7 +48,7 @@ class B_collection extends MX_Controller {
 		$coll_data = $q['main'];
 		$data['pH'] = 'collection : ' .$coll_data->name;
 		$data['mainLayer'] = 'backend/page/store/collection/detail_v';
-		$this->theme->render($data, 'back');
+		$this->dodol_theme->render($data, 'back');
 	}
 	// dependecy for function detail
 	function ajax_search_prod(){
@@ -150,12 +150,12 @@ class B_collection extends MX_Controller {
 			array(
 				'anchor' => 'Create Collection', 'link' => site_url('backend/store/b_collection/create')),
 		);
-		$menu = $this->theme->menu_rend($menuSource);
+		$menu = $this->dodol_theme->menu_rend($menuSource);
 		$data['pageMenu'] = $menu;
 		$data['pH'] = 'Collection';
 		$data['mainLayer'] = 'backend/page/store/collection/browse_v';
 		$data['data'] = $q;
-		$this->theme->render($data, 'back');
+		$this->dodol_theme->render($data, 'back');
 	}
 	function delete(){
 		$id = $this->uri->segment(5);
@@ -176,7 +176,7 @@ class B_collection extends MX_Controller {
 		}
 		$data['coll'] = $coll['main'];
 		$data['mainLayer'] = 'backend/page/store/collection/edit_v';
-		$this->theme->render($data, 'back');
+		$this->dodol_theme->render($data, 'back');
 		
 		//execution
 		if($this->input->post('submit')){
