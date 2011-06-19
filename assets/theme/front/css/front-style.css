@@ -144,4 +144,10 @@ ul.menu_hor li {
 	/* RESET THE MARGIN */
 	margin:0px !important;
 }
+ul.horizontal li {
+	float:left !important;
+	list-style: none !important;
+	/* RESET THE MARGIN */
+	margin:0px !important;
+}
 

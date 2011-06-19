@@ -13,6 +13,7 @@ class Conf_m extends CI_Model  {
 		if($this->db->get('site_conf')->num_rows() > 0){
 			return false;
 		}else{
+			$data['c_date'] = date('Y-m-d H:i:s');
 			$this->db->insert('site_conf', $data);
 			return $this->getbyid($this->db->insert_id());
 		}

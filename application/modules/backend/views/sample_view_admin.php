@@ -1,6 +1,6 @@
 <div class="padd20">
-<?=modules::run('backend/widget/main_statistic')?>
+	<?=modules::run('backend/widget/main_statistic')?>
 
 <br class="clear"/>
-<?=modules::run('backend/widget/ga_chart')?>
+	<?php widget_helper::run('admin/admin_ga/admin_ga'); ?>  
 </div>

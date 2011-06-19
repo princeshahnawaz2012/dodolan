@@ -6,6 +6,7 @@
 			<div class="input"><input name="name" type="text" /></div>
 			<div class="clear"></div>
 		</div>
+		
 		<div class="inputSet">	
 			<div class="label"><span>Parent Category</span></div>
 			<div class="input">

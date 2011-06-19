@@ -8,8 +8,11 @@ class Ajax extends MX_Controller {
 		parent::__construct();
 	
 	}
-	function index() {
-		echo 'ajax';
+	function post() {
+		parse_str($_SERVER['QUERY_STRING'], $_GET); 
+		$this->input->_clean_input_data($_GET);
+		$exe = $this->input->get('exe');
+ 		echo modules::run($exe);
 	}
 	function loadmsg(){
 	$render['msg'] = $this->messages->get();
@@ -65,12 +68,6 @@ class Ajax extends MX_Controller {
 	
 		</script>
 		");
-	}
-	
-	function post(){
-	    $action = current_url();
-        ///$this->load->helper('string');
-        
 	}
 
 }

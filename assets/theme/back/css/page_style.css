@@ -46,3 +46,9 @@
 /* Collection List
 -------------------------------------------------------------------------------------------------------*/
 #b_collection_browse .coll_list .collection_snap h3 { font-size:15px; margin:0px}
+
+/* b_modularizer_browse
+-------------------------------------------------------------------------------------------------------*/
+#b_modularizer_browse {}
+#b_modularizer_browse .available_widget .item{ padding-bottom:10px;padding-top:10px; border-bottom:1px solid #ccc; border-top:1px solid #fff}
+	

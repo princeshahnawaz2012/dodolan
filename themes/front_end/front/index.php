@@ -2,6 +2,7 @@
 
 </script>
 <?=$this->dodol_theme->partial('header');?>
+
 	<div class="wrapper">
 		<div class="wrapper_inner grid_950 ctr">
 			<div class="header">
@@ -18,7 +19,7 @@
 				</div>
 				<div class="navigation">
 					<div class="main_menu left">
-						<?=modules::run('nav/render_nav', 1);?>
+					<?=modules::run('modularizer/load', array('spot' => 'topmenu'))?>
 					</div>
 					<div class="search_mod right">
 						<form>
@@ -50,6 +51,8 @@
 			</div>
 			<div class="footer">
 				<div class="resource_bottom">
+					<?=modules::run('modularizer/load', array('spot' => 'top menu'))?>
+					
 					<div class="resource_left left grid_670">
 					
 					</div>
@@ -82,14 +85,7 @@
 						<p>&copy; OlineWorkrobe.com all right reserved</p>
 					</div>
 					<div class="bottom_menu left">
-						<ul class="menu_hor">
-							<li><a href="">about us</a></li>
-							<li><a href="">store policies</a></li>
-							<li><a href="">privacy</a></li>
-							<li><a href="">contact</a></li>
-							<li><a href="">blog</a></li>
-						</ul>
-						
+							<?=modules::run('modularizer/load', array('spot' => 'bottom_left'))?>
 					</div>
 					<div class="deleloper_watermark right">
 						<p>Design and Develop by BarockProject<p>

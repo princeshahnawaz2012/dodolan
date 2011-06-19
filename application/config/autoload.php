@@ -41,6 +41,7 @@
 
 $autoload['libraries'] = array(
 	'dodol_theme',
+	'dodol_widget',
 	'asset', 
 	'database', 
 	'session', 
@@ -66,7 +67,11 @@ $autoload['libraries'] = array(
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array('url');
+$autoload['helper'] = array(
+	'url',
+	'widget',
+	'array',
+	);
 
 
 /*
@@ -77,10 +82,7 @@ $autoload['helper'] = array('url');
 |
 |	$autoload['plugin'] = array('captcha', 'js_calendar');
 */
-
 $autoload['plugin'] = array();
-
-
 /*
 | -------------------------------------------------------------------
 |  Auto-load Config files

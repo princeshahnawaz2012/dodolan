@@ -58,9 +58,9 @@ class Modularizer_m extends CI_Model  {
 		
 	}
 	function browse($param){
-		if(isset($param['select'])){
-			$this->db->select($param['select']));
-		}
+		$limit = (isset($param['limit'])) ? $param['limit'] : 20;
+		$start = (isset($param['start'])) ? $param['start'] : 0;
+	$this->db->select('*');
 		if(isset($param['spot'])){
 			$this->db->where('spot', $param['spot']);
 		}
@@ -75,7 +75,7 @@ class Modularizer_m extends CI_Model  {
 			$this->db->order_by($order[0], $order[1]);
 		}
 		$this->dodol->db_calc_found_rows();
-		$q = $this->db->get('modularizer', $param['limit'], $param['start']);
+		$q = $this->db->get('modularizer', $limit, $start);
 		if($q->num_rows()> 0){
 			$data = array('q' => $q->result(), 'q_total_rows' => $this->dodol->db_found_rows());
 			return $data;

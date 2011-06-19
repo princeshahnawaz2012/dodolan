@@ -1,11 +1,10 @@
 <?
 class Dodol {
-	
-	function Dodol()
+
+	function __construct()
 	{
-			$this->_ci =& get_instance();
+		$this->_ci =& get_instance();		
 	}
-	
 	function custom_time($date, $nodate=false)
 	{
 		if(empty($date) || $date == null) {
@@ -117,6 +116,5 @@ class Dodol {
 			$this->_ci->db->select($CALC,false);
 		}
 	}
-	
 
 }

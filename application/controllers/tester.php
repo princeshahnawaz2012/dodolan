@@ -148,6 +148,12 @@ class Tester extends MX_Controller {
 			echo 'asuh';
 		}
 	}
+	function test16(){
+		$input = array("a", "b", "c", "d", "e");
+		echo implode('/',$input).'<br/>';
+		echo implode('/',array_slice($input, 0, -2));      // returns "c", "d", and "e"
+	
+	}
 
 
 

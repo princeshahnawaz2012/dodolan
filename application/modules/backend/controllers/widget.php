@@ -25,7 +25,9 @@ class Widget extends MX_Controller {
 			<li><a class="ui-corner-top" href="'.site_url('backend/store/b_customer/browse/').'">Customer</a></li>
 
 			<li><a class="ui-corner-top" href="'.site_url('backend/page/b_page/browse').'">Page</a></li>
-			<li><a class="ui-corner-top" href="'.site_url('backend/nav/b_nav/browse').'">Nav</a></li>
+			<li><a class="ui-corner-top" href="'.site_url('backend/nav/b_nav/browse').'">Navigation</a></li>
+			<li><a class="ui-corner-top" href="'.site_url('backend/conf/b_conf/browse').'">Configuration</a></li>
+			<li><a class="ui-corner-top" href="'.site_url('backend/modularizer/b_modularizer/browse').'">Widget</a></li>
 			<div class="clear"></div>
 				</ul>
 		

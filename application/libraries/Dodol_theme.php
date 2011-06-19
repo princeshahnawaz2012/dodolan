@@ -31,6 +31,7 @@ var $js			= array(
 					array('route' => 'global', 'file' => 'global_js/jquery.min.js'),
 					);
 
+
 function Dodol_theme(){
 	$this->_ci =& get_instance();
 	$this->front_theme = 'front';
@@ -50,20 +51,17 @@ function render($data, $mode=false, $layer=false){
 		$data['loadSide'] = true;
 	}
 	if($mode != 'back' && $mode == null ){
-	$this->_ci->firephp->setEnabled(true);
-    $this->_ci->firephp->info(get_defined_vars());
-    $this->_ci->firephp->info($this->_ci->session->userdata);
-	
 	$rend = $this->view('front_end/'.$this->front_theme.'/'.$layer, $data);
 	return $rend;
-	}
-	else{
-	$this->_ci->firephp->setEnabled(true);
-	$this->_ci->firephp->info(get_defined_vars());
+	}else{
 	$rend =  $this->view('back_end/'.$this->back_theme.'/'.$layer, $data);
-	return $rend;	
 	}
 }
+
+function isAjax() {
+	return (isset($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+		($_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest'));
+	}
 function partial($layer, $data = false, $mode=false, $return = FALSE){
 	if($mode != 'back' && $mode == null ){
 		$rend = $this->view('front_end/'.$this->front_theme.'/'.$layer, $data);

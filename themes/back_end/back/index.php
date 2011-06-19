@@ -7,6 +7,7 @@
 	<?}?>
 	<div id="component">
 	<div class="mainWrap grid_950 ctr" id="mainArea">
+	
 	<!PAGE HEADING AND TOOL/>
 		<?if (isset($pageTool) || isset($pH)):?>
 		<div class="pageHeading">

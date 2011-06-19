@@ -11,6 +11,12 @@ class Modularizer extends MX_Controller {
 	}
 	function index() {
 	}
+	function load($data){
+		$data['widgets'] = $this->api_browse($data);
+		$this->load->view('widget_temp', $data);	
+	}
+	
+	
 	// API //
 	function api_reoreder($string_order_state){
 		$sorts = explode(',', $string_order_state);
@@ -41,5 +47,6 @@ class Modularizer extends MX_Controller {
 	function api_getbyid($id){
 		return $this->mdl->getbyid($id);
 	}
+
 }
 ?>
