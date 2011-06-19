@@ -62,7 +62,8 @@
 	line-height:30px; 
 	padding:0px;
 	}
-
+.main_comp .main_inner_fullWidth {}
+.main_comp .main_inner { width:730px}
 .footer .resource_bottom {
 	border-bottom:1px solid #ccc;
 	margin-bottom:5px;

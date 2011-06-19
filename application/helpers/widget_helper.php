@@ -122,9 +122,16 @@ class Widget_helper
 			return true;
 		}
 	}
+	
     function __get($var) {
         global $CI;
         return $CI->$var;
     }
 	
 }
+if ( ! function_exists('load_widget'))
+	{
+		function load_widget($spot){
+			echo modules::run('modularizer/load', array('spot' => $spot));
+		}
+	}
