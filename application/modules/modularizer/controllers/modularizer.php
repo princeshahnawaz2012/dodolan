@@ -15,37 +15,42 @@ class Modularizer extends MX_Controller {
 		$data['widgets'] = $this->api_browse($data);
 		$this->load->view('widget_temp', $data);	
 	}
-	
-	
-	// API //
-	function api_reoreder($string_order_state){
+	function api_reorder($string_order_state){
 		$sorts = explode(',', $string_order_state);
 		foreach($sorts as $key => $value){
 			$data = array('sort' => $key+1);
-			modules::run('modularizer/api_update', $key, $data);
+			modules::run('modularizer/api_update', $value, $data);
 		}
+	
 		return true;
 	}
-	function api_create($data) {
-		return $this->mdl->create($data);
-	}
-	function api_update($id, $data){
-		return $this->mdl->update($id, $data);
-	}
-	function api_delete($id){
+
+	function api_delete(int $id){
 		return $this->mdl->delete($id);
 	}
+	function api_create( array $data) {
+		return $this->mdl->create($data);
+	}
+
+	function api_update(int $id, array $data){
+		return $this->mdl->update($id, $data);
+	}
+	
 	function api_getall(){
 		return $this->mdl->getall();
 	}
 	function api_browse($param){
 		return $this->mdl->browse($param);
 	}
+	function api_getallspot(){
+		return $this->mdl->getallspot();
+	}
 	function api_getbyspot($spot){
 		return $this->mdl->getbyspot($spot);
 	}
-	function api_getbyid($id){
+	function api_getbyid(int $id){
 		return $this->mdl->getbyid($id);
+		
 	}
 
 }

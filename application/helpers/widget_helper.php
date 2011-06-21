@@ -38,11 +38,11 @@ class Widget_helper
 	    if (($pos = strpos($file, '/')) !== FALSE) {
 			$nested = explode('/',$file);
 			if(count($nested) > 1) {		
-				$path = './widgets/'.implode('/', array_slice($nested, 0, -1)).'/';
+				$path = APPPATH.'widgets/'.implode('/', array_slice($nested, 0, -1)).'/';
 				$file = implode(array_slice($nested, -1));
 				
 				if(self::find($path, $file) == false){
-					$path = './widgets/'.implode('/', array_slice($nested, 0, -2)).'/';
+					$path = APPPATH.'widgets/'.implode('/', array_slice($nested, 0, -2)).'/';
 					$file = implode(array_slice($nested, -2, 1));
 					$func = implode(array_slice($nested, -1));
 				}
@@ -50,7 +50,7 @@ class Widget_helper
 		
 	
 	    }else{
-			$path = $path = './widgets/';
+			$path = $path = APPPATH.'widgets/';
 		}
 
 	  	self::find($path, $file);
@@ -62,7 +62,8 @@ class Widget_helper
     
 	    $widget->module_path = $path;
 
-	    return call_user_func_array(array($widget, $func), array_slice($args, 1));    
+	    return call_user_func_array(array($widget, $func), array_slice($args, 1)); 
+	   
 	}
 	
 	
@@ -75,11 +76,11 @@ class Widget_helper
 	    if (($pos = strpos($file, '/')) !== FALSE) {
 			$nested = explode('/',$file);
 			if(count($nested) > 1) {		
-				$path = './widgets/'.implode('/', array_slice($nested, 0, -1)).'/';
+				$path = APPPATH.'widgets/'.implode('/', array_slice($nested, 0, -1)).'/';
 				$file = implode(array_slice($nested, -1));
 				
 				if(self::find($path, $file) == false){
-					$path = './widgets/'.implode('/', array_slice($nested, 0, -2)).'/';
+					$path = APPPATH.'widgets/'.implode('/', array_slice($nested, 0, -2)).'/';
 					$file = implode(array_slice($nested, -2, 1));
 					$func = implode(array_slice($nested, -1));
 				}
@@ -87,7 +88,7 @@ class Widget_helper
 		
 	
 	    }else{
-			$path = $path = './widgets/';
+			$path = $path = APPPATH.'widgets/';
 		}
 
 	  	self::find($path, $file);
@@ -122,6 +123,11 @@ class Widget_helper
 			return true;
 		}
 	}
+	//@overide
+	function update(){
+	}
+	//@overide
+	function create(){}
 	
     function __get($var) {
         global $CI;
@@ -132,6 +138,6 @@ class Widget_helper
 if ( ! function_exists('load_widget'))
 	{
 		function load_widget($spot){
-			echo modules::run('modularizer/load', array('spot' => $spot));
+			echo modules::run('modularizer/load', array('spot' => $spot, 'publish'=> 'y'));
 		}
 	}

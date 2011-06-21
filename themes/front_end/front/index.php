@@ -2,7 +2,7 @@
 
 </script>
 <?=$this->dodol_theme->partial('header');?>
-
+<?=$this->dodol->get_some();?>
 	<div class="wrapper">
 		<div class="wrapper_inner grid_950 ctr">
 			<div class="header">
@@ -11,7 +11,6 @@
 				<div class="resource_spot right grid_300">
 					<div class="user_menu right">
                     	<?=load_widget('pre_topright');?>
-						<span><a href="">Login</a><span> | <span><a href=""></a>Track Order</span>  | <span class="cart_item">cart (0 item)<span>
 					</div>
 					<div class="clear"></div>
 					
@@ -31,13 +30,8 @@
 				</div>
 			</div>
 			<div class="main_comp">
-					<? if($loadSide == true): $mainComp = '';?>	
-                        <div class="sidebar grid_210 left">
-						<?=load_widget('left');?>
-						<?=modules::run('store/store_widget/currency');?>
-						</div>
-					<? else: $mainComp = '_fullWidth'; endif?>
-					<div class="main_inner<?=$mainComp?> right">
+				
+					<div class="main_inner component_layer">
 					<? if(isset($directLayer)){ echo $directLayer ;}?>
 					<? if(isset($mainLayer)){ echo $this->load->view($mainLayer) ;}?>
 					</div>
@@ -45,35 +39,7 @@
 					
 			</div>
 			<div class="footer">
-				<div class="resource_bottom">	
-					<div class="resource_left left grid_650">
-					<?=load_widget('bottom_left_resource');?>
-					</div>
-					<div class="resource_right right grid_280">
-                    <?=load_widget('bottom_right_resource');?>
-						<div class="front_resource_menu">
-							<ul>
-								<li><a href="">about us</a></li>
-								<li><a href="">store policies</a></li>
-								<li><a href="">privacy</a></li>
-								<li><a href="">contact</a></li>
-								<li><a href="">blog</a></li>
-							</ul>
-						<div class="clear"></div>
-						</div>
-						<div class="news_letter_form">
-							<p>keep in touch with us, and recieve our update</p>
-							<form action="index_submit" method="get" accept-charset="utf-8">
-								<div class="form_spot">
-								<input type="text" value="youmail@site.com, your name" class="required">
-								<input type="submit" name="signup_me" value="Submit" class="trigger" id="signup_me">
-								<div class="clear"></div>
-								</div>
-							</form>
-						</div>
-					</div>
-					<div class="clear"></div>
-				</div>
+				
 				<div class="closing_spot">
 					<div class="site_copyright left mr10">
 						<p>&copy; OlineWorkrobe.com all right reserved</p>
@@ -89,4 +55,5 @@
 			</div>
 		</div>
 	</div>
+
 <?=$this->dodol_theme->partial('footer');?>

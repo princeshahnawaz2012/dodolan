@@ -20,16 +20,19 @@ input[name="addcart"]{
 
 /* View Detail Product	
 ----------------------------------------------------------------------------------------------------*/
-.viewProduct .detailProd { width:420px;}
-
-.viewProduct .mediaProd { width:300px;}
-.viewProduct .mediaProd .otherImg { margin-top:10px;	}
-
+.viewProduct .detailProd { width:500px; float:right}
+.viewProduct .mediaProd { width:400px; float:left;}
+.viewProduct .mediaProd .otherImg { margin-top:10px;}
+.viewProduct .detailProd .prod_name { font-family: Myriad Pro; font-size: 30px; margin-bottom:5px }
+.viewProduct .detailProd .detailprice {height:50px; font-size:16px;}
+.viewProduct .detailProd .detailprice p {line-height:50px; text-align:right; border-top:#ccc 1px solid; border-bottom:#ccc 1px solid; margin:0px;}
+.viewProduct .detailProd .descProd {margin-top:15px; min-height:300px;}
+.viewProduct .relation_product { border-top:1px solid #ccc; margin-top:20px}
 /* Browse Product
 ----------------------------------------------------------------------------------------------------*/
-.browseProduct .productSnap { width:240px; float:left; margin-left:3px; margin-bottom:20px;}
+.browseProduct .productSnap { width:230px; float:left; margin:0 3px 10px 3px; margin-bottom:20px; display: table;}
 .browseProduct .productSnap a {text-decoration: none;}
-.browseProduct .productSnap .productImg img { width:240px;}
+.browseProduct .productSnap .productImg img { width:230px;}
 .browseProduct .productSnap .productDetail { border-top:1px solid #ccc;  border-bottom:1px solid #ccc; padding: 5px 0px; margin-top:5px;}
 .browseProduct .productSnap .productPrice {float: right;}
 .browseProduct .productSnap .productImg {position: relative;}

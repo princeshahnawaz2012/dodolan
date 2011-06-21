@@ -264,4 +264,43 @@ class Order_m extends CI_Model {
 			return false;
 		}
 	}
+	
+	
+	//--------------------------------//
+	// 				API V.02 
+	//--------------------------------//
+	
+	// ORDER
+	function create($data){
+		
+	}
+	function update($id){
+		
+	}
+	function delete($id){
+		
+	}
+	function getbyid($id){
+		
+	}
+	
+	// PRODUCT SOLD
+	function getproduct_sold($id_order){
+		$this->db->where('order_id', $id_order);
+		$pre = $this->db->get('store_order_product_sold');
+		if($pre->num_rows() > 0){
+			return $pre->result();
+		}else{
+			return false;
+		}
+	}
+	// PRODUCT SOLD OPERATION
+	function product_sold_create($data){
+		if($q = $this->db->insert('store_order_product_sold', $data)){
+			return $this->product_sold_getbyid($this->db->insert_id());
+		}else{
+			return false;
+		}
+	}
+	
 }

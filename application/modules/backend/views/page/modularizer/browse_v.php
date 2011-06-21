@@ -1,14 +1,52 @@
+<script type="text/javascript">
+$(document).ready(function() {
+    // Initialise the table
+	if($('span.spot').text() != ''){
+		reorder();
+	}else{
+		return false;
+	}
 
-<div class="all_widget left grid_650">
+	function reorder(){
+		$("#listWidget").tableDnD({
+		 	onDrop: function(table, row) {
+			            var rows = table.tBodies[0].rows;
+			            var debugStr = "";
+			            for (var i=0; i<rows.length; i++) {
+			                debugStr += rows[i].id+",";
+			            }
+						var order_state = debugStr.substr(0,debugStr.length - 1);
+						$.ajax({
+								type: "POST",
+								dataType : "json",
+								data : {'sort_state' : order_state},	
+								url: "<?=site_url('backend/modularizer/b_modularizer/reorder')?>",
+						});
+						
+			}
+		});
+	}
 	
-	<?if($mods):?>
+    
+	
+		
+});
+</script>
+<div class="all_widget  left grid_650">
+	
+	
+<?if($mods):?>
+<?$spot = element('spot', $this->uri->uri_to_assoc())?>
+<span class="spot hide"><?=$spot?></span><br class="clear"/>
+
 <div class="list_widgets table-Ui">
-		<table id="listMenu">
+		<table id="listWidget">
 		 <thead>
 		  	<tr >
-			  	<td class="grid_150">Title</td>
+			  	<td class="grid_200">Title</td>
+				<td class="grid_50">Publish</td>
 			    <td class="grid_100">Spot</td>
-			    <td class="grid_150">Type</td>
+			    <td class="grid_100">Type</td>
 			    <td class="grid_50">State</td>
 				<td class="grid_50">Action</td>
 			  </tr>
@@ -17,12 +55,15 @@
 
 		<?foreach($mods as $wid):?>
 		<?$detail = $this->dodol_widget->get_detail($wid->state, $wid->widget_name)?>
-		<tr>
+		<tr id="<?=$wid->id;?>">
 		  	<td><?=$wid->name?></td>
-		    <td><?=$wid->spot?></td>
+			<td><?=$wid->publish?></td>
+		    <td class="spot"><?=$wid->spot?></td>
 		    <td><?=element('name', $detail)?></td>
 			<td><?=$wid->state?></td>
-		    <td>Action</td>
+		    <td>
+				<a href="<?=site_url('backend/modularizer/b_modularizer/update/'.$wid->id);?>"><span class="act edit"></span></a>
+				<a href="<?=site_url('backend/modularizer/b_modularizer/delete/'.$wid->id);?>"><span class="act del"></span></a></td>
 		  </tr>
 	 
 		<?endforeach;?>
@@ -38,8 +79,9 @@
 	
 </div>
 <div class="available_widget grid_280 right">
-	<span class="bold">Installed Widget</span>
+	
 		<div class="box2">
+			<span class="bold">Installed Widget</span><div class="horline"></div>
 			
 			<?foreach($installed as $item):?>
 			<div class="item">

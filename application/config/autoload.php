@@ -71,6 +71,7 @@ $autoload['helper'] = array(
 	'url',
 	'widget',
 	'array',
+	'dodol',
 	);
 
 

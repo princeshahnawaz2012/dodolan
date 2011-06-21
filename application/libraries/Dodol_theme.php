@@ -99,7 +99,7 @@ function load_text_editor($id){
 						'height' 	=> 	'200px',	//Setting a custom height
 
 					),
-
+						'toolbar' => 'Basic',
 						//Replacing styles from the "Styles tool"
 						'styles' => array(
 							'style 1' => array (

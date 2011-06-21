@@ -40,7 +40,7 @@
 |
 */
 
-$route['default_controller'] = "store";
+$route['default_controller'] = "page/landingpage";
 $route['scaffolding_trigger'] = "";
 $route['backlogin'] = "user/auth/backend_login";
 $route['backlogin/(:any)'] = "user/auth/backend_login/$1";

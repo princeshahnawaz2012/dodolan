@@ -30,6 +30,11 @@ class Page extends MX_Controller {
 		$render['mainLayer'] = 'page/view_v';
 		$this->dodol_theme->render($render);
 	}
+	function landingpage(){
+		$render['loadSide'] = false;
+		$render['mainLayer'] = 'page/landingpage_v';
+		$this->dodol_theme->render($render);
+	}
 	// API ///
 
 	// API MISC

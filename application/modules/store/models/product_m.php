@@ -31,7 +31,6 @@ class Product_m extends CI_Model {
 	}
 	// edit Product
 	function editProduct($data, $id){
-	
 		$this->db->where('id', $id);
 		$q = $this->db->update('store_product', $data);
 		if($q){
@@ -344,6 +343,300 @@ class Product_m extends CI_Model {
 	
 	
 	
+	//--------------------------------//
+	// 				API V.02 
+	//--------------------------------//
+	
+	
+	// API REVISION , NOT READY YET IMPLEMENT
+	function create($data){
+		$this->db->where('sku', element('sku', $data));
+		$pre = $this->db->get('store_product');
+		if($pre->num_rows() > 0){
+			if($this->db->insert('store_product', $data)){
+				return $this->getbyid($this->db->insert_id(), false, false);
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	function update($id, $data){
+		if($this->getbyid($id, false, false)){
+			$this->db->where('id', $id);
+			if($this->db->update('store_product')){
+				return $this->getbyid($id, false, false);
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	function delete($id){
+		if($temp = $this->getbyid($id, false)):
+			$this->db->where('id', $id);
+			if($q = $this->db->delete('store_product')){
+				return $temp;
+			}else{
+				return false;
+			}
+		else:
+			return false;
+		endif;
+	}
+	function getbyid($id, $include = false, $select = '*', $alldata = TRUE){
+		if($select != false):
+			$this->db->select($select);
+		endif;
+		$this->db->select('prod.name as name, cat.name as category_name, prod.id as id');
+		$this->db->where('prod.id', $id);
+		$this->db->join('store_category cat', 'cat.id=prod.cat_id');
+		$q = $this->db->get('store_product prod');
+		if($q->num_rows() == 1){
+			if($alldata == true):
+					$data['product'] 		= $q->row();
+					$data['media'] 			= $this->getmedia($id);
+					$data['medias'] 		= $this->getmedias($id);
+					$data['attributes'] 	= $this->getattributes($id);
+					$data['relations'] 		= $this->getrelations($id);
+			elseif($alldata == true || $alldata == false && $inculde != false):
+					if(element('media', $include)):
+						$data['media'] 			= $this->getmedia($id);
+					endif;
+					if(element('medias', $include)):
+						$data['medias'] 		= $this->getmedias($id);
+					endif;
+					if(element('attributes', $include)):
+						$data['attributes'] 	= $this->getattributes($id);
+					endif;
+					if(element('relations', $include)):
+						$data['relations'] 		= $this->getrelations($id);
+					endif;	
+			elseif($alldata == false):
+				$data = array('product' => $q->row());
+			endif;
+			
+			return $data;
+		}else{
+			return false;
+		}
+	}
+	function browse($param){
+		$start = ($start = element('start', $param)) ? $start : 0;
+		$limit = ($limit = element('limit', $param)) ? $limit : 20;
+	}
+	
+	// FILE TRANSACTION
+	function uploadfile($field, $file_name){
+		$this->load->library('upload');
+		$config = array(
+			'upload_path' 	=> './assets/product-img/',
+			'allowed_types' => 'gif|jpg|png',
+			'file_name'		=> $file_name,
+			'max_size'		=> '100000',
+			'overwrite'		=> false,
+		);
+		
+		$this->upload->initialize($config);
+		if($this->upload->do_upload($field)){
+			$upData = $this->upload->data();
+			$data['file_name'] = $upData['file_name'];
+			return $data;
+		}else{
+			$data['error'] = array('error' => $this->upload->display_errors());
+			return $data;
+		}
+	}
+	function deletefile($path){
+		if(file_exists($path)){
+			if (unlink($path)){
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+		
+	// ATTRIBUTES
+	function getattributes($id_prod){
+		$this->db->where('prod_id', $id_prod);
+		$q = $this->db->get('store_product_attrb');
+		if($q->num_rows() > 0){
+			return $q->result();
+		}else{
+			return false;
+		}
+	}
+	// ATTRIBUTES TRANSACTION
+	function attribute_create($data){
+		if($this->db->insert('store_product_attrb', $data)){
+			return $this->attribute_getbyid($this->db->insert_id());
+		}else{
+			return false;
+		}
+	}
+	function attribute_getbyid($id){
+		$this->db->where('id', $id);
+		$q = $this->db->get('store_product_attrb');
+		if($q->num_rows() == 1){
+			return $q->row();
+		}else{
+			return false;
+		}
+	}
+	function attribute_update($id, $data){
+		if($this->attribute_getbyid($id)){
+			$this->db->where('id', $id);
+			if($this->db->update('store_product-attrb', $data)){
+				return $this->attribute_getbyid($id);
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	function attribute_delete($id){
+		if($pre = $this->attribute_getbyid($id)){
+			$this->db->where('id', $id);
+			if($this->db->delete('store_product_attrb')){
+				return $pre;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	
+	// IMAGES
+	function getmedia($id_prod){
+		$this->db->where('prod_id', $id_prod);
+		$this->db->order_by('sort', 'ASC');
+		$q = $this->db->get('store_product_media');
+		if($q->num_rows() > 0){
+			return $q->row();
+		}else{
+			return false;
+		}
+	}
+	function getmedias($id_prod){
+		$this->db->where('prod_id', $id_prod);
+		$this->db->order_by('sort', 'ASC');
+		$q = $this->db->get('store_product_media');
+		if($q->num_rows() > 0){
+			return $q->result();
+		}else{
+			return false;
+		}
+	}
+	// IMAGES TRANSACTION
+	function media_create($data){
+		if($q = $this->db->insert('store_product_media',$data)){
+			return $this->image_getbyid($this->db->insert_id());
+		}else{
+			return false;
+		}
+		
+	}
+	function media_update($id, $data){
+		if($this->image_getbyid($id)){
+			$this->db->where('id', $id);
+			if($this->db->update('store_product_media', $data)){
+				return $this->image_getbyid($id);
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	function media_delete($id){
+		if($temp = $this->image_getbyid($id)){
+			$this->db->where('id', $id);
+			if($this->db->delete('store_product_media')){
+				return $temp;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	function media_getbyid(i$id){
+		$this->db->where('id', $id);
+		$q = $this->db->get('store_product_media');
+		if($q->num_rows() == 1){
+			return $q->row();
+		}else{
+			return false;
+		}
+	}
+
+	// RELATIONS
+	function getrelations($id_prod){
+		$this->db->where('p_own', $id_prod);
+		$q = $this->db->get('store_product_rel');
+		if($q->num_rows() > 0){
+			return $q->result();
+		}else{
+			return false;
+		}
+	}
+	// RELATIONS TRANSACTION
+	function relation_crate($data){
+		$this->db->where('p_own', element('p_own', $data));
+		$this->db->where('p_rel', element('p_rel', $data));
+		$pre = $this->db->get('store_product_rel');
+		if($pre->num_rows() == 0){
+			$q = $this->db->insert('store_product_rel', $data);
+			if($q){
+				return true;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	function relation_getbyid($id){
+		$this->db->where('id', $id);
+		$q = $this->db->get('store_product_rel');
+		if($q->num_rows() == 1){
+			return $q->row();
+		}else{
+			return false;
+		}
+	}
+	function relation_delete($id){
+		if($q = $this->relation_getbyid($id)){
+			$this->db->where('id', $id);
+			$del = $this->db->delete('store_product_rel');
+			if($del){
+				return $q;
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
+	function relation_update($id, $data){
+		if($this->relation_getbyid($id)){
+			$this->db->where('id', $id);
+			if($q= $this->db->update('store_product_rel', $data)){
+				return $this->relation_getbyid($id);
+			}else{
+				return false;
+			}
+		}else{
+			return false;
+		}
+	}
 	
 	
 	

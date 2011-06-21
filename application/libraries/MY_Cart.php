@@ -103,9 +103,9 @@ class MY_Cart extends CI_Cart {
 	$gr_attrib = array();		
 	foreach ($attribs as $key => $value) {		
 		if (array_key_exists($value, $gr_attrib)) {		
-			$gr_attrib[$value] .= ",$key";		
+			 $gr_attrib[$value] .= ",$key";		
 			} else {		
-			$gr_attrib[$value] = $key;		
+			 $gr_attrib[$value] = $key;		
 			} // endif		
 		} // end foreach		
 	$attribs = array_flip($gr_attrib);		

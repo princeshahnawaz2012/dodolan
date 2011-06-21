@@ -66,7 +66,7 @@ class B_page_category extends MX_Controller {
 	}
 	function browse(){
 		$this->load->library('barock_page');
-		$limit = 1;
+		$limit = 20;
 		$param = $this->uri->uri_to_assoc();
 		if(!isset($param['p'])): $param['p'] = 0; endif;
 		if(!isset($param['q'])): $param['q'] = false; endif;

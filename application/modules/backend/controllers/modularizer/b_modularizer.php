@@ -104,14 +104,34 @@ class B_modularizer extends MX_Controller {
 			$this->barock_page->initialize($confpage);
 		}
 		
-		
-		$menuSource = array(array('anchor' => 'New Widget', 'link' => site_url('backend/modularizer/b_modularizer/create')));
-		$render['pageMenu'] = $this->dodol_theme->menu_rend($menuSource);
+	
 		$render['mainLayer'] = 'backend/page/modularizer/browse_v';
 		$render['pT'] = 'List Widget';
 		$render['pH'] = 'List Widget';
+		$render['pageTool'] = modules::run('backend/modularizer/b_modularizer/filter');
 		$render['installed'] = $this->dodol_widget->list_all();
 		$this->dodol_theme->render($render, 'back');
 		
+	}
+	function filter(){
+		if($this->input->post('filter')):
+			if($filter = ddl_post_filter('filt_')):
+				if(element('state', $filter) == 'state'): unset($filter['state']);endif;
+				if(element('spot', $filter) == 'spot'): unset($filter['spot']);endif;
+				if(element('publish', $filter) == 'publish'): unset($filter['publish']);endif;
+				redirect(site_url('backend/modularizer/b_modularizer/browse/'.$this->uri->assoc_to_uri($filter)));
+			else:
+redirect(site_url('backend/modularizer/b_modularizer/browse/'));
+			endif;
+			
+		endif;
+		$this->load->view('backend/page/modularizer/misc/filter_v');
+		
+	}
+	
+	function reorder(){
+		if($state = $this->input->post('sort_state')):
+		modules::run('modularizer/api_reorder', $state);
+		endif;
 	}
 }?>

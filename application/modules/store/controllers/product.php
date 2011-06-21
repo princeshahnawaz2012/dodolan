@@ -7,7 +7,8 @@ class Product extends MX_Controller {
 	//php 5 constructor
 	function __construct() {
 		parent::__construct();
-		$this->load->model('store/product_m');
+		$this->mdl = $this->load->model('store/product_m');
+		
 	}
 	
 	//php 4 constructor
@@ -54,9 +55,11 @@ class Product extends MX_Controller {
 		$param['id'] = $this->uri->segment(4);
 		$param['attr'] = true;
 		$param['media'] = true;
-		$data['prod'] = $this->detProd($param);
+		//$data['prod'] = $this->detProd($param);
+		$data['prod'] = $this->api_getbyid($this->uri->segment(4), array('media', 'medias', 'relations', 'attributes'));
+		$data['loadSide'] = false;
 		$data['mainLayer'] = 'store/page/product/detailProd';
-		$data['pT']        = $data['prod']['prod']->name;
+		$data['pT']        = $data['prod']['product']->name;
 		$this->dodol_theme->render($data);
 		// execution buy product
 		modules::run('store/store_cart/buyProd');
@@ -139,7 +142,7 @@ class Product extends MX_Controller {
 		
 		$param = $this->uri->uri_to_assoc(4);
 		if(!isset($param['limit'])){
-			$param['limit'] = 2;
+			$param['limit'] = 12;
 		}
 		if(!isset($param['cat'])){
 			$param['cat'] = false;
@@ -201,6 +204,87 @@ class Product extends MX_Controller {
 		return $del;
 	}
 	
+	
+	//--------------------------------//
+	// 				API V.02 
+	//--------------------------------//
+	
+	// PRODUCT
+	function api_update($id, $data){
+		return $this->mdl->update($id, $data);
+	}
+	function api_create($data){
+		return $this->mdl->create($data);
+	}
+	function api_delete($id){
+		return $this->mdl->delete($id);
+	}
+	function api_getbyid($id){
+		return $this->mdl->getbyid($id);
+	}
+	function api_browse($param){
+		return $this->mdl->browse($param);
+	}
+	
+	// IMAGES
+	function api_getmedia($id){
+		return $this->mdl->getimage($id);
+	}
+	function api_getmedias($id){
+		return $this->mdl->getimages($id);
+	}
+	// IMAGES TRANASACTION
+	function api_media_create($data){
+		return $this->mdl->media_create($data);
+	}
+	function api_media_update($id, $data){
+		return $this->mdl->media_update($data);
+	}
+	function api_media_delete($id){
+		return $this->mdl->media_delete($id); 
+	}
+	function api_media_getbyid($id){
+		return $this->mdl->media_getbyid($id);
+	}
+	
+	
+	// ATTRIBUTES
+	function api_getattributes($id){
+		return $this->mdl->getattributes($id);
+	}
+	// ATTRIBUTES TRANSACTIONS
+	function api_attribute_create($data){
+		return $this->mdl->attribute_create($data);
+	}
+	function api_attribute_update($id, $data){
+		return $this->mdl->attribute_update($data);
+	}
+	function api_attribute_delete($id){
+		return $this->mdl->attribute_delete($id); 
+	}
+	function api_attribute_getbyid($id){
+		return $this->mdl->attribute_getbyid($id);
+	}
+	
+	
+	// RELATIONS
+	function api_getrelations($id){
+		return $this->mdl->getrelations($id);
+	}
+	// RELATION TRANSACTIONS
+	function api_relation_create($data){
+		return $this->mdl->relation_create($data);
+	}
+	function api_relation_update($id, $data){
+		return $this->mdl->relation_update($data);
+	}
+	function api_relation_delete($id){
+		return $this->mdl->relation_delete($id); 
+	}
+	function api_relation_getbyid($id){
+		return $this->mdl->relation_getbyid($id);
+	}
+
 	
 
 }?>

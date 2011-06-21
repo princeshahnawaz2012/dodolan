@@ -13,7 +13,7 @@ class Dodol_widget {
 			$admin    = scandir(APPPATH.'widgets/admin');
 			if(count($admin) > 0):
 			foreach($admin as $item){
-				if($item != '.' && $item != '..' ){
+				if(strpos($item, '.') === false  && $item != '.DS_Store'){
 			 		$detail = widget_helper::run('admin/'.$item.'/'.$item.'/getdetail');
 					array_push($all_widget, $detail);
 				}
@@ -22,7 +22,7 @@ class Dodol_widget {
 			$front    = scandir(APPPATH.'widgets/front');
 			if(count($front) > 0):
 			foreach($front as $item){
-				if($item != '.' && $item != '..'){
+				if(strpos($item, '.') === false){
 			 		$detail = widget_helper::run('front/'.$item.'/'.$item.'/getdetail');
 			 		$single = array('state' => 'admin', 'name' => $detail['name']);
 					array_push($all_widget, $detail);
@@ -35,7 +35,7 @@ class Dodol_widget {
 			$admin    = scandir(APPPATH.'widgets/admin');
 			if(count($admin) > 0):
 			foreach($admin as $item){
-				if($item != '.' && $item != '..'){
+				if(strpos($item, '.') === false){
 			 		$detail = widget_helper::run('admin/'.$item.'/'.$item.'/getdetail');
 					array_push($all_widget, $detail);
 				}
@@ -45,7 +45,7 @@ class Dodol_widget {
 				$front    = scandir(APPPATH.'widgets/front');
 				if(count($front) > 0):
 				foreach($front as $item){
-					if($item != '.' && $item != '..'){
+					if(strpos($item, '.') === false){
 				 		$detail = widget_helper::run('front/'.$item.'/'.$item.'/getdetail');
 						array_push($all_widget, $detail);
 					}

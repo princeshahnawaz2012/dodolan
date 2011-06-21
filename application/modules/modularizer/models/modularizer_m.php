@@ -61,10 +61,10 @@ class Modularizer_m extends CI_Model  {
 		$limit = (isset($param['limit'])) ? $param['limit'] : 20;
 		$start = (isset($param['start'])) ? $param['start'] : 0;
 	$this->db->select('*');
-		if(isset($param['spot'])){
+		if(element('spot', $param)){
 			$this->db->where('spot', $param['spot']);
 		}
-		if(isset($param['state'])){
+		if(element('state', $param) == 'front' || element('state', $param) == 'admin'){
 			$this->db->where('state', $param['state']);
 		}
 		if(isset($param['publish'])){
@@ -73,6 +73,11 @@ class Modularizer_m extends CI_Model  {
 		if(isset($param['order_by'])){
 			$order = explode(',', $param['order_by']);
 			$this->db->order_by($order[0], $order[1]);
+		}
+		$this->db->order_by('sort', 'ASC');
+		if(element('s', $param)){
+			$like = array('name' => element('s', $param), 'widget_name' => element('s', $param));
+			$this->db->or_like($like);
 		}
 		$this->dodol->db_calc_found_rows();
 		$q = $this->db->get('modularizer', $limit, $start);
@@ -83,6 +88,16 @@ class Modularizer_m extends CI_Model  {
 			return false;
 		}
 		
+	}
+	function getallspot(){
+		$this->db->select('spot');
+		$this->db->group_by('spot');
+		$q = $this->db->get('modularizer');
+		if($q->num_rows() > 0){
+			return $q->result();
+		}else{
+			return false;
+		}
 	}
 	function getbyspot($spot){
 		$this->db->where('spot', $spot);

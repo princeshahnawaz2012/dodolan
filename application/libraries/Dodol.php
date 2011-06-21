@@ -1,9 +1,16 @@
 <?
 class Dodol {
 
+	var $some;
 	function __construct()
 	{
 		$this->_ci =& get_instance();		
+	}
+	function get_some(){
+		return $this->some;
+	}
+	function set_some($some){
+		$this->some = $some;
 	}
 	function custom_time($date, $nodate=false)
 	{

@@ -11,7 +11,7 @@
  Target Server Version : 50144
  File Encoding         : utf-8
 
- Date: 06/19/2011 05:43:11 AM
+ Date: 06/21/2011 01:18:14 AM
 */
 
 SET NAMES utf8;
@@ -54,13 +54,13 @@ CREATE TABLE `modularizer` (
   `sort` int(11) NOT NULL,
   `mod_param` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Records of `modularizer`
 -- ----------------------------
 BEGIN;
-INSERT INTO `modularizer` VALUES ('5', 'Top Menu', 'menu', '{\"id_menu\":\"1\",\"type\":\"horizontal\"}', '0000-00-00 00:00:00', 'n', '', 'topmenu', 'front', '1', '{\"hide_title\":\"y\"}'), ('4', 'Video ', 'custom_html', '{\"content\":\"<p>\\n\\tIt is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).<\\/p>\\n\"}', '0000-00-00 00:00:00', 'n', '', 'top menu', 'front', '1', ''), ('8', 'botom menu', 'menu', '{\"id_menu\":\"5\",\"type\":\"horizontal\"}', '0000-00-00 00:00:00', 'y', '', 'bottom_left', 'front', '1', '{\"hide_title\":\"y\"}');
+INSERT INTO `modularizer` VALUES ('16', 'Other Custom HTML', 'custom_html', '{\"content\":\"<p>\\n\\tLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores<\\/p>\"}', '0000-00-00 00:00:00', 'y', '', 'left', 'front', '2', '[]'), ('14', 'Bottom Global Menu', 'menu', '{\"id_menu\":\"5\",\"type\":\"horizontal\"}', '0000-00-00 00:00:00', 'y', '', 'bottom_left', 'front', '1', '{\"hide_title\":\"y\"}'), ('12', 'Show Cart', 'cart_widget', '[]', '0000-00-00 00:00:00', 'y', '', 'pre_topright', 'front', '1', '{\"hide_title\":\"y\"}'), ('13', 'Top Front Menu', 'menu', '{\"id_menu\":\"1\",\"type\":\"horizontal\"}', '0000-00-00 00:00:00', 'y', '', 'topmenu', 'front', '1', '{\"hide_title\":\"y\"}');
 COMMIT;
 
 -- ----------------------------
@@ -196,7 +196,7 @@ CREATE TABLE `site_nav_item` (
 --  Records of `site_nav_item`
 -- ----------------------------
 BEGIN;
-INSERT INTO `site_nav_item` VALUES ('7', '0', '1', '1', 'Contact', 'contact', 'page/view/5', ''), ('8', '0', '1', '2', 'Collection', 'col', '/store/collection', ''), ('10', '0', '5', '1', 'About Us', '', 'page/view/3', ''), ('11', '0', '5', '2', 'Store Policies', '', '', ''), ('12', '0', '5', '3', 'Privacy', '', '', ''), ('13', '0', '5', '4', 'Contact', '', '', ''), ('15', '0', '1', '7', 'New Aririval', '', '', ''), ('16', '0', '1', '4', 'Top', '', '', ''), ('17', '0', '1', '5', 'Dresses', '', '', ''), ('18', '0', '1', '6', 'Bottoms', '', '', ''), ('19', '0', '1', '3', 'Outwears', '', '', ''), ('20', '0', '1', '8', 'Accessories', '', '', ''), ('21', '0', '1', '9', 'How To', '', '', '');
+INSERT INTO `site_nav_item` VALUES ('7', '0', '1', '8', 'Contact', 'contact', 'page/view/5', ''), ('8', '0', '1', '2', 'Collection', 'col', '/store/collection', ''), ('10', '0', '5', '1', 'About Us', '', 'page/view/3', ''), ('11', '0', '5', '2', 'Store Policies', '', '', ''), ('12', '0', '5', '3', 'Privacy', '', '', ''), ('13', '0', '5', '4', 'Contact', '', '', ''), ('15', '0', '1', '1', 'New Aririval', '', '', ''), ('16', '0', '1', '3', 'Top', '', '', ''), ('17', '0', '1', '5', 'Dresses', '', '', ''), ('18', '0', '1', '4', 'Bottoms', '', '', ''), ('19', '0', '1', '6', 'Outwears', '', '', ''), ('20', '0', '1', '7', 'Accessories', '', '', ''), ('21', '0', '1', '9', 'How To', '', '', '');
 COMMIT;
 
 -- ----------------------------
