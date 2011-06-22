@@ -2,7 +2,6 @@
 
 </script>
 <?=$this->dodol_theme->partial('header');?>
-<?=$this->dodol->get_some();?>
 	<div class="wrapper">
 		<div class="wrapper_inner grid_950 ctr">
 			<div class="header">

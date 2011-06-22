@@ -1,19 +1,12 @@
 <?
 class Dodol {
 
-	var $some;
 	function __construct()
 	{
 		$this->_ci =& get_instance();		
 	}
-	function get_some(){
-		return $this->some;
-	}
-	function set_some($some){
-		$this->some = $some;
-	}
-	function custom_time($date, $nodate=false)
-	{
+
+	function custom_time($date, $nodate=false){
 		if(empty($date) || $date == null) {
 			if($nodate==false){
 		        return "No date provided";
@@ -57,16 +50,14 @@ class Dodol {
 	function arrayObject($array){
 		return json_decode(json_encode($array));
 	}
-	function objectToArray($object)
-		{
+	function objectToArray($object){
 			$array=array();
 			foreach($object as $member=>$data)
 			{
 				$array[$member]=$data;
 			}
 			return $array;
-		}
-		
+	}
 	function jsonToArray($json){
 		return json_decode($json, true);
 	}

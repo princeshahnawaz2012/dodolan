@@ -1,6 +1,5 @@
 <div class="shipping_method">
-<h3 class="left">Shipping</h3><div class="right"><?=modules::run('store/checkout/checkoutmenu')?></div> 
-<br class="clear"/>
+
 	<?=$cart;?>
 	 
 	<? if($shipping_rates){?>

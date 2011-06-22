@@ -19,7 +19,7 @@ class Checkout extends MX_Controller {
 		$this->step = $this->session->userdata('checkout_step');
 	
 		if($this->cart->total_items() == 0){
-		redirect('store/cart/viewcart');
+			redirect('store/cart/viewcart');
 		}
 	}
 	
@@ -30,9 +30,24 @@ class Checkout extends MX_Controller {
 	}
 	
 	function index() {
-		redirect('store/checkout/buyerinfo');
+		redirect('store/checkout/buyerinfo?tpl=checkout');
 	}
+	function summary_cart(){
 	
+
+			$this->load->library('cart');
+			$data = array(
+				'items' => $this->cart->contents(),
+				'shipping_info' => $this->session->userdata('shipping_info')
+				);
+			if(!$this->session->userdata('ship_to_info')){
+				$data['buyer_info'] = $this->session->userdata('customer_info');
+			}else{
+				$data['buyer_info'] = $this->session->userdata('ship_to_info');
+			}
+			$this->load->view('store/misc/checkout/summary_cart_v', $data);
+		
+	}
 	/**
 	 * Buyer info Page
 	 *
@@ -54,7 +69,7 @@ class Checkout extends MX_Controller {
 			$data = array(
 				'mainLayer' => 'store/page/checkout/buyerinfo_v',
 				'pT' => 'chekout - Customer Information' ,
-				'cart' => modules::run('store/store_widget/smallcart'),
+				'cart' => modules::run('store/checkout/summary_cart'),
 				'countries' => $q->result(),
 				'buyer_data' => $this->cart->customer_info,
 				'ship_data'  => $this->cart->shipto_info,
@@ -157,7 +172,7 @@ class Checkout extends MX_Controller {
 					//$this->cart->check_step['custumer_info'] = true;
 					$this->cart->check_step['custumer_info'] = true;
 					$this->cart->write_data();
-					redirect('store/checkout/shipping_method');
+					redirect('store/checkout/shipping_method?tpl=checkout');
 				}else{
 					$ship_to_data = array('shipto_info' => $ship_to_info);
 					$this->cart->write_data($ship_to_data);
@@ -165,7 +180,7 @@ class Checkout extends MX_Controller {
 					// So Go to the next step "SHIPPING METHOD"
 					$this->session->userdata['checkout_step']['custumer_info'] = true;
 					$this->session->sess_write();
-					redirect('store/checkout/shipping_method');
+					redirect('store/checkout/shipping_method?tpl=checkout');
 				}
 				
 			}
@@ -173,7 +188,7 @@ class Checkout extends MX_Controller {
 			else{
 				$this->messages->add('you cannot use <strong>'.$data['email'].'</strong>, it\'s already registered ', 'warning');
 				// if register not success ussualy cause;
-				redirect('store/checkout/buyerinfo');
+				redirect('store/checkout/buyerinfo?tpl=checkout');
 			}
 			
 			
@@ -215,7 +230,7 @@ class Checkout extends MX_Controller {
 						//$this->cart->check_step['custumer_info'] = true;
 						$this->cart->check_step['custumer_info'] = true;
 						$this->cart->write_data();
-						redirect('store/checkout/shipping_method');
+						redirect('store/checkout/shipping_method?tpl=checkout');
 					}else{
 						$ship_to_data = array('shipto_info' => $ship_to_info);
 						$this->cart->write_data($ship_to_data);
@@ -223,7 +238,7 @@ class Checkout extends MX_Controller {
 						// So Go to the next step "SHIPPING METHOD"
 						$this->session->userdata['checkout_step']['custumer_info'] = true;
 						$this->session->sess_write();
-						redirect('store/checkout/shipping_method');
+						redirect('store/checkout/shipping_method?tpl=checkout');
 					}
 				}
 				
@@ -232,7 +247,7 @@ class Checkout extends MX_Controller {
 			else{
 				$this->messages->add('you cannot use <strong>'.$data['email'].'</strong>, it\'s already registered ', 'warning');
 
-				redirect('store/checkout/buyerinfo');
+				redirect('store/checkout/buyerinfo?tpl=checkout');
 			}
 			
 			
@@ -251,7 +266,7 @@ class Checkout extends MX_Controller {
 		// if email already registered
 		if($is_user){
 			$this->messages->add('email '.$data['email'].' is already registered, have you register here before ? why you don\'t try to sign in', 'warning');
-			redirect('store/checkout/buyerinfo');
+			redirect('store/checkout/buyerinfo?tpl=checkout');
 		}
 		// if the email is not registered
 		else{
@@ -271,7 +286,7 @@ class Checkout extends MX_Controller {
 						//$this->cart->check_step['custumer_info'] = true;
 						$this->cart->check_step['custumer_info'] = true;
 						$this->cart->write_data();
-						redirect('store/checkout/shipping_method');
+						redirect('store/checkout/shipping_method?tpl=checkout');
 					}else{
 						$ship_to_data = array('shipto_info' => $ship_to_info);
 						$this->cart->write_data($ship_to_data);
@@ -279,7 +294,7 @@ class Checkout extends MX_Controller {
 						// So Go to the next step "SHIPPING METHOD"
 						$this->session->userdata['checkout_step']['custumer_info'] = true;
 						$this->session->sess_write();
-						redirect('store/checkout/shipping_method');
+						redirect('store/checkout/shipping_method?tpl=checkout');
 					}
 			}
 			// if the email not yet taken by other customer
@@ -298,7 +313,7 @@ class Checkout extends MX_Controller {
 						//$this->cart->check_step['custumer_info'] = true;
 						$this->cart->check_step['custumer_info'] = true;
 						$this->cart->write_data();
-						redirect('store/checkout/shipping_method');
+						redirect('store/checkout/shipping_method?tpl=checkout');
 					}else{
 						$ship_to_data = array('shipto_info' => $ship_to_info);
 						$this->cart->write_data($ship_to_data);
@@ -306,7 +321,7 @@ class Checkout extends MX_Controller {
 						// So Go to the next step "SHIPPING METHOD"
 						$this->session->userdata['checkout_step']['custumer_info'] = true;
 						$this->session->sess_write();
-						redirect('store/checkout/shipping_method');
+						redirect('store/checkout/shipping_method?tpl=checkout');
 					}
 				}
 			}
@@ -354,7 +369,7 @@ class Checkout extends MX_Controller {
 		// do else here 
 		$data['buyer_info'] = $buyer_info;
 		$data['shipping_rates'] = $rates;
-		$data['cart'] = modules::run('store/store_widget/smallcart');
+		$data['cart'] = modules::run('store/checkout/summary_cart');
 		$data['mainLayer'] = 'store/page/checkout/shipping_method_v';
 		
 		$this->dodol_theme->render($data);
@@ -362,7 +377,7 @@ class Checkout extends MX_Controller {
 			$this->exe_shipping_method();
 		}
 	}else{
-		redirect('store/checkout/buyerinfo');
+		redirect('store/checkout/buyerinfo?tpl=checkout');
 	}
 	}
 	/**
@@ -381,14 +396,14 @@ class Checkout extends MX_Controller {
 			$id_rate = $this->input->post('id_ship_rate');
 			$shipping_rate = modules::run('store/shipping/jne', $id_rate);
 				if($shipping_rate){
-					redirect('store/checkout/payment');
+					redirect('store/checkout/payment?tpl=checkout');
 				}else{
 					return false;
 				}
 			}elseif(!$this->session->userdata('shipping_info') && !$this->input->post('id_ship_rate')){
 				return false;
 			}elseif($this->session->userdata('shipping_info') && !$this->input->post('id_ship_rate')){
-				redirect('store/checkout/payment');
+				redirect('store/checkout/payment?tpl=checkout');
 			}
 	}
 	/**
@@ -404,7 +419,7 @@ class Checkout extends MX_Controller {
 		$data= array(
 			'mainLayer' => 'store/page/checkout/payment_v',
 			'pT'        => 'Checkout - Payment Method',
-			'cart'      => modules::run('store/store_widget/smallcart'),
+			'cart'      => modules::run('store/checkout/summary_cart'),
 		);
 		$this->dodol_theme->render($data);
 		if($this->input->post('next')){
@@ -412,7 +427,7 @@ class Checkout extends MX_Controller {
 		}
 		
 	}else{
-		redirect('store/checkout/shipping_method');
+		redirect('store/checkout/shipping_method?tpl=checkout');
 	}
 	}
 	/**
@@ -431,10 +446,10 @@ class Checkout extends MX_Controller {
 			$this->cart->write_data($ins);
 			//$this->session->userdata['checkout_step']['payment_info'] = true;
 			//$this->session->sess_write();
-			redirect('store/checkout/summary');
+			redirect('store/checkout/summary?tpl=checkout');
 		
 		}elseif(!$method && $this->session->userdata('payment_info')){
-				redirect('store/checkout/summary');
+				redirect('store/checkout/summary?tpl=checkout');
 		}else{
 			return false;
 		}
@@ -455,14 +470,14 @@ class Checkout extends MX_Controller {
 			$rendered = array(	
 				'mainLayer' => 'store/page/checkout/summary_v',
 				'pT'        => 'Checkout - Order Summary',
-				'cart'      => modules::run('store/store_widget/smallcart'),
+				'cart'      => modules::run('store/checkout/summary_cart'),
 				);
 			$this->dodol_theme->render($rendered);
 			if($this->input->post('process') && $this->recaptcha->validate()){
 			  $this->process();
 			}
 		}else{
-			redirect('store/checkout/payment');
+			redirect('store/checkout/payment?tpl=checkout');
 		}
 		
 	}
@@ -475,7 +490,7 @@ class Checkout extends MX_Controller {
 	 */
 	function process(){
 		if(!$this->cart->payment_info){
-			redirect('store/checkout/summary');
+			redirect('store/checkout/summary?tpl=checkout');
 		}
 		if($this->session->userdata('currency')){
 			$currency = $this->session->userdata('currency');
@@ -576,7 +591,7 @@ class Checkout extends MX_Controller {
 			$this->dodol_theme->render($data);
 		
 		}else{
-			redirect('store/checkout/summary');
+			redirect('store/checkout/summary?tpl=checkout');
 		}
 	}
 	/**

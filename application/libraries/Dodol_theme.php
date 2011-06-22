@@ -36,15 +36,19 @@ function Dodol_theme(){
 	$this->_ci =& get_instance();
 	$this->front_theme = 'front';
 	$this->back_theme = 'back';
+	$this->theme_path = './themes';
 	
 }
 function render($data, $mode=false, $layer=false){
 	parse_str($_SERVER['QUERY_STRING'], $_GET); 
 	$this->_ci->input->_clean_input_data($_GET); 
-	if(!$this->_ci->input->get('tpl')){
+	$tpl = $this->_ci->input->get('tpl');
+	$tpl_file = ($mode != 'back' && $mode == null) ? $this->theme_path.'/front_end/'.$this->front_theme.'/tpl/'.$tpl : $this->theme_path.'/backend_end/'.$this->back_theme.'/tpl/'.$tpl;
+	
+	if(!$tpl){
 		$layer = 'index';
-	}elseif($this->_ci->input->get('tpl')){
-		$layer = $this->_ci->input->get('tpl');
+	}elseif($tpl){
+		$layer = 'tpl/'.$this->_ci->input->get('tpl');
 	}
 
 	if(!isset($data['loadSide'])){

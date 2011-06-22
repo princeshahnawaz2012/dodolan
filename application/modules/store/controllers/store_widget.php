@@ -66,7 +66,6 @@ class Store_widget extends MX_Controller {
 	function smallcart(){
 		
 		$this->load->library('cart');
-	
 		$data = array(
 			'items' => $this->cart->contents(),
 			'shipping_info' => $this->session->userdata('shipping_info')

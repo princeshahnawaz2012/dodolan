@@ -1,6 +1,5 @@
 <div class="payment_method">
-<h3 class="left">Paymnet</h3><div class="right"><?=modules::run('store/checkout/checkoutmenu')?></div> 
-<br class="clear"/>
+
 	<?=$cart;?>
 	<div class="checkout-step">
 		<script>

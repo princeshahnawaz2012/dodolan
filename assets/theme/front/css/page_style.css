@@ -130,9 +130,12 @@ input[name="addcart"]{
 	border-radius: 3px;
 
 }
+/* CHECKOUT PAGE TPL */
+#tpl_checkout .toppest_spot {border-bottom:1px solid #ccc;}
 /* Summary */
-
-
-
-
-
+.summary_cart .itemlist {border-right:1px solid #ccc; padding-bottom:10px}
+.summary_cart .itemlist .item h6 { margin:0px; border-bottom:1px solid #ccc;}
+.summary_cart .itemlist .item .item_detail {width:170px;}
+.summary_cart .itemlist .item .img_item { margin-right:5px}
+.summary_cart .total_amout { padding-left :10px; text-align: center;}
+.summary_cart .total_amout h1 { margin:0px; padding:0px;}

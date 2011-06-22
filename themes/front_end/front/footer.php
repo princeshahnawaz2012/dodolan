@@ -12,7 +12,7 @@
 				$('.component_layer').hide('fade', 1000);
 		});
 	</script>
-	<div class="box2 ctr grid_920">
+	<div class="box2 ctr grid_920 hide">
 		Render  Time : {elapsed_time} <br/>
 		Memory Alocation : {memory_usage} 
 	</div>
