@@ -153,8 +153,6 @@ class Order_m extends CI_Model {
 		}
 	
 	}
-	
-	
 	function getOrder($id){
 		$this->db->where('id', $id);
 		$q = $this->db->get('store_order');
@@ -272,18 +270,74 @@ class Order_m extends CI_Model {
 	
 	// ORDER
 	function create($data){
-		
+		if($this->db->insert('store_orde', $data)):
+			return $this->getbyid($this->db->insert_id());
+		else:
+			return false;
+		endif;
 	}
-	function update($id){
-		
+	function update($id, $data){
+		$this->db->where('id', $id);
+		if($this->db->update('store_order', $data)){
+			return $this->getbyid($id);
+		}else{
+			return false;
+		}
 	}
 	function delete($id){
-		
+		if($pre = $this->getbyid($id)):
+			$this->db->where('id', $id);
+			if($this->db->delete('store_order')):
+				return $pre;
+			else:
+				return false;
+			endif;
+		else:
+			return false;
+		endif;
 	}
-	function getbyid($id){
-		
+	function getbyid($id, $depend = false){
+		$this->db->where('id', $id);
+		$q = $this->db->get('store_order');
+		$return = array();
+		if($q->num_rows() == 1):
+			$return['order'] = $q->row();
+			if($depend == true):
+				$return['customer'] = $this->load->model('store/customer_m')->_getbyid($q->row()->customer_id);
+				$return['shipping_info'] = $this->getshipping_info($q->row()->id);
+				$return['product_sold'] = $this->getproduct_sold($q->row()->id);
+			endif;
+			return $return;
+		else:
+			return false;
+		endif;
 	}
+	function browse($param){
+	$start = ($start = elemenet('start', $param)) ? $start : 0;
+	$limit = ($limit = elemenet('limit', $param)) ? $start : 20;
 	
+	$this->db->select('order.id as order_number');
+	if(element('search', $param)) :
+		$search = array(
+			'order.id' => element('search', $param),
+			'customer.name' => element('search', $param),
+			'shipping_info.name' => element('search', $param),
+		); 
+		$this->db->or_like($search);
+	endif;
+	if(element('status', $param)):
+		$this->db->where('status', element('status', $param));
+	endif;
+		$this->db->join('store_customer customer', 'customer.id=order.customer_id');
+		$this->db->join('store_shipping_info shipping_info', 'shipping_info.order_id=order.id');
+		$q = $this->db->get('store_order', $limit, $start);
+		if($q->num_rows() > 0):
+			return $q->result();
+		else:
+			return false;
+		endif;
+		
+	}
 	// PRODUCT SOLD
 	function getproduct_sold($id_order){
 		$this->db->where('order_id', $id_order);
@@ -302,5 +356,93 @@ class Order_m extends CI_Model {
 			return false;
 		}
 	}
+	function product_sold_udpate($id, $data){
+		if($this->product_sold_getbyid($id)){
+			$this->db->where('id', $id);
+			if($this->db->update('store_order_product_sold', $data)){
+				return $this->product_sold_getbyid($id);
+			}else{
+				return false;
+			}
+		}
+	}
+	function product_sold_delete($id){	
+		if($del = $this->product_sold_getbyid($id)){
+			$this->db->where('id', $id);
+			if($this->db->delete('store_order_product_sold')){
+				return $del;
+			}else{
+				return false;
+			}
+		}
+	}
+	function product_sold_getbyid($id){
+		$this->db->where('id', $id);
+		$q = $this->db->get('store_order_product_sold');
+		if($q->num_rows() ==1 ){
+			return $q->row();
+		}else{
+			return false;
+		}
+	}
+	
+	// SHIPPING INFORMATION
+	function getshipping_info($id_order){
+		$this->db->where('order_id', $id_order);
+		$pre = $this->db->get('store_order_shipping_info');
+		if($pre->num_rows() > 0){
+			return $pre->result();
+		}else{
+			return false;
+		}
+	}
+	// SHIPPING INFORMATION OPERATION
+	function shipping_info_create($data){
+		if($q = $this->db->insert('store_order_shipping_info', $data)){
+			return $this->shipping_info_getbyid($this->db->insert_id());
+		}else{
+			return false;
+		}
+	}
+	function shipping_info_udpate($id, $data){
+		if($this->product_sold_getbyid($id)){
+			$this->db->where('id', $id);
+			if($this->db->update('store_order_shipping_info', $data)){
+				return $this->shipping_info_getbyid($id);
+			}else{
+				return false;
+			}
+		}
+	}
+	function shipping_info_delete($id){	
+		if($del = $this->shipping_info_getbyid($id)){
+			$this->db->where('id', $id);
+			if($this->db->delete('store_order_shipping_info')){
+				return $del;
+			}else{
+				return false;
+			}
+		}
+	}
+	function shipping_info_getbyid($id){
+		$this->db->where('id', $id);
+		$q = $this->db->get('store_order_shipping_info');
+		if($q->num_rows() ==1 ){
+			return $q->row();
+		}else{
+			return false;
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

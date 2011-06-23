@@ -137,5 +137,18 @@ class Customer_m extends CI_Model {
 			return false;
 		}
 	}
-
+	
+	
+	function _getbyid($id, $select = false){
+		if($select == true):
+			$this->db->select($select);
+		endif;
+		$this->db->where('id', $id);
+		$q = $this->db->get('store_customer');
+		if($q->num_rows() == 1):
+			return $q->row();
+		else:
+			return false;
+		endif;
+	}
 }

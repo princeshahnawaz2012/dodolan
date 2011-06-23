@@ -401,7 +401,8 @@ class Product_m extends CI_Model {
 					$data['medias'] 		= $this->getmedias($id);
 					$data['attributes'] 	= $this->getattributes($id);
 					$data['relations'] 		= $this->getrelations($id);
-			elseif($alldata == true || $alldata == false && $inculde != false):
+			return $data;
+			elseif($alldata == true || $alldata == false && $include != false):
 					if(element('media', $include)):
 						$data['media'] 			= $this->getmedia($id);
 					endif;
@@ -414,11 +415,13 @@ class Product_m extends CI_Model {
 					if(element('relations', $include)):
 						$data['relations'] 		= $this->getrelations($id);
 					endif;	
+					$data['product'] = $q->row();
+					return $data;
 			elseif($alldata == false):
-				$data = array('product' => $q->row());
+				
+				return $q->row();
 			endif;
 			
-			return $data;
 		}else{
 			return false;
 		}

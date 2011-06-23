@@ -1,5 +1,5 @@
 <? if($prod){?>
-	
+
 <div class="viewProduct">
 <?
 	$p = $prod['product'];
@@ -45,10 +45,9 @@
 		<a href='<?=site_url('thumb/show/600-800-crop/dir/assets/product-img/'.$med->path);?>' class='cloud-zoom-gallery' title='<?=$med->name;?>'
         	rel="useZoom: 'zoom1', smallImage: '<?=site_url('thumb/show/400-500-crop/dir/assets/product-img/'.$med->path);?>' ">
         <img class="mr5 left grid_70" src="<?=site_url('thumb/show/70-70-crop/dir/assets/product-img/'.$med->path);?>" alt ="<?=$med->name;?>"/></a>
-
-				
+		
 			
-			<?}?>
+		<?}?>
 		<div class="clear"></div>	
 		</div>
 		<?}?>

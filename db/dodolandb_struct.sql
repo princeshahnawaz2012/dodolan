@@ -11,7 +11,7 @@
  Target Server Version : 50144
  File Encoding         : utf-8
 
- Date: 06/19/2011 05:43:27 AM
+ Date: 06/22/2011 00:43:12 AM
 */
 
 SET NAMES utf8;
@@ -47,7 +47,7 @@ CREATE TABLE `modularizer` (
   `sort` int(11) NOT NULL,
   `mod_param` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Table structure for `newsletter_member`
@@ -73,7 +73,7 @@ CREATE TABLE `page` (
   `c_date` datetime NOT NULL,
   `m_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Table structure for `page_category`
@@ -84,7 +84,7 @@ CREATE TABLE `page_category` (
   `name` varchar(150) NOT NULL,
   `parent_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Table structure for `product_sold_data`
@@ -100,7 +100,7 @@ CREATE TABLE `product_sold_data` (
   `options` varchar(30) DEFAULT NULL,
   `name` varchar(40) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=127 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Table structure for `site_conf`
@@ -169,7 +169,7 @@ CREATE TABLE `store_collection` (
   `description` text NOT NULL,
   `img_path` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Table structure for `store_collection_ref`
@@ -180,7 +180,7 @@ CREATE TABLE `store_collection_ref` (
   `collection_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Table structure for `store_country`
@@ -217,7 +217,7 @@ CREATE TABLE `store_customer` (
   `m_date` datetime NOT NULL,
   `phone` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Table structure for `store_order`
@@ -240,7 +240,7 @@ CREATE TABLE `store_order` (
   `uniq_id` varchar(40) NOT NULL,
   `status` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=103 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=105 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Table structure for `store_order_history`
@@ -278,6 +278,42 @@ CREATE TABLE `store_order_personal_data` (
 ) ENGINE=MyISAM AUTO_INCREMENT=72 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
+--  Table structure for `store_order_product_sold`
+-- ----------------------------
+DROP TABLE IF EXISTS `store_order_product_sold`;
+CREATE TABLE `store_order_product_sold` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_prod` int(11) NOT NULL,
+  `id_attrb_prod` int(11) DEFAULT NULL,
+  `order_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `options` varchar(30) DEFAULT NULL,
+  `name` varchar(40) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=127 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+--  Table structure for `store_order_shipping_info`
+-- ----------------------------
+DROP TABLE IF EXISTS `store_order_shipping_info`;
+CREATE TABLE `store_order_shipping_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `country_id` int(11) NOT NULL,
+  `province` varchar(30) NOT NULL,
+  `city` varchar(30) NOT NULL,
+  `city_code` varchar(30) NOT NULL,
+  `zip` varchar(10) NOT NULL,
+  `address` text NOT NULL,
+  `mobile` varchar(25) NOT NULL,
+  `phone` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+-- ----------------------------
 --  Table structure for `store_order_shipto_data`
 -- ----------------------------
 DROP TABLE IF EXISTS `store_order_shipto_data`;
@@ -295,7 +331,7 @@ CREATE TABLE `store_order_shipto_data` (
   `mobile` varchar(25) NOT NULL,
   `phone` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=96 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=98 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 --  Table structure for `store_product`
@@ -345,6 +381,7 @@ CREATE TABLE `store_product_media` (
   `path` varchar(100) DEFAULT NULL,
   `publish` varchar(1) DEFAULT '1',
   `default` int(1) DEFAULT '0',
+  `sort` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=95 DEFAULT CHARSET=latin1;
 

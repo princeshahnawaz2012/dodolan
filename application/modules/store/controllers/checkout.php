@@ -367,6 +367,7 @@ class Checkout extends MX_Controller {
 			$rates = modules::run('store/shipping/jne');
 		}
 		// do else here 
+		$data['pT'] = 'Checkout - Shipping Method';
 		$data['buyer_info'] = $buyer_info;
 		$data['shipping_rates'] = $rates;
 		$data['cart'] = modules::run('store/checkout/summary_cart');
@@ -622,6 +623,10 @@ class Checkout extends MX_Controller {
         	    echo json_encode($data);
     	    }
         }
+	}
+	function asuh(){
+		$this->load->helper('store/store_v');
+		product_img();
 	}
 	
 	

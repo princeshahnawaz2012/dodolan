@@ -7,7 +7,7 @@
 				
 				<div class="toppest_spot">
 				<div class="logo_spot left"><h1 clas="myriad"><?=$this->config->item('site_name');?></h1></div>
-				<div class="right absolute" style="bottom:15px; right:0px"><span>Place your Order<span></div>
+				<div class="right absolute" style="bottom:15px; right:0px"><span><?=$pT?><span></div>
 				<div class="clear"></div>
 				</div>
 			</div>

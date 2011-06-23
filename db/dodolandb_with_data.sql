@@ -11,7 +11,7 @@
  Target Server Version : 50144
  File Encoding         : utf-8
 
- Date: 06/21/2011 01:18:14 AM
+ Date: 06/22/2011 00:42:55 AM
 */
 
 SET NAMES utf8;
@@ -60,7 +60,7 @@ CREATE TABLE `modularizer` (
 --  Records of `modularizer`
 -- ----------------------------
 BEGIN;
-INSERT INTO `modularizer` VALUES ('16', 'Other Custom HTML', 'custom_html', '{\"content\":\"<p>\\n\\tLorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores<\\/p>\"}', '0000-00-00 00:00:00', 'y', '', 'left', 'front', '2', '[]'), ('14', 'Bottom Global Menu', 'menu', '{\"id_menu\":\"5\",\"type\":\"horizontal\"}', '0000-00-00 00:00:00', 'y', '', 'bottom_left', 'front', '1', '{\"hide_title\":\"y\"}'), ('12', 'Show Cart', 'cart_widget', '[]', '0000-00-00 00:00:00', 'y', '', 'pre_topright', 'front', '1', '{\"hide_title\":\"y\"}'), ('13', 'Top Front Menu', 'menu', '{\"id_menu\":\"1\",\"type\":\"horizontal\"}', '0000-00-00 00:00:00', 'y', '', 'topmenu', 'front', '1', '{\"hide_title\":\"y\"}');
+INSERT INTO `modularizer` VALUES ('14', 'Bottom Global Menu', 'menu', '{\"id_menu\":\"5\",\"type\":\"horizontal\"}', '0000-00-00 00:00:00', 'y', '', 'bottom_left', 'front', '1', '{\"hide_title\":\"y\"}'), ('12', 'Show Cart', 'cart_widget', '[]', '0000-00-00 00:00:00', 'y', '', 'pre_topright', 'front', '1', '{\"hide_title\":\"y\"}'), ('13', 'Top Front Menu', 'menu', '{\"id_menu\":\"1\",\"type\":\"horizontal\"}', '0000-00-00 00:00:00', 'y', '', 'topmenu', 'front', '1', '{\"hide_title\":\"y\"}');
 COMMIT;
 
 -- ----------------------------
@@ -94,13 +94,13 @@ CREATE TABLE `page` (
   `c_date` datetime NOT NULL,
   `m_date` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Records of `page`
 -- ----------------------------
 BEGIN;
-INSERT INTO `page` VALUES ('3', 'About', '<p>\n	<strong>Lorem Ipsum</strong></p>\n<p>\n	is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\n<p>\n	<strong>It is a long established fact</strong></p>\n<p>\n	that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>\n', '', '2', '2011-06-09 09:48:24', '2011-06-10 13:36:48'), ('4', 'Help and F.A.Q', '<p>\n	<strong>Lorem ipsum dolor </strong></p>\n<p>\n	sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>\n<ul>\n	<li>\n		Lorem ipsum dolor sit amet,</li>\n	<li>\n		consetetur sadipscing elitr,</li>\n</ul>\n<p>\n	sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br />\n	<strong><br />\n	Duis autem vel eum iriure </strong></p>\n<p>\n	dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.<br />\n	<br />\n	Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.<br />\n	<br />\n	Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.<br />\n	<br />\n	Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut laboreet dolore magna aliquyam erat.<br />\n	<br />\n	Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br />\n	&nbsp;</p>\n', '', '2', '2011-06-10 13:32:49', '2011-06-12 11:52:41'), ('5', 'Contact', '<p>\n	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores</p>\n', '', '2', '2011-06-10 13:40:31', '0000-00-00 00:00:00');
+INSERT INTO `page` VALUES ('3', 'About', '<p>\n	<strong>Lorem Ipsum</strong></p>\n<p>\n	is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>\n<p>\n	<strong>It is a long established fact</strong></p>\n<p>\n	that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>\n', '', '9', '2011-06-09 09:48:24', '2011-06-21 05:23:29'), ('4', 'Help and F.A.Q', '<p>\n	<strong>Lorem ipsum dolor </strong></p>\n<p>\n	sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>\n<ul>\n	<li>\n		Lorem ipsum dolor sit amet,</li>\n	<li>\n		consetetur sadipscing elitr,</li>\n</ul>\n<p>\n	sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br />\n	<strong><br />\n	Duis autem vel eum iriure </strong></p>\n<p>\n	dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.<br />\n	<br />\n	Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.<br />\n	<br />\n	Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.<br />\n	<br />\n	Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, At accusam aliquyam diam diam dolore dolores duo eirmod eos erat, et nonumy sed tempor et et invidunt justo labore Stet clita ea et gubergren, kasd magna no rebum. sanctus sea sed takimata ut vero voluptua. est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut laboreet dolore magna aliquyam erat.<br />\n	<br />\n	Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.<br />\n	&nbsp;</p>\n', '', '8', '2011-06-10 13:32:49', '2011-06-21 05:23:43'), ('5', 'Contact', '<p>\n	Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores</p>\n', '', '9', '2011-06-10 13:40:31', '2011-06-21 05:23:53'), ('6', 'Store Policies', '<p>\n	Lorem Ipsum<br />\n	<br />\n	is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br />\n	<br />\n	It is a long established fact<br />\n	<br />\n	that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>\n', '', '2', '2011-06-21 05:24:20', '0000-00-00 00:00:00'), ('7', 'Privacy', '<p>\n	Lorem Ipsum<br />\n	<br />\n	is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry&#39;s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br />\n	<br />\n	It is a long established fact<br />\n	<br />\n	that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).<br />\n	<br />\n	&nbsp;</p>\n', '', '2', '2011-06-21 05:25:17', '0000-00-00 00:00:00');
 COMMIT;
 
 -- ----------------------------
@@ -112,13 +112,13 @@ CREATE TABLE `page_category` (
   `name` varchar(150) NOT NULL,
   `parent_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Records of `page_category`
 -- ----------------------------
 BEGIN;
-INSERT INTO `page_category` VALUES ('1', 'uncategory', '0'), ('2', 'Term', '1');
+INSERT INTO `page_category` VALUES ('1', 'uncategory', '0'), ('2', 'Term', '0'), ('9', 'Site Page', '0'), ('8', 'Resource', '0');
 COMMIT;
 
 -- ----------------------------
@@ -135,13 +135,13 @@ CREATE TABLE `product_sold_data` (
   `options` varchar(30) DEFAULT NULL,
   `name` varchar(40) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=127 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Records of `product_sold_data`
 -- ----------------------------
 BEGIN;
-INSERT INTO `product_sold_data` VALUES ('122', '274', '98', '98', '3', '16000', '{\"c\":\"yellow\",\"s\":\"m\"}', 'Ziggy'), ('123', '274', '98', '99', '1', '16000', '{\"c\":\"yellow\",\"s\":\"m\"}', 'Ziggy'), ('124', '274', '98', '100', '4', '16000', '{\"c\":\"yellow\",\"s\":\"m\"}', 'Ziggy'), ('125', '265', '91', '101', '3', '11', '{\"c\":\"brown\",\"s\":\"m\"}', 'Alysa'), ('126', '281', null, '102', '4', '780990', null, 'Elise');
+INSERT INTO `product_sold_data` VALUES ('1', '281', null, '104', '5', '780990', null, 'Elise'), ('2', '265', '91', '104', '6', '109738', '{\"c\":\"brown\",\"s\":\"m\"}', 'Alysa'), ('3', '282', null, '104', '1', '4657126', null, 'Aika'), ('4', '264', '88', '104', '1', '520000', '{\"c\":\"brown\",\"s\":\"l\"}', 'Adele');
 COMMIT;
 
 -- ----------------------------
@@ -196,7 +196,7 @@ CREATE TABLE `site_nav_item` (
 --  Records of `site_nav_item`
 -- ----------------------------
 BEGIN;
-INSERT INTO `site_nav_item` VALUES ('7', '0', '1', '8', 'Contact', 'contact', 'page/view/5', ''), ('8', '0', '1', '2', 'Collection', 'col', '/store/collection', ''), ('10', '0', '5', '1', 'About Us', '', 'page/view/3', ''), ('11', '0', '5', '2', 'Store Policies', '', '', ''), ('12', '0', '5', '3', 'Privacy', '', '', ''), ('13', '0', '5', '4', 'Contact', '', '', ''), ('15', '0', '1', '1', 'New Aririval', '', '', ''), ('16', '0', '1', '3', 'Top', '', '', ''), ('17', '0', '1', '5', 'Dresses', '', '', ''), ('18', '0', '1', '4', 'Bottoms', '', '', ''), ('19', '0', '1', '6', 'Outwears', '', '', ''), ('20', '0', '1', '7', 'Accessories', '', '', ''), ('21', '0', '1', '9', 'How To', '', '', '');
+INSERT INTO `site_nav_item` VALUES ('7', '0', '1', '8', 'Contact', 'contact', 'page/view/5', ''), ('8', '0', '1', '2', 'Collection', 'col', '/store/collection', ''), ('10', '0', '5', '1', 'About Us', '', 'page/view/3', ''), ('11', '0', '5', '2', 'Store Policies', '', 'page/view/6', ''), ('12', '0', '5', '3', 'Privacy', '', 'page/view/7', ''), ('13', '0', '5', '4', 'Contact', '', 'page/view/5', ''), ('15', '0', '1', '1', 'New Aririval', '', '', ''), ('16', '0', '1', '3', 'Top', '', '/store/product/browse/cat/22', ''), ('17', '0', '1', '5', 'Dresses', '', '', ''), ('18', '0', '1', '4', 'Bottoms', '', '', ''), ('19', '0', '1', '6', 'Outwears', '', '', ''), ('20', '0', '1', '7', 'Accessories', '', '', ''), ('21', '0', '1', '9', 'How To', '', '', '');
 COMMIT;
 
 -- ----------------------------
@@ -232,7 +232,14 @@ CREATE TABLE `store_collection` (
   `description` text NOT NULL,
   `img_path` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+--  Records of `store_collection`
+-- ----------------------------
+BEGIN;
+INSERT INTO `store_collection` VALUES ('6', 'July Collection', '2011-06-21 05:17:06', '0000-00-00 00:00:00', '2011-07-01 00:00:00', '', 'July_Collection.jpg');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `store_collection_ref`
@@ -243,13 +250,13 @@ CREATE TABLE `store_collection_ref` (
   `collection_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Records of `store_collection_ref`
 -- ----------------------------
 BEGIN;
-INSERT INTO `store_collection_ref` VALUES ('6', '2', '264'), ('9', '5', '282'), ('8', '5', '264'), ('7', '2', '265');
+INSERT INTO `store_collection_ref` VALUES ('6', '2', '264'), ('9', '5', '282'), ('8', '5', '264'), ('7', '2', '265'), ('10', '6', '264'), ('11', '6', '265'), ('12', '6', '282');
 COMMIT;
 
 -- ----------------------------
@@ -294,13 +301,13 @@ CREATE TABLE `store_customer` (
   `m_date` datetime NOT NULL,
   `phone` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Records of `store_customer`
 -- ----------------------------
 BEGIN;
-INSERT INTO `store_customer` VALUES ('18', '0', 'anggi.zweet@yahoo.co.id', 'ANgga', 'Sweet', '100', 'Bantent', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. Anggrek', '76457657', '2011-06-13 20:16:19', '0000-00-00 00:00:00', '12121'), ('15', '0', 'alent.alzid@gmail.com', 'Aku Cinta', 'Man2', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. Anggrek XI Blok l1', '', '2011-05-24 11:36:06', '2011-05-25 18:11:40', '23632'), ('17', '14', 'ojankil@gmail.com', 'Fauzan', 'Qadri', '0', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. Aggrek Xi', '', '2011-05-25 11:41:57', '2011-05-25 11:44:16', '841268768');
+INSERT INTO `store_customer` VALUES ('19', '1', 'zidmubarock@gmail.com', 'zdni', 'mubarock', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', 'Banten', 'jl. anggrek xi blok l5', '', '0000-00-00 00:00:00', '2011-06-22 00:07:42', '154257578');
 COMMIT;
 
 -- ----------------------------
@@ -324,13 +331,13 @@ CREATE TABLE `store_order` (
   `uniq_id` varchar(40) NOT NULL,
   `status` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=103 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=105 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
 --  Records of `store_order`
 -- ----------------------------
 BEGIN;
-INSERT INTO `store_order` VALUES ('98', '14', '17', '2011-05-03 11:43:07', null, 'bca', '130500', '48000', 'IDR', 'jne', 'YES (Yakin Esok Sampai)', '82500', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using', 'be5d8064e1ddcb3313eaa85a3b244085', 'pending'), ('99', null, '15', '2011-06-06 18:21:21', '2011-06-13 09:37:21', 'bca', '49000', '16000', 'IDR', 'jne', 'YES (Yakin Esok Sampai)', '33000', '', 'e728737187afd6ea05efc59bbc838fa8', 'pending'), ('100', '1', '1', '2011-06-07 09:39:38', '0000-00-00 00:00:00', 'bca', '95500', '64000', 'IDR', 'jne', 'OKE (Ongkos Kirim Ekomonis)', '31500', '', 'b841ecb97d6d61ef78e38a1a7f8b1fbc', 'shipped'), ('101', '1', '1', '2011-06-10 13:48:00', '2011-06-13 00:03:41', 'bca', '41', '33', 'USD', 'jne', 'YES (Yakin Esok Sampai)', '8', 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using', 'f5a13463f0e023523e03920352231a31', 'cancel'), ('102', null, '18', '2011-06-13 20:17:26', '2011-06-14 21:34:44', 'bca', '3156960', '3123960', 'IDR', 'jne', 'YES (Yakin Esok Sampai)', '33000', '', '43fc227993ed99ba9b6905c485ff84f8', 'process');
+INSERT INTO `store_order` VALUES ('103', '1', '19', '2011-06-22 00:00:18', null, 'paypal', '9955001', '9740501', 'IDR', 'jne', 'YES (Yakin Esok Sampai)', '214500', '', 'ef2586a7657e6964a296c27d15c4dab9', 'pending'), ('104', '1', '19', '2011-06-22 00:01:08', null, 'paypal', '9955001', '9740501', 'IDR', 'jne', 'YES (Yakin Esok Sampai)', '214500', '', '8bb25a97bc368c52bfc8008f92a2f83b', 'pending');
 COMMIT;
 
 -- ----------------------------
@@ -346,13 +353,6 @@ CREATE TABLE `store_order_history` (
   `read` varchar(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=35 DEFAULT CHARSET=latin1;
-
--- ----------------------------
---  Records of `store_order_history`
--- ----------------------------
-BEGIN;
-INSERT INTO `store_order_history` VALUES ('20', '101', 'payment_confirm', '\r\n			Order <span class=\"bold\">#101</span><br/>\r\n			Payment Method 		: <br/>\r\n			Payed Amount 		: 253326<br/>\r\n			Date Payment 		: 2011-06-12 22:59:49<br/>\r\n			Acount Name 		: Zidni Mubarock<br/>\r\n			', '2011-06-12 22:59:58', ''), ('21', '101', 'payment_confirm', '\r\n			Order <span class=\"bold\">#101</span><br/>\r\n			Payment Method 		: <br/>\r\n			Payed Amount 		: 253326<br/>\r\n			Date Payment 		: 2011-06-12 22:59:49<br/>\r\n			Acount Name 		: Zidni Mubarock<br/>\r\n			', '2011-06-12 23:07:09', ''), ('22', '101', 'update_status', 'set new status as <span>process</span>', '2011-06-12 23:59:11', ''), ('23', '101', 'update_status', 'set new status as <span>cancel</span>', '2011-06-13 00:03:29', ''), ('24', '101', 'update_status', 'set new status as <span>cancel</span>', '2011-06-13 00:03:41', ''), ('25', '99', 'update_status', 'set new status as <span>confirm</span>', '2011-06-13 00:04:14', ''), ('26', '99', 'update_status', 'set new status as <span>process</span>', '2011-06-13 00:04:27', ''), ('27', '99', 'update_status', 'set new status as <span>pending</span>', '2011-06-13 09:37:21', ''), ('28', '101', 'payment_confirm', 'testing cron', '2011-06-13 14:56:37', ''), ('29', '101', 'payment_confirm', 'testing cron', '2011-06-13 15:02:38', ''), ('30', '101', 'payment_confirm', 'testing cron', '2011-06-13 15:09:35', ''), ('31', '101', 'payment_confirm', 'testing cron', '2011-06-13 15:11:17', ''), ('32', '101', 'payment_confirm', 'testing cron', '2011-06-13 15:11:54', ''), ('33', '102', 'update_status', 'set new status as <span>confirm</span>', '2011-06-13 22:45:47', ''), ('34', '102', 'update_status', 'set new status as <span>process</span>', '2011-06-14 21:34:44', '');
-COMMIT;
 
 -- ----------------------------
 --  Table structure for `store_order_personal_data`
@@ -376,6 +376,42 @@ CREATE TABLE `store_order_personal_data` (
 ) ENGINE=MyISAM AUTO_INCREMENT=72 DEFAULT CHARSET=latin1;
 
 -- ----------------------------
+--  Table structure for `store_order_product_sold`
+-- ----------------------------
+DROP TABLE IF EXISTS `store_order_product_sold`;
+CREATE TABLE `store_order_product_sold` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_prod` int(11) NOT NULL,
+  `id_attrb_prod` int(11) DEFAULT NULL,
+  `order_id` int(11) NOT NULL,
+  `qty` int(11) NOT NULL,
+  `price` int(11) NOT NULL,
+  `options` varchar(30) DEFAULT NULL,
+  `name` varchar(40) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=127 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+--  Table structure for `store_order_shipping_info`
+-- ----------------------------
+DROP TABLE IF EXISTS `store_order_shipping_info`;
+CREATE TABLE `store_order_shipping_info` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) NOT NULL,
+  `first_name` varchar(50) NOT NULL,
+  `last_name` varchar(50) NOT NULL,
+  `country_id` int(11) NOT NULL,
+  `province` varchar(30) NOT NULL,
+  `city` varchar(30) NOT NULL,
+  `city_code` varchar(30) NOT NULL,
+  `zip` varchar(10) NOT NULL,
+  `address` text NOT NULL,
+  `mobile` varchar(25) NOT NULL,
+  `phone` varchar(25) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+-- ----------------------------
 --  Table structure for `store_order_shipto_data`
 -- ----------------------------
 DROP TABLE IF EXISTS `store_order_shipto_data`;
@@ -393,13 +429,13 @@ CREATE TABLE `store_order_shipto_data` (
   `mobile` varchar(25) NOT NULL,
   `phone` varchar(25) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=96 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+) ENGINE=MyISAM AUTO_INCREMENT=98 DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 -- ----------------------------
 --  Records of `store_order_shipto_data`
 -- ----------------------------
 BEGIN;
-INSERT INTO `store_order_shipto_data` VALUES ('91', '98', 'Fauzan', 'Qadri', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. Aggrek Xi', '', '841268768'), ('92', '99', 'Aku Cinta', 'Man2', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. Anggrek XI Blok l1', '', '23632'), ('93', '100', 'Zidni', 'Begitu btt', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. ANggrek XI Blok L4 NO.55 Taman Cibodas', '02183379220', ''), ('94', '101', 'Zidni', 'Begitu btt', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. ANggrek XI Blok L4 NO.55 Taman Cibodas', '02183379220', ''), ('95', '102', 'ANgga', 'Sweet', '100', 'Bantent', 'Tangerang', 'VEdSMTAwMDBK', '15132', 'Jl. Anggrek', '76457657', '12121');
+INSERT INTO `store_order_shipto_data` VALUES ('96', '103', 'zdni', 'mubarock', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', 'Banten', 'jl. anggrek xi blok l5', '', '154257578'), ('97', '104', 'zdni', 'mubarock', '100', 'Banten', 'Tangerang', 'VEdSMTAwMDBK', 'Banten', 'jl. anggrek xi blok l5', '', '154257578');
 COMMIT;
 
 -- ----------------------------
@@ -430,7 +466,7 @@ CREATE TABLE `store_product` (
 --  Records of `store_product`
 -- ----------------------------
 BEGIN;
-INSERT INTO `store_product` VALUES ('264', 'Adele', 'wm01', '1.6', '0', null, '', '2011-06-13 18:28:48', '2011-02-21 03:30:22', '19', 'y', 'IDR', '500000', '', '', ''), ('265', 'Alysa', 'wm02', '1.6', '0', null, '', '2011-06-10 21:23:08', '2011-02-21 03:51:01', '19', 'y', 'IDR', '147650', '%:25', '', ''), ('275', '', '', '', '0', null, '', null, '2011-04-12 02:04:40', '0', 'n', '', '0', '', '', ''), ('281', 'Elise', 'el_01', '0.3', '50', null, '<p>\n	It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>\n', '2011-06-13 00:21:29', '2011-06-10 20:19:58', '19', 'y', '', '780990', '', '', ''), ('282', 'Aika', 'AI_01', '0.3', '99', null, '<p>\n	It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>\n', '2011-06-13 10:16:18', '2011-06-11 06:33:13', '18', 'y', '', '4657126', '', '', '');
+INSERT INTO `store_product` VALUES ('264', 'Adele', 'wm01', '1.6', '0', null, '', '2011-06-21 04:07:48', '2011-02-21 03:30:22', '22', 'y', 'IDR', '500000', '', '', ''), ('265', 'Alysa', 'wm02', '1.6', '0', null, '', '2011-06-21 04:07:38', '2011-02-21 03:51:01', '22', 'y', 'IDR', '147650', '%:25', '', ''), ('275', '', '', '', '0', null, '', null, '2011-04-12 02:04:40', '0', 'n', '', '0', '', '', ''), ('281', 'Elise', 'el_01', '0.3', '50', null, '<p>\n	It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>\n', '2011-06-21 04:07:29', '2011-06-10 20:19:58', '22', 'y', '', '780990', '', '', ''), ('282', 'Aika', 'AI_01', '0.3', '99', null, '<p>\n	It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using &#39;Content here, content here&#39;, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for &#39;lorem ipsum&#39; will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>\n', '2011-06-21 03:51:07', '2011-06-11 06:33:13', '22', 'y', '', '4657126', '', '', '');
 COMMIT;
 
 -- ----------------------------
@@ -464,6 +500,7 @@ CREATE TABLE `store_product_media` (
   `path` varchar(100) DEFAULT NULL,
   `publish` varchar(1) DEFAULT '1',
   `default` int(1) DEFAULT '0',
+  `sort` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=95 DEFAULT CHARSET=latin1;
 
@@ -471,7 +508,7 @@ CREATE TABLE `store_product_media` (
 --  Records of `store_product_media`
 -- ----------------------------
 BEGIN;
-INSERT INTO `store_product_media` VALUES ('83', '267', 'side', 'p_267_m_83_side.jpg', 'y', '0'), ('81', '267', 'front', 'p_267_m_81_front.jpg', 'y', '1'), ('80', '266', 'front', 'p_266_m_80_front1.jpg', 'y', '0'), ('79', '266', 'back', 'p_266_m_79_back1.jpg', 'y', '0'), ('82', '267', 'back', 'p_267_m_82_back.jpg', 'y', '0'), ('78', '265', 'back', 'p_265_m_78_back.jpg', 'y', '0'), ('77', '265', 'front', 'p_265_m_77_front.jpg', 'y', '1'), ('76', '264', 'back view', 'p_264_m_76_back_view.jpg', 'y', '0'), ('74', '264', 'blue', 'p_264_m_74_blue1.jpg', 'y', '0'), ('75', '264', 'red', 'p_264_m_75_red1.jpg', 'y', '1'), ('84', '268', 'front', 'p_268_m_84_front.jpg', 'y', '0'), ('85', '268', 'back', 'p_268_m_85_back.jpg', 'y', '0'), ('86', '268', 'front far', 'p_268_m_86_front_2.jpg', 'n', '0'), ('87', '274', 'Front', 'p_274_m_87_Front.jpg', 'y', '0'), ('88', '274', 'Back', 'p_274_m_88_Back.jpg', 'y', '0'), ('89', '274', 'hhhssa', 'p_274_m_89_hhh.jpg', 'y', '0'), ('90', '277', 'front', 'p_277_m_90_front.jpg', 'y', '0'), ('91', '278', 'Front', 'p_278_m_91_Front.jpg', 'y', '0'), ('92', '281', 'Front', 'p_281_m_92_Front.jpg', 'y', '1'), ('93', '282', 'front', 'p_282_m_93_front.jpg', 'y', '0'), ('94', '282', 'Back', 'p_282_m_94_Back1.jpg', 'y', '0');
+INSERT INTO `store_product_media` VALUES ('83', '267', 'side', 'p_267_m_83_side.jpg', 'y', '0', '0'), ('81', '267', 'front', 'p_267_m_81_front.jpg', 'y', '1', '0'), ('80', '266', 'front', 'p_266_m_80_front1.jpg', 'y', '0', '0'), ('79', '266', 'back', 'p_266_m_79_back1.jpg', 'y', '0', '0'), ('82', '267', 'back', 'p_267_m_82_back.jpg', 'y', '0', '0'), ('78', '265', 'back', 'p_265_m_78_back.jpg', 'y', '0', '0'), ('77', '265', 'front', 'p_265_m_77_front.jpg', 'y', '1', '0'), ('76', '264', 'back view', 'p_264_m_76_back_view.jpg', 'y', '0', '0'), ('74', '264', 'blue', 'p_264_m_74_blue1.jpg', 'y', '0', '0'), ('75', '264', 'red', 'p_264_m_75_red1.jpg', 'y', '1', '0'), ('84', '268', 'front', 'p_268_m_84_front.jpg', 'y', '0', '0'), ('85', '268', 'back', 'p_268_m_85_back.jpg', 'y', '0', '0'), ('86', '268', 'front far', 'p_268_m_86_front_2.jpg', 'n', '0', '0'), ('87', '274', 'Front', 'p_274_m_87_Front.jpg', 'y', '0', '0'), ('88', '274', 'Back', 'p_274_m_88_Back.jpg', 'y', '0', '0'), ('89', '274', 'hhhssa', 'p_274_m_89_hhh.jpg', 'y', '0', '0'), ('90', '277', 'front', 'p_277_m_90_front.jpg', 'y', '0', '0'), ('91', '278', 'Front', 'p_278_m_91_Front.jpg', 'y', '0', '0'), ('92', '281', 'Front', 'p_281_m_92_Front.jpg', 'y', '1', '0'), ('93', '282', 'front', 'p_282_m_93_front.jpg', 'y', '0', '0'), ('94', '282', 'Back', 'p_282_m_94_Back1.jpg', 'y', '0', '0');
 COMMIT;
 
 -- ----------------------------

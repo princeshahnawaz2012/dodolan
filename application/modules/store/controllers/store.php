@@ -73,5 +73,12 @@ class Store extends MX_Controller {
 		$data['mainLayer'] = 'store/page/checkout/payProcessing_v';
 		$this->dodol_theme->render($data);
 	}
+	function carrier_cont(){
+		parse_str($_SERVER['QUERY_STRING'], $_GET); 
+		$this->input->_clean_input_data($_GET);
+		$state = $this->input->get('cr');
+		$this->load->helper('store/carrier');
+		return carrier_helper::load($state);
+	}
 
 }?>

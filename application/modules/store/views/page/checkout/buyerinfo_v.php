@@ -216,7 +216,7 @@ $(document).ready(function(){
                 method: "POST",
                 source: function(request, response) {
                 $.ajax({
-                  url: "<?=site_url('user/getcity');?>",
+                  url: "<?=site_url('store/carrier_cont?cr=jne/ajax_getcity');?>",
                   data: {city: $('.city').val()},
                   dataType: "json",
                   type: "POST",

@@ -63,7 +63,7 @@
 				
 			<?foreach($data_prodsold as $item):?>
 					<tr>
-						<td>SKU</td>
+						<td><?=$this->load->model('store/product_m')->getbyid($item->id_prod, false, 'sku', false)->sku;?></td>
 						<td><?=$item->name;?></td>
 						<td><?=$this->cart->show_price($item->price)?></td>
 						<td><?=$item->qty?></td>

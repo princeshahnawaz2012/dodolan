@@ -114,5 +114,8 @@ class Dodol {
 			$this->_ci->db->select($CALC,false);
 		}
 	}
-
+	function enable_get(){
+			parse_str($_SERVER['QUERY_STRING'], $_GET); 
+			$this->_ci->input->_clean_input_data($_GET);
+	}
 }

@@ -1,4 +1,5 @@
 <?
+
 if ( ! function_exists('ddl_post_filter'))
 	{
 		function ddl_post_filter($suffix){
