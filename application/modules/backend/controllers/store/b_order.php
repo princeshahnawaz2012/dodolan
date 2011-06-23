@@ -69,6 +69,31 @@ class B_order extends MX_Controller {
 		$this->dodol_theme->render($data, 'back');
 		
 	}
+	function test_browse(){
+		$this->load->library('barock_page');
+		$url = $this->uri->uri_to_assoc();
+		$limit = ($limit = element('limit', $url)) ? $limit : 20;
+		$page  = ($page = element('page', $url)) ? $page : 1;
+		$start = ($page == false) ? ($page-1)*$limit : 0 ;
+		$q_conf = array('start' => $start, 'limit' => $limit);
+		if($query = $this->order_m->browse($q_conf)):
+		$target_url = str_replace('/page/'.$param['page'] , '', current_url());
+		$confpage = array(
+			'target_page' 	=> $target_url,
+			'num_records' 	=> $query['num_rec'],	
+			'num_link'	  	=> 5,
+			'per_page'   	=> $limit,
+			'cur_page'   	=> $page
+			);
+			
+		$this->barock_page->initialize($confpage);
+		endif;
+		$data['orders']    	= $query['result'];
+		$data['pT']     	= $query['num_rec'];
+		$data['mainLayer'] 	='backend/page/store/order/browse_order_v';
+		$this->dodol_theme->render($data, 'back');
+		
+	}
 	function view(){
 		$id = $this->uri->segment(5);
 		$data = modules::run('backend/store/b_order/getorder_byid', $id);
@@ -92,6 +117,17 @@ class B_order extends MX_Controller {
 			$this->messages->add('Success Update Order #'.$id_order.' Status to '.$this->input->post('new_status'), 'success');
 			redirect(current_url());
 		}
+	}
+	function delete(){
+		$id = $this->uri->segment(5);
+		if($this->order_m->delete($id)):
+		$this->messages->add('Success Delete Order with number '.$id, 'success');
+		redirect('backend/store/b_order/browse');
+		else:
+		$this->messages->add('failed Delete Order with number '.$id, 'error');
+		redirect('backend/store/b_order/browse');
+		endif;
+		
 	}
 	function getorder_byid($id){
 		$order = $this->order_m->getall_orderdata($id);

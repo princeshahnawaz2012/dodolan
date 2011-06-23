@@ -27,8 +27,7 @@
 					<td><span class="bold"><?=$this->cart->show_price($data_order->total_amount)?></span></td>
 					<td class="action">
 							<a href="<?=site_url('backend/store/b_order/view/'.$data_order->id);?>"><span class="act view"></span></a>
-							<a href="<?=site_url('backend/store/b_product/editprod/'.$data_order->id);?>"><span class="act edit"></span></a>
-							<a href="<?=site_url('backend/store/b_product/deleteprod/'.$data_order->id);?>"><span class="act del"></span></a>
+						<a href="<?=site_url('backend/store/b_order/delete/'.$data_order->id);?>"><span class="act del"></span></a>
 					</td>
 				</tr>
 			<?endforeach;?>

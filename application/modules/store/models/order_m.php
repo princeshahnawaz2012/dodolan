@@ -313,13 +313,13 @@ class Order_m extends CI_Model {
 		endif;
 	}
 	function browse($param){
-	$start = ($start = elemenet('start', $param)) ? $start : 0;
-	$limit = ($limit = elemenet('limit', $param)) ? $start : 20;
+	$start = ($start = element('start', $param)) ? $start : 0;
+	$limit = ($limit = element('limit', $param)) ? $start : 20;
 	
-	$this->db->select('order.id as order_number');
+	$this->db->select('order_data.id as order_number');
 	if(element('search', $param)) :
 		$search = array(
-			'order.id' => element('search', $param),
+			'order-data.id' => element('search', $param),
 			'customer.name' => element('search', $param),
 			'shipping_info.name' => element('search', $param),
 		); 
@@ -328,11 +328,13 @@ class Order_m extends CI_Model {
 	if(element('status', $param)):
 		$this->db->where('status', element('status', $param));
 	endif;
-		$this->db->join('store_customer customer', 'customer.id=order.customer_id');
-		$this->db->join('store_shipping_info shipping_info', 'shipping_info.order_id=order.id');
-		$q = $this->db->get('store_order', $limit, $start);
+			$this->dodol->db_calc_found_rows();
+		$this->db->join('store_customer customer', 'customer.id=order_data.customer_id');
+		$this->db->join('store_order_shipping_info shipping_info', 'shipping_info.order_id=order_data.id');
+
+		$q = $this->db->get('store_order order_data', $limit, $start);
 		if($q->num_rows() > 0):
-			return $q->result();
+			return array('result'=> $q->result(), 'num_record' => $this->dodol->db_found_rows());
 		else:
 			return false;
 		endif;

@@ -414,8 +414,7 @@ class Checkout extends MX_Controller {
 	 * @author Zidni Mubarock
 	 */	
 	function payment(){
-	$this->bug->send(json_encode($this->cart->shipping_info));
-	$this->bug->send(json_encode($this->cart->shipto_info));
+
 	if($this->cart->shipping_info){
 		$data= array(
 			'mainLayer' => 'store/page/checkout/payment_v',
@@ -623,10 +622,6 @@ class Checkout extends MX_Controller {
         	    echo json_encode($data);
     	    }
         }
-	}
-	function asuh(){
-		$this->load->helper('store/store_v');
-		product_img();
 	}
 	
 	

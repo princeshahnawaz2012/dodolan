@@ -53,14 +53,7 @@
 	</div>
 	<div class="customer_info grid_350 right">
 	<h4>Shipping Address</h4>
-	<? 
-
-	if($this->session->userdata('ship_to_info')){
-	$ship = $this->session->userdata('ship_to_info');
-	}else{
-	$ship = $this->session->userdata('customer_info');
-	}
-	;?>
+	<? $ship = ($ship = $this->session->userdata('shipto_info')) ? $ship : $this->session->userdata('customer_info');?>
 	<div class="data_rowSet">
 		<div class="label">Aimed to </div>
 		<div class="data"><?=$ship['first_name']?> <?=$ship['last_name']?></div>
