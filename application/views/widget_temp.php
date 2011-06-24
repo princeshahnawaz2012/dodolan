@@ -9,7 +9,7 @@
 		<?else:?>
 		<h3><?=$widget->name?></h3>
 		<?endif?>
-	<?=widget_helper::exec($widget->state.'/'.$widget->widget_name.'/'.$widget->widget_name, $this->dodol->jsonToArray($widget->parameter))?>
+	<?=widget_helper::placed($widget->state.'/'.$widget->widget_name.'/'.$widget->widget_name, $this->dodol->jsonToArray($widget->parameter))?>
 	</div>
 	<?endforeach;?>
 
