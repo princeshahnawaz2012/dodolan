@@ -219,8 +219,8 @@ class Product extends MX_Controller {
 	function api_delete($id){
 		return $this->mdl->delete($id);
 	}
-	function api_getbyid($id){
-		return $this->mdl->getbyid($id);
+	function api_getbyid($id, $include = false, $select = '*', $alldata = TRUE){
+		return $this->mdl->getbyid($id, $include, $select, $alldata);
 	}
 	function api_browse($param){
 		return $this->mdl->browse($param);

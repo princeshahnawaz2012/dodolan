@@ -3,11 +3,16 @@
 	  $(document).ready(function(){
 	      $('.productSnap .productImg').hover(function(){
       	       var tool = $(this).find('.snap_tool');
-      	       tool.show('slide',{direction:'down'}, 200);
+      	       tool.show('drop',{direction: "down"}, 500);
+    		  
       	   }, function(){
+			
       	       var tool = $(this).find('.snap_tool');
-         	       tool.hide('slide',{direction:'down'}, 200);
-      	   });   
+         	   tool.hide('fade', 500);
+
+
+      	   });
+ 			
 	  });
 	   
 	</script>
