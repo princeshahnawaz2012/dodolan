@@ -1,3 +1,4 @@
+<?=load_widget('front_landing')?>
 <div class="footer">
 	<div class="resource_bottom">	
 		<div class="resource_left left grid_650">
