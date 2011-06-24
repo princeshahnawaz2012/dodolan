@@ -13,8 +13,12 @@ body a {color: #000}
 	font-size: 32px;
 	margin:0px;
 	padding:0px;
-	font-family:Myriad Pro;
+	font-family:Myriad-light;
 	font-weight:normal;
+}
+.header .toppest_spot .logo_spot a {
+	text-decoration: none;
+	color: #000;
 }
 .header .toppest_spot .resource_spot{
 	position:absolute;
@@ -44,6 +48,7 @@ body a {color: #000}
 	color:#000;
 	font-size:14px;
 	font-family:Myriad Pro;
+
 }
 .header .navigation .main_menu ul li a:hover {
 	background:#f7f7f7;

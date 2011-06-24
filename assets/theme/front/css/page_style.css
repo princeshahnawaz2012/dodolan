@@ -28,20 +28,26 @@ input[name="addcart"]{
 .viewProduct .detailProd .detailprice p {line-height:50px; text-align:right; border-top:#ccc 1px solid; border-bottom:#ccc 1px solid; margin:0px;}
 .viewProduct .detailProd .descProd {margin-top:15px; min-height:300px;}
 .viewProduct .relation_product { border-top:1px solid #ccc; margin-top:20px}
-/* Browse Product
+/* PRODUCT SNAP
 ----------------------------------------------------------------------------------------------------*/
-.browseProduct .productSnap { width:230px; float:left; margin:0 3px 10px 3px; margin-bottom:20px; display: table;}
-.browseProduct .productSnap a {text-decoration: none;}
-.browseProduct .productSnap .productImg img { width:230px;}
-.browseProduct .productSnap .productDetail { border-top:1px solid #ccc;  border-bottom:1px solid #ccc; padding: 5px 0px; margin-top:5px;}
-.browseProduct .productSnap .productPrice {float: right;}
-.browseProduct .productSnap .productImg {position: relative;}
-.browseProduct .productSnap .productImg .snap_tool {width:100%; position:absolute; bottom:0px; height:40px; background:url(../img/opacity_black.png);padding-top:10px; display:none;}
-.browseProduct .productSnap .productImg .snap_tool p { line-height:30px; margin:0px; text-align:center; font-size: 80%;}
-.browseProduct .productSnap .productImg .snap_tool p span {-webkit-border-radius: 3px;
+.productSnap { width:230px; height:320px; float:left; margin:0 3px 10px 3px; margin-bottom:20px; display: table;}
+.productSnap a {text-decoration: none; color:#fff}
+.productSnap .productImg img { width:230px; height:320px}
+.productSnap .productDetail { border-top:1px solid #ccc;  border-bottom:1px solid #ccc; padding: 5px 0px; margin-top:5px;}
+.productSnap .productPrice {float: right;}
+.productSnap .productImg {position: relative;}
+.productSnap .productImg .snap_tool {width:150px; left: 30px;position:absolute; top:200px; ; background:url(../img/opacity_black.png);padding:15px 10px 0px; display:none;}
+.productSnap .productImg .snap_tool p { line-height:30px; margin:0px; text-align:center; font-size: 80%;}
+.productSnap .productImg .snap_tool p span {-webkit-border-radius: 3px;
    -moz-border-radius: 3px;
         border-radius: 3px;padding: 3px 5px; background:#ccc; color:#000; margin-right:5px;}
-
+.productSnap .productImg .snap_tool h3.prod_name {text-transform: capitalize; margin-bottom:10px; padding:0px; line-height:15px; text-align:center; font-size:14px; color:#fff; font-family:Myriad-light; font-style: italic;}
+.productSnap .productImg .snap_tool .product_detail { height:20px; margin:0px -10px 0px; background: url('../img/store/bg_detail_product_snap.png') repeat-x;
+color:#fff; font-size:10px; padding:0px 5px;}
+.productSnap .productImg .snap_tool .triangle  { margin-top:-20px; margin-bottom:10px;
+	background: url('../img/opacity_black_triangle.png') no-repeat scroll top center;
+	height: 5px;
+}
 /* VIEW CART 
 ----------------------------------------------------------------------------------------------------*/
 .cartView_v .table-Ui table tr.dark td { background: #f2f2f2; border-bottom:1px #D8D8D8 solid; color: #6C6C6C; text-transform: uppercase}
