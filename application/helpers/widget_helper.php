@@ -28,46 +28,7 @@
 class Widget_helper
 {
 
-	function run($file) {        
-   	 $args = func_get_args();
-    
-	    $module = '';
-		$func = 'run';
-	    $path = '';
-	    // is module in filename? 
-	    if (($pos = strpos($file, '/')) !== FALSE) {
-			$nested = explode('/',$file);
-			if(count($nested) > 1) {		
-				$path = APPPATH.'widgets/'.implode('/', array_slice($nested, 0, -1)).'/';
-				$file = implode(array_slice($nested, -1));
-				
-				if(self::find($path, $file) == false){
-					$path = APPPATH.'widgets/'.implode('/', array_slice($nested, 0, -2)).'/';
-					$file = implode(array_slice($nested, -2, 1));
-					$func = implode(array_slice($nested, -1));
-				}
-			}
-		
-	
-	    }else{
-			$path = $path = APPPATH.'widgets/';
-		}
-
-	  	self::find($path, $file);
-
-	    Modules::load_file($file, $path);
-            
-	    $file = ucfirst($file);
-	    $widget = new $file();
-    
-	    $widget->module_path = $path;
-
-	    return call_user_func_array(array($widget, $func), array_slice($args, 1)); 
-	   
-	}
-	
-	
-	function exec($file) {       
+	function run($file) {       
    	    $args = func_get_args();
     	$module = '';
 		$func = 'run';
@@ -76,11 +37,11 @@ class Widget_helper
 	    if (($pos = strpos($file, '/')) !== FALSE) {
 			$nested = explode('/',$file);
 			if(count($nested) > 1) {		
-				$path = APPPATH.'widgets/'.implode('/', array_slice($nested, 0, -1)).'/';
+				$path = './widgets/'.implode('/', array_slice($nested, 0, -1)).'/';
 				$file = implode(array_slice($nested, -1));
 				
 				if(self::find($path, $file) == false){
-					$path = APPPATH.'widgets/'.implode('/', array_slice($nested, 0, -2)).'/';
+					$path = './widgets/'.implode('/', array_slice($nested, 0, -2)).'/';
 					$file = implode(array_slice($nested, -2, 1));
 					$func = implode(array_slice($nested, -1));
 				}
@@ -88,7 +49,7 @@ class Widget_helper
 		
 	
 	    }else{
-			$path = $path = APPPATH.'widgets/';
+			$path = $path = './widgets/';
 		}
 
 	  	self::find($path, $file);
@@ -97,11 +58,46 @@ class Widget_helper
             
 	    $file = ucfirst($file);
 	    $widget = new $file();
-    
+	    $widget->module_path = $path;
+	    return call_user_func_array(array($widget, $func), array_slice($args, 1));    
+	}
+	function placed($file) {       
+   	    $args = func_get_args();
+    	$module = '';
+		$func = 'run';
+	    $path = '';
+	    // is module in filename? 
+	    if (($pos = strpos($file, '/')) !== FALSE) {
+			$nested = explode('/',$file);
+			if(count($nested) > 1) {		
+				$path = './widgets/'.implode('/', array_slice($nested, 0, -1)).'/';
+				$file = implode(array_slice($nested, -1));
+				
+				if(self::find($path, $file) == false){
+					$path = './widgets/'.implode('/', array_slice($nested, 0, -2)).'/';
+					$file = implode(array_slice($nested, -2, 1));
+					$func = implode(array_slice($nested, -1));
+				}
+			}
+		
+	
+	    }else{
+			$path = $path = './widgets/';
+		}
+
+	  	self::find($path, $file);
+
+	    Modules::load_file($file, $path);
+            
+	    $file = ucfirst($file);
+	    $widget = new $file();
+    	array_push($this->session->userdata['loaded_widget'], $widget->getdetail());
 	    $widget->module_path = $path;
 	    return call_user_func_array(array($widget, $func), array_slice($args, 1));    
 	}
 	
+	
+
 	
 	
 
@@ -128,7 +124,7 @@ class Widget_helper
 	}
 	//@overide
 	function create(){}
-	
+
     function __get($var) {
         global $CI;
         return $CI->$var;

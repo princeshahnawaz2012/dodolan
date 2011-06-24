@@ -1,5 +1,7 @@
 <?
 
+
+
 if ( ! function_exists('ddl_post_filter'))
 	{
 		function ddl_post_filter($suffix){
@@ -17,3 +19,14 @@ if ( ! function_exists('ddl_post_filter'))
 			}
 		}
 	}
+if ( ! function_exists('html_word_limiter'))
+		{
+			function html_word_limiter($string, $limiter = false){
+				$output = strip_tags($string);
+				if($limiter != false){
+					$output = word_limiter($output, $limiter);
+				}
+				return $output;
+			}
+		}
+	

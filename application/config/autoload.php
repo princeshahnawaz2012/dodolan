@@ -40,6 +40,7 @@
 */
 
 $autoload['libraries'] = array(
+	'carabiner',
 	'dodol_theme',
 	'dodol_widget',
 	'asset', 
@@ -72,6 +73,7 @@ $autoload['helper'] = array(
 	'widget',
 	'array',
 	'dodol',
+	'text'
 	);
 
 

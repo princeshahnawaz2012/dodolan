@@ -9,6 +9,19 @@
 |	http://codeigniter.com/user_guide/general/hooks.html
 |
 */
+$hook['pre_controller'] = array(
+									'class' => 'Registry_widget',
+									'function' => 'refresh',
+									'filename' => 'registry_widget.php',
+									'filepath' => 'hooks/dodol'
+);
+$hook['post_controller'] = array(
+									'class' => 'Registry_widget',
+									'function' => 'register',
+									'filename' => 'registry_widget.php',
+									'filepath' => 'hooks/dodol'
+);
+
 
 
 
