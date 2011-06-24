@@ -1,12 +1,10 @@
-<script type="text/javascript" charset="utf-8">
 
-</script>
 <?=$this->dodol_theme->partial('header');?>
 	<div class="wrapper">
 		<div class="wrapper_inner grid_950 ctr">
 			<div class="header">
 				<div class="toppest_spot">
-				<div class="logo_spot left"><h1 clas="myriad"><?=$this->config->item('site_name')?></h1></div>
+				<div class="logo_spot left"><a href="<?=site_url()?>"><h1 clas="myriad"><?=$this->config->item('site_name')?></a></h1></div>
 				<div class="resource_spot right grid_300">
 					<div class="user_menu right">
                     	<?=load_widget('pre_topright');?>
