@@ -6,39 +6,45 @@ file name : Theme.php
 
 class Dodol_theme
 {
-var $_ci 		=  '';
-var $css 		= array(
-					// global css
-					array('route' => 'global', 'file' => 'global_css/grid.css'),
-					array('route' => 'global', 'file' => 'global_css/reset.css'),
-					array('route' => 'global', 'file' => 'global_css/text.css'),
-					array('route' => 'global', 'file' => 'global_css/ui-style.css'),
-					array('route' => 'global', 'file' => 'global_js/jquery_ui/theme/Aristo/jquery-ui-1.8.7.custom.css'),
-					
-					//back css
-					array('route' => 'back', 'file' => 'theme/back/css/admin-style.css'),
-					array('route' => 'back', 'file' => 'theme/back/css/page_style.css'),
-					// front css
-					array('route' => 'front', 'file' => 'theme/front/css/front-style.css'),
-					array('route' => 'front', 'file' => 'theme/front/css/page_style.css'),
-					array('route' => 'front', 'file' => 'theme/front/css/cloud_zoom.css'),
-					
-
-);       
-var $js			= array(
-					// global js
-					array('route' => 'global', 'file' => 'global_js/dodolan_js_lib.js'),
-					array('route' => 'global', 'file' => 'global_js/jquery.min.js'),
-					);
-
-
+var $_ci 			=  '';
+var $core_js      	= array();
+var $core_css 		= array();
+var $front_js 		= array();
+var $front_css 		= array();
+var $back_js 		= array();
+var $back_css 		= array();
 function Dodol_theme(){
 	$this->_ci =& get_instance();
 	$this->front_theme = 'front';
 	$this->back_theme = 'back';
 	$this->theme_path = './themes';
+	/*
+	$this->core_css = array(
+		array('global_css/reset.css'),
+		array('global_css/ui-style.css'),
+		array('global_css/text.css'),
+		array('global_css/grid.css'),
+		array('global_css/font_face.css'),
+		*/
+	$this->core_js = array(
+		array('global_js/jquery.min.js'),
+		array('global_js/jquery_ui/jquery-ui.min.js'),
+		array('global_js/jquery_ui/jquery-ui-timepicker-addon.js'),
+		array('global_js/dodolan_js_lib.js'),
+		array('global_js/jgrowl/jquery.jgrowl.js'),
+	);
 	
+	$this->call_assets('./assets/global_css/', 'css', './assets/', 'core_css');
+	$this->call_assets('./assets/theme/front/js/', 'js', './assets/', 'front_js');
+	$this->call_assets('./assets/theme/front/css/', 'css', './assets/', 'front_css');
+	
+	$this->_ci->carabiner->group('core_assets', array('js'=>$this->core_js , 'css' => $this->core_css) );
+	$this->_ci->carabiner->group('front_assets', array('js'=>$this->front_js , 'css' => $this->front_css) );
+	
+	
+
 }
+
 function render($data, $mode=false, $layer=false){
 	parse_str($_SERVER['QUERY_STRING'], $_GET); 
 	$this->_ci->input->_clean_input_data($_GET); 
@@ -87,6 +93,28 @@ function menu_rend($source, $type = 'menu_hor' ){
 	$out .= '<div class="clear"></div></ul>';
 	return $out;
 }
+function call_assets($dir, $extension, $root, $push ) {
+	if(is_dir($dir)) {
+		if($dh = opendir($dir)){
+			while($file = readdir($dh)){
+				if($file != '.' && $file != '..'){
+					if(is_dir($dir . $file)){
+					//	echo $dir . $file.'<br/>';
+						// since it is a <strong class="highlight">directory</strong> we recurse i
+						$this->call_assets($dir . $file . '/', $extension, $root, $push);
+					}else{
+						if(strpos($file, '.'.$extension) !== false){
+							array_push($this->$push, array(str_replace($root, '', $dir . $file)));
+						}	
+						
+
+			 		}
+				}
+	 		}
+		}
+ 		closedir($dh);         
+     	}
+}
 function load_text_editor($id){
 		$this->_ci->load->helper('url');
 		$this->_ci->load->helper('ckeditor');
@@ -98,7 +126,7 @@ function load_text_editor($id){
 
 					//Optionnal values
 					'config' => array(
-						'toolbar' 	=> 	"Basic", 	//Using the Full toolbar
+						'toolbar' 	=> 	"Full", 	//Using the Full toolbar
 						'width' 	=> 	"100%",	//Setting a custom width
 						'height' 	=> 	'200px',	//Setting a custom height
 
@@ -131,66 +159,7 @@ function load_text_editor($id){
 			echo display_ckeditor($config);
 
 	}	
-	public function register_css($array=array())
-	{
-	
-		if(is_array($array)){
-			foreach($array as $a){
-				$data = array(
-					'file' => $a,
-					'route' => $this->_ci->router->class.'_'.$this->_ci->router->method
-				);
-				array_push($this->css, $data);
-			}
-		}else{
-			array_push($this->css, $array);
-		}
-	}
-	public function load_css($route = 'front')
-	{
-		foreach($this->css as $css){
-			$current_route = $this->_ci->router->class.'_'.$this->_ci->router->method;
-			$css_route = $css['route'];
-			if($route != 'front'){
-				if($css_route == 'back' || $css_route == 'global' || $css_route == $current_route ){
-					echo ('<link rel="stylesheet" href="'.base_url().'/assets/'.$css['file'].'" type="text/css">');		
-				}	
-			}else{
-				if($css_route == 'front' || $css_route == 'global' || $css_route == $current_route ){
-					echo ('<link rel="stylesheet" href="'.base_url().'/assets/'.$css['file'].'" type="text/css">');		
-				}
-			}
-		
 
-		}
-	}
-	public function register_js($array=array())
-	{
-	
-		if(is_array($array)){
-			foreach($array as $a){
-				$data = array(
-					'file' => $a,
-					'route' => $this->_ci->router->class.'_'.$this->_ci->router->method
-				);
-				array_push($this->css, $data);
-			}
-		}else{
-			array_push($this->css, $array);
-		}
-	}
-	public function load_js()
-	{
-		foreach($this->js as $js){
-			$current_route = $this->_ci->router->class.'_'.$this->_ci->router->method;
-			$css_route = $css['route'];
-			if($current_route == $css_route){
-				echo ('<script type="text/javascript" src="'.base_url().'/assets/'.$js['file'].'"></script>');		
-			}
-		
-
-		}
-	}
 	public function show_date($date){
 	
 			$date= new DateTime($date);

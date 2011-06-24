@@ -76,8 +76,6 @@ class Dodol {
 			}else{
 				$output .= $value;
 			}
-				
-				
 			$output .= '</div>';
 		}
 		return $output;
